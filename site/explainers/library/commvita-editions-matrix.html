@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>commvita — edition matrix</title>
+<meta name="theme-color" content="#141C2E">
+<style>
+:root{
+  --navy:#141C2E; --teal:#00B8A6; --orange:#FF5B47; --muted:#6B7A99; --border:#DDE4EE;
+  --canvas:#F2F4F7; --card:#FFFFFF; --ink:#17233B; --sub:#51617E; --chip:#EDF2F8;
+  --grant:#1F9D74; --protect:#C97A1E; --rescind:#C0392B;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --sans:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  --shadow:0 1px 2px rgba(29,52,97,.08),0 10px 28px -14px rgba(29,52,97,.22);
+}
+@media(prefers-color-scheme:dark){:root{--navy:#DCE6F5;--canvas:#0E1726;--card:#16233A;--ink:#EAF1FB;
+  --sub:#9DB0CC;--muted:#8497B5;--border:#2A3A54;--chip:#1E2E48;--grant:#4BD3A2;--protect:#E0A24E;--rescind:#E8776A;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px -14px rgba(0,0,0,.55)}}
+:root[data-theme="dark"]{--navy:#DCE6F5;--canvas:#0E1726;--card:#16233A;--ink:#EAF1FB;--sub:#9DB0CC;--muted:#8497B5;--border:#2A3A54;--chip:#1E2E48;--grant:#4BD3A2;--protect:#E0A24E;--rescind:#E8776A;--shadow:0 1px 2px rgba(0,0,0,.4),0 12px 30px -14px rgba(0,0,0,.55)}
+:root[data-theme="light"]{--navy:#141C2E;--canvas:#F2F4F7;--card:#FFFFFF;--ink:#17233B;--sub:#51617E;--muted:#6B7A99;--border:#DDE4EE;--chip:#EDF2F8;--grant:#1F9D74;--protect:#C97A1E;--rescind:#C0392B;--shadow:0 1px 2px rgba(29,52,97,.08),0 10px 28px -14px rgba(29,52,97,.22)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+.doc{max-width:66rem;margin:0 auto;padding:44px 30px 70px}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.brand .wm{display:flex;flex-direction:column;line-height:1.12}
+.brand .wm .row{display:flex;align-items:baseline}
+.brand .wm .c{font-size:23px;font-weight:700;color:var(--teal);letter-spacing:-.02em}
+.brand .wm .v{font-size:23px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.brand .wm .tm{font-size:10px;font-weight:600;color:var(--ink);align-self:flex-start;margin-left:1px}
+.brand .wm .tag{font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.06em;margin-top:2px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600}
+h1{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.02em;margin:8px 0 6px;text-wrap:balance}
+.sub{color:var(--sub);font-size:16px;max-width:64ch;margin:0}
+.rule{height:3px;width:64px;background:var(--teal);border-radius:2px;margin:20px 0 0}
+.key{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:16px 0 2px;padding:11px 14px;border:1px solid var(--border);border-radius:11px;background:var(--card);font-size:12.5px;color:var(--sub)}
+.key b{color:var(--ink)} .key .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+h2{font-size:21px;font-weight:800;letter-spacing:-.01em;margin:44px 0 4px;display:flex;align-items:center;gap:11px}
+h2 .num{font-family:var(--mono);font-size:13px;font-weight:700;color:#fff;background:var(--navy);width:26px;height:26px;
+  border-radius:7px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+h2.grant .num{background:var(--grant)} h2.protect .num{background:var(--protect)} h2.rescind .num{background:var(--rescind)}
+.lead{color:var(--sub);font-size:14.5px;margin:2px 0 14px;max-width:70ch}
+p{margin:0 0 12px} strong{color:var(--ink)}
+code,.chip{font-family:var(--mono);font-size:12px}
+.chip{background:var(--chip);color:var(--navy);padding:1.5px 7px;border-radius:6px;white-space:nowrap;border:1px solid var(--border)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+@media(max-width:820px){.grid3{grid-template-columns:1fr}}
+.role{background:var(--card);border:1px solid var(--border);border-top-width:4px;border-radius:13px;padding:16px 17px;box-shadow:var(--shadow)}
+.role h3{margin:0 0 2px;font-size:16px}
+.role .who{font-size:12.5px;color:var(--muted);font-weight:600;margin-bottom:9px}
+.role p{font-size:13.5px;color:var(--sub);margin:0 0 10px}
+.role .where{font-size:12px;color:var(--sub);border-top:1px dashed var(--border);padding-top:9px}
+.role .where b{color:var(--ink);font-weight:700;display:block;margin-bottom:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.steps{display:flex;flex-direction:column;gap:11px;margin-top:14px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px 16px;box-shadow:var(--shadow);
+  border-left-width:4px;display:grid;grid-template-columns:30px 1fr;gap:13px;align-items:start}
+.step .s{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--muted);margin-top:1px}
+.step h4{margin:0 0 3px;font-size:14.5px}
+.step p{margin:0;font-size:13.5px;color:var(--sub)}
+.step .loc{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.g{border-left-color:var(--grant)} .pr{border-left-color:var(--protect)} .re{border-left-color:var(--rescind)}
+.callout{background:color-mix(in srgb,var(--protect) 9%,var(--card));border:1px solid color-mix(in srgb,var(--protect) 35%,var(--border));
+  border-radius:12px;padding:14px 16px;margin-top:16px;font-size:13.5px;color:var(--ink)}
+.callout.re{background:color-mix(in srgb,var(--rescind) 9%,var(--card));border-color:color-mix(in srgb,var(--rescind) 35%,var(--border))}
+.callout b{font-weight:800}
+.tablewrap{overflow-x:auto;margin-top:16px;border:1px solid var(--border);border-radius:13px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:12.8px;min-width:640px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--chip);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)} td .chip{font-size:11px}
+.foot{margin-top:40px;border-top:1px solid var(--border);padding-top:16px;color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 18px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 0;font-size:13px;font-weight:700}
+.flow .node{padding:8px 13px;border-radius:9px;color:#fff}
+.flow .arw{color:var(--muted);font-weight:400}
+@media print{body{background:#fff}.role,.step,.tablewrap{box-shadow:none}.doc{max-width:none}}
+
+.tbl{width:100%;border-collapse:collapse;font-size:12.5px}
+.tbl th{position:sticky;top:0;background:var(--navy);color:#fff;text-align:left;padding:9px 10px;font-size:12px;letter-spacing:.02em}
+.tbl th.ct,.tbl td.ct{text-align:center;width:118px}
+.tbl td{padding:7px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+.tbl tr.grp td{background:var(--chip);font-weight:800;color:var(--navy);font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.06em;padding:9px 10px;border-bottom:2px solid var(--border)}
+.mn{display:block;font-weight:600;color:var(--ink)}
+.rt{display:block;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:1px}
+.tk{display:inline-block;width:22px;height:22px;line-height:22px;border-radius:50%;color:#fff;font-weight:800;font-size:13px}
+.tk.c{background:var(--muted)} .tk.g{background:var(--teal);color:#08322A} .tk.p{background:var(--navy)}
+.no{color:var(--border);font-weight:700}
+.cnt{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 0}
+.cnt div{flex:1;min-width:150px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
+.cnt b{display:block;font-size:26px;color:var(--navy);line-height:1.1}
+.cnt span{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.callout{border-left:4px solid var(--orange);background:var(--card);border-radius:0 10px 10px 0;
+  padding:13px 16px;margin:16px 0;box-shadow:var(--shadow);font-size:13.5px}
+@media print{.tbl th{position:static}.doc{max-width:none}@page{size:A4;margin:12mm}}
+
+/* Two-page print target: 147 rows must fit A4 x2, so tighten aggressively.
+   Screen layout is unaffected. */
+@media print{
+  @page{size:A4 portrait;margin:9mm}
+  body{background:#fff;font-size:9px}
+  .doc{max-width:none;padding:0}
+  .brand svg{width:30px;height:30px}
+  h1{font-size:17px;margin:6px 0 3px}
+  h2{font-size:12px;margin:9px 0 3px;page-break-after:avoid}
+  p,.sub,.lead{font-size:9px;margin:3px 0}
+  .key{font-size:8px;padding:5px 7px;margin:5px 0}
+  .cnt{margin:5px 0;gap:5px}.cnt div{padding:5px 7px}.cnt b{font-size:14px}.cnt span{font-size:7.5px}
+  .callout{padding:5px 8px;margin:6px 0;font-size:8.5px}
+  .tbl{font-size:8px}
+  .tbl th{padding:3px 5px;font-size:8px;position:static}
+  .tbl td{padding:1.6px 5px}
+  .tbl tr.grp td{padding:2.5px 5px;font-size:7.5px}
+  .rt{font-size:7px}
+  .tk{width:12px;height:12px;line-height:12px;font-size:8px}
+  .tablewrap{box-shadow:none;overflow:visible}
+  tr{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<style>.cvnav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;
+  gap:14px;height:54px;padding:0 16px;box-sizing:border-box;background:rgba(255,255,255,.975);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid #D9DFE8;
+  font-family:"Archivo","Familjen Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.cvnav-spacer{height:54px}
+.cvnav a.cvnav-back{display:inline-flex;align-items:center;gap:8px;min-height:44px;
+  padding:0 15px;border-radius:10px;background:#141C2E;color:#fff;text-decoration:none;
+  font-size:13px;font-weight:700;white-space:nowrap;transition:background .15s}
+.cvnav a.cvnav-back:hover,.cvnav a.cvnav-back:focus-visible{background:#00B8A6}
+.cvnav a.cvnav-back svg{flex:none}
+.cvnav .cvnav-mark{flex:none;opacity:.9}
+.cvnav .cvnav-title{font-size:13px;font-weight:700;color:#141C2E;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;min-width:0}
+@media(prefers-color-scheme:dark){
+  .cvnav{background:rgba(14,23,38,.975);border-bottom-color:#2A3A54}
+  .cvnav .cvnav-title{color:#EAF1FB}
+  .cvnav a.cvnav-back{background:#00B8A6;color:#141C2E}
+  .cvnav a.cvnav-back:hover,.cvnav a.cvnav-back:focus-visible{background:#fff}}
+:root[data-theme="dark"] .cvnav{background:rgba(14,23,38,.975);border-bottom-color:#2A3A54}
+:root[data-theme="dark"] .cvnav .cvnav-title{color:#EAF1FB}
+:root[data-theme="dark"] .cvnav a.cvnav-back{background:#00B8A6;color:#141C2E}
+:root[data-theme="light"] .cvnav{background:rgba(255,255,255,.975);border-bottom-color:#D9DFE8}
+:root[data-theme="light"] .cvnav .cvnav-title{color:#141C2E}
+:root[data-theme="light"] .cvnav a.cvnav-back{background:#141C2E;color:#fff}
+@media(max-width:560px){
+  .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
+  .cvnav .cvnav-mark{display:none}}
+@media print{.cvnav,.cvnav-spacer{display:none}}
+</style>
+<!-- commvita explainer nav -->
+<div class="cvnav" role="navigation" aria-label="Explainer">
+  <a class="cvnav-back" href="../index.html"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 2.5 4.5 8l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>All explainers</a>
+  <svg class="cvnav-mark" width="22" height="22" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><line x1="52" y1="49" x2="20" y2="30" stroke="#141C2E" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="78" y2="18" stroke="#141C2E" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="26" y2="80" stroke="#141C2E" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="84" y2="62" stroke="#141C2E" stroke-width="5.0" stroke-linecap="round"/><circle cx="20" cy="30" r="8.5" fill="#00B8A6"/><circle cx="78" cy="18" r="7.0" fill="#7B61FF"/><circle cx="26" cy="80" r="6.0" fill="#FFB020"/><circle cx="84" cy="62" r="9.5" fill="#FF5B47"/><circle cx="52" cy="49" r="15.0" fill="#141C2E"/><circle cx="52" cy="49" r="6.0" fill="#FFFFFF"/></svg>
+  <span class="cvnav-title">editions-matrix</span>
+</div>
+<div class="cvnav-spacer" aria-hidden="true"></div>
+<!-- /commvita explainer nav -->
+
+
+<div class="doc">
+  <div class="brand">
+    <svg width="44" height="44" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="commvita™ logo" style="flex:none">
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#00B8A6" stroke-width="9"/>
+      <rect x="27" y="27" width="46" height="46" fill="none" stroke="#141C2E" stroke-width="6" rx="3"/>
+      <circle cx="50" cy="50" r="11" fill="#141C2E"/><circle cx="50" cy="50" r="5" fill="#FFFFFF"/>
+      <circle cx="27" cy="27" r="8" fill="#141C2E"/><circle cx="73" cy="27" r="8" fill="#00B8A6"/>
+      <circle cx="27" cy="73" r="8" fill="#00B8A6"/><circle cx="73" cy="73" r="8" fill="#FF5B47"/>
+    </svg>
+    <div class="wm">
+      <div class="row"><span class="c">comm</span><span class="v">vita</span><span class="tm">™</span></div>
+      <span class="tag">Connected care platform</span>
+    </div>
+  </div>
+
+  <div class="eyebrow">Editions</div>
+  <h1>What is in which edition</h1>
+  <p class="sub">Every module in the three commvita editions, in one grid. The editions are
+  <strong>additive</strong>: the Community Edition is the open base, Governance &amp; Assurance layers
+  the governance spine on top, and the Population Platform is the whole-system edition that
+  <strong>includes governance &amp; assurance in full</strong>. A tick therefore cascades to the right.</p>
+
+  <div class="key">
+    <b>Live vs demonstrated:</b>
+    <span><span class="dot" style="background:var(--teal)"></span><b>Live</b> — real, API-backed platform logic (wired end-to-end today)</span>
+    <span><span class="dot" style="background:var(--orange)"></span><b>Demonstrated</b> — representative control surface with seeded data / illustrative UI mock-up</span>
+  </div>
+  <p class="lead">Every module listed below resolves to a real, routed module in the platform.
+  Nothing on this page is a roadmap item. Where a module is a demonstrated control surface rather
+  than live API-backed logic, that is stated inside the module itself, not hidden here.</p>
+
+  <!-- GENERATED:counts — do not edit by hand; run `npm run gen:editions-matrix` -->
+  <div class="cnt">
+    <div><b>139</b><span>Community Edition</span></div>
+    <div><b>255</b><span>Governance &amp; Assurance Edition</span></div>
+    <div><b>417</b><span>Population Platform</span></div>
+    <div><b>£1</b><span>CE per instance (optional support)</span></div>
+  </div>
+
+  <p class="lead" style="margin-top:10px">Each figure counts <strong>named capabilities</strong>, cumulative because the editions are additive. Several capabilities can sit on one route — Community Edition 139 capabilities across 139 routes; Governance &amp; Assurance Edition 255 across 241; Population Platform 417 across 403 — so the two numbers are stated separately rather than conflated.</p>
+  <!-- /GENERATED:counts -->
+  </div>
+
+  <div class="callout">
+    <b>The Community Edition is £1 per instance with optional paid support.</b> It is not free, and it
+    is not a trial. It is the open, self-hosted platform base on open standards (openEHR / FHIR / OMOP)
+    with FDP-parity operational products — priced so the entry cost is never the objection.
+  </div>
+
+  <h2>Why Information Governance is not in the Community Edition</h2>
+  <p>It is tempting to argue that every deployment needs some IG surface, so the <b>IG Hub</b> —
+  DSPT toolkit submission, DPIA register, the ICO 72-hour breach clock, the Caldicott eight
+  principles and DSAR SLA tracking — belongs in the base edition. It does not.</p>
+  <p>The Community Edition provides the <em>platform</em> primitives that IG is built on: identity and
+  access management, the audit framework, data products and cataloguing. The IG Hub is a different
+  thing — it is the <b>accountability record an organisation is inspected against</b>. Putting it in
+  the base edition gives away the single most valuable artefact of the Governance &amp; Assurance
+  Edition, which is the commercial beachhead precisely because boards buy inspection readiness.
+  IG Hub is therefore in <b>Governance &amp; Assurance and the Population Platform, and not in the
+  Community Edition</b>.</p>
+
+  <h2>The full grid</h2>
+  <p class="lead">Grouped by the edition that first introduces each module. Ticks cascade rightwards
+  because the editions are additive — a Community module is present in all three.</p>
+
+  <div class="tablewrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Module</th>
+          <th class="ct">Community<br>Edition</th>
+          <th class="ct">Governance &amp;<br>Assurance</th>
+          <th class="ct">Population<br>Platform</th>
+        </tr>
+      </thead>
+      <!-- GENERATED:grid -->
+      <tbody>
+        <tr class="grp"><td colspan="4">Community Edition — Open platform foundation</td></tr>
+        <tr><td><span class="mn">Open record model — openEHR / FHIR</span><span class="rt">/openehr-ckm</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Data Fabric — FHIR R4 APIs</span><span class="rt">/data-fabric</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Integration engine — HL7 / FHIR</span><span class="rt">/hl7-engine</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Identity &amp; access management (RBAC)</span><span class="rt">/rbac</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">RBAC permission matrix — 18 roles x 16 data domains, inline edit, DSPT export</span><span class="rt">/rbac-matrix</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Organisation spine — effective-dated structure &amp; reorganisation</span><span class="rt">/org-spine</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Audit framework — hash-chained account access log, tamper-evident on read</span><span class="rt">/login-audit</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Audit log — the platform-wide action trail</span><span class="rt">/audit</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">API gateway</span><span class="rt">/api-gateway</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Core utilities</td></tr>
+        <tr><td><span class="mn">Dashboarding &amp; analytics</span><span class="rt">/analytics</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Case management</span><span class="rt">/cases</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Federated query</span><span class="rt">/federated-query</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Data products &amp; catalogue</span><span class="rt">/data-products</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">GPES ingest — General Practice Extraction Service pipeline</span><span class="rt">/gpes-ingest</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SUS / HES ingest — spell and episode reconciliation, CDS submission</span><span class="rt">/sus-hes-ingest</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Document management</span><span class="rt">/document-management</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Data quality (DQMI) — completeness, validity, timeliness</span><span class="rt">/data-quality</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Report Registry — every statutory return, its owner and its COMPUTED deadline</span><span class="rt">/report-registry</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Privacy-enhancing technology — k-anonymity, differential privacy</span><span class="rt">/privacy-pet</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Developer toolkit &amp; ecosystem</td></tr>
+        <tr><td><span class="mn">API &amp; webhook framework</span><span class="rt">/api-webhook-framework</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SMART on FHIR app launch</span><span class="rt">/smart-on-fhir</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Connector wizard &amp; partner integration</span><span class="rt">/connector-wizard</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Jurisdiction pack registry</span><span class="rt">/pack-registry</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — FDP transition &amp; data model</td></tr>
+        <tr><td><span class="mn">FDP Exit &amp; Continuity</span><span class="rt">/fdp-exit-continuity</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CE ↔ NHS FDP comparison</span><span class="rt">/fdp-comparison</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">FDP CDM — Trust Data Console</span><span class="rt">/fdp-cdm</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">PulseGrid — integration assurance</span><span class="rt">/connector-dashboard</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — FDP-parity operational products</td></tr>
+        <tr><td><span class="mn">RTT PTL Dashboard — Shared PTL · RTT Validation</span><span class="rt">/rtt-ptl</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Cancer Pathways — Cancer360</span><span class="rt">/cancer-pathways</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Virtual Ward Hub — Crisis Response · virtual wards</span><span class="rt">/virtual-ward</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Initiated Follow-Up — Patient Led Validation</span><span class="rt">/pifu</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">DNA Analysis — Outpatients CCS</span><span class="rt">/dna-analysis</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Clinic Management &amp; Room Booking — CMRB</span><span class="rt">/clinic-room-booking</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">commvita Flow — System Co-ordination Centre · patient flow / OPEL</span><span class="rt">/flow</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Discharge Hub — Discharge planning (OPTICA)</span><span class="rt">/discharge-hub</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Population Health — Population Health Management</span><span class="rt">/population-health</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Health Inequalities</span><span class="rt">/health-inequalities</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Outcome Intelligence</span><span class="rt">/outcome-intelligence</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Workforce Intelligence</span><span class="rt">/workforce-intelligence</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Theatre Productivity — Inpatients CCS · theatre scheduling &amp; utilisation</span><span class="rt">/theatre-productivity</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Diagnostics Capacity — diagnostics &amp; imaging waits</span><span class="rt">/diagnostics-capacity</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">A&amp;E Demand Forecasting — UEC demand &amp; capacity</span><span class="rt">/ae-demand-forecast</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Bed Board — ward occupancy, outliers, predicted discharge</span><span class="rt">/bed-board</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Winter Pressures Forecast — winter / UEC pressures</span><span class="rt">/winter-pressures</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NHS Supply Chain — inventory / supply chain</span><span class="rt">/nhs-supply-chain</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">OMOP Transformation — secondary use / SDE analytics</span><span class="rt">/omop-cdm</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Access</td></tr>
+        <tr><td><span class="mn">Unified Waiting List</span><span class="rt">/unified-waiting-list</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Waiting Well Hub</span><span class="rt">/waiting-well</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Analytics</td></tr>
+        <tr><td><span class="mn">Geospatial Inequalities Map</span><span class="rt">/inequalities-map</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">LOS Prediction</span><span class="rt">/los-prediction</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Monitor</span><span class="rt">/monitor</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Optimise</span><span class="rt">/optimise</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Referral Network Graph</span><span class="rt">/referral-network</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Synthetic Data Generation</span><span class="rt">/synthetic-data</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">UKHSA Surveillance</span><span class="rt">/ukhsa-surveillance</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Data</td></tr>
+        <tr><td><span class="mn">Research Data Portal</span><span class="rt">/research-portal</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Finance</td></tr>
+        <tr><td><span class="mn">GP Contract DES</span><span class="rt">/gp-contract-des</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">GP2GP Record Transfer</span><span class="rt">/gp2gp</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">ICS Contract Intelligence</span><span class="rt">/ics-contract-intelligence</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NHS Mail Integration</span><span class="rt">/nhs-mail</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NHS Payment System</span><span class="rt">/nhs-payment-system</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">PCN Support</span><span class="rt">/pcn-support</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Identity</td></tr>
+        <tr><td><span class="mn">EMPI Hub</span><span class="rt">/empi</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">OIDC / Entra ID SSO</span><span class="rt">/oidc-settings</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Integrations</td></tr>
+        <tr><td><span class="mn">EPR Hub</span><span class="rt">/epr-hub</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Integrations Hub</span><span class="rt">/integrations-hub</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Oman Integrations</span><span class="rt">/oman-integrations</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Interop</td></tr>
+        <tr><td><span class="mn">Batch File Adapters</span><span class="rt">/batch-adapters</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CDS Hooks</span><span class="rt">/cds-hooks</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Cross-Border Interoperability</span><span class="rt">/cross-border-interop</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">EPR Bed Integration</span><span class="rt">/epr-bed-integration</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">FHIR Bulk Export</span><span class="rt">/fhir-bulk</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">GP Connect</span><span class="rt">/gp-connect</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">HL7 ADT Feed</span><span class="rt">/hl7-adt-feed</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">IHE Integration Profiles</span><span class="rt">/ihe-profiles</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">IM1 Pairing</span><span class="rt">/im1-pairing</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Medical Device Gateway</span><span class="rt">/medical-device-gateway</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Message Deduplication</span><span class="rt">/message-dedup</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NHS 111 Integration</span><span class="rt">/nhs-111</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NHS Integrations</span><span class="rt">/nhs-integrations</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NRL Connector</span><span class="rt">/nrl-connector</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">ODS Health</span><span class="rt">/ods-health</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Schema Library</span><span class="rt">/schema-library</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">TEFCA / QHIN Exchange</span><span class="rt">/tefca</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Terminology Service</span><span class="rt">/terminology-service</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Transformation Studio (HL7↔FHIR)</span><span class="rt">/transformation-studio</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Operations</td></tr>
+        <tr><td><span class="mn">Demand vs Capacity Reservoir Board</span><span class="rt">/reservoir-board</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Hospital Digital Twin</span><span class="rt">/hospital-twin</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Flow Sankey</span><span class="rt">/patient-flow-sankey</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Transfers</span><span class="rt">/patient-transfers</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Practice Admin Hub</span><span class="rt">/practice-admin</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">RTT Waiting Swarm</span><span class="rt">/rtt-swarm</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SDEC Hub</span><span class="rt">/sdec</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Operations &amp; Flow</td></tr>
+        <tr><td><span class="mn">Community Bed Management</span><span class="rt">/bed-management</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Theatre List</span><span class="rt">/theatre-list</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Patient-Facing</td></tr>
+        <tr><td><span class="mn">Patient Comms Design Studio</span><span class="rt">/comms-hub</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Communications Log</span><span class="rt">/patient-comms</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Feedback Portal (public)</span><span class="rt">/feedback-portal</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SMS Gateway</span><span class="rt">/sms-gateway</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Planning</td></tr>
+        <tr><td><span class="mn">ICB Commissioning &amp; Procurement</span><span class="rt">/icb-commissioning</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Ireland Ministerial Dashboard</span><span class="rt">/ireland-minister</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Platform</td></tr>
+        <tr><td><span class="mn">AI Assistant Provider Config</span><span class="rt">/ai-assistant-config</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Aggregate Indicator Reporting &amp; DHIS2 Connector</span><span class="rt">/aggregate-reporting</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Communications CRM</span><span class="rt">/comms-crm</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Feature Flags</span><span class="rt">/feature-flags</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Feedback Admin</span><span class="rt">/feedback-admin</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Health System Builder</span><span class="rt">/health-system-builder</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Integrated Telephony Hub</span><span class="rt">/telephony</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Jurisdiction Setup Agent</span><span class="rt">/jurisdiction-agent</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Menu Builder</span><span class="rt">/menu-builder</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Multi-Jurisdiction Platform — Gibraltar</span><span class="rt">/jurisdiction-wizard</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Offline Settings</span><span class="rt">/offline-settings</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Org Admin</span><span class="rt">/org-admin</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Process Kit</span><span class="rt">/process-kit</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Resource Management</span><span class="rt">/resources</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Tasks</span><span class="rt">/tasks</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">User Management</span><span class="rt">/users</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">commvita™ Concierge</span><span class="rt">/concierge</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">commvita™ MyDay</span><span class="rt">/workflow-hub</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Referrals</td></tr>
+        <tr><td><span class="mn">BaRS Compliance</span><span class="rt">/bars</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Waiting List</span><span class="rt">/waiting-list</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Shared Care</td></tr>
+        <tr><td><span class="mn">Care Homes Shared Record</span><span class="rt">/care-homes-shared-record</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">ICS Population Analytics</span><span class="rt">/ics-population-analytics</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SPR Contribution Hub</span><span class="rt">/spr-contribution</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SPR Readiness Toolkit</span><span class="rt">/spr-readiness</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — US-ACO</td></tr>
+        <tr><td><span class="mn">ACO Attribution</span><span class="rt">/aco-attribution</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Da Vinci DTR</span><span class="rt">/davinci-dtr</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Episode Analytics</span><span class="rt">/episode-analytics</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">HCC Risk Coding</span><span class="rt">/hcc-risk-coding</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Network Leakage Alerts</span><span class="rt">/network-leakage</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Payer Dashboard</span><span class="rt">/payer-dashboard</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Payer Data Feeds</span><span class="rt">/payer-data-feeds</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Prior Auth</span><span class="rt">/prior-auth</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Quality Measure Tracker</span><span class="rt">/quality-measure-tracker</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">RAF Recapture Engine</span><span class="rt">/raf-recapture</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">RAF Score Monitor</span><span class="rt">/raf-score-monitor</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">STAR Ratings Optimisation</span><span class="rt">/star-ratings</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">TCOC Dashboard</span><span class="rt">/tcoc-dashboard</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Community Edition — Workforce</td></tr>
+        <tr><td><span class="mn">Spryt ASA — Advanced Scheduling</span><span class="rt">/spryt-asa</span></td><td class="ct"><span class="tk c">✓</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Board assurance</td></tr>
+        <tr><td><span class="mn">Board Management — portal, papers, committees, actions</span><span class="rt">/board-management</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Board Assurance Framework (BAF)</span><span class="rt">/board-assurance-framework</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Board Entity Governance</span><span class="rt">/board-entity-governance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Register of Interests</span><span class="rt">/register-of-interests</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">commvita Sign — e-signature &amp; decision logging</span><span class="rt">/esign</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Governance &amp; Delivery Visual Boards — risk bubble map, maturity radar, delivery Gantt</span><span class="rt">/governance-boards</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">commvita Financial Recovery &amp; SIP — recovery plans, savings schemes, approval gates and delivery assurance</span><span class="rt">/financial-recovery</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Quality Impact Assessment — impact of service change on quality of care, evidence, mitigation and panel review</span><span class="rt">/quality-impact-assessment</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Quality Improvement &amp; Evidence Programme — problem, baseline, PDSA, Lean and Agile tests, evidence, benefits and organisational learning</span><span class="rt">/quality-improvement</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Risk &amp; compliance</td></tr>
+        <tr><td><span class="mn">Corporate Risk Register</span><span class="rt">/corporate-risk</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Golden Thread — incident → theme → risk → objective</span><span class="rt">/golden-thread</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Policy-to-Process — policy as a gated process, authority matrix, N-of-M approvals, WORM audit</span><span class="rt">/policy-to-process</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Policy management — authoring, versioning, version-aware attestation</span><span class="rt">/policy-library</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Compliance Action Hub</span><span class="rt">/compliance-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Regulatory &amp; Commissioner Engine</span><span class="rt">/regulatory-engine</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Clinical Risk Management — DCB0129/0160 register &amp; CSO sign-off</span><span class="rt">/clinical-risk</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Hazard Log — DCB0129 hazard identification &amp; control</span><span class="rt">/hazard-log</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">DCB0160 Workflow — change assessment for system modifications</span><span class="rt">/dcb0160</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Safety Case Report — DCB0129/0160 safety case compilation</span><span class="rt">/safety-case-report</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Incident management</td></tr>
+        <tr><td><span class="mn">Incident Reporting (PSIRF · LFPSE)</span><span class="rt">/incident-reporting</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Root Cause Analysis</span><span class="rt">/rca</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CAPA workflow</span><span class="rt">/capa</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Near-Miss Tracking</span><span class="rt">/near-miss</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Complaints Management</span><span class="rt">/complaints</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Duty of Candour</span><span class="rt">/duty-of-candour</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Freedom to Speak Up</span><span class="rt">/ftsu</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Mortality Review — MBRRACE · LeDeR · SHMI</span><span class="rt">/mortality-review</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">LEARN Reporting — national patient-safety event submission</span><span class="rt">/learn-reporting</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CQC Notifications — statutory notification register</span><span class="rt">/cqc-notifications</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">RIDDOR Reporting — HSE statutory reporting</span><span class="rt">/riddor</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Safety Walkrounds — board-to-ward assurance visits</span><span class="rt">/safety-walkrounds</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Feedback (FFT) — responses, themes, CQC evidence pack</span><span class="rt">/patient-feedback</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient &amp; Family Escalation (Rapid Review) — 24/7 worsening-condition escalation</span><span class="rt">/rapid-review</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Information governance &amp; privacy</td></tr>
+        <tr><td><span class="mn">IG Hub — DSPT, DPIA, breach, DSAR</span><span class="rt">/ig-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Confidential-Information Governance Spine</span><span class="rt">/ig-spine</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Legitimate Relationship Log</span><span class="rt">/legitimate-access-log</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Data Sharing Partnership Agreements</span><span class="rt">/dspa-manager</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">IG Training Compliance</span><span class="rt">/ig-training-compliance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Supplier IG Assurance</span><span class="rt">/supplier-ig-assurance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">FOI workflow — request, statutory clock, exemptions, review</span><span class="rt">/ig-records</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Records management — retention &amp; disposal schedules</span><span class="rt">/ig-records</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Information Asset Register + Art.30 ROPA</span><span class="rt">/ig-records</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Data Control — Art.30 data flows, ABAC policy, National Data Opt-Out</span><span class="rt">/ig-data-control</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Shared Care Opt-Out Registry — FHIR Consent, emergency override governance</span><span class="rt">/shcr-opt-out</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Federated Governance — cross-org data sharing agreements &amp; steward registry</span><span class="rt">/federated-governance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Data &amp; AI governance</td></tr>
+        <tr><td><span class="mn">AI Governance — ATRS register, AIA, bias, Art.22 overrides</span><span class="rt">/ai-governance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">AI Integration Hub — governed provider config &amp; audit</span><span class="rt">/ai-integration-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Data Transparency Register</span><span class="rt">/data-transparency</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Data lineage — source &amp; transformation tracking</span><span class="rt">/ig-records</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Microsoft Purview integration (optional, removable)</span><span class="rt">/ig-records</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Clinical Studies — research IG, DSA register, re-identification risk, extract ledger</span><span class="rt">/clinical-studies</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Federated Cohort Discovery — GDPR Art.89, k≥5 suppression</span><span class="rt">/cohort-discovery</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Training, CPD &amp; workforce assurance</td></tr>
+        <tr><td><span class="mn">commvita Learn — learning management &amp; course catalogue</span><span class="rt">/learn</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Mandatory Training compliance — statutory &amp; role-based</span><span class="rt">/mandatory-training</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CPD record &amp; Training Passport — hours, evidence, export</span><span class="rt">/learn</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Accreditations register — NMC · GMC · HCPC, expiry &amp; manager verification</span><span class="rt">/learn</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Competency frameworks &amp; supervisor sign-off</span><span class="rt">/learn</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Appraisal &amp; professional revalidation — signature-backed sign-off, Well-Led evidence</span><span class="rt">/appraisal</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">eAssessment — scored knowledge checks with attempt history</span><span class="rt">/learn</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">commvita Learn Mobile — offline learning delivery</span><span class="rt">/mobile-learn</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Staff Portal — personal governance (training, interests, approvals, signatures)</span><span class="rt">/staff-portal</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Staff Hierarchy Builder — accountability &amp; clinical supervision</span><span class="rt">/hierarchy-builder</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">IG training compliance — DSPT Criterion 7</span><span class="rt">/ig-training-compliance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Staff Wellbeing — PERMA+, staff survey, psychological safety (figures are seeded)</span><span class="rt">/staff-wellbeing</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Governance intelligence</td></tr>
+        <tr><td><span class="mn">Ask the corpus — cited answers from your own policies and SOPs</span><span class="rt">/governance-intelligence</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Policy → interactive flowchart — version-bound, approved by a named person</span><span class="rt">/governance-intelligence</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Safety thematic analysis — patterns across the free-text safety record</span><span class="rt">/governance-intelligence</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">PFD (Regulation 28) register — coroner concerns, statutory 56-day clock</span><span class="rt">/governance-intelligence</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Policy estate audit — duplication, overdue review, missing ownership</span><span class="rt">/governance-intelligence</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Merger harmonisation — conflicts and gaps between two estates</span><span class="rt">/governance-intelligence</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Process Quality Baseline — cycle time, handoffs, rework and coded-vs-free-text, measured over time</span><span class="rt">/process-quality</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Audit &amp; evidence</td></tr>
+        <tr><td><span class="mn">Clinical Audit</span><span class="rt">/clinical-audit</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Regulatory Assessment (CQC SAF / multi-jurisdiction)</span><span class="rt">/regulatory-assessment</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Assurance Dashboard — deployment rings</span><span class="rt">/assurance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">HIMSS Maturity Cockpit</span><span class="rt">/himss-assessment</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Cyber Assessment (Cyber Essentials · ISO 27001)</span><span class="rt">/cyber-assessment</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Data Security Architecture</span><span class="rt">/security-architecture</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Real-Time Security Console — SOC, Art.9 monitoring, GDPR Art.33 ICO countdown</span><span class="rt">/security-console</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">DTAC Compliance — the NHS supplier gate</span><span class="rt">/dtac</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">ShCR Maturity Scorecard</span><span class="rt">/shcr-maturity</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">PRSB Compliance Dashboard — Core Information Standard completeness</span><span class="rt">/prsb-compliance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Statutory reporting &amp; annual returns</td></tr>
+        <tr><td><span class="mn">Quality &amp; Performance Report (DCEOE) — the monthly board report; ND carries its reason</span><span class="rt">/quality-performance-report</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Automated QPR Reporting — IAPT QPR (NHS Digital DS v2.0), CQC/NICE KPI pack, PCN/ARRS utilisation</span><span class="rt">/qpr-reporting</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">OPEL submission — the daily NHS England operational pressures return</span><span class="rt">/opel-submission</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Quality Account — the statutory annual quality publication</span><span class="rt">/quality-account</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Annual Plan Hub — SMART outcomes, quarterly milestones, live RAG</span><span class="rt">/annual-plans</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Net Zero &amp; Sustainability — Scope 1/2/3 and the CNZAP annual return</span><span class="rt">/net-zero</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">AI Transformation Advisor — executive decision support, human-in-the-loop</span><span class="rt">/ai-transformation-advisor</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Statutory readiness &amp; operational command</td></tr>
+        <tr><td><span class="mn">EPRR Hub — Civil Contingencies Act 2004, business continuity, on-call, WORM loggist</span><span class="rt">/eprr</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Major Incident — METHANE, JESIP joint decision, CSCATTT, Gold/Silver/Bronze, casualty tracking</span><span class="rt">/major-incident</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">On-Call Manager — OPEL assessment, escalation, duty log, handover</span><span class="rt">/oncall-manager</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Safe Staffing / CHPPD — NQB safe staffing, professional judgement, board return</span><span class="rt">/safe-staffing</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Bank &amp; Agency Cascade — bank-first cascade, agency control, WTD compliance</span><span class="rt">/bank-agency</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Shift Priority Board — shift-aware priority actions &amp; handover</span><span class="rt">/shift-priority</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Handover Clock — 15-minute handover standard, breach &amp; delay reasons</span><span class="rt">/handover-clock</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Jurisdiction Profile — versioned, sourced, signed-off jurisdictional variance</span><span class="rt">/jurisdiction-profile</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Firearms Certificate Management — evidence-grade decision log (per-jurisdiction regime)</span><span class="rt">/firearms-certification</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">21st Century Cures Act — ONC information blocking (US)</span><span class="rt">/cures-act</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">EHDS Compliance — EU Reg. 2024/2987</span><span class="rt">/ehds</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Ambulance</td></tr>
+        <tr><td><span class="mn">HEMS Coordination</span><span class="rt">/hems</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Analytics</td></tr>
+        <tr><td><span class="mn">Benchmarking</span><span class="rt">/benchmarking</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">ICS Finance</span><span class="rt">/ics-finance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Clinical</td></tr>
+        <tr><td><span class="mn">Community Nursing Activity (KF25/KF26)</span><span class="rt">/community-nursing-activity</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Operations</td></tr>
+        <tr><td><span class="mn">Elective Experience Standards</span><span class="rt">/elective-experience-standards</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — US-ACO</td></tr>
+        <tr><td><span class="mn">CMS Conditions of Participation</span><span class="rt">/cms-cop</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CMS Interoperability</span><span class="rt">/cms-interoperability</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">No Surprises Act</span><span class="rt">/no-surprises-act</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Governance &amp; Assurance Edition — Workforce</td></tr>
+        <tr><td><span class="mn">Dynamic Scheduling</span><span class="rt">/dynamic-scheduling</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">ESR Integration</span><span class="rt">/esr-integration</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">HR &amp; Finance</span><span class="rt">/hr-finance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Job Planning &amp; PA Management</span><span class="rt">/job-planning</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NHS Pension &amp; Job Planning</span><span class="rt">/nhs-pension</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Rostering</span><span class="rt">/rostering</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Staff Directory</span><span class="rt">/staff-directory</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Staff Org Management</span><span class="rt">/staff-org-management</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Workforce Heatmaps &amp; Skill-Mix</span><span class="rt">/workforce-visuals</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk g">✓</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Clinical record</td></tr>
+        <tr><td><span class="mn">Whole Person Record</span><span class="rt">/patients</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Single Patient Record</span><span class="rt">/single-patient-record</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Neighbourhood Health Record</span><span class="rt">/nhr</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Care journey &amp; personalised care plans</span><span class="rt">/care-journey</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Consultations &amp; clinical documentation</span><span class="rt">/consultation</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Care settings on the one record</td></tr>
+        <tr><td><span class="mn">Primary care — QOF registers, recall &amp; exception reporting</span><span class="rt">/qof</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Primary care — prescribing &amp; repeat medication</span><span class="rt">/prescriptions</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Long-term conditions &amp; structured reviews</span><span class="rt">/ltc</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Adult social care — Care Act assessment, support plan, direct payments</span><span class="rt">/social-care</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Community pharmacy — Pharmacy First</span><span class="rt">/pharmacy-first</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Community dentistry — FDI odontogram, BPE, UDA contract</span><span class="rt">/community-dentistry</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Clinical operations</td></tr>
+        <tr><td><span class="mn">Community Nursing Portal</span><span class="rt">/community-nursing</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Mental Health</span><span class="rt">/mental-health</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Referral Hub &amp; optimisation</span><span class="rt">/referral-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Integrated Neighbourhood Teams</span><span class="rt">/int</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Clinical &amp; national returns</td></tr>
+        <tr><td><span class="mn">MHSDS submission — Mental Health Services Data Set</span><span class="rt">/mhsds</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">National audit feeds — NICOR · SSNAP · NACEL · NNAP · NBOCAP</span><span class="rt">/national-audit-feeds</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CQRS / SCR — national quality reporting and summary record push</span><span class="rt">/cqrs-reporting</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">QRDA I/III — CMS eCQM submission (US)</span><span class="rt">/qrda-reporting</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Population health</td></tr>
+        <tr><td><span class="mn">Population Risk Pyramid</span><span class="rt">/population-risk-pyramid</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Deprivation Mapping</span><span class="rt">/deprivation-mapping</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Neighbourhood Intelligence &amp; Action</span><span class="rt">/neighbourhood-intelligence</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Social Prescribing</span><span class="rt">/social-prescribing</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Population Genomics, Pharmacogenomics &amp; Epigenomics</span><span class="rt">/population-genomics</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Analytics &amp; AI</td></tr>
+        <tr><td><span class="mn">LeftShift Intelligence</span><span class="rt">/leftshift</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Predictive Analytics</span><span class="rt">/predictive-analytics</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Operational Instruments</span><span class="rt">/operational-instruments</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Governance &amp; assurance</td></tr>
+        <tr><td><span class="mn">Included in full — every module from the Governance &amp; Assurance Edition</span><span class="rt">cascade statement — not counted as a capability</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — AI / Clinical</td></tr>
+        <tr><td><span class="mn">AI Clinical Documentation Assistant</span><span class="rt">/ai-documentation</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NLP Document Coding</span><span class="rt">/nlp-coding</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Order Sets</span><span class="rt">/order-sets</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">VoiceScribe</span><span class="rt">/voice-scribe</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Access</td></tr>
+        <tr><td><span class="mn">Smart Triage</span><span class="rt">/smart-triage</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Triage Queue</span><span class="rt">/triage</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Ambulance</td></tr>
+        <tr><td><span class="mn">Ambulance Hub</span><span class="rt">/ambulance-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Burns Management</span><span class="rt">/burns-management</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Cardiac Arrest Management</span><span class="rt">/cardiac-arrest</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">ECG Transmission + STEMI Alert</span><span class="rt">/ecg-transmission</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">JRCALC Guidelines</span><span class="rt">/jrcalc</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Paediatric Drug Calculator</span><span class="rt">/paediatric-drug-calc</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Paramedic Crew App</span><span class="rt">/crew-app</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Transport &amp; Off-Island Travel</span><span class="rt">/patient-transport</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Analytics</td></tr>
+        <tr><td><span class="mn">Intervene</span><span class="rt">/intervene</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Prescribing Analytics</span><span class="rt">/prescribing-analytics</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Smart Screening</span><span class="rt">/smart-screening</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Clinical</td></tr>
+        <tr><td><span class="mn">Ambient Clinical AI</span><span class="rt">/ambient-clinical-ai</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Antimicrobial Stewardship</span><span class="rt">/antimicrobial-stewardship</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CDSS Engine</span><span class="rt">/cdss</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Cardiac Rehabilitation</span><span class="rt">/cardiac-rehab</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Clinical Pharmacy</span><span class="rt">/clinical-pharmacy</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Clinical Template Editor</span><span class="rt">/template-editor</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Clinical Tools Library</span><span class="rt">/clinical-tools</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Community Audiology</span><span class="rt">/audiology</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Consent Hub</span><span class="rt">/consent-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Deterioration Alerting</span><span class="rt">/deterioration</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Diabetes Management</span><span class="rt">/diabetes-management</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">GP Validation Workflow</span><span class="rt">/gp-validation</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Genomics Service</span><span class="rt">/genomics</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Heart Failure Hub</span><span class="rt">/heart-failure</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Immunisation Management</span><span class="rt">/immunisation</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">LTC Reviews</span><span class="rt">/ltc-reviews</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Life-Course Timeline</span><span class="rt">/life-course-timeline</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">MSK Hub</span><span class="rt">/msk-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Medications</span><span class="rt">/medications</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Medicines Optimisation</span><span class="rt">/medicines-optimisation</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Neurology Hub</span><span class="rt">/neurology-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Occupational Therapy</span><span class="rt">/occupational-therapy</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">PACS / VNA Viewer</span><span class="rt">/pacs-viewer</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Palliative Register (GSF)</span><span class="rt">/palliative-register</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Physiotherapy</span><span class="rt">/physiotherapy</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Podiatry</span><span class="rt">/podiatry</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Recall Management</span><span class="rt">/recall-management</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Respiratory Hub</span><span class="rt">/respiratory-hub</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SNOMED Crosswalk</span><span class="rt">/snomed-crosswalk</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SPR Quick View</span><span class="rt">/spr</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Safe Handover</span><span class="rt">/safe-handover</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Screening Programmes</span><span class="rt">/screening-programmes</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Sexual Health EPR</span><span class="rt">/sexual-health-epr</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Speech &amp; Language Therapy</span><span class="rt">/speech-language-therapy</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Stroke Care</span><span class="rt">/stroke-care</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Community</td></tr>
+        <tr><td><span class="mn">Care Home &amp; Hospice</span><span class="rt">/care-homes</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Carer Identification</span><span class="rt">/carer-identification</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Frailty Programme</span><span class="rt">/frailty-programme</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Interpreter Services</span><span class="rt">/interpreter-services</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">OASIS-E2 Assessment</span><span class="rt">/oasis-assessment</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Provider Portal</span><span class="rt">/provider-portal</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Social Prescribing Directory</span><span class="rt">/social-prescribing-directory</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Community &amp; Remote</td></tr>
+        <tr><td><span class="mn">Clinical Assessment Templates</span><span class="rt">/clinical-assessments</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Community Ophthalmology</span><span class="rt">/community-ophthalmology</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Continuous Waveform RPM</span><span class="rt">/continuous-rpm</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Falls Management</span><span class="rt">/falls-risk-assessment</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">IPC Log</span><span class="rt">/ipc-log</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Lone Worker Safety</span><span class="rt">/lone-worker</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Luscii Remote Monitoring</span><span class="rt">/luscii</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Paediatric Nursing</span><span class="rt">/paediatric-nursing</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Specialist Nursing</span><span class="rt">/specialist-nursing</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Telehealth</span><span class="rt">/telehealth</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Visit Schedule</span><span class="rt">/visit-schedule</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Wearable Device Integration</span><span class="rt">/wearable-integration</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Finance</td></tr>
+        <tr><td><span class="mn">Clinical Letters</span><span class="rt">/clinical-letters</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Document Capture + OCR</span><span class="rt">/document-capture</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Jersey Billing</span><span class="rt">/jersey-billing</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Jersey Billing Rules Engine</span><span class="rt">/billing-rules</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Lab Results Ingest</span><span class="rt">/lab-results-ingest</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Online Consultation</span><span class="rt">/online-consult</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Private Patient Charges</span><span class="rt">/private-charges</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Governance</td></tr>
+        <tr><td><span class="mn">Assisted Dying Pathway</span><span class="rt">/assisted-dying</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Maternity</td></tr>
+        <tr><td><span class="mn">Maternity EPR</span><span class="rt">/maternity-epr</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Medicines</td></tr>
+        <tr><td><span class="mn">Complex Commodity Management</span><span class="rt">/complex-commodity</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Formulary Management</span><span class="rt">/formulary</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Pharmacy TTAs</span><span class="rt">/pharmacy-ttas</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">eMAR / BCMA</span><span class="rt">/emar</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Mental Health</td></tr>
+        <tr><td><span class="mn">Advance Care Planning</span><span class="rt">/advance-care-planning</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">CAMHS</span><span class="rt">/camhs</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Care Package Finance</span><span class="rt">/care-package-finance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Carer Assessments</span><span class="rt">/carer-assessments</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Dual Diagnosis</span><span class="rt">/dual-diagnosis</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Eating Disorders</span><span class="rt">/eating-disorders</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Forensic MH</span><span class="rt">/forensic-mh</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">IAPT / NHS Talking Therapies</span><span class="rt">/iapt</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">MH Bed Management</span><span class="rt">/mh-beds</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">MH Clustering</span><span class="rt">/mh-clustering</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Mental Health Records</span><span class="rt">/mh-records</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NHS Talking Therapies</span><span class="rt">/nhs-talking-therapies</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Perinatal MH</span><span class="rt">/perinatal-mh</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Social Care Records</span><span class="rt">/social-care-records</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Operations</td></tr>
+        <tr><td><span class="mn">Urgent Care Centre</span><span class="rt">/urgent-care</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Patient-Facing</td></tr>
+        <tr><td><span class="mn">Digital Front Door</span><span class="rt">/digital-front-door</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">NHS App Integration</span><span class="rt">/nhs-app</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">PROMs / PREMs</span><span class="rt">/proms</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Portal Admin</span><span class="rt">/patient-portal</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Patient Portal Home</span><span class="rt">/portal</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Platform</td></tr>
+        <tr><td><span class="mn">AI Consultation Assistant</span><span class="rt">/ai-consult-assist</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Clinical Knowledge Base</span><span class="rt">/clinical-knowledge</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Prescribing</td></tr>
+        <tr><td><span class="mn">Medicines Optimisation &amp; Polypharmacy Visualiser</span><span class="rt">/medicines-network</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Repeat Monitoring</span><span class="rt">/repeat-monitoring</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Quality</td></tr>
+        <tr><td><span class="mn">QOF Exception Reporting</span><span class="rt">/qof-exceptions</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Referrals</td></tr>
+        <tr><td><span class="mn">Advice &amp; Guidance (eRS)</span><span class="rt">/advice-guidance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Appointments</span><span class="rt">/appointments</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Referral Optimisation</span><span class="rt">/referral-optimisation</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Referrals</span><span class="rt">/referrals</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Total Triage</span><span class="rt">/total-triage</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Remote</td></tr>
+        <tr><td><span class="mn">commvita Care — Mood &amp; Deterioration</span><span class="rt">/care-deterioration</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Safety</td></tr>
+        <tr><td><span class="mn">Safeguarding Hub</span><span class="rt">/safeguarding</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — Social Care</td></tr>
+        <tr><td><span class="mn">Brokerage &amp; Placement</span><span class="rt">/brokerage-placement</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Care Act Cost Cap Modelling</span><span class="rt">/care-act-cost-cap</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Children's Social Care</span><span class="rt">/childrens-social-care</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Court of Protection &amp; Mental Capacity Act</span><span class="rt">/court-of-protection</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Direct Payments</span><span class="rt">/direct-payments</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Financial Assessment</span><span class="rt">/financial-assessment</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Needs Assessment</span><span class="rt">/needs-assessments</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SEND / EHC Plans</span><span class="rt">/send-plans</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Shared Lives</span><span class="rt">/shared-lives</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Social Care Performance</span><span class="rt">/social-care-performance</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr class="grp"><td colspan="4">Population Platform — US-ACO</td></tr>
+        <tr><td><span class="mn">Annual Wellness Visit</span><span class="rt">/awv</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Chronic Care Management</span><span class="rt">/ccm</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Collaborative Care (BHI/CoCM)</span><span class="rt">/collaborative-care</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Principal Care Management</span><span class="rt">/pcm</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Readmission Prevention</span><span class="rt">/readmission-prevention</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Remote Patient Monitoring</span><span class="rt">/rpm</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Remote Therapeutic Monitoring</span><span class="rt">/rtm</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">SDOH Screening</span><span class="rt">/sdoh-screening</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+        <tr><td><span class="mn">Transitional Care Management</span><span class="rt">/transitional-care</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="no">—</span></td><td class="ct"><span class="tk p">✓</span></td></tr>
+      </tbody>
+  <!-- /GENERATED:grid -->
+    </table>
+  </div>
+
+  <h2>How to read the three editions</h2>
+  <table class="tbl" style="margin-top:8px">
+    <thead><tr><th>Edition</th><th>Promise</th><th>Who buys it</th><th class="ct">Modules</th></tr></thead>
+    <!-- GENERATED:summary -->
+    <tbody>
+      <tr><td><span class="mn">1 · Community Edition</span><span class="rt">The open, FDP-parity base — £1 per instance (optional support)</span></td>
+          <td>Own your platform.</td>
+          <td>Technology and digital teams — the open, self-hosted base and FDP parity</td><td class="ct">139</td></tr>
+      <tr><td><span class="mn">2 · Governance &amp; Assurance Edition</span><span class="rt">The commercial beachhead — board assurance, risk, IG and AI governance</span></td>
+          <td>Govern your organisation.</td>
+          <td>Boards, not clinicians — no clinical-accreditation dependency, so a shorter sales cycle</td><td class="ct">255</td></tr>
+      <tr><td><span class="mn">3 · Population Platform</span><span class="rt">The destination architecture — clinical, operational, population and governance on one platform</span></td>
+          <td>Run your health economy.</td>
+          <td>Whole health economies — clinical record, operations, flow, population health <em>and</em> governance in full</td><td class="ct">417</td></tr>
+    </tbody>
+  <!-- /GENERATED:summary -->
+  </table>
+
+  <div class="callout" style="border-left-color:var(--teal)">
+    <b>Sequenced by adoption risk, not by functionality.</b> Nothing here is deferred technically —
+    the clinical, flow and population modules ship today. The ordering is a go-to-market sequence:
+    lowest adoption risk first, so the first commercial conversation is about governance rather than
+    clinical software.
+  </div>
+
+  <p class="foot" style="margin-top:22px;font-size:11.5px;color:var(--muted)">
+    Generated from the canonical edition model <code>services/web/src/editions.ts</code> by
+    <code>npm run gen:editions-matrix</code>, and CI fails the build if this file is not what that
+    generator would produce (<code>npm run check:editions-matrix</code>) — so this grid cannot drift
+    from the product. It previously carried this same sentence with no generator behind it, and had
+    drifted by eight shipped capabilities. Non-SaMD positioning surface.<br>
+    © 2026 Commvita Digital Health Solutions Ltd. All rights reserved.
+  </p>
+</div>
+</body>
+</html>

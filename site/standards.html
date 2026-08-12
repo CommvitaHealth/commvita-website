@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en-GB" class="snap">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Standards &amp; interoperability — commvita</title>
+<meta name="description" content="A table of ticks is easy to write and useless to buy from. This one carries the partial rows and the missing ones.">
+<meta name="theme-color" content="#141C2E">
+<script>try{var t=localStorage.getItem("cv-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<link rel="stylesheet" href="fonts.css">
+<style>:root{
+  --ink:#141C2E; --teal:#00B8A6; --violet:#7B61FF; --amber:#FFB020;
+  --coral:#FF5B47; --paper:#F2F4F7; --white:#FFFFFF;
+  --body:#42506B; --muted:#5D6B85; --hair:#D9DFE8; --hair-2:#C3CBD9;
+  /* Surfaces go through variables so the whole site can carry the landing
+     page's dark theme. A hardcoded #fff is a light-mode assumption that only
+     shows up when somebody flips the switch. */
+  --page:#FFFFFF; --card:#FFFFFF; --navbg:rgba(255,255,255,.94);
+  --accent:#0A7A6E; --tint:#F2F4F7;
+  /* Deliberately inverted surfaces. NOT remapped for dark — see below. */
+  --invert-bg:#141C2E; --invert-fg:#FFFFFF; --invert-body:#C9D2E2;
+/* ── figure colours ───────────────────────────────────────────────────
+   The 14 diagrams read these. Defined here rather than baked into the SVG
+   so one figure serves both themes — previously they carried fixed brand
+   hexes, rendered as white blocks on a dark page, and had to be parked on
+   a light plate to be legible. */
+  --fig-ink:#141C2E; --fig-body:#42506B; --fig-muted:#5D6B85;
+  --fig-surface:#FFFFFF; --fig-tint:#F2F4F7; --fig-hair:#D9DFE8;
+  --fig-teal:#00B8A6; --fig-violet:#7B61FF; --fig-amber:#FFB020;
+  --fig-coral:#FF5B47; --fig-accent:#0A7A6E; --fig-oninverse:#9FB0CC;
+  --fig-warn:#FFFDF7; --fig-bad:#FDECEA;
+  --fig-invert-bg:#141C2E; --fig-invert-fg:#FFFFFF; --fig-invert-muted:#9FB0CC;
+  --fig-rung0:#F2F4F7; --fig-rung1:#E8F6F4; --fig-rung2:#D6F0EC;
+  --fig-rung3:#C2EAE4; --fig-rung4:#AEE3DB; --fig-rung5:#95DAD0;
+  --fig-live-fg:#0A6B60; --fig-live-bg:#E6F7F4; --fig-live-bd:#A8E2D9;
+  --fig-part-fg:#8A5B00; --fig-part-bg:#FFF5E0; --fig-part-bd:#F3D79A;
+  --fig-lic-fg:#7A4A00;  --fig-lic-bg:#FFF1DC;  --fig-lic-bd:#EFC98C;
+  --fig-no-fg:#9A2016;   --fig-no-bg:#FDECEA;   --fig-no-bd:#F5BFB8;
+  --fig-des-fg:#4B3A8F;  --fig-des-bg:#F0EDFF;  --fig-des-bd:#CFC5F5;
+
+  --sans:"Archivo","Familjen Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; --display:"Familjen Grotesk","Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --maxw:1180px; --nav-h:58px;   /* the landing page's bar height */
+  --shadow:0 1px 2px rgba(20,28,46,.05), 0 12px 32px -20px rgba(20,28,46,.30);
+}
+/* The dark palette is the landing page's, value for value. Two themes for
+   one brand that disagree is the same defect as two stores for one concept. */
+:root[data-theme="dark"]{
+  --page:#0C1626; --card:#111F35; --tint:#16273F; --paper:#16273F;
+  --ink:#EAF1FB; --body:#C2D0E6; --muted:#8CA1C2;
+  --hair:rgba(255,255,255,.10); --hair-2:rgba(255,255,255,.20);
+  --teal:#2FD9C6; --coral:#FF7A66; --accent:#5FE6D6;
+  --navbg:rgba(12,22,38,.92);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 36px -18px rgba(0,0,0,.7);
+  /* Figures, dark. Surfaces darken, accents brighten to hold contrast on
+     them, and the status chips get dark-mode tints rather than being left
+     as light pills on a dark card. */
+  --fig-ink:#EAF1FB; --fig-body:#C2D0E6; --fig-muted:#93A6C4;
+  --fig-surface:#16273F; --fig-tint:#1B3050; --fig-hair:rgba(255,255,255,.16);
+  --fig-teal:#2FD9C6; --fig-violet:#A896FF; --fig-amber:#FFC85C;
+  --fig-coral:#FF8A78; --fig-accent:#5FE6D6; --fig-oninverse:#93A6C4;
+  --fig-warn:#2A2313; --fig-bad:#3A1C18;
+  /* Inverted plates keep a DARK background and light type in both themes —
+     flipping them is what collapsed contrast to 1.02:1. */
+  --fig-invert-bg:#050B16; --fig-invert-fg:#FFFFFF; --fig-invert-muted:#9FB0CC;
+  /* The ladder darkens with the rung rather than lightening. */
+  --fig-rung0:#182842; --fig-rung1:#173347; --fig-rung2:#153E4C;
+  --fig-rung3:#134851; --fig-rung4:#115356; --fig-rung5:#0F5E5B;
+  --fig-live-fg:#8FF0DF; --fig-live-bg:#0E3A34; --fig-live-bd:#1C6B60;
+  --fig-part-fg:#FFD98A; --fig-part-bg:#3A2E12; --fig-part-bd:#6B5524;
+  --fig-lic-fg:#FFCF8F;  --fig-lic-bg:#3A2A12;  --fig-lic-bd:#6E5124;
+  --fig-no-fg:#FFB3A8;   --fig-no-bg:#3E1A16;   --fig-no-bd:#7A322A;
+  --fig-des-fg:#CFC5F5;  --fig-des-bg:#241E45;  --fig-des-bd:#463B7E;
+}
+:root[data-theme="dark"] a{color:var(--accent)}
+:root[data-theme="dark"] .eyebrow{color:var(--accent)}
+:root[data-theme="dark"] .knum{color:var(--accent)}
+:root[data-theme="dark"] .btn.p{background:var(--teal);color:#06202a}
+:root[data-theme="dark"] .btn.p:hover{background:#5FE6D6}
+:root[data-theme="dark"] .ceiling{background:#241F14;border-color:#4A3F26}
+:root[data-theme="dark"] .ceiling p{color:#E4D9C2}
+:root[data-theme="dark"] .ceiling h3{color:#FFD98A}
+:root[data-theme="dark"] .st.live{color:#8FF0DF;background:#0E3A34;border-color:#1C6B60}
+:root[data-theme="dark"] .st.part{color:#FFD98A;background:#3A2E12;border-color:#6B5524}
+:root[data-theme="dark"] .st.lic{color:#FFCF8F;background:#3A2A12;border-color:#6E5124}
+:root[data-theme="dark"] .st.no{color:#FFB3A8;background:#3E1A16;border-color:#7A322A}
+:root[data-theme="dark"] .st.des{color:#CFC5F5;background:#241E45;border-color:#463B7E}
+:root[data-theme="dark"] .fig{background:var(--card)}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--body);font-family:var(--sans);
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%}
+h1,h2,h3,h4{font-family:var(--display);color:var(--ink);line-height:1.18;
+  margin:0 0 .5em;letter-spacing:-.011em;font-weight:800}
+h1{font-size:clamp(1.85rem,1.25rem+2.4vw,3.05rem);letter-spacing:-.021em}
+h2{font-size:clamp(1.35rem,1.05rem+1.15vw,2.05rem);letter-spacing:-.016em}
+h3{font-size:clamp(1.02rem,.94rem+.36vw,1.24rem)}
+h4{font-size:.98rem}
+p{margin:0 0 1.05em}
+a{color:#0A7A6E;text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--ink);font-weight:700}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--invert-bg);color:var(--invert-fg);padding:12px 18px;border-radius:0 0 8px 0}
+.skip:focus{left:0}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px;border-radius:3px}
+
+/* ── top bar ─────────────────────────────────────────────────────────── */
+.top{position:sticky;top:0;z-index:100;background:var(--navbg);
+  backdrop-filter:saturate(160%) blur(10px);
+  border-bottom:1px solid var(--hair)}
+.topin{max-width:var(--maxw);margin:0 auto;
+  padding:0 clamp(14px,3vw,28px);min-height:calc(var(--nav-h) - 1px);
+  display:flex;align-items:center;gap:16px;flex-wrap:nowrap}
+/* The bar never wraps: when the nine buttons cannot fit, the BUTTON ROW
+   scrolls rather than the header growing a second line. A two-row header
+   pushes the lockup and the controls out of alignment with every other page,
+   which is the inconsistency this change is fixing. */
+.navpanel{min-width:0;overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch}
+.navpanel::-webkit-scrollbar{display:none}
+.lock{display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+  flex:0 0 auto;min-height:44px}
+.lock:hover{text-decoration:none}
+/* The lockup, the mark and the nav buttons are defined ONCE, in HEADER_CSS
+   at the foot of this file, because the landing page needs the identical
+   block and two definitions of one header is what drifted. */
+.wm{font-family:var(--display);font-weight:800;font-size:1.16rem;color:var(--ink);
+  letter-spacing:-.02em}
+.wm sup{font-size:.5em;font-weight:700;top:-.7em;position:relative}
+.foot .wm{color:#fff}
+.navpanel{margin-left:clamp(8px,1.6vw,22px);display:flex;align-items:center;gap:2px}
+.navctl{margin-left:auto;display:flex;align-items:center;gap:9px;flex:none}
+.tglt{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 11px;
+  border-radius:10px;border:1px solid var(--hair-2);background:var(--card);
+  color:var(--ink);font-family:var(--sans);font-size:.82rem;font-weight:700;
+  cursor:pointer}
+.tglt:hover{border-color:var(--teal)}
+.btn.walk{min-height:44px;padding:11px 15px;font-size:.83rem}
+.nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap}
+/* .nav a lives in HEADER_CSS — see above. */
+.nl{display:inline-block;padding:9px 11px;border-radius:8px;font-size:.875rem;
+  font-weight:650;color:var(--ink);white-space:nowrap;min-height:44px;
+  line-height:26px}
+.nl:hover{background:var(--tint);text-decoration:none}
+.nl.on{color:#0A7A6E;box-shadow:inset 0 -2px 0 var(--teal)}
+.nav.regions{padding-left:10px;margin-left:4px;border-left:1px solid var(--hair)}
+.nav.regions .nl{font-size:.8rem;font-weight:600;color:var(--muted)}
+.nav.regions .nl.on{color:#0A7A6E}
+.burger{display:none;margin-left:0;width:44px;height:44px;border:1px solid var(--hair);
+  background:var(--card);border-radius:10px;cursor:pointer;padding:0;
+  flex-direction:column;gap:4px;align-items:center;justify-content:center}
+.burger span{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px}
+
+/* ── layout ──────────────────────────────────────────────────────────── */
+main{display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+section{padding:clamp(38px,6vw,74px) 0;border-top:1px solid var(--hair)}
+section:first-of-type{border-top:0}
+section.tint{background:var(--tint)}
+section.dark{background:var(--invert-bg);border-top:0}
+section.dark h2,section.dark h3,section.dark .lead{color:var(--invert-fg)}
+section.dark p{color:var(--invert-body)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.68rem;
+  font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:#0A7A6E;margin:0 0 14px}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
+section.dark .eyebrow{color:#6FE3D4}
+section.dark .eyebrow::before{background:var(--teal)}
+.lead{font-size:clamp(1rem,.95rem+.36vw,1.2rem);color:var(--body);max-width:74ch}
+.measure{max-width:74ch}
+
+/* ── hero ────────────────────────────────────────────────────────────── */
+.hero{padding:clamp(44px,8vw,96px) 0 clamp(34px,5vw,64px);
+  background:linear-gradient(180deg,var(--tint) 0%,var(--page) 100%)}
+.hero h1{max-width:19ch}
+.hero .lead{font-size:clamp(1.02rem,.96rem+.5vw,1.32rem)}
+.ctas{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:12px 22px;border-radius:10px;font-weight:750;
+  font-size:.95rem;text-decoration:none;border:1px solid transparent}
+.btn:hover{text-decoration:none}
+.btn.p{background:var(--ink);color:#fff}
+.btn.p:hover{background:#25304a}
+.btn.s{background:var(--card);color:var(--ink);border-color:var(--hair-2)}
+.btn.s:hover{background:var(--tint)}
+.btn.t{background:transparent;color:#0A7A6E;padding-left:4px}
+
+/* ── grids and cards ─────────────────────────────────────────────────── */
+.g{display:grid;gap:16px;margin-top:22px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+.card{background:var(--card);border:1px solid var(--hair);border-radius:13px;
+  padding:18px 19px;box-shadow:var(--shadow);min-width:0}
+section.tint .card{background:var(--card)}
+section.dark .card{background:#1D2740;border-color:#2E3A56}
+.card h3{margin-bottom:.4em}
+.card p:last-child{margin-bottom:0}
+.card p{font-size:.94rem}
+.knum{display:block;font-family:var(--display);font-size:.66rem;font-weight:800;
+  letter-spacing:.13em;text-transform:uppercase;color:#0A7A6E;margin-bottom:8px}
+section.dark .knum{color:#6FE3D4}
+.card.rule{border-left:4px solid var(--teal)}
+.card.rule.v{border-left-color:var(--violet)}
+.card.rule.a{border-left-color:var(--amber)}
+.card.rule.c{border-left-color:var(--coral)}
+
+/* ── plain feature lists ─────────────────────────────────────────────── */
+ul.ticks{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr))}
+ul.ticks li{position:relative;padding-left:23px;font-size:.93rem;min-width:0}
+ul.ticks li::before{content:"";position:absolute;left:0;top:.56em;width:9px;height:9px;
+  border-radius:2px;background:var(--teal)}
+ul.plain{margin:12px 0 0;padding-left:20px}
+ul.plain li{margin-bottom:6px;font-size:.94rem}
+
+/* ── tables ──────────────────────────────────────────────────────────── */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:20px;
+  border:1px solid var(--hair);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.9rem}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--hair);
+  vertical-align:top}
+th{font-family:var(--display);font-weight:800;color:var(--ink);font-size:.78rem;
+  letter-spacing:.05em;text-transform:uppercase;background:var(--tint)}
+tbody tr:last-child td{border-bottom:0}
+td strong{color:var(--ink)}
+
+/* ── status chips: the honesty apparatus ─────────────────────────────── */
+.st{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:.07em;
+  text-transform:uppercase;padding:3px 8px;border-radius:999px;white-space:nowrap;
+  border:1px solid}
+.st.live{color:#0A6B60;background:#E6F7F4;border-color:#A8E2D9}
+.st.part{color:#8A5B00;background:#FFF5E0;border-color:#F3D79A}
+.st.no{color:#9A2016;background:#FDECEA;border-color:#F5BFB8}
+.st.des{color:#4B3A8F;background:#F0EDFF;border-color:#CFC5F5}
+.st.lic{color:#7A4A00;background:#FFF1DC;border-color:#EFC98C}
+.key{display:flex;flex-wrap:wrap;gap:14px;margin-top:16px;font-size:.82rem;
+  color:var(--muted)}
+.key b{color:var(--ink)}
+
+/* ── the ceiling note — a limitation stated in the page itself ───────── */
+.ceiling{margin-top:22px;border:1px solid var(--hair);border-left:4px solid var(--amber);
+  border-radius:12px;background:#FFFDF7;padding:16px 18px}
+.ceiling h3{font-size:.98rem;margin-bottom:.4em}
+.ceiling p{font-size:.9rem;margin-bottom:.6em}
+.ceiling p:last-child{margin-bottom:0}
+section.dark .ceiling{background:#241F14;border-color:#4A3F26;border-left-color:var(--amber)}
+section.dark .ceiling p{color:#E4D9C2}
+section.dark .ceiling h3{color:#FFD98A}
+
+.pull{font-family:var(--display);font-weight:800;color:var(--ink);
+  font-size:clamp(1.1rem,.98rem+.7vw,1.5rem);line-height:1.32;max-width:26ch;
+  margin:26px 0 0;letter-spacing:-.015em}
+section.dark .pull{color:#fff}
+/* --accent, not the light-theme hex: #0A7A6E on the dark theme's tint
+   (#16273F) measures 2.88:1. The token carries a brighter teal for dark. */
+.pull .em{color:var(--accent)}
+section.dark .pull .em{color:#6FE3D4}
+
+.fig{margin:24px 0 0;border:1px solid var(--hair);border-radius:13px;
+  background:var(--card);padding:14px;overflow-x:auto}
+.fig svg{display:block;height:auto;min-width:520px;width:100%}
+.figcap{font-size:.82rem;color:var(--muted);margin:10px 2px 0}
+
+/* An empty lower half with no cue reads as the end of the page. */
+.more{display:flex;align-items:center;gap:9px;margin-top:clamp(18px,3vh,30px);
+  font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted)}
+.more::after{content:"";width:16px;height:16px;border-right:2px solid var(--teal);
+  border-bottom:2px solid var(--teal);transform:rotate(45deg) translate(-3px,-3px);
+  animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:rotate(45deg) translate(-3px,-3px)}
+  50%{transform:rotate(45deg) translate(1px,1px)}}
+.crumb{font-size:.8rem;color:var(--muted);padding-top:20px}
+.crumb a{color:var(--muted)}
+
+/* ── footer ──────────────────────────────────────────────────────────── */
+.foot{background:var(--invert-bg);color:var(--invert-body);padding:44px 0 0;margin-top:0}
+.footin{max-width:var(--maxw);margin:0 auto;padding:0 20px;display:grid;gap:26px;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr))}
+.fcol h3{color:#fff;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:.9em}
+.fcol a{display:block;color:#C9D2E2;font-size:.88rem;padding:5px 0;min-height:30px}
+.fcol a:hover{color:#fff}
+.ftag{font-size:.86rem;color:#98A5BD;margin-top:12px;max-width:34ch}
+.lock.small .wm{font-size:1rem}
+.legal{max-width:var(--maxw);margin:32px auto 0;padding:20px 20px 30px;
+  border-top:1px solid #2E3A56}
+.legal p{font-size:.78rem;color:#8391AB;margin:0 0 8px}
+.legal .samd{color:#98A5BD}
+/* `strong` is coloured var(--ink), which in the light theme is #141C2E — the
+   footer's own background. Measured at 1:1, so the word "not" in "commvita is
+   NOT a medical device" was invisible on every generated page, and the
+   disclaimer read as its own opposite. Found by sampling text contrast, not by
+   looking: an invisible word leaves no trace in a screenshot. */
+.foot strong,.foot b{color:#FFFFFF}
+
+/* ── phone ───────────────────────────────────────────────────────────── */
+@media (max-width:1100px){
+  .navpanel{margin-left:10px}
+}
+/* The toggle label and the call to action hide at ONE width for the whole
+   site — 560px, the landing page's — and that rule lives in HEADER_CSS.
+   Dropping the CTA at 1240px here meant the header carried a call to action
+   on the landing page and not on the others at the same tablet width. */
+@media (max-width:900px){
+  .topin{flex-wrap:wrap}
+  .burger{display:flex}
+  .navpanel{display:none;flex-basis:100%;margin-left:0;padding:6px 0 12px;
+    flex-direction:column;align-items:stretch;gap:2px;order:9}
+  .navctl{margin-left:auto;order:2}
+  .navpanel.open{display:flex}
+  .nav{flex-direction:column;align-items:stretch;gap:0}
+  .nl{padding:12px 10px;border-radius:8px}
+  .nav.regions{padding-left:0;margin-left:0;border-left:0;margin-top:6px;
+    padding-top:8px;border-top:1px solid var(--hair)}
+  table{min-width:480px}
+}
+/* On a phone the first screen must carry the proposition AND the primary
+   action. Measured before this rule, the hero ran to ~1190px on an 852px
+   viewport, so "Explore commvita" was below the fold — the B-440 defect,
+   where a landing screen looks fine in a screenshot that stops at the fold. */
+/* On the narrowest phones the strapline costs more than it earns: it is the
+   difference between a one-row header and a two-row one. */
+@media (max-width:400px){
+  .tag{display:none}
+  .word{font-size:1.08rem}
+}
+@media (max-width:560px){
+  .hero{padding:22px 0 26px}
+  .hero h1{font-size:clamp(1.6rem,1.15rem+2.2vw,2.1rem);max-width:none}
+  .hero .lead{font-size:.97rem;line-height:1.5}
+  .ctas{margin-top:18px}
+  .btn{min-height:46px;padding:11px 18px}
+}
+@media (max-width:560px){
+  body{font-size:15.5px}
+  .wrap{padding:0 16px}
+  .fig{padding:10px}
+  .btn{width:100%}
+  .ctas{gap:9px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TOUCH, SAFE AREAS AND THE DYNAMIC VIEWPORT
+   iOS reports 100vh as the viewport with the address bar HIDDEN, so a
+   100vh section is taller than the space actually visible and its last
+   line sits under the browser chrome. dvh/svh fix it; vh stays as the
+   fallback for anything that supports neither.
+   viewport-fit=cover is set in the meta, which makes env() non-zero on a
+   notched device — and therefore makes these insets load-bearing rather
+   than decorative. Without them content sits under the notch in landscape.
+   ═══════════════════════════════════════════════════════════════════════ */
+html{
+  -webkit-tap-highlight-color:rgba(0,184,166,.16);
+  overscroll-behavior-y:none;
+}
+a,button,summary,[role="button"]{touch-action:manipulation}
+.wrap,.footin,.legal{
+  padding-left:max(20px,env(safe-area-inset-left));
+  padding-right:max(20px,env(safe-area-inset-right));
+}
+/* The bar keeps the landing page's clamp as its floor. A flat 20px here put
+   the lockup at x=20 on every generated page against x=14 on the landing —
+   the header shifting sideways as you move between pages. */
+.topin{
+  padding-left:max(clamp(14px,3vw,28px),env(safe-area-inset-left));
+  padding-right:max(clamp(14px,3vw,28px),env(safe-area-inset-right));
+}
+.foot{padding-bottom:env(safe-area-inset-bottom)}
+.top{padding-top:env(safe-area-inset-top)}
+
+/* Tap targets. 44px is the floor on both platforms; a 30px footer link is
+   a link you miss, and missing a link in a footer reads as a broken site. */
+.fcol a{min-height:44px;display:flex;align-items:center;padding:2px 0}
+.rail a{min-width:44px;min-height:44px;display:flex;align-items:center;
+  justify-content:center}
+
+/* A figure at 900px cannot be shrunk to a 360px phone and stay legible —
+   12.5px type would land at 5px. It scrolls instead, and the fade tells
+   the reader that it does. An affordance nobody sees is not an affordance. */
+.fig{position:relative}
+.fig::after{content:"";position:absolute;top:1px;right:1px;bottom:1px;width:26px;
+  border-radius:0 12px 12px 0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--card))}
+@media (min-width:1000px){.fig::after{display:none}}
+
+/* Controls a finger is meant to hit, on any coarse pointer. `pointer:coarse`
+   is the semantic query — a 1194px iPad in landscape is a touch device and a
+   1194px laptop is not, and width alone cannot tell them apart. The width
+   clause is the fallback for engines that do not report the pointer. */
+@media (pointer:coarse),(max-width:1024px){
+  .lock{min-height:44px}
+  .crumb{padding-top:12px}
+  .crumb a{display:inline-flex;align-items:center;min-height:44px}
+  h3 > a{display:inline-flex;align-items:center;min-height:44px}
+  .card h3{margin-bottom:.25em}
+}
+
+/* ── tablet, portrait and landscape ──────────────────────────────────── */
+@media (max-width:1024px){
+  :root{--maxw:100%}
+  section{padding:clamp(32px,5vw,58px) 0}
+}
+
+/* ── phone landscape: a 390px-tall viewport has no room for a hero ───── */
+@media (max-height:520px) and (orientation:landscape){
+  .hero{padding:26px 0 20px}
+  html.snap{scroll-snap-type:none}
+  .screen{min-height:auto}
+  .rail{display:none}
+}
+
+/* ── narrow Android (360px is the commonest Android width there is) ──── */
+@media (max-width:380px){
+  body{font-size:15px}
+  .wrap,.footin,.legal{
+    padding-left:max(14px,env(safe-area-inset-left));
+    padding-right:max(14px,env(safe-area-inset-right))}
+  .wm{font-size:1.04rem}
+  .card{padding:15px 15px}
+  table{min-width:420px}
+  .fig svg{min-width:460px}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   FITTING A SCREEN
+   Every section is meant to be one self-contained view. That only works if
+   the type scales with the viewport rather than sitting at a fixed rem — a
+   fixed scale means a short laptop and a tall monitor get the same overflow.
+   These clamps are keyed to vh as well as vw, which is what the original
+   landing page does and why its screens hold together.
+   ═══════════════════════════════════════════════════════════════════════ */
+html.snap h1{font-size:clamp(1.5rem,.75rem+1.9vh+1.1vw,2.85rem)}
+html.snap h2{font-size:clamp(1.18rem,.72rem+1.5vh+.6vw,1.95rem)}
+html.snap h3{font-size:clamp(.95rem,.82rem+.45vh+.15vw,1.18rem)}
+html.snap .lead{font-size:clamp(.9rem,.76rem+.55vh+.15vw,1.14rem)}
+html.snap .card p{font-size:clamp(.8rem,.7rem+.36vh+.1vw,.94rem)}
+html.snap .card{padding:clamp(11px,1.3vh,18px) clamp(12px,1.3vw,19px)}
+html.snap .g{gap:clamp(9px,1.2vh,16px);margin-top:clamp(12px,1.7vh,22px)}
+html.snap ul.ticks li{font-size:clamp(.79rem,.7rem+.32vh,.93rem)}
+html.snap table{font-size:clamp(.76rem,.68rem+.32vh,.9rem)}
+html.snap th,html.snap td{padding:clamp(6px,.8vh,11px) clamp(9px,.9vw,14px)}
+html.snap section{padding:clamp(20px,3vh,52px) 0}
+html.snap .ceiling{padding:clamp(11px,1.4vh,18px) clamp(13px,1.3vw,18px);
+  margin-top:clamp(12px,1.6vh,22px)}
+html.snap .ceiling p{font-size:clamp(.76rem,.68rem+.3vh,.9rem)}
+html.snap .fig{margin-top:clamp(12px,1.6vh,24px)}
+html.snap .eyebrow{margin-bottom:clamp(7px,1vh,14px)}
+html.snap p{margin-bottom:clamp(.6em,1.1vh,1.05em)}
+
+/* A section that genuinely cannot fit — a fifteen-row table, a sixty-six
+   item library — opts out and scrolls rather than being squeezed to an
+   unreadable size. Which ones those are is MEASURED, not guessed. */
+html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SCROLL-SNAP PRESENTATION
+   `proximity`, never `mandatory`: mandatory snapping on a touch device
+   fights the user when a section is taller than the viewport, and a
+   presentation that will not let you read the bottom of a slide is worse
+   than no presentation. min-height, never height, for the same reason —
+   a tall section grows rather than clipping.
+   ═══════════════════════════════════════════════════════════════════════ */
+html.snap{scroll-snap-type:y proximity}
+/* Sections size to their CONTENT and snap to their top.
+   Forcing every section to 100dvh and centring it produced exactly what the
+   screenshot showed: a hero 838px tall holding 223px of content — 27% filled,
+   with a void beneath it and nothing to say whether more existed below.
+   Sizing to content removes the void, and the next section peeking above the
+   fold IS the cue that there is more. */
+html.snap .screen{
+  scroll-snap-align:start;
+  scroll-snap-stop:normal;
+  scroll-margin-top:var(--nav-h);
+  padding-top:clamp(30px,5.5vh,64px);
+  padding-bottom:clamp(34px,6vh,72px);
+}
+html.snap .screen > .wrap{width:100%}
+html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
+.rail{position:fixed;right:6px;top:50%;transform:translateY(-50%);z-index:70;
+  display:flex;flex-direction:column;gap:2px}
+.rail a{opacity:.9}
+.rail a::before{content:"";width:9px;height:9px;border-radius:50%;
+  background:var(--hair-2);transition:background .25s,transform .25s}
+.rail a:hover::before{transform:scale(1.35)}
+.rail a[aria-current="true"]::before{background:var(--teal);transform:scale(1.4);
+  box-shadow:0 0 0 4px rgba(0,184,166,.2)}
+@media (max-width:900px){.rail{display:none}}
+
+/* Snap is a desktop affordance. On a phone it competes with momentum
+   scrolling and with the address bar resizing mid-gesture, so it is off. */
+@media (max-width:768px){
+  html.snap{scroll-snap-type:none}
+  html.snap .screen{min-height:auto;display:block;
+    padding-top:clamp(30px,5vw,44px);padding-bottom:clamp(30px,5vw,44px)}
+}
+@media (prefers-reduced-motion:reduce){
+  html.snap{scroll-snap-type:none}
+}
+
+/* ── one header, both documents ───────────────────────────────────────── */
+.lock,.brand{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;
+  min-height:44px;text-decoration:none}
+.lock:hover,.brand:hover{text-decoration:none}
+
+/* The mark carries no white disc: the official lockup has none. It reads on
+   a dark ground because its ink is currentColor rather than a fixed hex, so
+   it inverts with the theme instead of needing a badge to sit on. */
+.mark{flex:none;display:block;color:var(--ink);
+  background:none;box-shadow:none;border-radius:0}
+.mark .hubdot{fill:var(--page,var(--paper,#FFFFFF))}
+
+.lockup{display:flex;flex-direction:column;line-height:1.04}
+/* The wordmark states its own colour. On the generated pages the lockup
+   sits inside an <a>, which inherits the link colour, so leaving it to
+   inherit gave the mark one colour here and another there. */
+.lockup .word{font-family:var(--display,inherit);font-weight:800;
+  font-size:1.12rem;letter-spacing:-.02em;white-space:nowrap;color:var(--ink)}
+.lockup .word .c{color:var(--teal)}
+.lockup .word .v{color:var(--ink)}
+.lockup .word .tm{font-size:.55rem;vertical-align:super;color:var(--muted);
+  font-weight:600}
+/* Sentence case, per the brand asset — not the uppercase mono strapline the
+   landing page had been carrying. */
+.lockup .tag{font-family:inherit;font-size:.5rem;font-weight:600;
+  letter-spacing:.055em;text-transform:none;color:var(--muted);margin-top:0}
+@media (max-width:420px){.lockup .tag{display:none}}
+
+/* Nav buttons: ONE set of metrics for the landing page's row and the nine
+   core-page links alike.
+   The size is set by the tightest constraint, which is the landing page's:
+   its bar is capped at --maxw (1180px) and must carry the lockup, the nine
+   buttons and the controls WITHOUT clipping, because a clipped last button
+   on a desktop reads as a broken header rather than as something to swipe.
+   At .79rem/11px the nine measured 754px against a budget that also has to
+   find ~220px of lockup and ~284px of controls. So .76rem/7px it is, on
+   both documents — not a compromise on the subpages but the figure that
+   actually fits where the row cannot scroll. */
+.nav>a,.links>a{display:inline-flex;align-items:center;min-height:44px;
+  padding:0 7px;border-radius:7px;font-size:.76rem;font-weight:650;
+  color:var(--ink);white-space:nowrap;text-decoration:none;
+  letter-spacing:-.005em;line-height:1.2;transition:color .2s,background .2s}
+.nav>a:hover,.links>a:hover{color:var(--ink);
+  background:var(--tint,var(--panel-2));text-decoration:none}
+/* Active state uses --ink and a teal wash rather than --accent: the landing
+   page does not define --accent, and its dark-theme fallback would have
+   been a mid-teal on a dark ground. --ink and --teal exist in both
+   documents and in both themes. */
+.nav>a.on,.links>a[aria-current="true"]{color:var(--ink);
+  background:color-mix(in srgb,var(--teal) 16%,transparent);
+  box-shadow:inset 0 -2px 0 var(--teal)}
+/* The landing page drew its active underline with an ::after block, which
+   cannot sit under the label inside a flex row. The inset shadow above
+   replaces it on both documents. */
+.links a[aria-current="true"]::after{content:none}
+
+/* The generated pages carry `:root[data-theme="dark"] a{color:var(--accent)}`,
+   which at (0,2,1) outranks `.nav a` at (0,1,1) — so in dark mode the header
+   buttons came out mid-teal there and ink on the landing page. Measured, not
+   reasoned about: the comparison run reported rgb(95,230,214) against
+   rgb(234,241,251). Restated here at a specificity that wins. */
+:root[data-theme="dark"] .nav>a,
+:root[data-theme="dark"] .links>a{color:var(--ink)}
+
+/* The controls on the right are part of the header's furniture too. The
+   toggle stood at 34px on the landing page and 44px on the others, and the
+   call to action at 40px against 46px, so the bar's whole right-hand end
+   changed height between pages. One geometry; each document keeps its own
+   colour rules. */
+.navctl .tglt,.nav-right .tglt{height:44px;min-width:44px;padding:0 11px;
+  border-radius:10px;font-size:.82rem;font-weight:700}
+.navctl .btn,.nav-right .btn{display:inline-flex;align-items:center;
+  justify-content:center;min-height:44px;padding:0 15px;font-size:.82rem;
+  font-weight:650;border-radius:9px}
+
+/* Responsive tightening lives HERE rather than earlier in the sheet: the
+   base rule above is later in source order, so a media query declared
+   before it would be silently overridden. */
+@media (max-width:900px){.nav>a,.links>a{padding:0 9px}}
+@media (max-width:560px){
+  .navctl .tglt .tl,.nav-right .tglt .tl{display:none}
+  .navctl .tglt,.nav-right .tglt{width:44px;padding:0;justify-content:center}
+  .navctl .btn.walk,.nav-right .btn.hide-sm{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="topin">
+    <a class="lock" href="index.html" aria-label="commvita home">
+      <svg class="mark" viewBox="0 0 100 100" width="34" height="34" role="img" aria-hidden="true"><line x1="52" y1="49" x2="20" y2="30" stroke="currentColor" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="78" y2="18" stroke="currentColor" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="26" y2="80" stroke="currentColor" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="84" y2="62" stroke="currentColor" stroke-width="5.0" stroke-linecap="round"/><circle cx="20" cy="30" r="8.5" fill="#00B8A6"/><circle cx="78" cy="18" r="7.0" fill="#7B61FF"/><circle cx="26" cy="80" r="6.0" fill="#FFB020"/><circle cx="84" cy="62" r="9.5" fill="#FF5B47"/><circle cx="52" cy="49" r="15.0" fill="currentColor"/><circle cx="52" cy="49" r="6.0" class="hubdot" fill="#FFFFFF"/></svg><span class="lockup"><span class="word"><span class="c">comm</span><span class="v">vita</span><span class="tm">&trade;</span></span><span class="tag">Connected care platform</span></span>
+    </a>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="navpanel">
+      <span></span><span></span><span></span><em class="sr">Menu</em>
+    </button>
+    <div class="navpanel" id="navpanel">
+      <nav class="nav" aria-label="Primary"><a href="platform.html">Platform</a><a href="problem.html">Problem</a><a href="solution.html">Approach</a><a href="standards.html" class="on" aria-current="page">Standards</a><a href="research-and-innovation.html">Research</a><a href="system-maturity.html">Maturity</a><a href="regulatory-compliance.html">Compliance</a><a href="editions.html">Editions</a><a href="founders.html">Founders</a></nav>
+    </div>
+    <div class="navctl">
+      <button class="tglt" id="themeBtn" aria-label="Switch to dark theme"
+              aria-pressed="false"><span class="ti" id="themeIcon" aria-hidden="true">&#9790;</span><span class="tl" id="themeLbl">Dark</span></button>
+      <a class="btn p walk" href="founders.html">Book a walkthrough</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero screen">
+  <div class="wrap">
+    <span class="eyebrow">Standards &amp; interoperability</span>
+    <h1>Standards-based, and specific about which standards.</h1>
+    <p class="lead">A table of ticks is easy to write and useless to buy from. This one carries the partial rows and the missing ones.</p>
+    
+  </div>
+</section>
+<section class="screen"><div class="wrap"><span class="eyebrow">Position</span><h2>Shipped, and in use</h2><p class="lead">These are built, persisted and reachable today.</p><div class="tw"><table><thead><tr><th>Standard</th><th>What we do with it</th><th>Status</th></tr></thead><tbody><tr><td><strong>FHIR R4</strong></td><td>Exchange — records, documents, bulk export</td><td><span class="st live">Live</span></td></tr><tr><td><strong>HL7 v2</strong></td><td>Messaging — ADT, ORU, order comms</td><td><span class="st live">Live</span></td></tr><tr><td><strong>SNOMED CT</strong></td><td>Clinical terminology; edition is a per-jurisdiction binding</td><td><span class="st live">Live</span></td></tr><tr><td><strong>OMOP CDM v5.4</strong></td><td>Research extracts with a data-quality report</td><td><span class="st live">Live</span></td></tr><tr><td><strong>ICD-10</strong></td><td>Morbidity and activity coding</td><td><span class="st live">Live</span></td></tr><tr><td><strong>CVX</strong></td><td>Vaccine coding, bound per jurisdiction</td><td><span class="st live">Live</span></td></tr><tr><td><strong>DICOM</strong></td><td>Imaging — a real viewer over Part 10 studies</td><td><span class="st live">Live</span></td></tr><tr><td><strong>OpenID Connect / OAuth 2</strong></td><td>Federated sign-in and API authorisation</td><td><span class="st live">Live</span></td></tr></tbody></table></div></div></section><section class="screen"><div class="wrap"><span class="eyebrow">Position</span><h2>Everything with a caveat on it</h2><p class="lead">Two of these are pending a publisher licence rather than any engineering: the adapter, the plumbing and the per-jurisdiction binding are built, and what is outstanding is a licence and its credentials.</p><div class="tw"><table><thead><tr><th>Standard</th><th>What we do with it</th><th>Status</th></tr></thead><tbody><tr><td><strong>openEHR</strong></td><td>Record shape and a real EHRbase write path — see the ceiling below</td><td><span class="st part">Partial</span></td></tr><tr><td><strong>IHE profiles</strong></td><td>XCPD, XCA and ATNA built; conformance not certified</td><td><span class="st part">Partial</span></td></tr><tr><td><strong>ATC</strong></td><td>Anatomical main groups only — a subset, and it says so</td><td><span class="st part">Partial</span></td></tr><tr><td><strong>DHIS2 2.40</strong></td><td>Aggregate national return; no payload sent to a live server yet</td><td><span class="st part">Partial</span></td></tr><tr><td><strong>ICD-11</strong></td><td>Adapter and per-jurisdiction binding built; awaiting WHO licence</td><td><span class="st lic">Pending licence</span></td></tr><tr><td><strong>LOINC</strong></td><td>Adapter built; awaiting Regenstrief licence and source access</td><td><span class="st lic">Pending licence</span></td></tr><tr><td><strong>OpenHIE 2.0</strong></td><td>Not built</td><td><span class="st no">Not built</span></td></tr></tbody></table></div><div class="key"><span class="st live">Live</span> <span><b>Live</b> — built, persisted and reachable today</span><span class="st part">Partial</span> <span><b>Partial</b> — built with a stated limit</span><span class="st lic">Pending licence</span> <span><b>Pending licence</b> — built, awaiting a publisher licence</span><span class="st des">Designed</span> <span><b>Designed</b> — specified, not built</span><span class="st no">Not built</span> <span><b>Not built</b></span></div><div class="ceiling"><h3>Terminology licensing is not uniform across the world</h3><p>Terms differ by publisher, by country and by organisation type, and in several schemes a country&rsquo;s membership status or income classification changes what it pays. SNOMED CT is the example we can evidence: it is licensed through a national affiliate arrangement and is free at the point of use in member and low-income countries &mdash; which is exactly why commvita treats the <strong>edition</strong> as a per-jurisdiction binding rather than shipping one and assuming it fits.</p><p>The specific current terms for ICD-11 and LOINC were <strong>not retrieved</strong> for this page. Confirm them with the publisher before they reach a business case.</p></div></div></section><section class="screen tint"><div class="wrap"><span class="eyebrow">Commercial</span><h2>The commercial model, stated as plainly as the technical one</h2><div class="g g3"><div class="card"><span class="knum">Community</span><h3>&pound;1 per instance</h3><p>One pound per instance, with optional paid support. It is not free, and describing it as free would be the first inaccurate thing on this page.</p></div><div class="card"><span class="knum">Hosting</span><h3>Ours, yours or sovereign</h3><p>Software as a service, self-hosted on your infrastructure, or a sovereign national deployment. Same images, same standards.</p></div><div class="card"><span class="knum">Exit</span><h3>Open export, on demand</h3><p>Bulk FHIR export and an OMOP extract with a data-quality report. What leaves can be checked rather than trusted.</p></div></div></div></section><section class="screen"><div class="wrap"><span class="eyebrow">Interoperability in practice</span><h2></h2><div class="ceiling"><h3>What &ldquo;openEHR&rdquo; means here, precisely</h3><p>commvita is designed to openEHR&rsquo;s record shapes and writes a composition to an EHRbase repository on consultation completion, and per-jurisdiction EHRbase containers ship with the platform. That is a real integration and it works against a real clinical data repository.</p><p>It is <strong>not</strong> a native openEHR implementation, and we do not describe it as one. commvita ships <strong>0 archetype definitions</strong>, has no AQL query support, and the default repository target in a stock configuration is a mock. A platform that claimed &ldquo;openEHR-native&rdquo; on this basis would be overstating it, and a buyer would find out during implementation rather than during procurement.</p><p>The reason to say so on a marketing page is simple: the gap is discoverable in about ten minutes by anyone technical, and a claim that fails that test damages every other claim beside it.</p></div></div></section>
+</main>
+<footer class="foot">
+  <div class="footin">
+    <div class="fcol">
+      <div class="lock small">
+        <svg viewBox="0 0 100 100" width="26" height="26" role="img" aria-hidden="true"><line x1="52" y1="49" x2="20" y2="30" stroke="#FFFFFF" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="78" y2="18" stroke="#FFFFFF" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="26" y2="80" stroke="#FFFFFF" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="84" y2="62" stroke="#FFFFFF" stroke-width="5.0" stroke-linecap="round"/><circle cx="20" cy="30" r="8.5" fill="#00B8A6"/><circle cx="78" cy="18" r="7.0" fill="#7B61FF"/><circle cx="26" cy="80" r="6.0" fill="#FFB020"/><circle cx="84" cy="62" r="9.5" fill="#FF5B47"/><circle cx="52" cy="49" r="15.0" fill="#FFFFFF"/><circle cx="52" cy="49" r="6.0" fill="#141C2E"/></svg>
+        <span class="wm">commvita<sup>&trade;</sup></span>
+      </div>
+      <p class="ftag">A configurable health and care platform. Built to open
+      standards, configured per jurisdiction, and designed to be left.</p>
+    </div>
+    <div class="fcol">
+      <h3>Platform</h3>
+      <a href="platform.html">Platform overview</a>
+      <a href="whole-person-record.html">Whole person record</a>
+      <a href="standards.html">Standards &amp; interoperability</a>
+      <a href="system-maturity.html">System maturity</a>
+      <a href="regulatory-compliance.html">Regulatory compliance</a>
+    </div>
+    <div class="fcol">
+      <h3>Editions</h3>
+      <a href="editions.html">All three editions</a>
+      <a href="editions/governance-assurance/index.html">Governance &amp; Assurance</a>
+      <a href="research-and-innovation.html">Research &amp; innovation</a>
+      <a href="explainers/index.html">Explainer library</a>
+    </div>
+    <div class="fcol">
+      <h3>Jurisdictions</h3>
+      <a href="uk/index.html">UK &amp; Crown Dependencies</a>
+      <a href="us/index.html">United States</a>
+      <a href="int/index.html">International</a>
+      <a href="founders.html">Why we started</a>
+    </div>
+  </div>
+  <div class="legal">
+    <p>&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.<br>Commvita Digital Health Solutions Ltd is a company
+    incorporated in England and Wales. Governing law is England and Wales.</p>
+    <p class="samd">commvita is <strong>not</strong> a medical device. The
+    platform presents recorded information and supports decisions; clinical
+    decisions remain with the clinician.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  // Theme. Same storage key as the landing page — one preference, whole site.
+  var root=document.documentElement, tb=document.getElementById('themeBtn'),
+      ti=document.getElementById('themeIcon'), tl=document.getElementById('themeLbl');
+  if(tb){
+    function cur(){ return root.getAttribute('data-theme') || 'light'; }
+    function paint(){ var d=cur()==='dark';
+      ti.innerHTML = d ? '☀' : '☾';
+      if(tl) tl.textContent = d ? 'Light' : 'Dark';
+      tb.setAttribute('aria-label', d ? 'Switch to light theme' : 'Switch to dark theme');
+      tb.setAttribute('aria-pressed', d ? 'true' : 'false'); }
+    paint();
+    tb.addEventListener('click', function(){
+      var n = cur()==='dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', n);
+      try{ localStorage.setItem('cv-theme', n); }catch(e){}
+      paint(); });
+  }
+  var b=document.getElementById('burger'), p=document.getElementById('navpanel');
+  if(b&&p){
+    b.addEventListener('click',function(){
+      var open=p.classList.toggle('open');
+      b.setAttribute('aria-expanded', open?'true':'false');
+    });
+  }
+  // Rail: reflect the section in view. IntersectionObserver rather than a
+  // scroll handler, because a scroll handler on a touch device fires on
+  // every frame of a momentum scroll and costs more than the feature.
+  var rail=document.querySelector('.rail');
+  if(rail && 'IntersectionObserver' in window){
+    var dots={};
+    rail.querySelectorAll('a').forEach(function(a){
+      dots[a.getAttribute('href').slice(1)]=a;
+    });
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var d=dots[e.target.id];
+        if(!d) return;
+        if(e.isIntersecting){
+          rail.querySelectorAll('a').forEach(function(x){x.removeAttribute('aria-current');});
+          d.setAttribute('aria-current','true');
+        }
+      });
+    },{rootMargin:'-45% 0px -45% 0px'});
+    Object.keys(dots).forEach(function(id){
+      var el=document.getElementById(id); if(el) io.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>

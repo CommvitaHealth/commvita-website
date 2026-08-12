@@ -1,0 +1,19 @@
+# Commvita website — Netlify configuration
+# Static site, no build step. The deployable pages live in site/,
+# so we publish that directory: site/index.html becomes the homepage.
+
+[build]
+  publish = "site"
+
+# Security headers on every response.
+# No Content-Security-Policy for now: the pages use inline scripts and
+# styles heavily (interactive explainers), so a meaningful CSP needs
+# per-page work. Tracked as a follow-up.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
