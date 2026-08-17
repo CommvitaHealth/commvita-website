@@ -117,6 +117,18 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   tr{page-break-inside:avoid}
 }
 </style>
+<style>
+/* Narrow-phone guard (<=480px): keeps the page itself from scrolling sideways.
+   Wide tables scroll inside their own box, oversized figures scale down and
+   monospace path chips wrap instead of forcing the whole document wider. */
+@media (max-width:480px){
+  *{min-width:0}
+  table{display:block;overflow-x:auto;max-width:100%;min-width:0 !important}
+  svg{max-width:100%}
+  pre,code{overflow-wrap:anywhere}
+  .chip,.pill{max-width:100%;white-space:normal !important;overflow-wrap:anywhere}
+}
+</style>
 </head>
 <body>
 

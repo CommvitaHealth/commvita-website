@@ -1,3 +1,5 @@
+<!doctype html>
+<html lang="en-GB">
 <meta charset="utf-8">
 <title>commvita &mdash; brand specification</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -83,6 +85,19 @@ li b{color:#141C2E}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
 </style>
+<style>
+/* Narrow-phone guard (<=480px): keeps the page itself from scrolling sideways.
+   Wide tables scroll inside their own box, oversized figures scale down and
+   monospace path chips wrap instead of forcing the whole document wider. */
+@media (max-width:480px){
+  *{min-width:0}
+  table{display:block;overflow-x:auto;max-width:100%;min-width:0 !important}
+  svg{max-width:100%}
+  pre,code{overflow-wrap:anywhere}
+  .chip,.pill{max-width:100%;white-space:normal !important;overflow-wrap:anywhere}
+}
+</style>
+
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
   <a class="cvnav-back" href="../index.html"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 2.5 4.5 8l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>All explainers</a>
@@ -171,3 +186,4 @@ li b{color:#141C2E}
 <h2>What this specification does not settle.</h2>
 <ul><li><b>Print colour.</b> CMYK here is a conversion, not a proof. Teal and violet are both outside a comfortable coated CMYK gamut and will disappoint on press without correction or a spot ink.</li><li><b>Photography.</b> There is none, and the identity needs it. Vector polish is exactly what makes a brand look generated; one real photograph of a ward corridor or a whiteboard does more than any amount of it.</li><li><b>Motion.</b> The mark has an obvious build &mdash; nodes arriving, joins drawing in &mdash; but no timing, easing or sequence is specified.</li><li><b>The wordmark drawing.</b> It is currently set in Familjen Grotesk Bold and outlined, not drawn. A studio should redraw it: at minimum correct the spacing around the double m and decide whether the teal / ink split survives at small sizes.</li><li><b>Tone of voice.</b> Out of scope here. The one rule worth carrying over: say the positive thing first, and keep em dashes to roughly one per four hundred words.</li></ul></div>
 <p class="foot">commvita&trade; brand specification. Geometry, palette and file index are generated from the same source as the asset kit in <span class="mono">docs/brand/</span>, so the two cannot drift apart. Set in Familjen Grotesk and Archivo.</p><p class="foot" style="margin-top:14px;border-top:0;padding-top:0">&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</p></div>
+</html>
