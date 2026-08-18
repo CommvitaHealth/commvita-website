@@ -1,0 +1,8 @@
+# commvita.com
+# Static marketing site. Everything published here is intended to be public;
+# anything confidential does not ship, so there is nothing to disallow.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://commvita.com/sitemap.xml
