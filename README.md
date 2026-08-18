@@ -4,12 +4,15 @@ Public marketing and information site for [Commvita](https://commvita.com) — a
 
 ## What this is
 
-A fully static site: 99 HTML pages plus one stylesheet, no build step, no server-side code, no external JavaScript dependencies. Every link is relative, so the site works from the filesystem, any static host, or behind a reverse proxy.
+A fully static site: 102 HTML pages, one stylesheet and a favicon, no build step, no server-side code, no external JavaScript dependencies. Every link is relative, so the site works from the filesystem, any static host, or behind a reverse proxy.
 
 - `site/` — the deployable site. `site/index.html` is the homepage.
 - `index.html` (repo root) — convenience redirect into `site/` for local browsing; not deployed.
 - `netlify.toml` — Netlify configuration: publishes `site/` and sets security headers.
 - `SITE-NOTES.md` — the original design/structure notes that shipped with the site.
+  Treat it as a historical record, not a description of this repository: it refers to
+  32 pages, 66 library documents and a `docs/build_website.py` generator, none of which
+  are here. The HTML in `site/` is maintained by hand, so the counts it quotes drift.
 
 ## Hosting
 
