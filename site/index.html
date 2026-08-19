@@ -17,7 +17,7 @@
   --paper:#F2F4F7; --panel:#FFFFFF; --panel-2:#F2F4F7;
   --ink:#141C2E; --body:#42506B; --muted:#5D6B85;
   --hair:#D9DFE8; --hair-strong:#C3CBD9;
-  --thread:#00B8A6; --good:#0A7A6E; --crit:#D93025;
+  --thread:#7B61FF; --good:#0A7A6E; --crit:#D93025;
   --shadow:0 1px 2px rgba(20,28,46,.06), 0 10px 30px -16px rgba(20,28,46,.26);
   --shadow-lift:0 2px 4px rgba(20,28,46,.08), 0 22px 54px -24px rgba(20,28,46,.38);
   --nav-h:58px;
@@ -36,7 +36,7 @@
   --paper:#F2F4F7; --panel:#FFFFFF; --panel-2:#F2F4F7;
   --ink:#141C2E; --body:#42506B; --muted:#5D6B85;
   --hair:#D9DFE8; --hair-strong:#C3CBD9;
-  --teal:#00B8A6; --thread:#00B8A6; --orange:#FF5B47; --good:#0A7A6E; --crit:#D93025;
+  --teal:#00B8A6; --thread:#7B61FF; --orange:#FF5B47; --good:#0A7A6E; --crit:#D93025;
   --shadow:0 1px 2px rgba(20,28,46,.06), 0 10px 30px -16px rgba(20,28,46,.26);
   --shadow-lift:0 2px 4px rgba(20,28,46,.08), 0 22px 54px -24px rgba(20,28,46,.38);
 }
@@ -44,7 +44,7 @@
   --paper:#0C1626; --panel:#111F35; --panel-2:#16273F;
   --ink:#EAF1FB; --body:#C2D0E6; --muted:#8CA1C2;
   --hair:rgba(255,255,255,.10); --hair-strong:rgba(255,255,255,.20);
-  --teal:#2FD9C6; --thread:#2FD9C6; --orange:#FF7A66; --good:#2FD9C6; --crit:#FF7A6B;
+  --teal:#2FD9C6; --thread:#A594FF; --orange:#FF7A66; --good:#2FD9C6; --crit:#FF7A6B;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 36px -18px rgba(0,0,0,.7);
   --shadow-lift:0 2px 6px rgba(0,0,0,.5), 0 26px 62px -26px rgba(0,0,0,.8);
 }
@@ -763,6 +763,43 @@ h2.big{font-size:var(--fs-h2); font-weight:800; max-width:23ch}
   .navctl .btn.walk,.nav-right .btn.hide-sm{display:none}
 }
 </style>
+<style>
+/* ─── Semantic colour, per the brand specification ────────────────────────────
+   "Colour is semantic here, not decorative... if a colour cannot be explained,
+   it should not be used." Teal is the person and the record; violet is
+   governance; amber is flow; coral is escalation. Teal had become the site's
+   general accent — 46 rules — including as label text, where it measures
+   2.27:1 on paper and fails WCAG for anything but display sizes.
+
+   These rules return decorative colour to ink and keep the palette for meaning.
+   Node colours in the mark and the wordmark's teal are untouched. */
+.eyebrow{color:var(--muted)}
+.eyebrow .dot{background:var(--ink);box-shadow:none}
+.eyebrow::before{background:var(--ink)}
+section.dark .eyebrow{color:var(--muted)}
+section.dark .eyebrow::before{background:currentColor}
+:root[data-theme="dark"] .eyebrow{color:var(--muted)}
+.knum{color:var(--muted)}
+.grad{background:none;-webkit-background-clip:border-box;background-clip:border-box;
+      color:var(--ink);-webkit-text-fill-color:currentColor}
+.pull .em{color:var(--ink)}
+.contact a{color:var(--ink)}
+.metric .m,.savecard .huge,.stage .n,.oneprod .k,.vstep .lbl,.reorg .yr,.arrowcol{color:var(--ink)}
+.marker i::before{color:var(--ink)}
+.vx-k,.vx-arw,.vx-close .tag2{color:var(--ink)}
+:focus-visible{outline-color:var(--ink)}
+.card:hover{border-color:var(--hair-strong)}
+.btn-ghost:hover,.tglt:hover,.vx-btn:hover{border-color:var(--ink)}
+.who .nm a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.who .nm a:hover::after{color:var(--ink)}
+.aim.a1{border-left-color:var(--ink)}
+/* Gradients are out entirely — the spec bars them on the mark, and they are the
+   single most template-looking thing on a page. */
+.cv .fill{background:var(--ink)}
+.vx-bar i{background:var(--ink)}
+.fc-st .bar i{background:var(--ink)}
+</style>
+
 <script>(function(){try{var t=localStorage.getItem("cv-theme");if(t){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
 
 <!-- =========================================================== NAV -->

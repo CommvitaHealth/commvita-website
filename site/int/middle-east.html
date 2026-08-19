@@ -592,6 +592,43 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
   .navctl .btn.walk,.nav-right .btn.hide-sm{display:none}
 }
 </style>
+<style>
+/* ─── Semantic colour, per the brand specification ────────────────────────────
+   "Colour is semantic here, not decorative... if a colour cannot be explained,
+   it should not be used." Teal is the person and the record; violet is
+   governance; amber is flow; coral is escalation. Teal had become the site's
+   general accent — 46 rules — including as label text, where it measures
+   2.27:1 on paper and fails WCAG for anything but display sizes.
+
+   These rules return decorative colour to ink and keep the palette for meaning.
+   Node colours in the mark and the wordmark's teal are untouched. */
+.eyebrow{color:var(--muted)}
+.eyebrow .dot{background:var(--ink);box-shadow:none}
+.eyebrow::before{background:var(--ink)}
+section.dark .eyebrow{color:var(--muted)}
+section.dark .eyebrow::before{background:currentColor}
+:root[data-theme="dark"] .eyebrow{color:var(--muted)}
+.knum{color:var(--muted)}
+.grad{background:none;-webkit-background-clip:border-box;background-clip:border-box;
+      color:var(--ink);-webkit-text-fill-color:currentColor}
+.pull .em{color:var(--ink)}
+.contact a{color:var(--ink)}
+.metric .m,.savecard .huge,.stage .n,.oneprod .k,.vstep .lbl,.reorg .yr,.arrowcol{color:var(--ink)}
+.marker i::before{color:var(--ink)}
+.vx-k,.vx-arw,.vx-close .tag2{color:var(--ink)}
+:focus-visible{outline-color:var(--ink)}
+.card:hover{border-color:var(--hair-strong)}
+.btn-ghost:hover,.tglt:hover,.vx-btn:hover{border-color:var(--ink)}
+.who .nm a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.who .nm a:hover::after{color:var(--ink)}
+.aim.a1{border-left-color:var(--ink)}
+/* Gradients are out entirely — the spec bars them on the mark, and they are the
+   single most template-looking thing on a page. */
+.cv .fill{background:var(--ink)}
+.vx-bar i{background:var(--ink)}
+.fc-st .bar i{background:var(--ink)}
+</style>
+
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
