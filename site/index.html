@@ -829,6 +829,22 @@ section.dark .eyebrow::before{background:currentColor}
   radial-gradient(farthest-side at 100% 50%,rgba(20,28,46,.20),rgba(20,28,46,0)) right center/15px 100% no-repeat scroll,
   var(--panel)}
 </style>
+<style>
+/* Direction A — the palette legend that sits above the module plate. */
+.legend{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--hair);border:1px solid var(--hair);margin-top:var(--gap)}
+.legend .lg{background:var(--panel);padding:clamp(14px,2vh,22px) clamp(13px,1.5vw,18px)}
+.legend .lg-r{display:block;height:3px;width:100%;border-radius:2px}
+.legend h3{margin:clamp(11px,1.6vh,16px) 0 0;font-family:var(--display);
+  font-size:clamp(.98rem,.9rem+.4vh,1.22rem);letter-spacing:-.02em;line-height:1.15;color:var(--ink)}
+.legend p{margin:.45em 0 0;font-size:clamp(.8rem,.76rem+.25vh,.92rem);
+  color:var(--body);line-height:1.5}
+.legend-note{margin-top:clamp(11px,1.5vh,16px);font-size:clamp(.74rem,.7rem+.22vh,.84rem);
+  color:var(--muted);max-width:74ch;line-height:1.6}
+@media(max-width:860px){.legend{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.legend{grid-template-columns:1fr}}
+</style>
+
 
 
 <script>(function(){try{var t=localStorage.getItem("cv-theme");if(t){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
@@ -1079,6 +1095,36 @@ section.dark .eyebrow::before{background:currentColor}
     to the services every module shares. The band across the centre is the point of the design: one person and
     record spine, one interoperability layer, and every theme above and below reading and writing that same
     record. Integration happens once, at the edge, rather than between the themes.</p>
+
+    <!-- Direction A: the palette legend. The specification makes colour semantic
+         — teal the person and record, amber flow, violet governance, coral
+         escalation — and the plate below is coded to exactly those meanings.
+         Naming them here means the plate can be read rather than decoded. -->
+    <div class="legend">
+      <div class="lg">
+        <span class="lg-r" style="background:var(--teal)"></span>
+        <h3>The person</h3>
+        <p>One record that follows someone across primary care, community, hospital and social care.</p>
+      </div>
+      <div class="lg">
+        <span class="lg-r" style="background:var(--amber,#FFB020)"></span>
+        <h3>The flow</h3>
+        <p>Demand and capacity as one line, with the real bottleneck named rather than assumed.</p>
+      </div>
+      <div class="lg">
+        <span class="lg-r" style="background:var(--violet,#7B61FF)"></span>
+        <h3>The oversight</h3>
+        <p>One chain from a ward incident to the board&rsquo;s risk register, carrying its evidence.</p>
+      </div>
+      <div class="lg">
+        <span class="lg-r" style="background:var(--orange)"></span>
+        <h3>The escalation</h3>
+        <p>Breaches and entry points, marked where they happen and counted where they land.</p>
+      </div>
+    </div>
+    <p class="legend-note">Colour does one job on this site and only one. It is the same
+      meaning in the mark, on the page and inside the platform &mdash; so the plate below
+      can be read rather than decoded.</p>
     <figure class="mp">
       <div class="mp-in">
 <!-- viewBox cropped to the content bottom (1230 of 1410): the source
