@@ -303,9 +303,14 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <tr><td><b>Vaccination &amp; immunisation</b></td><td>Immunisation Management (register, campaigns, NIMS, cold-chain)</td><td>API <span class="chip">/immunisation/</span></td><td>&#9679; Live</td></tr>
       <tr><td><b>Diagnostics &amp; theatres</b> (recovery)</td><td>Diagnostics Capacity (DM01) &middot; Theatre Productivity (GIRFT)</td><td><span class="chip">/diagnostics-capacity</span> &middot; <span class="chip">/theatre-productivity</span></td><td>&#9737; Demonstrated</td></tr>
       <tr><td><b>Secure Data Environment</b> (secondary use)</td><td>Clinical Studies (3-tier anonymisation, extract ledger) &middot; Federated Cohort Discovery</td><td><span class="chip">/clinical-studies</span> &middot; <span class="chip">/cohort-discovery</span></td><td>&#9679; Live (Studies) &middot; &#9737; Demo</td></tr>
+      <tr><td><b>Canonical Data Model</b> (DAPB4121 &mdash; the FDP data layer)</td><td>FDP CDM &mdash; Trust Data Console: canonical schema, DQ tests, FHIR read API (UK Core), governance/RLS</td><td><span class="chip">/fdp-cdm</span></td><td>&mdash;</td></tr>
+      <tr><td><b>Data integration &amp; pipeline monitoring</b> (Foundry)</td><td>PulseGrid &mdash; Integration Assurance: dual-endpoint monitoring over 12 EPR connectors, protocol-native probes (MLLP/FHIR/REST)</td><td><span class="chip">/connector-dashboard</span></td><td>&mdash;</td></tr>
+      <tr><td><b>UEC demand &amp; capacity forecasting</b></td><td>A&amp;E Demand Forecasting (7-day, hourly profiles, surge &amp; OPEL bed-demand) &middot; Winter Pressures Forecast (6-week, flu/RSV, mutual aid)</td><td><span class="chip">/ae-demand-forecast</span> &middot; <span class="chip">/winter-pressures</span></td><td>&mdash;</td></tr>
+      <tr><td><b>Virtual wards</b> / acute-at-home</td><td>Virtual Ward Hub: live bed board, NEWS2 observations, step-up alerts, MDT review, cost-vs-physical-bed outcomes</td><td><span class="chip">/virtual-ward</span></td><td>&mdash;</td></tr>
       <tr><td><b>Federated analytics</b> (data stays at source)</td><td>Federated Query &middot; OHDSI / OMOP network node</td><td>API <span class="chip">/federated-query</span> &middot; <span class="chip">/omop</span></td><td>&#9679; Live</td></tr>
     </tbody>
   </table></div>
+  <p class="lead">The last four rows are carried over from the like-for-like FDP comparison this document replaces. That document asserted every row was either live or demonstrated but did not say which for any individual row, so the status is shown as &mdash; rather than guessed. Confirm each against the registry before external use.</p>
 
   <h2>Beyond dashboards &rarr; governed AI</h2>
   <p class="lead">The FDP is adding AI use cases. commvita&rsquo;s answer is <strong>governed, human-in-the-loop AI wired to action</strong> &mdash; not central insight alone. Worked example: the <strong>electronic Discharge Notification (eDN)</strong>, drafted, coded, reconciled and sent without leaving the platform, every step on the AI-governance audit.</p>
@@ -337,11 +342,31 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <tr><td><b>Standards</b></td><td>Proprietary platform (Palantir Foundry)</td><td><span class="pill green dot">&#9679; Open: openEHR &middot; FHIR R4 &middot; OMOP / OHDSI</span></td></tr>
       <tr><td><b>Federation</b></td><td>Central platform with per-trust instances</td><td><span class="pill green dot">&#9679; Aggregate-only (k&ge;5), 0 rows moved &mdash; federation by design</span></td></tr>
       <tr><td><b>Portability</b></td><td>NHS-England-specific national contract</td><td><span class="pill green dot">&#9679; Any cloud / on-prem &middot; jurisdiction-portable</span></td></tr>
+      <tr><td><b>Diagnosis</b></td><td>Reports the metric; naming the binding constraint is left to the reader</td><td><span class="pill green dot">&#9679; Little's Law and Theory of Constraints name the binding constraint &mdash; tiles drill through to the people behind the number, and counts reconcile</span></td></tr>
+      <tr><td><b>Inequalities</b></td><td>Reported alongside operational metrics</td><td><span class="pill green dot">&#9679; IMD / CORE20PLUS5 weighting built into waiting-list ranking and population analytics &mdash; a lens on every list, not a separate report</span></td></tr>
+      <tr><td><b>Exit</b></td><td>Rebuilding on a different platform</td><td><span class="pill green dot">&#9679; An export, not a rebuild &mdash; openEHR and FHIR R4 by right; partners integrate with no access toll</span></td></tr>
       <tr><td><b>Cost</b></td><td>National licensed platform</td><td><span class="pill green dot">&#9679; &pound;1 per instance &middot; optional support &mdash; no national licence</span></td></tr>
     </tbody>
   </table></div>
 
-  <div class="callout"><b>Why this matters for a demo.</b> commvita's Flow Edition is a <b>credible, open, low-cost alternative to the FDP's operational product set</b> &mdash; it meets the same jobs, then exceeds them by <b>acting on flow</b>, reaching <b>across settings</b>, standing on <b>open standards</b>, keeping <b>data at source</b>, and costing just <b>&pound;1 per instance to adopt</b> (with optional paid support). Fair note: the FDP is a national platform with national data-sharing gateways and contracts; commvita delivers the product capabilities and the open, federated, actionable layer on top &mdash; not the national legal/data-sharing infrastructure itself. Non-SaMD operational &amp; analytics surface.</div>
+  <div class="callout"><b>Why this matters for a demo.</b> commvita's Flow Edition is a <b>credible, open, low-cost alternative to the FDP's operational product set</b> &mdash; it meets the same jobs, then exceeds them by <b>acting on flow</b>, reaching <b>across settings</b>, standing on <b>open standards</b>, keeping <b>data at source</b>, and costing just <b>&pound;1 per instance to adopt</b> (with optional paid support). Where the FDP is genuinely ahead is set out in its own section below, rather than glossed here. Non-SaMD operational &amp; analytics surface.</div>
+
+  <h2>Where the FDP is ahead, and what that means</h2>
+  <p class="lead">Stated plainly, because a comparison that concedes nothing is not credible.</p>
+  <div class="tablewrap"><table>
+    <colgroup><col style="width:26%"><col style="width:74%"></colgroup>
+    <thead><tr><th>The FDP has</th><th>What that means here</th></tr></thead>
+    <tbody>
+      <tr><td><b>National scale and mandate</b></td><td>A national programme with central funding, national data flows and centrally-negotiated information governance. None of that is something a self-hosted platform can grant itself.</td></tr>
+      <tr><td><b>National datasets</b></td><td>Access to central flows that a self-hosted instance has to be granted separately, on its own application.</td></tr>
+      <tr><td><b>An established assurance route</b></td><td>A national assurance path already walked, which a local deployment has to walk for itself.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="strip amber"><span>&#9679;</span><span style="flex:1;min-width:0">The Flow Edition is <b>not a replacement for national data flows</b>. It is the local platform that consumes them &mdash; and it can run alongside an FDP tenancy rather than instead of one.</span></div>
+
+  <h2>Data model alignment</h2>
+  <p>The Flow Edition includes a <b>Trust Data Console</b> implementing the NHS FDP Canonical Data Model (<b>DAPB4121</b>), emitting schema-validated extracts against the published CDM object schemas.</p>
+  <div class="strip amber"><span>&#9679;</span><span style="flex:1;min-width:0"><b>The honest ceiling, stated in-product.</b> This is logical / data-specification interoperability with the FDP CDM. It is <b>not</b> physical parity with the FDP&rsquo;s underlying commercial platform, and it is <b>not</b> an organisation-level DAPB4121 certification.</span></div>
 
   <div class="callout"><b>Strategic commissioning &amp; emerging IHOs.</b> As NHS England repositions ICBs as <b>strategic commissioners</b> and <b>Integrated Health Organisations (IHOs)</b> emerge to hold whole-population, <b>capitated, outcome-based</b> contracts, the Flow Edition is the hub to run it: <b>manage outcome-based contracts on a capitated basis</b> (TCOC, ICS Contract Intelligence, quality measures &amp; PROMs), <b>share information</b> across the system (EPR Hub, GP&nbsp;Connect, NRL, shared care records) and <b>align incentives to outcomes</b> (capitation, shared-savings, CQUIN) &mdash; the reporting hub a commissioner and an IHO both draw on.</div>
 
