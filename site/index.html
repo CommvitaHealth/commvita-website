@@ -799,6 +799,37 @@ section.dark .eyebrow::before{background:currentColor}
 .vx-bar i{background:var(--ink)}
 .fc-st .bar i{background:var(--ink)}
 </style>
+<style>
+/* ─── Wide figures: make the sideways scroll work, and visible ───────────────
+   The module plate is 860px inside a container that is ~272px on a phone, so it
+   has to scroll. Three things were missing and the caption was promising
+   behaviour the page did not deliver:
+
+   · -webkit-overflow-scrolling:touch — without it iOS gives a nested scroller
+     no momentum, so a flick does nothing and the plate feels frozen.
+   · touch-action / overscroll-behavior-x — a horizontal drag could be taken by
+     the page or by Safari's back-swipe instead of scrolling the figure.
+   · a visible edge shadow — SITE-NOTES says "a right-edge fade says so; an
+     affordance nobody sees is not an affordance", but no fade was ever there.
+
+   The shadows use background-attachment local/scroll, so each edge appears only
+   while there is more content that way and fades out at the end of the travel. */
+.mp,.fc{-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;
+        overscroll-behavior-x:contain}
+.mp{background:
+  linear-gradient(90deg,#F2F4F7 40%,rgba(242,244,247,0)) left center/34px 100% no-repeat local,
+  linear-gradient(90deg,rgba(242,244,247,0),#F2F4F7 60%) right center/34px 100% no-repeat local,
+  radial-gradient(farthest-side at 0 50%,rgba(20,28,46,.20),rgba(20,28,46,0)) left center/15px 100% no-repeat scroll,
+  radial-gradient(farthest-side at 100% 50%,rgba(20,28,46,.20),rgba(20,28,46,0)) right center/15px 100% no-repeat scroll,
+  #F2F4F7}
+.fc{background:
+  linear-gradient(90deg,#FFFFFF 40%,rgba(255,255,255,0)) left center/34px 100% no-repeat local,
+  linear-gradient(90deg,rgba(255,255,255,0),#FFFFFF 60%) right center/34px 100% no-repeat local,
+  radial-gradient(farthest-side at 0 50%,rgba(20,28,46,.20),rgba(20,28,46,0)) left center/15px 100% no-repeat scroll,
+  radial-gradient(farthest-side at 100% 50%,rgba(20,28,46,.20),rgba(20,28,46,0)) right center/15px 100% no-repeat scroll,
+  var(--panel)}
+</style>
+
 
 <script>(function(){try{var t=localStorage.getItem("cv-theme");if(t){document.documentElement.setAttribute("data-theme",t);}}catch(e){}})();</script>
 
