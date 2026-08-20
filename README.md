@@ -48,6 +48,20 @@ python3 -m http.server 8000 --directory site
 
   Beware letter-spaced markings inside SVG text — strip tags and whitespace before
   matching, or a cover slide reading `P r i v a t e` will pass a naive grep.
+
+  Purging history is not the last step. After the rewrite is force-pushed, GitHub
+  still serves the old blobs by direct commit SHA until it garbage-collects, so
+  the document stays retrievable by anyone who knows or can guess the SHA. Check
+  it rather than assuming:
+
+  ```
+  curl -s -o /dev/null -w '%{http_code}\n' \
+    https://raw.githubusercontent.com/CommvitaHealth/commvita-website/<old-sha>/<path>
+  ```
+
+  A `200` means it is still public. Only GitHub Support can run the collection —
+  raise a ticket quoting the pre-purge head SHAs, and treat the removal as
+  incomplete until that request has been actioned and the check returns `404`.
 - Keep all links relative — no absolute paths, no hard-coded domain. The one
   exception is `site/sitemap.xml`, which the sitemap protocol requires to carry
   absolute URLs; it uses the canonical domain, `https://commvita.com`.
