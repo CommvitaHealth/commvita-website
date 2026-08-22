@@ -144,11 +144,17 @@ header.nav{
 @media(max-width:560px){ .btn.hide-sm{display:none} }
 
 /* progress dot rail - a second, always-visible reflection of position */
-.rail{position:fixed; right:14px; top:50%; transform:translateY(-50%); z-index:70; display:flex; flex-direction:column; gap:9px}
-@media(max-width:900px),(max-height:560px){ .rail{display:none} }
-.rail a{width:9px; height:9px; border-radius:50%; background:var(--hair-strong); transition:background .25s, transform .25s; display:block}
-.rail a:hover{transform:scale(1.35)}
-.rail a[aria-current="true"]{background:var(--teal); transform:scale(1.35); box-shadow:0 0 0 4px color-mix(in srgb,var(--teal) 20%,transparent)}
+.rail{position:fixed; right:9px; top:50%; transform:translateY(-50%); z-index:70; display:flex;
+  flex-direction:column; gap:6px; opacity:.4; transition:opacity .3s}
+.rail:hover,.rail:focus-within{opacity:1}
+@media(max-width:1024px),(pointer:coarse),(max-height:620px){ .rail{display:none} }
+.rail a{width:5px; height:5px; border-radius:50%; background:var(--hair-strong);
+  transition:background .25s, transform .25s; display:block; position:relative}
+.rail a::after{content:""; position:absolute; left:50%; top:50%; width:26px; height:11px;
+  transform:translate(-50%,-50%)}
+.rail a:hover{transform:scale(1.5)}
+.rail a[aria-current="true"]{background:var(--teal); transform:scale(1.5);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 16%,transparent)}
 
 /* ======================================================= TYPE BITS */
 .eyebrow{font-family:var(--mono); font-size:clamp(.6rem,.55rem+.3vh,.72rem); letter-spacing:.19em; text-transform:uppercase; color:var(--teal); font-weight:600; display:inline-flex; align-items:center; gap:.6em; margin-bottom:calc(var(--gap)*.7)}
@@ -671,8 +677,6 @@ h2.big{font-size:var(--fs-h2); font-weight:800; max-width:23ch}
   .vx-btn{min-height:44px;padding-top:9px;padding-bottom:9px}
   .vx-dots button{min-height:44px;min-width:44px;padding-left:10px;
     padding-right:10px}
-  .rail a{min-width:44px;min-height:44px;display:flex;align-items:center;
-    justify-content:center}
   main a.btn,.cta-row a{min-height:44px;display:inline-flex;
     align-items:center;justify-content:center}
   .nm a,.contact a{min-height:44px;display:inline-flex;align-items:center}
@@ -1668,6 +1672,7 @@ section.dark .eyebrow::before{background:currentColor}
         <h3>Risk and assurance in one place</h3>
         <p>Board, risk, incidents, clinical safety, complaints, corrective actions and the Board Assurance Framework &mdash; plus the workforce side that usually sits in separate systems: mandatory and information-governance training, appraisal, rostering, safe staffing, job planning, bank and agency, and freedom to speak up. On one record and one chain from ward to board. Nothing to integrate, nothing to reconcile, nothing lost between suppliers.</p>
         <ul><li>Board &amp; BAF</li><li>Risk</li><li>Incidents</li><li>IG &middot; FOI &middot; DSAR</li><li>AI governance</li><li>Training &amp; CPD</li><li>Workforce &amp; rostering</li><li>Audit &amp; evidence</li><li>EPRR &amp; on-call</li></ul>
+        <p class="muted" style="font-size:clamp(.6rem,.56rem+.26vh,.74rem); margin-top:10px"><a href="explainers/commvita-explainer-replacement-model.html">What commvita replaces, in full</a> &mdash; the like-for-like estate, the contract anchor and the operating model around it.</p>
       </div>
     </div>
   </div>
@@ -1703,7 +1708,7 @@ section.dark .eyebrow::before{background:currentColor}
         <p>off software and total cost of ownership when the stack &mdash; and the human integration layer it depends on &mdash; is replaced by one real-time platform.</p>
       </div>
     </div>
-    <p class="muted" style="font-size:clamp(.6rem,.56rem+.26vh,.74rem); margin-top:8px">Illustrative model. Actual savings depend on the systems replaced and integration burden removed &mdash; a planning target, not a guarantee.</p>
+    <p class="muted" style="font-size:clamp(.6rem,.56rem+.26vh,.74rem); margin-top:8px">Illustrative model. Actual savings depend on the systems replaced and integration burden removed &mdash; a planning target, not a guarantee. <a href="explainers/commvita-explainer-replacement-model.html">See the workings &mdash; the estate line by line, graded by evidence</a>.</p>
   </div>
 </section>
 
