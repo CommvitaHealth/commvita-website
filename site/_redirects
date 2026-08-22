@@ -1,3 +1,13 @@
+# The explainer library moved from /explainers/library/ to /explainers/.
+# Keep every previously-published URL working.
+/explainers/library/*  /explainers/:splat  301
+
 # Retired documents -> their replacements
-/explainers/library/CommVita-FDP-vs-Flow-Edition-2026.html  /explainers/library/commvita-explainer-fdp-flow-edition.html  301
-/explainers/library/CommVita-FDP-vs-Flow-Edition-2026       /explainers/library/commvita-explainer-fdp-flow-edition       301
+/explainers/CommVita-FDP-vs-Flow-Edition-2026.html  /explainers/commvita-explainer-fdp-flow-edition.html  301
+/explainers/CommVita-FDP-vs-Flow-Edition-2026       /explainers/commvita-explainer-fdp-flow-edition       301
+
+# Withdrawn documents -> the library index
+/explainers/CommVita-QuickStart-2026-06-22.html     /explainers/  301
+/explainers/commvita-himss-partnership-offer.html   /explainers/  301
+/explainers/commvita-roadmap.html                   /explainers/  301
+/explainers/commvita-seed-deck.html                 /explainers/  301
