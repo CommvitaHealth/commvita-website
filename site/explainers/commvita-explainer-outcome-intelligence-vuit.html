@@ -234,7 +234,40 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="trajwrap" style="border:1px solid var(--border);border-radius:12px;padding:16px 18px 10px;margin:8px 0 6px;background:#fff">
     <div style="font-weight:700;font-size:13.5px;color:var(--navy);margin-bottom:2px">Cohort trajectory vs. the path without support</div>
     <div style="font-size:11.5px;color:var(--muted);margin-bottom:10px">Independence / stability index for a rising-risk frailty cohort. The shaded wedge is the deterioration the proactive intervention avoided &mdash; the trajectory the board actually changed. The <strong>navy</strong> path adds VUIT partner support on top of clinical support &mdash; a further lift, at lower cost.</div>
-    <svg viewBox="0 0 664 316" role="img" aria-label="Cohort trajectory of an independence and stability index over 12 months, comparing outcomes with support against the projected path without it" style="width:100%;height:auto;font-family:"Archivo","Familjen Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--muted);margin:4px 0 20px"><b>&#9679; Demonstrated</b> &mdash; illustrative trajectory. In production the actual path is measured from risk-score history &amp; PROMs; the counterfactual is the cohort&rsquo;s modelled no-intervention baseline. The gap is the measured effect, reconciling with the people behind the cohort.</p>
+    <svg viewBox="0 0 664 316" role="img" aria-label="Cohort trajectory of an independence and stability index over 12 months, comparing outcomes with support against the projected path without it" style="width:100%;height:auto;font-family:var(--sans);margin:4px 0 14px">
+      <rect x="0" y="0" width="664" height="316" fill="none"/>
+      <line x1="46" y1="233.7" x2="538" y2="233.7" stroke="#D9DFE8" stroke-width="1"/>
+      <text x="37" y="237.2" font-size="10.5" fill="#5D6B85" text-anchor="end">50</text>
+      <line x1="46" y1="165.1" x2="538" y2="165.1" stroke="#D9DFE8" stroke-width="1"/>
+      <text x="37" y="168.6" font-size="10.5" fill="#5D6B85" text-anchor="end">60</text>
+      <line x1="46" y1="96.6" x2="538" y2="96.6" stroke="#D9DFE8" stroke-width="1"/>
+      <text x="37" y="100.1" font-size="10.5" fill="#5D6B85" text-anchor="end">70</text>
+      <line x1="46" y1="28.0" x2="538" y2="28.0" stroke="#D9DFE8" stroke-width="1"/>
+      <text x="37" y="31.5" font-size="10.5" fill="#5D6B85" text-anchor="end">80</text>
+      <line x1="46" y1="268" x2="538" y2="268" stroke="#5D6B85" stroke-width="1.2"/>
+      <text x="46.0" y="286" font-size="10.5" fill="#5D6B85" text-anchor="middle">M0</text>
+      <text x="169.0" y="286" font-size="10.5" fill="#5D6B85" text-anchor="middle">M3</text>
+      <text x="292.0" y="286" font-size="10.5" fill="#5D6B85" text-anchor="middle">M6</text>
+      <text x="415.0" y="286" font-size="10.5" fill="#5D6B85" text-anchor="middle">M9</text>
+      <text x="538.0" y="286" font-size="10.5" fill="#5D6B85" text-anchor="middle">M12</text>
+      <text x="37" y="18" font-size="10" fill="#5D6B85" text-anchor="end">index</text>
+      <path d="M46.0 82.9L87.0 87.0L128.0 90.4L169.0 91.8L210.0 95.2L251.0 97.9L292.0 100.0L333.0 102.7L374.0 104.8L415.0 108.2L456.0 110.3L497.0 113.0L538.0 115.8L538.0 243.3L497.0 228.2L456.0 215.2L415.0 200.1L374.0 189.8L333.0 174.7L292.0 161.7L251.0 150.1L210.0 135.0L169.0 123.3L128.0 108.2L87.0 95.2L46.0 82.9Z" fill="#1a9d8f" fill-opacity=".13"/>
+      <path d="M46.0 82.9 L87.0 95.2 L128.0 108.2 L169.0 123.3 L210.0 135.0 L251.0 150.1 L292.0 161.7 L333.0 174.7 L374.0 189.8 L415.0 200.1 L456.0 215.2 L497.0 228.2 L538.0 243.3" fill="none" stroke="#5D6B85" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M46.0 82.9 L87.0 87.0 L128.0 90.4 L169.0 91.8 L210.0 95.2 L251.0 97.9 L292.0 100.0 L333.0 102.7 L374.0 104.8 L415.0 108.2 L456.0 110.3 L497.0 113.0 L538.0 115.8" fill="none" stroke="#1a9d8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M46.0 82.9 L87.0 82.2 L128.0 79.4 L169.0 76.7 L210.0 74.6 L251.0 71.9 L292.0 69.1 L333.0 67.1 L374.0 64.3 L415.0 62.3 L456.0 59.5 L497.0 57.5 L538.0 54.7" fill="none" stroke="#141C2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="538.0" cy="243.3" r="4" fill="#5D6B85" stroke="#fff" stroke-width="2"/>
+      <circle cx="538.0" cy="115.8" r="4" fill="#1a9d8f" stroke="#fff" stroke-width="2"/>
+      <circle cx="538.0" cy="54.7" r="4" fill="#141C2E" stroke="#fff" stroke-width="2"/>
+      <text x="548" y="51.7" font-size="10.5" font-weight="700" fill="#141C2E">+ VUIT partner</text>
+      <text x="548" y="63.7" font-size="10" fill="#5D6B85">support</text>
+      <text x="548" y="119.8" font-size="10.5" font-weight="700" fill="#1a9d8f">With support</text>
+      <text x="548" y="242.3" font-size="10.5" font-weight="700" fill="#42506B">Without support</text>
+      <text x="548" y="254.3" font-size="10" fill="#5D6B85">(modelled)</text>
+      <text x="374.0" y="147.3" font-size="10.5" font-weight="700" fill="#1a9d8f" text-anchor="middle">deterioration avoided</text>
+    </svg>
+    <div class="tablewrap"><table><caption style="text-align:left;font-size:11.5px;color:var(--muted);padding:0 0 6px">Accessible reading &mdash; independence / stability index</caption><thead><tr><th>Month</th><th>Without support (modelled)</th><th>With support</th><th>+ VUIT partner support</th></tr></thead><tbody><tr><td>M0</td><td>72</td><td>72</td><td>72</td></tr><tr><td>M3</td><td>66.1</td><td>70.7</td><td>72.9</td></tr><tr><td>M6</td><td>60.5</td><td>69.5</td><td>74.0</td></tr><tr><td>M9</td><td>54.9</td><td>68.3</td><td>75.0</td></tr><tr><td>M12</td><td>48.6</td><td>67.2</td><td>76.1</td></tr></tbody></table></div>
+    <p class="cap" style="font-size:11px;color:var(--muted);margin:8px 0 2px"><b>&#9679; Demonstrated</b> &mdash; illustrative trajectory. In production the actual path is measured from risk-score history &amp; PROMs; the counterfactual is the cohort&rsquo;s modelled no-intervention baseline. The gap is the measured effect, reconciling with the people behind the cohort.</p>
+  </div>
 
   <div class="trajwrap" style="border:1px solid var(--border);border-radius:12px;padding:16px 18px 12px;margin:8px 0 6px;background:#fff">
     <div style="font-weight:700;font-size:13.5px;color:var(--navy);margin-bottom:2px">Outcome mix, moving quarter on quarter</div>
