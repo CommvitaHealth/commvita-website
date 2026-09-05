@@ -51,6 +51,7 @@
   .shot img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border)}
   .shot figcaption{font-size:12px;color:var(--muted);padding:8px 4px 2px;display:flex;
     flex-wrap:wrap;gap:4px 14px;justify-content:space-between}
+  .honest b{display:inline-block;margin-top:7px}
   .honest{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--amber);
     border-radius:12px;padding:13px 16px;font-size:13.5px;margin:24px 0}
   .foot{color:var(--muted);font-size:12px;border-top:1px solid var(--border);
@@ -132,18 +133,62 @@
   </figure>
 
   <p>And it stopped being a solo project some time ago. I&rsquo;m building
-  this with <strong>Marc</strong> and <strong>Hassan</strong>. Marc keeps
-  pulling it towards population health and inequality &mdash; his test for
-  every screen is whether it produces <em>actionable insight</em>, not
-  another dashboard. Hassan keeps pulling it towards the commercial question
-  &mdash; not &ldquo;is it clever&rdquo; but &ldquo;what does it take out of
-  the cost base&rdquo;. And behind the scenes we have a couple of shy
-  engineering geniuses who have built it all out in Azure &mdash; ready to
-  demo, and ready to deploy. A lot of what follows is shaped by all of
-  them.</p>
+  this with two co-founders.</p>
 
+  <p><strong><a href="https://www.linkedin.com/in/marcwfarr/">Professor Marc
+  Farr</a></strong> &mdash; co-founder and Chief Data &amp; Analytics Officer.
+  Marc keeps pulling it towards population health and inequality; his test for
+  every screen is whether it produces <em>actionable insight</em>, not another
+  dashboard.</p>
+
+  <p><strong><a href="https://www.linkedin.com/in/hchaudhury/">Hassan
+  Chaudhury</a></strong> &mdash; co-founder and Chief Commercial Officer.
+  Hassan keeps pulling it towards the commercial question: not &ldquo;is it
+  clever&rdquo; but &ldquo;what does it take out of the cost base&rdquo;.</p>
+
+  <p>And behind the scenes we have a couple of shy engineering geniuses who
+  have built it all out in Azure &mdash; ready to demo, and ready to deploy.
+  A lot of what follows is shaped by all of them.</p>
+
+
+  <h2>What you&rsquo;d actually buy first</h2>
+  <p>Nobody moves an EPR because the technology is better. The real barriers
+  are migration, workflow change, clinical risk, integration, assurance,
+  procurement, training and incumbent lock-in &mdash; and no chart is worth
+  that. So we are not asking anyone to do it.</p>
+
+  <p>The first thing a customer buys is <strong>one edition</strong>, not a
+  platform migration. <strong>Governance &amp; Assurance</strong> stands alone
+  for boards: incidents, risk, board assurance, policy, audit and training.
+  <strong>Commvita Flow</strong> stands alone for operations: flow, waiting
+  lists, discharge &mdash; what the NHS Federated Data Platform products do, on
+  open standards, self-hosted. Either one takes feeds from the systems you
+  already run.</p>
+
+  <div class="honest">
+    <strong>The four questions a buyer actually asks.</strong>
+    <br><b>What do I buy?</b> One edition, &pound;1 per instance, self-hosted on
+    your own infrastructure.
+    <br><b>What does it replace?</b> On day one, nothing clinical. It replaces the
+    governance or flow tooling around the record &mdash; the spreadsheets, the
+    separate risk and board systems, the manual reporting &mdash; not the
+    record itself.
+    <br><b>What changes operationally?</b> The teams already doing incidents, risk
+    and board papers, or already running flow, do it in one place instead of
+    several. No clinical workflow is rewritten to start.
+    <br><b>How fast is value?</b> Weeks, in the assurance and operational layer,
+    because nothing has to be migrated first.
+  </div>
+
+  <p>The full platform is the destination for those who choose it. The entry
+  point is deliberately small, cheap and reversible &mdash; and if it stays a
+  governance product for a customer forever, that is a perfectly good outcome.</p>
 
   <h2>Why one system &mdash; the two bikes</h2>
+  <p>So why build one system at all? Because the destination matters, even
+  when you travel to it in stages &mdash; and this is the engineering argument
+  for the direction, not the thing we are asking you to buy on day one.</p>
+
   <p>Same road, same effort. On the first bike every system is another
   gear, and every join between gears loses energy. On the second there is one
   platform and one join &mdash; the hospital EPR. If you&rsquo;re an engineer,
@@ -268,14 +313,35 @@
   assumptions are written down, evidence-graded, and shareable on request.</p>
 
   <h2>How it&rsquo;s built</h2>
-  <p>Under the hood it&rsquo;s deliberately boring: containers on
-  Kubernetes, running today on Azure &mdash; and
-  cloud-agnostic by design, so the same deployment runs on AWS, Google or
-  on-premise. High availability is on by default: replicated services,
-  disruption budgets, spread across nodes. The pipeline is fully automated
-  &mdash; every change runs the whole test suite plus nineteen build gates,
-  images are built, security-scanned and published, and the cluster pulls
-  its own updates via GitOps. Nobody logs into a server to release.</p>
+  <p>What this means for a customer is <strong>safe, controlled, traceable
+  releases</strong>: every change proven against the full test suite before it
+  ships, releases pulled by the environment rather than pushed by an engineer,
+  and a complete audit trail from a reported issue to the deployed fix. Nobody
+  logs into a server to release. That is table stakes for enterprise software
+  rather than a differentiator &mdash; but on a clinical platform it is the
+  part you would want to audit, so it is stated.</p>
+
+  <p>Under the hood it is deliberately boring: containers on Kubernetes,
+  running today on Azure and Docker, with high availability on by default
+  &mdash; replicated services, disruption budgets, spread across nodes. The
+  pipeline runs the whole test suite plus nineteen build gates, images are
+  built, security-scanned and published, and the cluster pulls its own updates
+  via GitOps.</p>
+
+  <p><strong>Designed for cloud portability</strong> &mdash; standard
+  containers on Kubernetes, nothing proprietary to any one cloud. We say
+  &ldquo;designed for&rdquo; deliberately: we have not yet stood up equivalent
+  deployments on AWS or GCP, and the three clouds genuinely differ on
+  networking, IAM, managed databases, storage and observability. We will not
+  claim portability we have not tested.</p>
+
+  <p>The same pipeline runs the support loop. Every screen carries a feedback
+  icon; a user files a bug report and it lands in a triage queue inside the
+  platform. Every stage after that &mdash; diagnose, write the fix, test,
+  integrate, deploy &mdash; already runs without a person touching a server.
+  We have <strong>deliberately not closed that loop</strong>: on a clinical
+  platform a human reviewing the change is a control, not a bottleneck. But
+  closing it is a governance decision now, not an engineering project.</p>
 
   <p>And the sixteen jurisdictions are <strong>configuration, not
   customisation</strong>. There are no forks and no bespoke branches: one
@@ -309,32 +375,24 @@
   &pound;500 blended day rate are assumptions &mdash; substitute your own
   and the arithmetic still sits on the page.</p>
 
-  <h2>From a bug report to a deploy &mdash; no humans</h2>
-  <p>Every screen carries a small feedback icon in the top bar. A user taps
-  it, files a bug report, and it lands in a triage queue inside the same
-  platform. Here is the part worth sitting with: every stage after that
-  &mdash; diagnose the issue, write the code fix, run the tests, integrate,
-  test again, deploy &mdash; already exists and already runs without a
-  person touching a server. The diagnosis and the fix are the way this
-  platform has been built all along: AI writes the change, the pipeline
-  proves it against 2,200 tests and nineteen gates, and GitOps ships it. We
-  have <strong>deliberately not closed that loop</strong> &mdash; on a
-  clinical platform, a human reviewing the change is a control, not a
-  bottleneck &mdash; but closing it is now a governance decision, not an
-  engineering project. Traditional software cannot say that.</p>
-
   <h2>Jack of all trades, master of none?</h2>
-  <p>A fair worry with a platform this broad &mdash; and it isn&rsquo;t the
-  case, for a reason you can check. As each feature is built it is
-  competitively benchmarked against the named incumbents in its space, and
-  the benchmark <strong>ships inside the software</strong>: a Competitive
-  Intelligence catalogue anyone using the platform can open, with every
-  rating checked against the real modules by the build pipeline so the
-  claims cannot drift into marketing. The current count: <strong>615
-  modules registered, 564 live, 431 benchmarked</strong> &mdash;
-  <strong>259 ahead of every named competitor</strong>, <strong>149 on
-  par</strong> (on par somewhere, behind nowhere), and <strong>23
-  behind</strong> at least one.</p>
+  <p>A fair worry with a platform this broad. The answer is not a scoreboard
+  &mdash; a supplier claiming to beat hundreds of competitors invites
+  scepticism, and rightly. What we built instead is a <strong>transparency
+  instrument</strong>: as each feature is built it is benchmarked against the
+  named incumbents in its space, and the benchmark <strong>ships inside the
+  software</strong>. A Competitive Intelligence catalogue anyone using the
+  platform can open, with every rating checked against the real modules by the
+  build pipeline so the claims cannot drift into marketing. Of
+  <strong>618 modules registered and 567 live</strong>, 431 are benchmarked
+  &mdash; and the number worth your attention is the <strong>23 where we are
+  behind</strong>.</p>
+
+  <p>Where we would actually stake the claim is narrower and more useful: four
+  workflows where the breadth earns its keep &mdash; the flow and OPEL command
+  centre, the incident-to-board golden thread, real-time outcome and inequality
+  measurement, and registration and access checked consistently across
+  settings. Those are the ones to press us on.</p>
   <p>The 23 are told straight, because a benchmark that only says nice
   things is marketing. Where commvita is behind, the reason is structural
   and stated in the product: the competitor runs a trained prediction model
@@ -349,17 +407,73 @@
   yet.</p>
 
 
+  <h2>Assurance of commvita itself</h2>
+  <p>There is a lot on this page about governance <em>inside</em> the platform
+  and almost nothing about the assurance <em>of</em> it. If you are putting
+  critical clinical and operational functions on someone&rsquo;s software, that
+  is the wrong way round. So here is the honest ledger.</p>
+
+  <div class="honest">
+    <strong>What exists today.</strong> Clinical-safety discipline to DCB0129
+    with a hazard log that records its own withdrawals. Tamper-evident WORM
+    audit chains. High availability on by default. The tested, gated release
+    pipeline described above. The non-SaMD boundary stated in the product
+    itself rather than in a brochure. Self-hosted deployment, so the data sits
+    in your tenancy and your database, not on our servers.
+  </div>
+
+  <div class="honest">
+    <strong>What a buyer would rightly require, and we have not yet done.</strong>
+    We hold no ISO&nbsp;27001 certification, no Cyber Essentials certificate,
+    no submitted DSPT, no DTAC assessment and no IHE certification. There is no
+    independent penetration test to show you, no disaster-recovery test
+    evidence, and no published support model with SLAs. None of that is
+    unachievable &mdash; it is simply not done, and a first customer would be
+    right to make it a condition.
+  </div>
+
+  <p>We would rather hand you the honest work-list than a page of badges. The
+  platform&rsquo;s own registers are built the same way, which is the only
+  reason to believe this one.</p>
+
+  <h2>Supplier risk &mdash; and how you leave</h2>
+  <p>The fair challenge to a one-platform pitch is: haven&rsquo;t you just
+  swapped many vendors for dependency on one? And behind it a harder question
+  &mdash; what happens if this company runs out of money, or a key engineer
+  leaves?</p>
+
+  <p>The answer we can evidence is that <strong>getting your data out is a
+  product feature, not a promise</strong>. Every record is exportable over FHIR
+  R4, including bulk <code>$export</code>. Research extracts come out as OMOP
+  CDM in CSV or Parquet. These are open formats a successor system can ingest
+  &mdash; not a proprietary dump that needs us to interpret it.</p>
+
+  <p>Exit thinking is in the product&rsquo;s DNA rather than bolted on at the
+  end. We ship an <strong>FDP exit-and-continuity module</strong> &mdash;
+  tooling to help an organisation leave <em>a different</em> platform safely
+  &mdash; because we think a buyer should always have a route out of anything
+  they depend on. We would be hypocrites to build ourselves as the exception.
+  That is a design philosophy engineered in by an operator who has lived with
+  these systems, not by someone whose only interest is shipping you product.</p>
+
+  <p>Sunk cost is deliberately low: &pound;1 per instance for the entry
+  edition, self-hosted on your own infrastructure, with partner components
+  behind removable seams so individual pieces can be swapped for competing
+  products. You can integrate what you already run rather than replace it.</p>
+
+  <div class="honest"><strong>What we have not settled.</strong> Source-code
+  escrow, contractual SLAs, a published support model and anything about
+  funding or runway are commitments we have not made yet, and I am not going
+  to imply them here. If you are a serious first customer, they are exactly
+  the right things to negotiate &mdash; and they will be a lot more concrete
+  in a contract than on a launch page.</div>
+
   <h2>You don&rsquo;t have to take it all at once</h2>
-  <p>It&rsquo;s one platform, but it&rsquo;s packaged so you can start where
-  the pressure is. The <strong>Commvita Flow Edition</strong> delivers what
-  the current NHS Federated Data Platform products do &mdash; the operational
-  tools for flow, waiting lists and discharge &mdash; on open standards,
-  self-hosted. <strong>Governance &amp; Assurance</strong> stands alone for
-  boards: incidents, risk, board assurance, policy, audit and training.
-  And the <strong>Population Platform</strong> adds the clinical record and
-  population health when you are ready. Each comes with a comprehensive set
-  of data connectors, so the systems you already run feed it from day
-  one.</p>
+  <p>To finish where this started: <strong>Governance &amp; Assurance</strong>
+  or <strong>Commvita Flow</strong> stand alone, and the <strong>Population
+  Platform</strong> adds the clinical record and population health if and when
+  you want it. Each comes with a comprehensive set of data connectors, so the
+  systems you already run feed it from day one.</p>
 
   <p>Whichever you start with, the plumbing comes with it. Digital consent
   and sign-off run through one e-signature service, so a quality impact
@@ -390,6 +504,18 @@
   the interventions that actually move them. We don&rsquo;t expect that
   list to be exhaustive &mdash; but for now, it is enough to show
   intent.</p>
+
+  <h2>The next milestone isn&rsquo;t another hundred modules</h2>
+  <p>If I am honest about where this stands: the hard part left is not
+  building more. It is <strong>one live deployment</strong> that proves
+  implementation, safety, adoption and the economics &mdash; and that would be
+  worth more than everything else on this page put together. A platform with no
+  customer is a demonstration, however much of it works.</p>
+
+  <p>So if you run a health system and want to be that first deployment
+  &mdash; small, bounded, Governance &amp; Assurance or Flow first, nothing
+  clinical replaced on day one &mdash; that is the conversation I most want to
+  have.</p>
 
   <p>This is the three of us launching it. Marc keeps it honest on outcomes
   and inequality, Hassan keeps it honest on money, and I keep building in
