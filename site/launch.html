@@ -52,6 +52,9 @@
   .shot figcaption{font-size:12px;color:var(--muted);padding:8px 4px 2px;display:flex;
     flex-wrap:wrap;gap:4px 14px;justify-content:space-between}
   .honest b{display:inline-block;margin-top:7px}
+  ol.principles{margin:14px 0 0;padding-left:22px}
+  ol.principles li{margin-bottom:11px;padding-left:4px}
+  ol.principles li::marker{font-weight:800;color:var(--teal)}
   .honest{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--amber);
     border-radius:12px;padding:13px 16px;font-size:13.5px;margin:24px 0}
   .foot{color:var(--muted);font-size:12px;border-top:1px solid var(--border);
@@ -118,6 +121,45 @@
   ophthalmology, physio, mental health, social care &mdash; plus system flow,
   governance and assurance.</p>
 
+  <p><strong>Why it is built the way it is.</strong> I have spent my career on
+  both sides of this &mdash; executive and non-executive roles in digital
+  health, as an operator buying and running these systems, and as a vendor
+  selling them. You learn different things from each seat, and most of what I
+  learned was about how these deals go wrong afterwards. So the design started
+  from constraints rather than features. Seven of them, and everything else
+  follows:</p>
+
+  <ol class="principles">
+    <li><strong>It has to be open.</strong> No data lock-in. The data is yours
+    and it must be easy to get out &mdash; <strong>openEHR</strong> as the
+    clinical data repository and <strong>OMOP</strong> for research are the two
+    vital constituents, not optional extras.</li>
+
+    <li><strong>A single product, so there is nothing to integrate.</strong>
+    That is what delivers real-time, high-quality insight at a fraction of what
+    a traditional estate costs. The expense was never the software; it was the
+    joins.</li>
+
+    <li><strong>Configuration over customisation.</strong> One system, one
+    codebase &mdash; sixteen jurisdictions configured from it so far, with no
+    forks and no bespoke branches.</li>
+
+    <li><strong>Automation and scale, designed in.</strong> You should not be
+    waiting weeks or months for a bug fix or a deployment.</li>
+
+    <li><strong>No partner tax.</strong> We integrate with third parties
+    because the combination genuinely adds value &mdash; not because there is a
+    toll to collect on the way through.</li>
+
+    <li><strong>Tools to migrate on &mdash; and off.</strong> Both directions,
+    deliberately. A route in that has no route out is a trap, however good the
+    product is.</li>
+
+    <li><strong>No long-term contracts, unless you want one.</strong> We want
+    you to stay because you want to, and not because you can&rsquo;t get
+    out.</li>
+  </ol>
+
   <p>One system also means the whole wrap-around lives in the same place: a
   patient portal with research opt-in and opt-out choices that are actually
   enforced &mdash; not stored and ignored &mdash; a research platform with
@@ -167,8 +209,9 @@
 
   <div class="honest">
     <strong>The four questions a buyer actually asks.</strong>
-    <br><b>What do I buy?</b> One edition, &pound;1 per instance, self-hosted on
-    your own infrastructure.
+    <br><b>What do I buy?</b> One edition, starting at &pound;1 per instance for
+    commvita Flow, self-hosted on your own infrastructure &mdash; or commvita
+    Governance &amp; Assurance on a competitive basis.
     <br><b>What does it replace?</b> On day one, nothing clinical. It replaces the
     governance or flow tooling around the record &mdash; the spreadsheets, the
     separate risk and board systems, the manual reporting &mdash; not the
