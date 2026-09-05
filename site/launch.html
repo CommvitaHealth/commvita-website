@@ -465,35 +465,38 @@
 
   <ol class="principles">
     <li><strong>Depth an incumbent has earned &mdash; 12.</strong> Somebody has
-    done one thing for thirty years and does it better. Epic&rsquo;s identity
-    integration is deeper and more battle-tested at hospital scale; Privitar
-    does privacy engineering as a product where we hold a policy register and
-    no differential privacy at all; three vendors ship a deployed length-of-stay
-    prediction model and we ship none. That last one is instructive: an earlier
+    done one thing for thirty years and does it better. An identity integration
+    deeper and more battle-tested at hospital scale than ours; a dedicated
+    privacy-engineering product, where we hold a policy register and no
+    differential privacy at all; three vendors shipping a deployed
+    length-of-stay prediction model where we ship none. That last one is instructive: an earlier
     version of the catalogue rated us <em>ahead</em> on prediction on the
     strength of having no model at all. That was corrected to behind.</li>
 
     <li><strong>Not built yet &mdash; 7.</strong> Straightforward functional
     gaps, conceded. An ERP can prove a saving landed in the general ledger and
     commvita cannot &mdash; it records the method and the evidence a finance
-    business partner used instead. Theatre lists, national audit feeds and the
-    NRL connector sit here too.</li>
+    business partner used instead. Theatre lists, national clinical audit
+    submissions, and the link into the national record-locator service sit
+    here too.</li>
 
     <li><strong>Built, but not connected &mdash; 4.</strong> The capability is
-    implemented against the standards and has nowhere live to talk to. We hold
-    no Participation Agreement, we are not a QHIN, and outbound exchange
-    honestly reports <em>transmitted&nbsp;=&nbsp;false</em> until a certificate
-    and endpoint are provisioned. Built and unconnected loses to deployed, and
-    that is the right reading.</li>
+    built to the published standards and has nowhere live to talk to. Sharing
+    records between organisations runs over national exchange networks, and
+    joining one means being admitted as a member and issued the security
+    credentials that let you send. We have not joined any of them yet. So the
+    software does the honest thing and records that nothing was sent, rather
+    than showing a success it cannot back up. Built and unconnected loses to
+    deployed, and that is the right reading.</li>
 
-    <li><strong>Our own partners &mdash; 3.</strong> Luscii, Spryt and
-    Microsoft Entra are not competitors; we consume them. Rated behind anyway,
-    because pretending a supplier you depend on is a rival you beat would make
-    the whole catalogue worthless.</li>
+    <li><strong>Our own partners &mdash; 3.</strong> These are not
+    competitors; we partner with them. Rated behind anyway, because pretending
+    a supplier you work alongside is a rival you beat would make the whole
+    catalogue worthless.</li>
 
     <li><strong>Where we are deliberately not competing &mdash; 4.</strong>
-    DHIS2 is the national platform commvita feeds rather than replaces &mdash;
-    behind by design. And two where we would rather ship nothing than ship
+    A national platform commvita feeds rather than replaces &mdash; behind by
+    design. And two where we would rather ship nothing than ship
     something unverified: no pharmacogenomic content, because none has been
     read from source, so a deployment licenses its own; and a safe-staffing
     dashboard still seeded rather than wired, which cannot be ahead of a
