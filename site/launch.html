@@ -52,6 +52,13 @@
   .shot figcaption{font-size:12px;color:var(--muted);padding:8px 4px 2px;display:flex;
     flex-wrap:wrap;gap:4px 14px;justify-content:space-between}
   .honest b{display:inline-block;margin-top:7px}
+  table.tally{border-collapse:collapse;margin:14px 0 4px;width:100%;max-width:430px}
+  table.tally td{border-bottom:1px solid var(--border);padding:7px 0}
+  table.tally td.n{width:56px;font-weight:800;color:var(--teal);
+    font-variant-numeric:tabular-nums;text-align:right;padding-right:16px}
+  table.tally tr.total td{border-bottom:0;border-top:2px solid var(--ink);
+    font-weight:750;padding-top:9px}
+  table.tally tr.total td.n{color:var(--ink)}
   ol.principles{margin:14px 0 0;padding-left:22px}
   ol.principles li{margin-bottom:11px;padding-left:4px}
   ol.principles li::marker{font-weight:800;color:var(--teal)}
@@ -442,6 +449,19 @@
   <p>The 30 are told straight, because a benchmark that only says nice things
   is marketing. Every one carries a reason in the catalogue, and they group
   into five kinds:</p>
+
+  <table class="tally">
+    <tbody>
+      <tr><td class="n">12</td><td>Depth an incumbent has earned</td></tr>
+      <tr><td class="n">7</td><td>Not built yet</td></tr>
+      <tr><td class="n">4</td><td>Built, but not connected</td></tr>
+      <tr><td class="n">3</td><td>Our own partners</td></tr>
+      <tr><td class="n">4</td><td>Deliberately not competing</td></tr>
+      <tr class="total"><td class="n">30</td><td>behind at least one competitor</td></tr>
+    </tbody>
+  </table>
+
+  <p>In more detail:</p>
 
   <ol class="principles">
     <li><strong>Depth an incumbent has earned &mdash; 12.</strong> Somebody has
