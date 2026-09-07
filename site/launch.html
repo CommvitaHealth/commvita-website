@@ -232,8 +232,8 @@
     because nothing has to be migrated first.
   </div>
 
-  <p>The whole platform is there if you want it later. The way in is
-  deliberately small, cheap and easy to undo. And if it stays a governance
+  <p>The whole platform is there if you want it later. The way in is small,
+  cheap and easy to undo. And if it stays a governance
   product for you forever, that&rsquo;s a perfectly good outcome.</p>
 
   <h2>Why one system &mdash; the two bikes</h2>
@@ -285,7 +285,7 @@
   <div class="facts">
     <span class="fact"><b>16</b> jurisdictions configured &mdash; UK, Ireland,
       Caribbean, Africa, Middle East</span>
-    <span class="fact"><b>564</b> live modules of 615 registered</span>
+    <span class="fact"><b>567</b> live modules of 618 registered</span>
     <span class="fact"><b>2,000+</b> automated tests on every build</span>
     <span class="fact">Runs on <b>Azure</b> &mdash; not vapourware</span>
     <span class="fact">FHIR R4 &middot; SNOMED CT &middot; ICD-10/11</span>
@@ -329,8 +329,8 @@
   system on a seeded demonstration estate &mdash; the DEMO DATA and seeded
   banners in the screenshots are the platform saying so itself.</p>
 
-  <p>The same chain of evidence runs into the specialist corners. Genomics is
-  the fair test, because it is the part hardest to fake: commvita holds the
+  <p>It goes into the specialist areas too. Genomics is a good test, because
+  it&rsquo;s the hardest thing to fake: commvita holds the
   pedigree as <strong>data, not a drawing</strong> &mdash; sex, affection,
   deceased, tested and result are stored fields per family member.</p>
 
@@ -374,7 +374,7 @@
   but on a clinical system it&rsquo;s the bit you&rsquo;d want to audit, so
   it&rsquo;s here.</p>
 
-  <p>Under the hood it is deliberately boring: containers on Kubernetes,
+  <p>Under the hood it&rsquo;s deliberately boring: containers on Kubernetes,
   running today on Azure and Docker, with high availability on by default
   &mdash; replicated services, disruption budgets, spread across nodes. The
   pipeline runs the whole test suite plus nineteen build gates, images are
@@ -384,7 +384,7 @@
   <p>It&rsquo;s <strong>designed for cloud portability</strong> &mdash;
   standard containers, nothing tied to one cloud. I say &ldquo;designed
   for&rdquo; on purpose. We haven&rsquo;t stood it up on AWS or Google yet, and
-  the three clouds genuinely behave differently on networking, identity,
+  the three clouds behave differently on networking, identity,
   databases and monitoring. I&rsquo;m not going to claim portability I
   haven&rsquo;t tested.</p>
 
@@ -429,7 +429,7 @@
   and the arithmetic still sits on the page.</p>
 
   <h2>Jack of all trades, master of none?</h2>
-  <p>Fair worry with something this broad. The answer isn&rsquo;t a
+  <p>A reasonable worry with something this broad. The answer isn&rsquo;t a
   scoreboard &mdash; anyone claiming to beat hundreds of competitors deserves
   the scepticism they get. What we built instead is a check on ourselves: as
   each feature is built it&rsquo;s benchmarked against the named incumbents in
@@ -439,10 +439,10 @@
   marketing. Of <strong>618 modules registered and 567 live</strong>, 432 are
   benchmarked: <strong>256 ahead</strong> of every named competitor,
   <strong>146 on par</strong>, and <strong>30 behind</strong> at least one. You
-  need the split, or you can&rsquo;t tell whether the rest are genuinely ahead
-  or just level. But the 30 is the number I&rsquo;d look at.</p>
+  need the split, or you can&rsquo;t tell whether the rest are ahead or
+  just level. But the 30 is the number I&rsquo;d look at.</p>
 
-  <p>Where I&rsquo;d actually stake the claim is narrower and more useful:
+  <p>Where I&rsquo;d stake the claim is narrower and more useful:
   four things where the breadth earns its keep &mdash; the flow and OPEL
   command centre, the incident-to-board golden thread, real-time outcome and
   inequality measurement, and registration and access checked the same way
@@ -475,7 +475,7 @@
     no model at all. We corrected it to behind.</li>
 
     <li><strong>Not built yet &mdash; 7.</strong> Plain functional gaps, and I
-    concede them. A finance system can prove a saving actually landed in the
+    concede them. A finance system can prove a saving landed in the
     accounts and we can&rsquo;t &mdash; we record the method and the evidence
     the finance business partner used instead. Theatre lists, national clinical
     audit submissions and the link into the national record-locator service sit
@@ -486,8 +486,8 @@
     organisations runs over national exchange networks, and joining one means
     being admitted as a member and issued the credentials that let you send. We
     haven&rsquo;t joined any yet. So the software says nothing was sent, rather
-    than showing a success it can&rsquo;t back up. Built and unconnected loses
-    to deployed, and that&rsquo;s the right reading.</li>
+    than showing a success it can&rsquo;t back up. Built but not connected loses to
+    deployed and working, and that&rsquo;s fair.</li>
 
     <li><strong>Our own partners &mdash; 3.</strong> Not competitors; we
     partner with them. Rated behind anyway, because pretending a supplier you
@@ -543,17 +543,17 @@
   </div>
 
   <p>I&rsquo;d rather hand you the work-list than a page of badges. The
-  platform&rsquo;s own registers work the same way, which is the only reason to
-  believe this one.</p>
+  platform&rsquo;s own registers are written the same way. That&rsquo;s the
+  only reason to trust this one.</p>
 
   <h2>Supplier risk &mdash; and how you leave</h2>
-  <p>Here&rsquo;s the fair challenge to all of this: haven&rsquo;t I just
+  <p>Here&rsquo;s the obvious challenge to all of this: haven&rsquo;t I just
   swapped a dozen suppliers for total dependency on one? And underneath it the
   harder one &mdash; what happens if I run out of money, or one of the
   engineers walks?</p>
 
-  <p>What I can actually evidence is that <strong>getting your data out is a
-  feature, not a promise</strong>. Every record comes out over FHIR R4, the NHS
+  <p>What I can show you is that <strong>your data comes out
+  easily</strong>. Every record comes out over FHIR R4, the NHS
   standard for moving clinical data, including a bulk export of the lot.
   Research extracts come out as OMOP, the open model research databases already
   use, in ordinary spreadsheet or data-file formats. Any successor system can
@@ -566,10 +566,9 @@
   on the buying side and watched what happens when there isn&rsquo;t a way out,
   not from someone whose only interest is shipping you product.</p>
 
-  <p>The sunk cost is deliberately small: &pound;1 an instance to start,
-  self-hosted on your own kit, with partner components behind seams you can cut
-  so individual pieces can be swapped for someone else&rsquo;s. You keep what
-  you already run rather than replacing it.</p>
+  <p>There&rsquo;s not much to lose either: &pound;1 an instance to start,
+  running on your own kit, and the partner pieces can be swapped for someone
+  else&rsquo;s. You keep what you already run rather than replacing it.</p>
 
   <div class="honest"><strong>What I haven&rsquo;t settled.</strong> Escrow for
   the source code, contracted response times, a published support model,
