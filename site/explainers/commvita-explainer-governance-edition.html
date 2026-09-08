@@ -122,6 +122,13 @@ figcaption b{color:var(--ink)}
   .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
 </style></head><body>
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
@@ -143,6 +150,8 @@ figcaption b{color:var(--ink)}
   <h1>Governance &amp; Assurance Edition</h1>
   <p class="sub">Govern your organisation. The accountability record a board is inspected against &mdash; 117 modules on the Flow Edition base, sold to boards rather than clinicians, with no clinical workflow by design.</p>
   <div class="rule"></div>
+
+  <div class="edge"><span class="edgetag">First to market</span><div><b>Deployment assurance a board can see.</b> Each module carries its own clinical safety case and a health score across safety, information governance, interoperability and usability, staged through release rings aligned to the clinical safety standards. No other platform in this market shows a board what state its own modules are in.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
 
   <div class="key">
     <b>Live vs demonstrated:</b>

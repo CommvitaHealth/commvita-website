@@ -27,6 +27,13 @@
   .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
 </style>
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
@@ -216,6 +223,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <p class="sub">The NHS Federated Data Platform (FDP) connects a defined set of operational products &mdash; care coordination, elective recovery, patient flow, supply chain, population health, vaccination &mdash; on a proprietary national platform. commvita's <strong>Flow Edition</strong> delivers the same product set on <strong>open standards</strong>, adds what the FDP largely does not (<strong>closed-loop action</strong>, <strong>cross-setting reach</strong> into community and social care, and <strong>federation by design</strong>), and ships in the <strong>Flow Edition at &pound;1 per instance</strong> (with optional paid support) &mdash; no Palantir contract. As NHS England repositions ICBs as <strong>strategic commissioners</strong>, the FDP product set increasingly underpins population-need-based planning and allocative value &mdash; and the Flow Edition carries that <strong>strategic-commissioning analytics</strong> layer, plus a <strong>governed-AI</strong> answer to the FDP&rsquo;s emerging AI, on open standards.</p>
   <div class="rule"></div>
   <div style="text-align:center;font-size:12px;color:var(--sub);margin:12px 0 4px;letter-spacing:.02em">&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</div>
+  <div class="edge"><span class="edgetag">First to market</span><div><b>Closed-loop actions on the flow canvas.</b> The canvas raises the discharge task, sends the notification and books the transport, rather than drawing the delay and leaving it. Acting on the constraint is what separates it from every operational dashboard we assessed.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
+
   <div class="key">
     <b>Live vs demonstrated:</b>
     <span><span class="dot" style="background:var(--teal)"></span><b>Live</b> — real, API-backed platform logic (wired end-to-end today)</span>

@@ -122,6 +122,13 @@ figcaption b{color:var(--ink)}
   .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
 </style></head><body>
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
@@ -143,6 +150,8 @@ figcaption b{color:var(--ink)}
   <h1>One record, four ways of being paid for it</h1>
   <p class="sub">How commvita prices commissioned activity, applies a statutory means test, raises a private invoice and captures value-based revenue — with every price, threshold and cap held as <strong>sourced, effective-dated configuration</strong> rather than a constant in the code, and with an honest account of where the platform stops and the finance ledger begins.</p>
   <div class="rule"></div>
+
+  <div class="edge"><span class="edgetag">First to market</span><div><b>Payroll on the same record as the contract and the establishment.</b> Pay runs read contract and full-time-equivalent data directly, with service-line profitability and multiple legal entities for a federated structure. No separate human-resources system in the middle.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
 
   <div class="key">
     <b>Live vs demonstrated:</b>

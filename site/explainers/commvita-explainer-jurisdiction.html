@@ -27,6 +27,13 @@
   .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
 </style>
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
@@ -198,6 +205,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <h1>Building your commvita health system for your jurisdiction — configure, don't hardcode</h1>
   <p class="sub">How one platform becomes <strong>your</strong> health system: every jurisdiction-specific behaviour — identifier validation, terminology, workflow gating, residency, legal provisions — is <strong>read from a versioned, source-cited, signed-off Jurisdiction Profile</strong>, not written into the code. A jurisdiction goes live only when its mandatory domains are signed off and unexpired — and a missing value <strong>fails safe</strong>, never silently borrowing another jurisdiction's answer.</p>
   <div class="rule"></div>
+
+  <div class="edge"><span class="edgetag">Ahead of the field</span><div><b>Every jurisdiction value is sourced, dated and signed off by a named person.</b> A missing or expired value disables the capability that depends on it, with the reason on screen. It never falls back to another country&rsquo;s answer. A jurisdiction is not deployable until every mandatory domain is signed off and current.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
 
   <div class="key">
     <b>Live vs demonstrated:</b>

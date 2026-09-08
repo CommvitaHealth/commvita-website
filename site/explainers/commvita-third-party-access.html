@@ -27,6 +27,13 @@
   .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
 </style>
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
@@ -181,6 +188,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <h1>Granting a third party access to a record — and extending it when care continues</h1>
   <p class="sub">A worked example following one external care worker from a <strong>time-boxed grant</strong>, through a <strong>scoped, minimum-necessary view</strong>, to <strong>automatic expiry</strong> and a governed <strong>extension</strong> — with every step landing in an immutable, intelligent audit.</p>
   <div class="rule"></div>
+
+  <div class="edge"><span class="edgetag">Ahead of the field</span><div><b>Delegated family and carer access, with consent and an audit trail.</b> One front door across transport, appointments, referrals and community services, with plain-English next steps and escalation to the on-call manager, configurable per jurisdiction without bespoke code.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
 
   <div class="key">
     <b>Live vs demonstrated:</b>

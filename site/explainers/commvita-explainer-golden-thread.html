@@ -27,6 +27,13 @@
   .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
 </style>
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
@@ -178,10 +185,10 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 .tnode.on{border-color:var(--teal);border-width:2px;box-shadow:0 0 0 3px color-mix(in srgb,var(--teal) 22%,transparent)}
 .tarw{display:flex;align-items:center;color:var(--muted);font-weight:700;font-size:15px;flex:none}
 @media(max-width:720px){.thread{flex-direction:column}.tarw{transform:rotate(90deg);align-self:center}}
-.edge{margin-top:12px;border-radius:11px;padding:11px 13px;font-size:12px;background:color-mix(in srgb,var(--teal) 10%,var(--card));border:1px solid color-mix(in srgb,var(--teal) 32%,var(--border));color:var(--ink)}
-.edge b{color:var(--ink)}
-.edge .meta{display:flex;flex-wrap:wrap;gap:5px 14px;margin-top:6px;font-family:var(--mono);font-size:11px;color:var(--sub)}
-.edge .meta b{font-family:var(--sans);color:var(--ink)}
+.pedge{margin-top:12px;border-radius:11px;padding:11px 13px;font-size:12px;background:color-mix(in srgb,var(--teal) 10%,var(--card));border:1px solid color-mix(in srgb,var(--teal) 32%,var(--border));color:var(--ink)}
+.pedge b{color:var(--ink)}
+.pedge .meta{display:flex;flex-wrap:wrap;gap:5px 14px;margin-top:6px;font-family:var(--mono);font-size:11px;color:var(--sub)}
+.pedge .meta b{font-family:var(--sans);color:var(--ink)}
 /* BAF lens rows */
 .lens{display:flex;flex-direction:column;gap:0}
 .lrow{display:grid;grid-template-columns:150px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--border);align-items:start}
@@ -214,6 +221,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <h1>Incident to Board — the Golden Thread</h1>
   <p class="sub">One traceable chain from a frontline event to board assurance — <strong>Event → Theme → Systemic Issue → Risk → Objective (BAF)</strong> — where every promotion carries its evidence, every risk drills back to the events that made it, and de-escalation is earned by <strong>assurance and signal abatement, never the calendar</strong>.</p>
   <div class="rule"></div>
+
+  <div class="edge"><span class="edgetag">First to market</span><div><b>Theme clustering inside the incident workflow.</b> Patterns across the free-text safety record are found where incidents are reported, with no separate analytics tool to license. Incidents name the team they concern, resolved against one staff hierarchy, and a corrective action is raised automatically above a severity threshold.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
 
   <div class="key">
     <b>Live vs demonstrated:</b>
@@ -306,7 +315,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
           <div class="tnode"><div class="k">Objective (BAF)</div><div class="t">SO-2 Safe care</div><div class="m">board-owned</div></div>
         </div>
       </div>
-      <div class="edge"><b>Promotion edge — Systemic Issue → Risk R-19</b>
+      <div class="pedge"><b>Promotion edge — Systemic Issue → Risk R-19</b>
         <div class="meta"><span>who <b>A. Idris (Governance Lead)</b></span><span>when <b>18 Jun 2026 · 14:22</b></span><span> gate <b>passed</b></span><span>evidence <b>7 events · 2 CAPA · 1 DoC</b></span></div>
       </div>
       <div style="margin-top:9px;font-size:11.5px;color:var(--muted)">Counts reconcile: R-19's evidence count (7) equals the drilled event set. One honest orphan event remains "not yet part of any theme".</div>

@@ -122,6 +122,13 @@ figcaption b{color:var(--ink)}
   .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
 </style></head><body>
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
@@ -143,6 +150,8 @@ figcaption b{color:var(--ink)}
   <h1>Send the question, not the data</h1>
   <p class="sub">England&#39;s health and care system is thousands of separate legal entities, and that separation is where accountability lives. This is the blueprint for joining it up without dissolving it — what federates at each of the four layers, what it costs, and an honest account of which parts are running today.</p>
   <div class="rule"></div>
+
+  <div class="edge"><span class="edgetag">First to market</span><div><b>A shared record that lets a clinician mark an entry confidential.</b> Sharing across organisations usually means all or nothing. Here the record is shared and the sensitive entry stays behind a marker, with a contributors panel showing which organisation may see what.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
 
   <div class="key">
     <b>Live vs demonstrated:</b>

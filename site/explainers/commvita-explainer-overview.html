@@ -27,6 +27,13 @@
   .cvnav{height:52px;padding:0 11px;gap:10px} .cvnav-spacer{height:52px}
   .cvnav .cvnav-mark{display:none}}
 @media print{.cvnav,.cvnav-spacer{display:none}}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
 </style>
 <!-- commvita explainer nav -->
 <div class="cvnav" role="navigation" aria-label="Explainer">
@@ -216,6 +223,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <p class="sub">commvita is one connected care platform spanning <strong>three domains</strong> &mdash; the <strong>clinical</strong> record and care, <strong>operational</strong> flow and resources, and <strong>governance</strong> and assurance &mdash; packaged as <strong>three editions</strong> (Commvita Flow Edition, Governance &amp; Assurance, Population Platform) so an organisation adopts what it needs first. Everything is aimed at the same five outcomes: <strong>better health, better access, less inequality, better value, and a better experience for the workforce</strong>.</p>
   <div class="rule"></div>
   <div style="text-align:center;font-size:12px;color:var(--sub);margin:12px 0 4px;letter-spacing:.02em">&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</div>
+  <div class="edge"><span class="edgetag">First to market</span><div><b>Decision support that fires inside the consultation.</b> Rules run at the moment an order is chosen and again when it is signed, sourced from national guidance, with a coverage map showing which recommendations have no rule behind them and an override rate that exposes alert fatigue.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
+
   <div class="key">
     <b>Live vs demonstrated:</b>
     <span><span class="dot" style="background:var(--teal)"></span><b>Live</b> — real, API-backed platform logic (wired end-to-end today)</span>
