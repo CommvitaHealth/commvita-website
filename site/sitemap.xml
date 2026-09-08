@@ -201,11 +201,6 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://commvita.com/explainers/commvita-explainer-elective-recovery.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://commvita.com/explainers/commvita-explainer-eprr-bc.html</loc>
     <lastmod>2026-08-17</lastmod>
     <priority>0.4</priority>
@@ -429,5 +424,15 @@
     <loc>https://commvita.com/launch.html</loc>
     <lastmod>2026-09-01</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://commvita.com/explainers/commvita-explainer-leftshift-intelligence.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://commvita.com/explainers/commvita-explainer-security-architecture.html</loc>
+    <lastmod>2026-08-17</lastmod>
+    <priority>0.4</priority>
   </url>
 </urlset>
