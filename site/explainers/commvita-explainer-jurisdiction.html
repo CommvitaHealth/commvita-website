@@ -231,13 +231,13 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="who">The org &amp; governance model you configure</div>
       <p>The 10-step Jurisdiction Wizard captures identity, identifiers, landscape and <strong>governance model</strong>; the Health System Builder configures the <strong>multi-tier hierarchy</strong> (national → regional → ICS → PCN → practice → team) with a self-serve onboarding checklist.</p>
       <div class="where"><b>Where in commvita</b>
-        Jurisdiction Wizard <span class="chip">api.jurisdictionWizard</span> · Health System Builder <span class="chip">/health-system-builder</span>.</div>
+        Jurisdiction Wizard <span class="chip">Jurisdiction Wizard API</span> · Health System Builder <span class="chip">/health-system-builder</span>.</div>
     </div>
   </div>
 
   <!-- SECTION 1 — PROFILE -->
   <h2 class="grant"><span class="num">1</span> Define the variance — the Jurisdiction Profile</h2>
-  <p class="lead">Everything that differs between countries lives here as sourced, effective-dated, versioned entries — governed the same way regardless of jurisdiction, per <code>docs/COMMVITA-PRD-jurisdiction-profile.md</code>.</p>
+  <p class="lead">Everything that differs between countries lives here as sourced, effective-dated, versioned entries — governed the same way regardless of jurisdiction.</p>
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>14 domains, every value governed</h4>
@@ -249,12 +249,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">Resolution Tester</span><span class="chip">sovereign → sub-jurisdiction → org</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Fail-safe on missing or expired values</h4>
-      <p>If no value resolves — or the nearest one has <strong>expired</strong> — commvita returns an <strong>explicit fail-safe reason</strong> and the dependent capability declines to run. It <strong>never</strong> silently defaults to another jurisdiction's answer. This is the load-bearing safety rule (PRD §4.6).</p>
-      <div class="loc"><span class="chip">fail-safe · never borrow</span><span class="chip">PRD §4.6</span></div></div></div>
+      <p>If no value resolves — or the nearest one has <strong>expired</strong> — commvita returns an <strong>explicit fail-safe reason</strong> and the dependent capability declines to run. It <strong>never</strong> silently defaults to another jurisdiction's answer. This is the load-bearing safety rule.</p>
+      <div class="loc"><span class="chip">fail-safe · never borrow</span></div></div></div>
     <div class="step g"><div class="s">4</div><div>
       <h4>Not deployable until signed off</h4>
-      <p>The Deployability Board tracks <strong>domains-present / 14</strong>, a by-status breakdown, and a <strong>per-mandatory-domain sign-off ✓/✗</strong>, resolving to a hard <strong>DEPLOYABLE / NOT DEPLOYABLE</strong> verdict plus overdue-review flags. A jurisdiction is not live until every mandatory domain is <span class="chip">signed_off</span> and unexpired (PRD §10).</p>
-      <div class="loc"><span class="chip">Deployability Board</span><span class="chip">PRD §10</span></div></div></div>
+      <p>The Deployability Board tracks <strong>domains-present / 14</strong>, a by-status breakdown, and a <strong>per-mandatory-domain sign-off ✓/✗</strong>, resolving to a hard <strong>DEPLOYABLE / NOT DEPLOYABLE</strong> verdict plus overdue-review flags. A jurisdiction is not live until every mandatory domain is <span class="chip">signed_off</span> and unexpired.</p>
+      <div class="loc"><span class="chip">Deployability Board</span></div></div></div>
   </div>
 
   <!-- SHOT (a) : Deployability Board -->
@@ -286,7 +286,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <div class="dom"><span class="nm">Funding model</span> <span class="st ok">✓ signed_off</span></div>
       </div>
       <div class="strip amber" style="margin:12px 0 0">
-        <span>◷</span><span><b>Screening schedule</b> — signed off, review cadence reached on 30 Jun 2026. Re-attestation by the named signatory keeps the jurisdiction deployable.</span>
+        <span>◷</span><span><b>Screening schedule</b> — signed off, review cadence reached on 30 Jun 2027. Re-attestation by the named signatory keeps the jurisdiction deployable.</span>
       </div>
       <div style="margin-top:9px;font-size:11.5px;color:var(--muted)">Contrast: any mandatory domain at ✗ (draft / sourced / expired) flips the verdict to <b>NOT DEPLOYABLE</b> and blocks go-live.</div>
     </div>
@@ -303,12 +303,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/pack-registry</span><span class="chip">/packs/</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Run the 10-step Jurisdiction Wizard</h4>
-      <p>Identity → Modules → Identifiers → <strong>Landscape</strong> (org hierarchy / payers / provider types / funding) → <strong>Governance &amp; Org Model</strong> → Term Overrides → Frameworks → Compliance → <strong>Currencies (ISO 4217)</strong> → Review. Each step writes to the jurisdiction config via <span class="chip">api.jurisdictionWizard</span>.</p>
-      <div class="loc"><span class="chip">api.jurisdictionWizard</span></div></div></div>
+      <p>Identity → Modules → Identifiers → <strong>Landscape</strong> (org hierarchy / payers / provider types / funding) → <strong>Governance &amp; Org Model</strong> → Term Overrides → Frameworks → Compliance → <strong>Currencies (ISO 4217)</strong> → Review. Each step writes to the jurisdiction config via <span class="chip">Jurisdiction Wizard API</span>.</p>
+      <div class="loc"><span class="chip">Jurisdiction Wizard API</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Pick the governance model — not one shape for all</h4>
-      <p>The Governance &amp; Org Model step sets a <code>model_type</code> — <span class="chip">commissioning_hierarchy</span> · <span class="chip">multi_payer</span> · <span class="chip">insurance_based</span> · <span class="chip">universal_coverage</span> — with pre-built templates for <strong>NHS England, US ACO, HSE Ireland, a Crown Dependency HCS and Saudi MOH</strong>. A US multi-payer model disables the commissioning hierarchy view and enables a payer panel.</p>
-      <div class="loc"><span class="chip">model_type</span><span class="chip">NHS England · US ACO · HSE · Crown Dependency HCS · Saudi MOH</span></div></div></div>
+      <p>The Governance &amp; Org Model step sets a governance model — <span class="chip">commissioning_hierarchy</span> · <span class="chip">multi_payer</span> · <span class="chip">insurance_based</span> · <span class="chip">universal_coverage</span> — with pre-built templates for <strong>NHS England, US ACO, HSE Ireland, a Crown Dependency HCS and Saudi MOH</strong>. A US multi-payer model disables the commissioning hierarchy view and enables a payer panel.</p>
+      <div class="loc"><span class="chip">governance model</span><span class="chip">NHS England · US ACO · HSE · Crown Dependency HCS · Saudi MOH</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Shape the tiers &amp; onboard</h4>
       <p>The Health System Builder configures the multi-tier hierarchy (<strong>national / regional / ICS / PCN / practice / team</strong>) and drives a <strong>self-serve onboarding checklist</strong> plus a certified-partner ecosystem — while <strong>RBAC</strong> maps <strong>18 roles × 16 domains</strong> onto that structure, and the <strong>JurisdictionFlag</strong> component flies each region's correct national/regional flag.</p>
@@ -345,7 +345,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
           <div class="scopechips">
             <span class="sc">CMS MSSP</span><span class="sc">Commercial MA</span><span class="sc">Medicaid MCO</span>
           </div>
-          <div style="margin-top:8px;font-size:12px;color:var(--muted)">model_type: <b>multi_payer</b> · commissioning hierarchy view disabled.</div>
+          <div style="margin-top:8px;font-size:12px;color:var(--muted)">governance model: <b>multi_payer</b> · commissioning hierarchy view disabled.</div>
         </div>
       </div>
       <div class="btnrow">
@@ -362,11 +362,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step g"><div class="s">▪</div><div>
       <h4>Identifier validation by profile, not by code</h4>
-      <p>NHS Number is checked with the <strong>Modulus-11</strong> algorithm; a Crown Dependency <strong>JH-######</strong> and Scotland <strong>CHI</strong> by their own formats; the US uses <strong>MBI + MRN</strong>. The validator reads the format from the jurisdiction's identifier domain — an <strong>unknown scheme fails safe</strong> rather than passing a value it can't verify (PRD J-06).</p>
+      <p>NHS Number is checked with the <strong>Modulus-11</strong> algorithm; a Crown Dependency <strong>JH-######</strong> and Scotland <strong>CHI</strong> by their own formats; the US uses <strong>MBI + MRN</strong>. The validator reads the format from the jurisdiction's identifier domain — an <strong>unknown scheme fails safe</strong> rather than passing a value it can't verify.</p>
       <div class="loc"><span class="chip">Identifier Validator</span><span class="chip">NHS mod-11 · JH-###### · CHI · MBI</span></div></div></div>
     <div class="step g"><div class="s">▪</div><div>
       <h4>One catalogue, many jurisdictions</h4>
-      <p>England · Crown Dependencies (Guernsey · Isle of Man) · Ireland (HSE) · Jamaica (MOHW) · Kenya · Scotland · Wales · Oman · Saudi Arabia (MOH) · Gibraltar (GHA) · <strong>commvita Care ACO (US, CMS MSSP)</strong> — each a configured profile + pack, not a code fork. Standards follow the jurisdiction: <strong>UK GDPR</strong>, <strong>Saudi PDPL</strong>, and so on.</p>
+      <p>England · Crown Dependencies (Guernsey · Isle of Man) · Ireland (HSE) · Jamaica (MOHW) · Kenya · Scotland · Wales · Oman · Saudi Arabia (MOH) · Gibraltar (GHA) · <strong>commvita Care ACO (US, CMS MSSP)</strong> — each a configured, seeded profile + pack, not a code fork and not a deployment. Standards follow the jurisdiction: <strong>UK GDPR</strong>, <strong>Saudi PDPL</strong>, and so on.</p>
       <div class="loc"><span class="chip">seeded jurisdictions</span><span class="chip">UK GDPR · Saudi PDPL</span></div></div></div>
   </div>
 
@@ -401,7 +401,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         </div>
       </div>
       <div class="strip amber" style="margin:12px 0 0">
-        <span>🛡</span><span>The validator never <b>borrows</b> another jurisdiction's format. An unrecognised scheme <b>fails safe</b> (PRD J-06) rather than passing an unverifiable identifier.</span>
+        <span>🛡</span><span>The validator never <b>borrows</b> another jurisdiction's format. An unrecognised scheme <b>fails safe</b> rather than passing an unverifiable identifier.</span>
       </div>
     </div>
   </div>
@@ -426,11 +426,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <tr><td><b>Deployability gate</b> (signed-off / unexpired)</td><td>Jurisdiction Profile · Deployability Board</td><td><span class="chip">/jurisdiction-profile</span></td><td>domains-present/14 · per-mandatory sign-off · DEPLOYABLE verdict</td><td><b>● Live</b></td></tr>
         <tr><td><b>Identifier validation</b> (mod-11 · JH · CHI · MBI)</td><td>Jurisdiction Profile · Identifier Validator</td><td><span class="chip">/jurisdiction-profile</span></td><td>validate-identifier · unknown scheme fails safe (J-06)</td><td><b>● Live</b></td></tr>
         <tr><td><b>Jurisdiction Packs</b> (capability bundles)</td><td>Pack Registry</td><td><span class="chip">/pack-registry</span> · <span class="chip">/jurisdictions/:code/packs</span></td><td>catalogue · installations map · pack builder</td><td><b>● Live</b> — <span class="chip">/packs/</span></td></tr>
-        <tr><td><b>10-step configuration</b> (identity → currencies → review)</td><td>Jurisdiction Wizard</td><td><span class="chip">api.jurisdictionWizard</span></td><td>list · get · create · update · setActive · featureLocks</td><td><b>● Live</b></td></tr>
-        <tr><td><b>Governance &amp; org model</b> (model_type + templates)</td><td>Jurisdiction Wizard · Step 5</td><td><span class="chip">api.jurisdictionWizard</span></td><td>commissioning_hierarchy / multi_payer / insurance_based / universal_coverage</td><td><b>● Live</b></td></tr>
+        <tr><td><b>10-step configuration</b> (identity → currencies → review)</td><td>Jurisdiction Wizard</td><td><span class="chip">Jurisdiction Wizard API</span></td><td>list · get · create · update · setActive · featureLocks</td><td><b>● Live</b></td></tr>
+        <tr><td><b>Governance &amp; org model</b> (governance model + templates)</td><td>Jurisdiction Wizard · Step 5</td><td><span class="chip">Jurisdiction Wizard API</span></td><td>commissioning_hierarchy / multi_payer / insurance_based / universal_coverage</td><td><b>● Live</b></td></tr>
         <tr><td><b>Multi-tier hierarchy &amp; self-serve onboarding</b></td><td>Health System Builder</td><td><span class="chip">/health-system-builder</span></td><td>national → regional → ICS → PCN → practice → team · onboarding checklist</td><td><b>◍ Demonstrated</b></td></tr>
         <tr><td><b>Role &amp; domain access model</b></td><td>RBAC · RBAC Matrix</td><td><span class="chip">/rbac</span></td><td>18 roles × 16 domains · <span class="chip">/rbac/matrix</span></td><td><b>● Live</b></td></tr>
-        <tr><td><b>National / regional flags</b></td><td>JurisdictionFlag component</td><td><span class="chip">JurisdictionFlag.tsx</span></td><td>inline SVG per <code>code</code></td><td><b>◍ Demonstrated</b></td></tr>
+        <tr><td><b>National / regional flags</b></td><td>Jurisdiction flag component</td><td><span class="chip">inline SVG per jurisdiction</span></td><td>inline SVG per <code>code</code></td><td><b>◍ Demonstrated</b></td></tr>
         <tr><td><b>Jurisdiction dashboards</b> (Ireland · Jamaica · Oman …)</td><td>Ministerial / national overviews</td><td><span class="chip">/ireland-minister</span> · <span class="chip">/jamaica-health</span></td><td>seeded national datasets</td><td><b>◍ Demonstrated</b></td></tr>
       </tbody>
     </table>

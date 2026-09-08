@@ -17,3 +17,21 @@
 /explainers/commvita-brand-refresh.html             /explainers/  301
 /explainers/commvita-brand-specification.html       /explainers/  301
 /explainers/commvita-explainer-spryt-partnership.html  /explainers/  301
+
+# Retired from the explainer library, September 2026 (internal, duplicated or superseded).
+/explainers/commvita-admin-setup-guide.html                         /explainers/                                                   301
+/explainers/commvita-admin-setup-guide                              /explainers/                                                   301
+/explainers/commvita-jurisdiction-agent-architecture.html           /explainers/commvita-explainer-jurisdiction.html               301
+/explainers/commvita-jurisdiction-agent-architecture                /explainers/commvita-explainer-jurisdiction                    301
+/explainers/commvita-jurisdiction-intake-prompt.html                /explainers/commvita-explainer-jurisdiction.html               301
+/explainers/commvita-jurisdiction-intake-prompt                     /explainers/commvita-explainer-jurisdiction                    301
+/explainers/commvita-explainer-montserrat.html                      /explainers/commvita-explainer-caribbean.html                  301
+/explainers/commvita-explainer-montserrat                           /explainers/commvita-explainer-caribbean                       301
+/explainers/commvita-module-map.html                                /explainers/commvita-module-explorer.html                      301
+/explainers/commvita-module-map                                     /explainers/commvita-module-explorer                           301
+/explainers/commvita-explainer-learning-answerable.html             /explainers/commvita-explainer-golden-thread.html              301
+/explainers/commvita-explainer-learning-answerable                  /explainers/commvita-explainer-golden-thread                   301
+/explainers/commvita-explainer-outcome-intelligence.html            /explainers/commvita-explainer-outcome-intelligence-vuit.html  301
+/explainers/commvita-explainer-outcome-intelligence                 /explainers/commvita-explainer-outcome-intelligence-vuit       301
+/explainers/commvita-explainer-platform-2pp.html                    /explainers/commvita-explainer-overview.html                   301
+/explainers/commvita-explainer-platform-2pp                         /explainers/commvita-explainer-overview                        301

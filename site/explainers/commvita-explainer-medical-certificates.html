@@ -336,7 +336,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="step re"><div class="s">▸</div><div>
       <h4>Jurisdiction routing of the report</h4>
       <p>Where the certificate goes is config-driven: <strong>England/Wales/Scotland → police</strong>; <strong>NI → PSNI</strong>; <strong>Crown Dependencies → their local designated authority</strong> (parish / administrative, not always police); Gibraltar → administrative GP-input.</p>
-      <div class="loc"><span class="chip">_FIREARMS_JURISDICTIONS</span><span class="chip">Firearms Act 1968 + guidance 2021/2022</span></div></div></div>
+      <div class="loc"><span class="chip">per-jurisdiction firearms rules</span><span class="chip">Firearms Act 1968 + guidance 2021/2022</span></div></div></div>
   </div>
 
   <!-- SHOT (b) : Firearms decision step -->
@@ -400,7 +400,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="step g"><div class="s">▪</div><div>
       <h4>Jurisdiction-specific certificate</h4>
       <p>The request carries a <code>jurisdiction</code>; the issued certificate cites that jurisdiction's <strong>statute / assurance level / regulator / retention</strong> — England/Wales/Scotland/NI under <strong>UK eIDAS (AdES)</strong>; Crown Dependencies under their <strong>electronic transactions law</strong>; and so on.</p>
-      <div class="loc"><span class="chip">_ESIGN_JURISDICTIONS</span><span class="chip">UK eIDAS AdES</span></div></div></div>
+      <div class="loc"><span class="chip">per-jurisdiction e-signature law</span><span class="chip">UK eIDAS AdES</span></div></div></div>
   </div>
 
   <!-- SECTION 5 — INVOICE -->
@@ -409,8 +409,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Draft Private Patient Charges invoice, auto-raised</h4>
-      <p><code>_esign_raise_invoice</code> raises a <strong>draft Private Patient Charges invoice</strong> — <strong>BMA <code>PrivateFeeItem</code> fee preferred</strong>, template fallback fee otherwise — with <strong>VAT</strong> applied. The <code>invoice_ref</code> is linked back to the request/certificate.</p>
-      <div class="loc"><span class="chip">/private-charges</span><span class="chip">_esign_raise_invoice · invoice_ref</span></div></div></div>
+      <p>The e-signature invoice hook raises a <strong>draft Private Patient Charges invoice</strong> — <strong>BMA <code>PrivateFeeItem</code> fee preferred</strong>, template fallback fee otherwise — with <strong>VAT</strong> applied. The <code>invoice_ref</code> is linked back to the request/certificate.</p>
+      <div class="loc"><span class="chip">/private-charges</span><span class="chip">invoice_ref</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Surfaced &amp; audited</h4>
       <p>The invoice is surfaced in the <strong>ceremony success state</strong> and the Sign <strong>registry</strong>; <code>invoice_raised</code> is written to the <strong>WORM audit</strong>. Debtors and finance reporting then run in Private Patient Charges.</p>
@@ -445,7 +445,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       </div>
       <div class="invoice">
         <div class="ih">🧾 Draft invoice auto-raised · Private Patient Charges <span class="sp" style="flex:1"></span><span class="pill amber dot">draft · INV-2026-0418</span></div>
-        <div class="ln"><span class="desc"><b>Firearms medical report</b> — BMA <code>PrivateFeeItem</code></span><span class="amt">£120.00</span></div>
+        <div class="ln"><span class="desc"><b>Firearms medical report</b> — practice fee item (illustrative)</span><span class="amt">£120.00</span></div>
         <div class="ln"><span class="desc">VAT @ 20%</span><span class="amt">£24.00</span></div>
         <div class="ln total"><span class="desc">Total due</span><span class="amt">£144.00</span></div>
       </div>
@@ -479,7 +479,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <tr><td><b>Firearms review &amp; decision log</b></td><td>Firearms Certificate Management</td><td><span class="chip">/firearms-certification</span></td><td>FirearmsAssessment · FirearmsDecisionLog · <span class="chip">/firearms/…/decision</span></td><td>Home Office/NPCC/BMA MoU 2019</td><td>● Live</td></tr>
         <tr><td><b>Minimum-necessary proforma</b></td><td>Firearms Certificate Management</td><td><span class="chip">/firearms-certification</span></td><td><span class="chip">POST /firearms/…/transmit-proforma</span> · SHA-256 payload hash</td><td>Firearms Act 1968 · SNOMED CT UK</td><td>● Live</td></tr>
         <tr><td><b>Sign — OTP ceremony &amp; certificate</b></td><td>commvita Sign</td><td><span class="chip">/esign</span></td><td><span class="chip">/esign/send-otp · sign · certificate</span> · <code>jurisdiction</code></td><td>UK eIDAS (AdES) · Crown Dependency electronic transactions law</td><td>● Live</td></tr>
-        <tr><td><b>Auto-invoice (report → sign → invoice)</b></td><td>Private Patient Charges</td><td><span class="chip">/private-charges</span></td><td><code>_esign_raise_invoice</code> · <span class="chip">/private</span> · <code>invoice_ref</code> · VAT</td><td>BMA fee guidance · DVLA D4 · Motorsport UK</td><td>● Live</td></tr>
+        <tr><td><b>Auto-invoice (report → sign → invoice)</b></td><td>Private Patient Charges</td><td><span class="chip">/private-charges</span></td><td><code>the e-signature invoice hook</code> · <span class="chip">/private</span> · <code>invoice_ref</code> · VAT</td><td>BMA fee guidance · DVLA D4 · Motorsport UK</td><td>● Live</td></tr>
         <tr><td><b>Immutable evidence</b> (Sign chain + decision log)</td><td>commvita Sign · Firearms</td><td><span class="chip">/esign</span> · <span class="chip">/firearms-certification</span></td><td>SignAuditEvent · WORM · <code>prev_hash → row_hash</code></td><td>WORM · UK GDPR Art.5(1)(f)</td><td>● Live</td></tr>
         <tr><td><b>Registry surfacing</b> (invoice / cert chips)</td><td>commvita Sign · Registry</td><td><span class="chip">/esign</span></td><td>registry chips · ceremony success</td><td>UK eIDAS (AdES)</td><td>◍ Demonstrated</td></tr>
       </tbody>

@@ -210,7 +210,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="role" style="border-top-color:var(--orange)">
       <h3>Declare &amp; govern</h3>
       <div class="who">The board &amp; committees — with an SLA-timed review workflow</div>
-      <p>The <strong>Register of Interests</strong> (PRD v1.1, FR1–FR9): a declaration lifecycle, searchable central register, an SLA-timed <strong>review queue</strong>, a committee <strong>conflict view</strong> and an immutable <strong>audit trail</strong> — complemented by the board <strong>skills matrix</strong> vs well-led governance standards.</p>
+      <p>The <strong>Register of Interests</strong>: a declaration lifecycle, searchable central register, an SLA-timed <strong>review queue</strong>, a committee <strong>conflict view</strong> and an immutable <strong>audit trail</strong> — complemented by the board <strong>skills matrix</strong> vs well-led governance standards.</p>
       <div class="where"><b>Where in commvita</b>
         <span class="chip">/register-of-interests</span> · <span class="chip">/board-entity-governance</span> <span class="pill green dot" style="margin-left:4px">● Live — API /interests/ · /register</span></div>
     </div>
@@ -312,7 +312,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
           <thead><tr><th>Staff · body</th><th>Reg. number</th><th>Expiry</th><th>Status</th><th>Action</th></tr></thead>
           <tbody>
             <tr><td><b>J. Adeyemi</b> · NMC</td><td class="mono">96A1234E</td><td class="mono">31 Mar 2027</td><td><span class="pill green dot">verified</span></td><td><span class="btn ghost">View</span></td></tr>
-            <tr><td><b>S. Kaur</b> · HCPC</td><td class="mono">PH76421</td><td class="mono">18 Aug 2026</td><td><span class="pill amber dot">expires in 6 wks</span></td><td><span class="btn navy">Verify</span></td></tr>
+            <tr><td><b>S. Kaur</b> · HCPC</td><td class="mono">PH76421</td><td class="mono">20 Oct 2026</td><td><span class="pill amber dot">expires in 6 wks</span></td><td><span class="btn navy">Verify</span></td></tr>
             <tr><td><b>D. Okonkwo</b> · GMC</td><td class="mono">7654321</td><td class="mono">05 Jul 2026</td><td><span class="pill red dot">renewal due</span></td><td><span class="btn navy">Verify</span></td></tr>
             <tr><td><b>M. Reilly</b> · Internal</td><td class="mono">CV-COMP-2210</td><td class="mono">—</td><td><span class="pill navy dot">awaiting verify</span></td><td><span class="btn navy">Verify</span></td></tr>
           </tbody>
@@ -330,7 +330,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="step pr"><div class="s">1</div><div>
       <h4>DSPT Criterion 7 driven from live training data</h4>
       <p><strong>IG Training Compliance</strong> tracks staff IG-training completion against <strong>DSPT Criterion 7</strong>, escalates the overdue and auto-generates a <strong>DSPT evidence pack</strong> — the annual submission assembled from the record, not reconstructed.</p>
-      <div class="loc"><span class="chip">/ig-training-compliance</span><span class="chip">API /ig-training/</span><span class="chip">DSPT 2024/25 · Criterion 7</span></div></div></div>
+      <div class="loc"><span class="chip">/ig-training-compliance</span><span class="chip">API /ig-training/</span><span class="chip">DSPT · Criterion 7</span></div></div></div>
     <div class="step pr"><div class="s">2</div><div>
       <h4>Import a framework, conduct a RAG audit</h4>
       <p>The <strong>Compliance Action Hub</strong> imports the applicable <strong>regulatory compliance framework</strong> for the jurisdiction — and runs an audit with a <strong>RAG rating and finding per requirement</strong>, manual additions allowed.</p>
@@ -377,7 +377,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- SECTION 4 — REGISTER OF INTERESTS -->
   <h2 class="rescind"><span class="num">4</span> Register of Interests — conflicts declared, reviewed and audited</h2>
-  <p class="lead">Good governance depends on knowing who holds what interest. The Register of Interests (PRD v1.1, FR1–FR9) makes declaration a governed lifecycle with an SLA-timed review and an immutable trail — so a conflict is visible before a committee decides, not after.</p>
+  <p class="lead">Good governance depends on knowing who holds what interest. The Register of Interests makes declaration a governed lifecycle with an SLA-timed review and an immutable trail — so a conflict is visible before a committee decides, not after.</p>
   <div class="steps">
     <div class="step re"><div class="s">1</div><div>
       <h4>Declare — a governed lifecycle</h4>
@@ -448,10 +448,10 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <tr><td><b>Accreditations</b> (expiry · manager verify)</td><td>commvita Learn</td><td><span class="chip">/learn</span></td><td>AcademyAccreditation</td><td>NMC / GMC / HCPC</td><td><span class="pill green dot">● Live</span></td></tr>
         <tr><td><b>Competencies</b> (supervisor sign-off queue)</td><td>commvita Learn</td><td><span class="chip">/learn</span></td><td>AcademyCompetency · AcademyCompetencyRecord</td><td>clinical supervision</td><td><span class="pill green dot">● Live</span></td></tr>
         <tr><td><b>Offline learning</b> (queued + auto-synced)</td><td>commvita Learn Mobile</td><td><span class="chip">/mobile-learn</span></td><td><span class="chip">POST /learn/completions</span></td><td>IndexedDB sync</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>DSPT Criterion 7 training compliance</b></td><td>IG Training Compliance</td><td><span class="chip">/ig-training-compliance</span></td><td>overdue escalation · auto evidence pack · API <span class="chip">/ig-training/</span></td><td>DSPT 2024/25 · Criterion 7</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>DSPT Criterion 7 training compliance</b></td><td>IG Training Compliance</td><td><span class="chip">/ig-training-compliance</span></td><td>overdue escalation · auto evidence pack · API <span class="chip">/ig-training/</span></td><td>DSPT · Criterion 7</td><td><span class="pill green dot">● Live</span></td></tr>
         <tr><td><b>Regulatory audit &amp; evidence</b> (framework · RAG · actions)</td><td>Compliance Action Hub</td><td><span class="chip">/compliance-hub</span></td><td>ComplianceAudit · ComplianceAuditItem · ComplianceAction · API <span class="chip">/compliance/</span></td><td>Regulatory compliance frameworks</td><td><span class="pill green dot">● Live</span></td></tr>
         <tr><td><b>Compliance overview &amp; VCSE tabs</b></td><td>Compliance Action Hub</td><td><span class="chip">/compliance-hub</span></td><td>Quality Statements · AI gap analysis</td><td>Regulatory compliance</td><td><span class="pill amber dot">◍ Demonstrated</span></td></tr>
-        <tr><td><b>Register of Interests</b> (lifecycle · SLA review · audit)</td><td>Register of Interests</td><td><span class="chip">/register-of-interests</span></td><td>declaration lifecycle · review queue · audit trail (seeded — no <span class="chip">/interests/</span> API yet)</td><td>Register of Interests PRD v1.1 (FR1–FR9)</td><td><span class="pill amber dot">◍ Demonstrated</span></td></tr>
+        <tr><td><b>Register of Interests</b> (lifecycle · SLA review · audit)</td><td>Register of Interests</td><td><span class="chip">/register-of-interests</span></td><td>declaration lifecycle · review queue · audit trail (seeded — no <span class="chip">/interests/</span> API yet)</td><td>Register of Interests </td><td><span class="pill amber dot">◍ Demonstrated</span></td></tr>
         <tr><td><b>Board skills matrix</b> (8×9 vs Well-Led)</td><td>Board Entity Governance</td><td><span class="chip">/board-entity-governance</span></td><td>skills matrix · coverage %</td><td>Well-led governance · NHS Code of Accountability</td><td><span class="pill amber dot">◍ Demonstrated</span></td></tr>
       </tbody>
     </table>
@@ -459,8 +459,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <div class="foot">
     <span>© 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</span>
-    <span>NHS Statutory &amp; Mandatory Training framework</span><span>DSPT 2024/25 Criterion 7</span><span>Regulatory compliance frameworks</span>
-    <span>NMC / GMC / HCPC</span><span>Register of Interests PRD v1.1</span><span>Non-SaMD compliance control surface</span>
+    <span>NHS Statutory &amp; Mandatory Training framework</span><span>DSPT Criterion 7</span><span>Regulatory compliance frameworks</span>
+    <span>NMC / GMC / HCPC</span><span>Register of Interests</span><span>Non-SaMD compliance control surface</span>
   </div>
 </div>
 </body></html>

@@ -239,11 +239,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step bl"><div class="s">B1</div><div>
       <h4>EEHRxF — bind the European exchange format the day it publishes</h4>
-      <p><strong>Today:</strong> the IPS generator is live and every priority category is held as structured FHIR. <strong>The bridge:</strong> pin the published EEHRxF profiles into a schema file and validate every emitted record against them — the exact pattern already shipped for the NHS FDP Canonical Data Model, where the real published OpenAPI (16 objects / 507 fields) is pinned into <span class="chip">fdp_cdm_object_schema.json</span> and every extract is conformance-scored per object. Same emitter, different pinned spec.</p>
+      <p><strong>Today:</strong> the IPS generator is live and every priority category is held as structured FHIR. <strong>The bridge:</strong> pin the published EEHRxF profiles into a schema file and validate every emitted record against them — the exact pattern already shipped for the NHS FDP Canonical Data Model, where the published OpenAPI (16 objects / 507 fields) is pinned and every extract is conformance-scored per object. Same emitter, different pinned spec.</p>
       <div class="loc"><span class="chip">/ehds</span><span class="chip">precedent: /fdp-cdm · CDM Extract</span></div></div></div>
     <div class="step bl"><div class="s">B2</div><div>
       <h4>Interoperability component — a conformity declaration over an existing API</h4>
-      <p><strong>Today:</strong> the open FHIR R4 surface and OpenAPI contract exist. <strong>The bridge:</strong> run the Chapter III conformity self-assessment against the harmonised specs when adopted and publish the declaration — assembled the way commvita™ already assembles DTAC and DSPT evidence packs, and staged through the existing assurance-ring model (Ring 3 = regulated deployments).</p>
+      <p><strong>Today:</strong> the open FHIR R4 surface and OpenAPI contract exist. <strong>The bridge:</strong> run the Chapter III conformity self-assessment against the harmonised specs when adopted and publish the declaration — assembled the way commvita™ already assembles DTAC and DSPT evidence packs, and staged through the existing assurance model for regulated deployments.</p>
       <div class="loc"><span class="chip">/assurance</span><span class="chip">/dtac</span></div></div></div>
     <div class="step bl"><div class="s">B3</div><div>
       <h4>MyHealth@EU — one credential-driven adapter per national contact point</h4>
@@ -258,11 +258,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <p><strong>Today:</strong> the draft's twelve building blocks are mapped in-product (below). <strong>The bridge:</strong> when the final guidance publishes, the same register is re-mapped against the final building-block list — any delta becomes a scoped backlog item rather than a discovery exercise.</p>
       <div class="loc"><span class="chip">/architecture · Standards</span></div></div></div>
   </div>
-  <div class="callout teal"><b>Why the bridge is thin:</b> the data is already structured in the target vocabularies, the adapter and pinned-schema patterns are already in production, and jurisdictional variance is already configuration. The gaps close by <b>mapping and onboarding</b>, not by re-architecting — and no competitor can close them earlier, because the specifications the gaps depend on have not been published for anyone.</div>
+  <div class="callout teal"><b>Why the bridge is thin:</b> the data is already structured in the target vocabularies, the adapter and pinned-schema patterns are already in production, and jurisdictional variance is already configuration. The gaps close by <b>mapping and onboarding</b>, not by re-architecting. The specifications the remaining gaps depend on have not yet been published.</div>
 
   <div class="flow">
     <span class="node" style="background:var(--eu)">2025 — EHDS in force</span><span class="arw">→</span>
-    <span class="node" style="background:var(--who)">2026 — WHO guidance finalises · EU implementing acts drafted</span><span class="arw">→</span>
+    <span class="node" style="background:var(--who)">2026 — WHO guidance expected · EU implementing acts drafted</span><span class="arw">→</span>
     <span class="node" style="background:var(--navy)">2027 — EHDS applies · B2 conformity</span><span class="arw">→</span>
     <span class="node" style="background:var(--grant)">2029–2031 — priority categories &amp; secondary use · B1 + B3 + B4 live</span>
   </div>

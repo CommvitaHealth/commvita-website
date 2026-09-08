@@ -177,8 +177,7 @@ figcaption b{color:var(--ink)}
       clinically supervised by their budget holder.</p>
       <div class="where"><b>Where it lives</b>
         <span class="chip">/health-system-builder</span> · <span class="chip">/hierarchy-builder</span> ·
-        <span class="chip">/org-admin</span> · <span class="chip">GET /hierarchy/</span> ·
-        <code>StaffHierarchyNode</code></div>
+        <span class="chip">/org-admin</span> · <span class="chip">GET /hierarchy/</span></div>
     </div>
     <div class="role" style="border-top-color:#00B8A6">
       <h3>People and access</h3>
@@ -188,8 +187,7 @@ figcaption b{color:var(--ink)}
       audit. Access is then resolved at sign-in from three sources: the person's own organisations,
       anything delegated to them, and any group they belong to.</p>
       <div class="where"><b>Where it lives</b>
-        <span class="chip">POST /auth/users/provision</span> · <span class="chip">/rbac-matrix</span> ·
-        <code>UserOrganisation</code> · <code>UserDelegation</code> · <code>UserGroup</code></div>
+        <span class="chip">POST /auth/users/provision</span> · <span class="chip">/rbac-matrix</span></div>
     </div>
     <div class="role" style="border-top-color:#7B61FF">
       <h3>Jurisdiction and law</h3>
@@ -205,13 +203,11 @@ figcaption b{color:var(--ink)}
     <div class="role" style="border-top-color:#FFB020">
       <h3>What each role sees</h3>
       <div class="who">Layer 5 · <span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></div>
-      <p>Navigation is narrowed by edition and role, and can be rebuilt per organisation. Two cautions,
-      because both have caused real defects: edition scope is a <strong>packaging</strong> boundary,
+      <p>Navigation is narrowed by edition and role, and can be rebuilt per organisation. Two cautions: edition scope is a <strong>packaging</strong> boundary,
       not a security one, and group membership grants <strong>organisation scope only, never a
       role</strong>.</p>
       <div class="where"><b>Where it lives</b>
-        <span class="chip">/menu-builder</span> · <code>edition_scope</code> ·
-        <code>effective_role()</code> · <code>effective_scope()</code></div>
+        <span class="chip">/menu-builder</span> · edition scope · role and scope resolved at sign-in</div>
     </div>
   </div>
   <div class="callout"><b>Why access is resolved and not copied.</b> A merger normally means someone
@@ -254,7 +250,7 @@ figcaption b{color:var(--ink)}
         <tr><td><b>The shared record</b></td><td colspan="2">Identical — one cross-organisation longitudinal record</td>
           <td><span class="chip">/nhr</span> · <span class="chip">/single-patient-record</span></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
         <tr><td><b>Non-NHS delivery staff</b></td><td colspan="2">Identical — allocated to an organisation, never given an internal account</td>
-          <td><code>CareProviderAllocation</code> · <span class="chip">/care-portal</span></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+          <td><span class="chip">/care-portal</span></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
         <tr><td><b>Neighbourhood need</b></td><td colspan="2">Identical — keyed on geography, never on identity</td>
           <td><code>AreaDeterminant</code> (LSOA) · <span class="chip">/deprivation-mapping</span></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
       </tbody>
@@ -315,7 +311,7 @@ figcaption b{color:var(--ink)}
       is what allows a partner organisation's manager to hold a real approval in a shared process.
       Gates can require several approvers of whom a quorum must agree, escalate on a service-level
       breach, and be signature-backed.</p>
-      <div class="loc"><span class="chip">/policy-to-process</span><span class="chip">GET /p2p/teams</span><code>P2PAuthorityRow</code><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></div></div></div>
+      <div class="loc"><span class="chip">/policy-to-process</span><span class="chip">GET /p2p/teams</span><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></div></div></div>
     <div class="step" style="border-left-color:#00B8A6"><div class="s">05</div><div>
       <h4>Measurement — one set of outcomes</h4>
       <p>Total cost of care against benchmark, quality measures, and outcome, equity and value
@@ -356,7 +352,7 @@ figcaption b{color:var(--ink)}
       person-first route — so the person, not the case, is the object of the system.</p>
       <div class="where"><b>Where it lives</b>
         <span class="chip">/empi</span> · <span class="chip">/nhr</span> ·
-        <span class="chip">Whole Person Record</span> · <code>npm run check:person-first</code> <span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></div>
+        <span class="chip">Whole Person Record</span> <span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></div>
     </div>
     <div class="role" style="border-top-color:#FFB020">
       <h3>The workforce</h3>
@@ -377,7 +373,7 @@ figcaption b{color:var(--ink)}
   (<span class="chip">commvita-federated-architecture-blueprint.html</span>).</div>
   <div class="callout ok"><b>Simplification is one reversible switch.</b> The end-user simplification
   programme — task-first home, collapsed navigation, merged menu sections, an honest data-source
-  indicator — sits behind a single flag with one seam in the code. Turning it off restores the
+  indicator — sits behind a single feature flag. Turning it off restores the
   previous behaviour exactly, and a read error fails back to the classic experience rather than to a
   half-migrated one. An organisation adopting commvita during a reorganisation can therefore change
   the experience without that being a one-way door.</div>
@@ -405,19 +401,19 @@ figcaption b{color:var(--ink)}
     <table>
       <thead><tr><th>Capability</th><th>Route</th><th>API / model</th><th>Status</th></tr></thead>
       <tbody>
-<tr><td><b>Care groups, line management, clinical supervision</b><div style="color:var(--muted);font-size:11.5px">Staff Hierarchy Builder</div></td><td><span class="chip">/hierarchy-builder</span></td><td>GET /hierarchy/ · <code>StaffHierarchyNode</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Care groups, line management, clinical supervision</b><div style="color:var(--muted);font-size:11.5px">Staff Hierarchy Builder</div></td><td><span class="chip">/hierarchy-builder</span></td><td>GET /hierarchy/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Atomic joiner provisioning</b><div style="color:var(--muted);font-size:11.5px">User Setup Wizard</div></td><td><span class="chip">/hierarchy-builder</span> · <span class="chip">/user-management</span></td><td>POST /auth/users/provision</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
-<tr><td><b>Organisation scope, delegation, groups</b><div style="color:var(--muted);font-size:11.5px">RBAC &amp; scope</div></td><td><span class="chip">/rbac-matrix</span> · <span class="chip">/rbac</span></td><td><code>UserOrganisation</code> · <code>UserDelegation</code> · <code>UserGroup</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
-<tr><td><b>Access resolved at sign-in</b><div style="color:var(--muted);font-size:11.5px">RBAC</div></td><td>—</td><td><code>effective_role()</code> · <code>effective_scope()</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Organisation scope, delegation, groups</b><div style="color:var(--muted);font-size:11.5px">RBAC &amp; scope</div></td><td><span class="chip">/rbac-matrix</span> · <span class="chip">/rbac</span></td><td>Own, delegated and group organisations</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Access resolved at sign-in</b><div style="color:var(--muted);font-size:11.5px">RBAC</div></td><td>—</td><td>Role and scope resolved at sign-in</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Jurisdiction configuration</b><div style="color:var(--muted);font-size:11.5px">Jurisdiction Wizard &amp; Profile</div></td><td><span class="chip">/jurisdiction-wizard</span> · <span class="chip">/jurisdiction-profile</span></td><td>GET /jurisdiction-profile/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Neighbourhood multidisciplinary team</b><div style="color:var(--muted);font-size:11.5px">Integrated Neighbourhood Teams</div></td><td><span class="chip">/int</span></td><td>GET /int/ · <code>INTTeam</code> · <code>INTMember</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Cross-partner case, key worker, participating orgs</b><div style="color:var(--muted);font-size:11.5px">Neighbourhood Intelligence</div></td><td><span class="chip">/neighbourhood-intelligence</span></td><td>GET /neighbourhood/ · <code>NeighbourhoodCase</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Neighbourhood need keyed on geography</b><div style="color:var(--muted);font-size:11.5px">Neighbourhood Intelligence</div></td><td><span class="chip">/neighbourhood-intelligence</span> · <span class="chip">/deprivation-mapping</span></td><td><code>AreaDeterminant</code> (LSOA)</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
-<tr><td><b>External provider staff, isolated auth</b><div style="color:var(--muted);font-size:11.5px">Care Worker Portal</div></td><td><span class="chip">/care-portal</span></td><td>POST /provider-portal/login · <code>CareProviderAllocation</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>External provider staff, isolated auth</b><div style="color:var(--muted);font-size:11.5px">Care Worker Portal</div></td><td><span class="chip">/care-portal</span></td><td>POST /provider-portal/login</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Contract register, CQUIN, procurement</b><div style="color:var(--muted);font-size:11.5px">ICB Commissioning</div></td><td><span class="chip">/icb-commissioning</span></td><td>GET /icb-commissioning/</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
 <tr><td><b>Section 75 pooled budgets</b><div style="color:var(--muted);font-size:11.5px">ICB Commissioning</div></td><td><span class="chip">/icb-commissioning</span></td><td>cost-sharing ratio per agreement</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
 <tr><td><b>Payment scheme, rates, local prices</b><div style="color:var(--muted);font-size:11.5px">NHS Payment System</div></td><td><span class="chip">/nhs-payment-system</span></td><td>GET /tariff/ · <code>TariffScheme</code> · <code>TariffRate</code> · <code>TariffLocalPrice</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
-<tr><td><b>Delegated financial authority</b><div style="color:var(--muted);font-size:11.5px">Policy-to-Process</div></td><td><span class="chip">/policy-to-process</span></td><td>GET /p2p/authority · <code>P2PAuthorityRow</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Delegated financial authority</b><div style="color:var(--muted);font-size:11.5px">Policy-to-Process</div></td><td><span class="chip">/policy-to-process</span></td><td>GET /p2p/authority</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Approval by team or care group</b><div style="color:var(--muted);font-size:11.5px">Policy-to-Process</div></td><td><span class="chip">/policy-to-process</span></td><td>GET /p2p/teams</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Total cost of care against benchmark</b><div style="color:var(--muted);font-size:11.5px">TCOC Dashboard</div></td><td><span class="chip">/tcoc-dashboard</span></td><td>—</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
 <tr><td><b>Outcome, equity and value; where to deploy next</b><div style="color:var(--muted);font-size:11.5px">Outcome Intelligence</div></td><td><span class="chip">/outcome-intelligence</span></td><td>GET /outcome-intelligence/</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>

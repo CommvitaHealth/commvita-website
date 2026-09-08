@@ -194,7 +194,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   Nothing on this page is a roadmap item. Where a module is a demonstrated control surface rather
   than live API-backed logic, that is stated inside the module itself, not hidden here.</p>
 
-  <!-- GENERATED:counts — do not edit by hand; run `npm run gen:editions-matrix` -->
+  <!-- GENERATED:counts -->
   <div class="cnt">
     <div><b>139</b><span>Flow Edition</span></div>
     <div><b>256</b><span>Governance &amp; Assurance Edition</span></div>
@@ -218,9 +218,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   principles and DSAR SLA tracking — belongs in the base edition. It does not.</p>
   <p>Flow provides the <em>platform</em> primitives that IG is built on: identity and
   access management, the audit framework, data products and cataloguing. The IG Hub is a different
-  thing — it is the <b>accountability record an organisation is inspected against</b>. Putting it in
-  the base edition gives away the single most valuable artefact of the Governance &amp; Assurance
-  Edition, which is the commercial beachhead precisely because boards buy inspection readiness.
+  thing — it is the <b>accountability record an organisation is inspected against</b>. It is the core of the Governance &amp; Assurance
+  Edition, because inspection readiness is what boards buy that edition for.
   IG Hub is therefore in <b>Governance &amp; Assurance and the Population Platform, and not in the
   Flow</b>.</p>
 
@@ -737,9 +736,9 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <tr><td><span class="mn">1 · Flow Edition</span><span class="rt">The open, FDP-parity base — £1 per Commvita Flow Edition instance (optional support)</span></td>
           <td>Own your platform.</td>
           <td>Technology and digital teams — the open, self-hosted base and FDP parity</td><td class="ct">139</td></tr>
-      <tr><td><span class="mn">2 · Governance &amp; Assurance Edition</span><span class="rt">The commercial beachhead — board assurance, risk, IG and AI governance</span></td>
+      <tr><td><span class="mn">2 · Governance &amp; Assurance Edition</span><span class="rt">Board assurance, risk, IG and AI governance</span></td>
           <td>Govern your organisation.</td>
-          <td>Boards, not clinicians — no clinical-accreditation dependency, so a shorter sales cycle</td><td class="ct">256</td></tr>
+          <td>Sold to boards, not clinicians — no clinical-accreditation dependency before go-live</td><td class="ct">256</td></tr>
       <tr><td><span class="mn">3 · Population Platform</span><span class="rt">The destination architecture — clinical, operational, population and governance on one platform</span></td>
           <td>Run your health economy.</td>
           <td>Whole health economies — clinical record, operations, flow, population health <em>and</em> governance in full</td><td class="ct">418</td></tr>
@@ -755,11 +754,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
 
   <p class="foot" style="margin-top:22px;font-size:11.5px;color:var(--muted)">
-    Generated from the canonical edition model <code>services/web/src/editions.ts</code> by
-    <code>npm run gen:editions-matrix</code>, and CI fails the build if this file is not what that
-    generator would produce (<code>npm run check:editions-matrix</code>) — so this grid cannot drift
-    from the product. It previously carried this same sentence with no generator behind it, and had
-    drifted by eight shipped capabilities. Non-SaMD positioning surface.<br>
+    Generated from the product's own edition definition, so the grid matches what ships. Non-SaMD positioning surface.<br>
     © 2026 Commvita Digital Health Solutions Ltd. All rights reserved.
   </p>
 </div>

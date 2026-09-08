@@ -127,7 +127,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
   <div class="eyebrow">Governance &amp; Delegation</div>
   <h1>Policy to Process — how a written policy becomes an enforced, audited workflow</h1>
-  <p class="sub">A demo reference for the commvita <strong>Policy-to-Process (P2P)</strong> engine — how the <strong>Scheme of Reservation &amp; Delegation</strong> and <strong>Standing Financial Instructions</strong> become live authority data, how a source policy is generalised into a <strong>bindable process</strong>, how every step is enforced as <strong>hard · soft · advisory</strong> with structured escalation onto one <strong>immutable, hash-chained audit</strong>, and how the same policy set is safely <strong>composed for a second jurisdiction</strong>.</p>
+  <p class="sub">A reference for the commvita <strong>Policy-to-Process (P2P)</strong> engine — how the <strong>Scheme of Reservation &amp; Delegation</strong> and <strong>Standing Financial Instructions</strong> become live authority data, how a source policy is generalised into a <strong>bindable process</strong>, how every step is enforced as <strong>hard · soft · advisory</strong> with structured escalation onto one <strong>immutable, hash-chained audit</strong>, and how the same policy set is safely <strong>composed for a second jurisdiction</strong>.</p>
   <div class="rule"></div>
 
   <div class="key">
@@ -256,10 +256,10 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <p class="lead">The same generalised process can be deployed to a second jurisdiction by <strong>binding its slots</strong> to local values. <strong>Conflict / gap detection blocks unbound deployment</strong>, and binding is a <strong>governance act, not a config toggle</strong> — it requires a recorded local mapping note <em>and</em> a completed <strong>commvita Sign</strong> ceremony (else the API returns <code>428</code>), written straight to the WORM audit.</p>
   <div class="tablewrap">
     <table>
-      <thead><tr><th>Requirement (example: a Gulf cluster)</th><th>Bound?</th><th>Local mapping</th></tr></thead>
+      <thead><tr><th>Requirement (example: a non-UK health cluster)</th><th>Bound?</th><th>Local mapping</th></tr></thead>
       <tbody>
         <tr><td><b>SFI thresholds</b> bound to local delegated limits</td><td>✓ bound</td><td>cluster values mapped</td></tr>
-        <tr><td><b>SoRD roles</b> mapped to local job titles</td><td>✓ bound</td><td>CEO → Cluster Director General</td></tr>
+        <tr><td><b>SoRD roles</b> mapped to local job titles</td><td>✓ bound</td><td>CEO → local equivalent title</td></tr>
         <tr><td><b>Procurement route</b> (regulations) selected</td><td>✓ bound</td><td>local procurement law bound</td></tr>
         <tr><td><b>Safeguarding referral authority</b> mapped</td><td style="color:var(--hard)"><b>GAP</b></td><td style="color:var(--hard)">no local S42-equivalent bound</td></tr>
         <tr><td><b>Accountable local sign-off</b> recorded</td><td style="color:var(--hard)"><b>GAP</b></td><td style="color:var(--hard)">sign-off required before deploy</td></tr>
@@ -279,7 +279,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <tr><td><b>Process Engine</b> — enforcement gradient</td><td>Process Engine</td><td><span class="chip">/p2p/process-steps?ref=PB-01</span></td><td>hard / soft / advisory per step; break-glass on clinical</td><td>SoRD · SFI · Non-SaMD</td><td><span class="dot" style="background:var(--orange)"></span>Demonstrated <span style="color:var(--muted)">(PB-01 steps API-served)</span></td></tr>
         <tr><td><b>Escalation + WORM audit</b></td><td>Escalation &amp; Audit</td><td><span class="chip">GET/POST /p2p/audit</span></td><td><code>P2PAuditEvent</code> — SHA-256 <code>prev_hash→row_hash</code>, append-only, re-verified on read</td><td>BAF · CQC SAF · GDPR Art.5(1)(f)</td><td><span class="dot" style="background:var(--teal)"></span>Live <span style="color:var(--muted)">(example events seeded)</span></td></tr>
         <tr><td><b>Gated approvals</b> — runtime engine</td><td>Gated Approvals</td><td><span class="chip">/p2p/gates</span> · <span class="chip">/p2p/tasks/{id}/decide</span> · <span class="chip">.../sweep</span></td><td><code>P2PGate</code> · <code>P2PApprovalTask</code> · SLA auto-escalation · commvita Sign · AI summary</td><td>NHS SoRD · SFI · CQC SAF · eIDAS AdES</td><td><span class="dot" style="background:var(--teal)"></span>Live</td></tr>
-        <tr><td><b>Jurisdiction Composition</b></td><td>Jurisdiction Composition</td><td><span class="chip">/p2p/compositions</span> · <span class="chip">.../bind</span></td><td><code>P2PComposition</code> · commvita Sign <code>p2p-comp:{id}</code> · 428 gate</td><td>Jurisdiction Profile PRD §4.6 · eIDAS AdES</td><td><span class="dot" style="background:var(--teal)"></span>Live <span style="color:var(--muted)">(example bindings seeded)</span></td></tr>
+        <tr><td><b>Jurisdiction Composition</b></td><td>Jurisdiction Composition</td><td><span class="chip">/p2p/compositions</span> · <span class="chip">.../bind</span></td><td><code>P2PComposition</code> · commvita Sign <code>p2p-comp:{id}</code> · 428 gate</td><td>Jurisdiction Profile · eIDAS AdES</td><td><span class="dot" style="background:var(--teal)"></span>Live <span style="color:var(--muted)">(example bindings seeded)</span></td></tr>
       </tbody>
     </table>
   </div>

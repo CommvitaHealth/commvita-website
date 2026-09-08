@@ -189,7 +189,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
 
   <!-- SCENARIO -->
-  <div class="callout"><b>The scenario.</b> <strong>Rita Okafor</strong> is a domiciliary care worker at an <strong>external provider — Bluebird Community Care</strong>. She is delivering a <strong>6-week community rehabilitation package</strong> after a patient's hip fracture, visiting daily. She needs <strong>daily, time-boxed access to ONLY the rehab-relevant part</strong> of the record — the rehab care plan, goals, exercise programme and visit log — <b>not</b> the full clinical record. She is a third party to the controller: access must be least-privilege, lawful for direct care, and end by itself when the 6-week episode does.</p>
+  <div class="callout"><b>The scenario.</b> <strong>Rita Okafor</strong> is a domiciliary care worker at an <strong>external provider — Harbourside Community Care</strong>. She is delivering a <strong>6-week community rehabilitation package</strong> after a patient's hip fracture, visiting daily. She needs <strong>daily, time-boxed access to ONLY the rehab-relevant part</strong> of the record — the rehab care plan, goals, exercise programme and visit log — <b>not</b> the full clinical record. She is a third party to the controller: access must be least-privilege, lawful for direct care, and end by itself when the 6-week episode does.</p>
   <p style="margin:0">Below: <strong>how the access is granted (A)</strong>, <strong>what she can and cannot see (B)</strong>, and <strong>how it auto-expires and is extended (C)</strong> — each illustrated with a representative commvita screen.</div>
 
   <!-- SECTION A — GRANT -->
@@ -202,7 +202,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/ig-spine · Purpose &amp; Legal Basis</span><span class="chip">UK GDPR Art.9(2)(h)</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>External provider onboarded &amp; assured</h4>
-      <p>Bluebird Community Care self-serves capacity and profile through the <strong>Provider Portal</strong>; its <strong>DSPT / DTAC</strong> assurance and <strong>Art.28 DPA</strong> are held in Supplier IG Assurance, and — where the councils/trust jointly control the data — an <strong>Art.26 joint-controller agreement</strong> is managed in the DSPA Manager. No data flows before assurance is in place.</p>
+      <p>Harbourside Community Care self-serves capacity and profile through the <strong>Provider Portal</strong>; its <strong>DSPT / DTAC</strong> assurance and <strong>Art.28 DPA</strong> are held in Supplier IG Assurance, and — where the councils/trust jointly control the data — an <strong>Art.26 joint-controller agreement</strong> is managed in the DSPA Manager. No data flows before assurance is in place.</p>
       <div class="loc"><span class="chip">/provider-portal</span><span class="chip">/supplier-ig-assurance</span><span class="chip">/dspa-manager</span><span class="chip">Art.28 · Art.26 · DSPT · DTAC</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Time-boxed grant — scope-only, with an expiry set to the episode</h4>
@@ -225,7 +225,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="frow">
         <div class="pcard">
           <div class="lab">Person</div>
-          <div class="val">Rita Okafor <small>· Bluebird Community Care <span class="pill navy dot" style="margin-left:4px">external</span></small></div>
+          <div class="val">Rita Okafor <small>· Harbourside Community Care <span class="pill navy dot" style="margin-left:4px">external</span></small></div>
         </div>
         <div class="pcard">
           <div class="lab">Role</div>
@@ -246,7 +246,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         </div>
         <div class="pcard">
           <div class="lab">Grant expires</div>
-          <div class="val"><span class="pill amber dot">Expires 12 Aug 2026 · 6 weeks</span></div>
+          <div class="val"><span class="pill amber dot">Expires 12 Aug 2027 · 6 weeks</span></div>
         </div>
       </div>
       <div class="btnrow">
@@ -342,13 +342,13 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     </div>
     <div class="body">
       <div class="strip amber">
-        <span>⏳</span><span><b>Access to this record expires in 3 days</b> — 12 Aug 2026. It will lapse automatically unless the grant is extended.</span>
+        <span>⏳</span><span><b>Access to this record expires in 3 days</b> — 12 Aug 2027. It will lapse automatically unless the grant is extended.</span>
         <span class="sp"></span>
         <span class="btn navy">Request extension</span>
       </div>
       <div class="pcard">
         <div class="lab">Current grant</div>
-        <div class="val" style="font-size:13px">Scope-only UserGroup · read-only · rehab set <span class="pill amber dot" style="margin-left:6px">Expires 12 Aug 2026</span></div>
+        <div class="val" style="font-size:13px">Scope-only UserGroup · read-only · rehab set <span class="pill amber dot" style="margin-left:6px">Expires 12 Aug 2027</span></div>
       </div>
     </div>
   </div>
@@ -369,7 +369,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="frow">
         <div class="field" style="margin-bottom:0">
           <label>Requested new expiry</label>
-          <div class="inp">09 Sep 2026</div>
+          <div class="inp">09 Sep 2027</div>
         </div>
         <div class="field" style="margin-bottom:0">
           <label>Grant</label>
@@ -409,12 +409,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <table>
           <thead><tr><th>Event</th><th>When</th><th>Actor</th><th>Flag</th></tr></thead>
           <tbody>
-            <tr class="hashrow"><td><b>Grant created</b> · scope-only · read-only</td><td class="mono">01 Jul 2026 · 10:02</td><td>K. Mensah</td><td><span class="pill green dot">ok</span></td></tr>
-            <tr class="hashrow"><td>Record accessed · rehab set</td><td class="mono">05 Jul 2026 · 09:14</td><td>R. Okafor</td><td><span class="pill green dot">ok</span></td></tr>
-            <tr class="hashrow ooh"><td>Record accessed · rehab set</td><td class="mono">08 Jul 2026 · 08:58</td><td>R. Okafor</td><td><span class="pill amber dot">out-of-hours</span></td></tr>
-            <tr class="hashrow warn"><td>⚠ Opened in acute setting · <b>GP practice notified</b> (cross-setting)</td><td class="mono">09 Jul 2026 · 21:37</td><td>ED clinician</td><td><span class="pill red dot">trigger alert</span></td></tr>
-            <tr class="hashrow"><td>Extension requested · +4 weeks</td><td class="mono">09 Aug 2026 · 14:20</td><td>R. Okafor</td><td><span class="pill navy dot">pending</span></td></tr>
-            <tr class="hashrow"><td><b>Extension approved</b> · new <code>expires_at</code> 09 Sep 2026</td><td class="mono">09 Aug 2026 · 16:05</td><td>K. Mensah</td><td><span class="pill green dot">re-attested</span></td></tr>
+            <tr class="hashrow"><td><b>Grant created</b> · scope-only · read-only</td><td class="mono">01 Jul 2027 · 10:02</td><td>K. Mensah</td><td><span class="pill green dot">ok</span></td></tr>
+            <tr class="hashrow"><td>Record accessed · rehab set</td><td class="mono">05 Jul 2027 · 09:14</td><td>R. Okafor</td><td><span class="pill green dot">ok</span></td></tr>
+            <tr class="hashrow ooh"><td>Record accessed · rehab set</td><td class="mono">08 Jul 2027 · 08:58</td><td>R. Okafor</td><td><span class="pill amber dot">out-of-hours</span></td></tr>
+            <tr class="hashrow warn"><td>⚠ Opened in acute setting · <b>GP practice notified</b> (cross-setting)</td><td class="mono">09 Jul 2027 · 21:37</td><td>ED clinician</td><td><span class="pill red dot">trigger alert</span></td></tr>
+            <tr class="hashrow"><td>Extension requested · +4 weeks</td><td class="mono">09 Aug 2027 · 14:20</td><td>R. Okafor</td><td><span class="pill navy dot">pending</span></td></tr>
+            <tr class="hashrow"><td><b>Extension approved</b> · new <code>expires_at</code> 09 Sep 2027</td><td class="mono">09 Aug 2027 · 16:05</td><td>K. Mensah</td><td><span class="pill green dot">re-attested</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -437,7 +437,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <thead><tr><th>Step in the journey</th><th>Module</th><th>Route</th><th>Model / API</th><th>Standard</th></tr></thead>
       <tbody>
         <tr><td><b>Onboard the external provider</b></td><td>Provider Portal</td><td><span class="chip">/provider-portal</span></td><td>capacity &amp; profile self-service</td><td>CQC · provider assurance</td></tr>
-        <tr><td><b>Processor assurance &amp; DPA</b></td><td>Supplier IG Assurance</td><td><span class="chip">/supplier-ig-assurance</span></td><td>DSPT / DTAC · DPA register</td><td>Art.28 · DSPT 2024/25 · DTAC</td></tr>
+        <tr><td><b>Processor assurance &amp; DPA</b></td><td>Supplier IG Assurance</td><td><span class="chip">/supplier-ig-assurance</span></td><td>DSPT / DTAC · DPA register</td><td>Art.28 · DSPT · DTAC</td></tr>
         <tr><td><b>Joint-controller sharing</b></td><td>DSPA Manager</td><td><span class="chip">/dspa-manager</span></td><td>DSPA lifecycle · signatories</td><td>Art.26 · NHS DSPA template</td></tr>
         <tr><td><b>Time-boxed scope</b> (episode-length)</td><td>RBAC · Groups &amp; Delegations</td><td><span class="chip">/rbac</span> · <span class="chip">/rbac/user-groups</span></td><td><code>effective_scope()</code> · UserGroup · UserDelegation · <code>expires_at</code></td><td>ODS · Caldicott P4 / Art.5(1)(c)</td></tr>
         <tr><td><b>Extension &amp; re-attestation</b></td><td>RBAC · Groups &amp; Delegations</td><td><span class="chip">PATCH /rbac/user-groups/{id}</span></td><td>re-attest · <code>lapse_recorded</code></td><td>least-privilege renewal</td></tr>
@@ -451,7 +451,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
 
   <div class="foot">
-    <span>UK GDPR Art.5 / 6 / 9(2)(h) / 30 · Data Protection Act 2018</span><span>Caldicott 8 Principles</span><span>DSPT 2024/25</span>
+    <span>UK GDPR Art.5 / 6 / 9(2)(h) / 30 · Data Protection Act 2018</span><span>Caldicott 8 Principles</span><span>DSPT</span>
     <span>Art.28 processor · Art.26 joint-controller</span><span>FHIR R4 AuditEvent / Consent</span><span>Non-SaMD IG control surface</span>
   </div>
   <div class="cright" style="margin-top:16px;padding-top:12px;border-top:1px solid var(--border,#D9DFE8);font-size:11.5px;color:var(--muted,#5D6B85)">&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</div>

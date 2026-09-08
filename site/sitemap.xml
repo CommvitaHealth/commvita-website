@@ -161,11 +161,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://commvita.com/explainers/commvita-admin-setup-guide.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://commvita.com/explainers/commvita-editions-matrix.html</loc>
     <lastmod>2026-08-17</lastmod>
     <priority>0.4</priority>
@@ -276,11 +271,6 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://commvita.com/explainers/commvita-explainer-montserrat.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://commvita.com/explainers/commvita-explainer-omop.html</loc>
     <lastmod>2026-08-17</lastmod>
     <priority>0.4</priority>
@@ -301,11 +291,6 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://commvita.com/explainers/commvita-explainer-outcome-intelligence.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://commvita.com/explainers/commvita-explainer-overview.html</loc>
     <lastmod>2026-08-17</lastmod>
     <priority>0.4</priority>
@@ -317,11 +302,6 @@
   </url>
   <url>
     <loc>https://commvita.com/explainers/commvita-explainer-planning-reporting.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://commvita.com/explainers/commvita-explainer-platform-2pp.html</loc>
     <lastmod>2026-08-17</lastmod>
     <priority>0.4</priority>
   </url>
@@ -416,22 +396,7 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://commvita.com/explainers/commvita-jurisdiction-agent-architecture.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://commvita.com/explainers/commvita-jurisdiction-intake-prompt.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
     <loc>https://commvita.com/explainers/commvita-module-explorer.html</loc>
-    <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://commvita.com/explainers/commvita-module-map.html</loc>
     <lastmod>2026-08-17</lastmod>
     <priority>0.4</priority>
   </url>
@@ -443,11 +408,6 @@
   <url>
     <loc>https://commvita.com/explainers/commvita-third-party-access.html</loc>
     <lastmod>2026-08-17</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://commvita.com/explainers/commvita-explainer-learning-answerable.html</loc>
-    <lastmod>2026-08-22</lastmod>
     <priority>0.4</priority>
   </url>
   <url>

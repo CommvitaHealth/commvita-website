@@ -223,7 +223,7 @@ figcaption b{color:var(--ink)}
       <p>A person&#39;s reach is resolved at sign-in from their own organisations, anything delegated
       to them and any group they belong to. No organisation&#39;s boundary is enforced by hiding a
       menu — the same check applies to a typed URL.</p>
-      <div class="where"><b>Where it lives</b> <code>effective_scope()</code> ·
+      <div class="where"><b>Where it lives</b> scope resolved at sign-in ·
         <span class="chip">/rbac-matrix</span></div>
     </div>
     <div class="role" style="border-top-color:#7B61FF">
@@ -286,8 +286,8 @@ figcaption b{color:var(--ink)}
 <tr><td><b>Hash-chained access log, verified on read</b><div style="color:var(--muted);font-size:11.5px">Legitimate Relationship Log</div></td><td><span class="chip">/legitimate-access-log</span></td><td>GET /legitimate-access/events</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Federation governance surface</b><div style="color:var(--muted);font-size:11.5px">Federated Governance</div></td><td><span class="chip">/federated-governance</span></td><td>GET /federated-governance</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Person-level sharing objection</b><div style="color:var(--muted);font-size:11.5px">Shared Care Opt-Out</div></td><td><span class="chip">/shcr-opt-out</span></td><td>FHIR R4 Consent · DUA Act 2025</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
-<tr><td><b>Scope resolved at sign-in</b><div style="color:var(--muted);font-size:11.5px">RBAC and scope</div></td><td><span class="chip">/rbac-matrix</span></td><td><code>effective_scope()</code> · <code>effective_role()</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
-<tr><td><b>Organisational map as sourced configuration</b><div style="color:var(--muted);font-size:11.5px">Jurisdiction Profile</div></td><td><span class="chip">/jurisdiction-profile</span></td><td>health_system §7.2 · ICB Order 2026</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Scope resolved at sign-in</b><div style="color:var(--muted);font-size:11.5px">RBAC and scope</div></td><td><span class="chip">/rbac-matrix</span></td><td>Scope and role resolved at sign-in</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Organisational map as sourced configuration</b><div style="color:var(--muted);font-size:11.5px">Jurisdiction Profile</div></td><td><span class="chip">/jurisdiction-profile</span></td><td>Jurisdiction Profile · ICB Order 2026</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Standards on the wire</b><div style="color:var(--muted);font-size:11.5px">PulseGrid · EPR Hub · IHE</div></td><td><span class="chip">/connector-dashboard</span> · <span class="chip">/epr-hub</span> · <span class="chip">/ihe-profiles</span></td><td>HL7 v2 · FHIR R4 · IHE XCPD/XCA</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Canonical model for secondary use</b><div style="color:var(--muted);font-size:11.5px">FDP CDM Console</div></td><td><span class="chip">/fdp-cdm</span></td><td>GET /fdp-cdm/extract/{product}</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
       </tbody>
