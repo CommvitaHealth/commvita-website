@@ -243,7 +243,25 @@ figcaption b{color:var(--ink)}
     and closing that gap is a wiring job, not a build.</p>
   </div>
 
-  <h2><span class="num">6</span>Where it lives, and its honest edges</h2>
+  <h2><span class="num">6</span>How this sits with the NHS App</h2>
+  <p class="lead">The NHS App stays the national front door; commvita makes the room behind it deeper &mdash; same login, richer content, and the ability to <em>act</em>.</p>
+  <div class="steps">
+    <div class="step g"><div class="s">&#9679;</div><div>
+      <h4>Same identity, no new login</h4>
+      <p>commvita authenticates with <strong>NHS Login (OIDC)</strong> &mdash; the same identity the NHS App uses &mdash; and integrates through the <strong>NHS App API</strong> (appointments, prescriptions, records, messages, notifications), so the person is not asked to learn a second account.</p>
+      <div class="loc"><span class="chip">NHS Login OIDC</span><span class="chip">/nhs-app</span></div></div></div>
+    <div class="step g"><div class="s">&#9679;</div><div>
+      <h4>From read-and-notify to act-and-book</h4>
+      <p>Where the national baseline mostly <em>shows</em> and <em>notifies</em>, commvita lets the person <strong>book from a nudge</strong>, <strong>request PIFU</strong>, <strong>submit PROMs</strong> and <strong>raise an urgent review</strong> &mdash; write-back and action, not just a view.</p>
+      <div class="loc"><span class="chip">Book &middot; PIFU &middot; PROMs</span><span class="chip">/portal/rapid-review</span></div></div></div>
+    <div class="step g"><div class="s">&#9679;</div><div>
+      <h4>One record across settings</h4>
+      <p>commvita carries a <strong>cross-setting record</strong> &mdash; GP, hospital, community, mental health, social care and pharmacy &mdash; so what the person sees is not only their GP record but their whole journey, with the source of each entry shown.</p>
+      <div class="loc"><span class="chip">Whole-person record</span><span class="chip">FHIR R4 &middot; shared care</span></div></div></div>
+  </div>
+
+  
+  <h2><span class="num">7</span>Where it lives, and its honest edges</h2>
   <div class="tablewrap"><table>
     <tr><th>Function</th><th>Endpoint</th><th>Status</th></tr>
     <tr><td>Sign in, profile, care plan, medications, test results</td>
