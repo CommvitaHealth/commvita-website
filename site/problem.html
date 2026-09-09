@@ -54,7 +54,7 @@
   --navbg:rgba(12,22,38,.92);
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 36px -18px rgba(0,0,0,.7);
   /* Figures, dark. Surfaces darken, accents brighten to hold contrast on
-     them, and the status chips get dark-mode tints rather than being left
+     them, and the status chips get dark-mode tints instead of being left
      as light pills on a dark card. */
   --fig-ink:#EAF1FB; --fig-body:#C2D0E6; --fig-muted:#93A6C4;
   --fig-surface:#16273F; --fig-tint:#1B3050; --fig-hair:rgba(255,255,255,.16);
@@ -64,7 +64,7 @@
   /* Inverted plates keep a DARK background and light type in both themes —
      flipping them is what collapsed contrast to 1.02:1. */
   --fig-invert-bg:#050B16; --fig-invert-fg:#FFFFFF; --fig-invert-muted:#9FB0CC;
-  /* The ladder darkens with the rung rather than lightening. */
+  /* The ladder darkens with the rung instead of lightening. */
   --fig-rung0:#182842; --fig-rung1:#173347; --fig-rung2:#153E4C;
   --fig-rung3:#134851; --fig-rung4:#115356; --fig-rung5:#0F5E5B;
   --fig-live-fg:#8FF0DF; --fig-live-bg:#0E3A34; --fig-live-bd:#1C6B60;
@@ -115,8 +115,8 @@ strong{color:var(--ink);font-weight:700}
 .topin{max-width:var(--maxw);margin:0 auto;
   padding:0 clamp(14px,3vw,28px);min-height:calc(var(--nav-h) - 1px);
   display:flex;align-items:center;gap:16px;flex-wrap:nowrap}
-/* The bar never wraps: when the nine buttons cannot fit, the BUTTON ROW
-   scrolls rather than the header growing a second line. A two-row header
+/* The bar never wraps: when the nine buttons can't fit, the BUTTON ROW
+   scrolls instead of the header growing a second line. A two-row header
    pushes the lockup and the controls out of alignment with every other page,
    which is the inconsistency this change is fixing. */
 .navpanel{min-width:0;overflow-x:auto;scrollbar-width:none;
@@ -324,7 +324,7 @@ section.dark .pull .em{color:#6FE3D4}
    action. Measured before this rule, the hero ran to ~1190px on an 852px
    viewport, so "Explore commvita" was below the fold — the B-440 defect,
    where a landing screen looks fine in a screenshot that stops at the fold. */
-/* On the narrowest phones the strapline costs more than it earns: it is the
+/* On the narrowest phones the strapline costs more than it earns: it's the
    difference between a one-row header and a two-row one. */
 @media (max-width:400px){
   .tag{display:none}
@@ -384,9 +384,9 @@ a,button,summary,[role="button"]{touch-action:manipulation}
 .rail a{min-width:44px;min-height:44px;display:flex;align-items:center;
   justify-content:center}
 
-/* A figure at 900px cannot be shrunk to a 360px phone and stay legible —
+/* A figure at 900px can't be shrunk to a 360px phone and stay legible —
    12.5px type would land at 5px. It scrolls instead, and the fade tells
-   the reader that it does. An affordance nobody sees is not an affordance. */
+   the reader that it does. An affordance nobody sees isn't an affordance. */
 .fig{position:relative}
 .fig::after{content:"";position:absolute;top:1px;right:1px;bottom:1px;width:26px;
   border-radius:0 12px 12px 0;pointer-events:none;
@@ -395,8 +395,8 @@ a,button,summary,[role="button"]{touch-action:manipulation}
 
 /* Controls a finger is meant to hit, on any coarse pointer. `pointer:coarse`
    is the semantic query — a 1194px iPad in landscape is a touch device and a
-   1194px laptop is not, and width alone cannot tell them apart. The width
-   clause is the fallback for engines that do not report the pointer. */
+   1194px laptop isn't, and width alone can't tell them apart. The width
+   clause is the fallback for engines that don't report the pointer. */
 @media (pointer:coarse),(max-width:1024px){
   .lock{min-height:44px}
   .crumb{padding-top:12px}
@@ -434,7 +434,7 @@ a,button,summary,[role="button"]{touch-action:manipulation}
 /* ═══════════════════════════════════════════════════════════════════════
    FITTING A SCREEN
    Every section is meant to be one self-contained view. That only works if
-   the type scales with the viewport rather than sitting at a fixed rem — a
+   the type scales with the viewport instead of sitting at a fixed rem — a
    fixed scale means a short laptop and a tall monitor get the same overflow.
    These clamps are keyed to vh as well as vw, which is what the original
    landing page does and why its screens hold together.
@@ -457,8 +457,8 @@ html.snap .fig{margin-top:clamp(12px,1.6vh,24px)}
 html.snap .eyebrow{margin-bottom:clamp(7px,1vh,14px)}
 html.snap p{margin-bottom:clamp(.6em,1.1vh,1.05em)}
 
-/* A section that genuinely cannot fit — a fifteen-row table, a sixty-six
-   item library — opts out and scrolls rather than being squeezed to an
+/* A section that genuinely can't fit — a fifteen-row table, a sixty-six
+   item library — opts out and scrolls instead of being squeezed to an
    unreadable size. Which ones those are is MEASURED, not guessed. */
 html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 
@@ -466,9 +466,9 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
    SCROLL-SNAP PRESENTATION
    `proximity`, never `mandatory`: mandatory snapping on a touch device
    fights the user when a section is taller than the viewport, and a
-   presentation that will not let you read the bottom of a slide is worse
+   presentation that won't let you read the bottom of a slide is worse
    than no presentation. min-height, never height, for the same reason —
-   a tall section grows rather than clipping.
+   a tall section grows instead of clipping.
    ═══════════════════════════════════════════════════════════════════════ */
 html.snap{scroll-snap-type:y proximity}
 /* Sections size to their CONTENT and snap to their top.
@@ -476,7 +476,7 @@ html.snap{scroll-snap-type:y proximity}
    screenshot showed: a hero 838px tall holding 223px of content — 27% filled,
    with a void beneath it and nothing to say whether more existed below.
    Sizing to content removes the void, and the next section peeking above the
-   fold IS the cue that there is more. */
+   fold IS the cue that there's more. */
 html.snap .screen{
   scroll-snap-align:start;
   scroll-snap-stop:normal;
@@ -497,7 +497,7 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 @media (max-width:900px){.rail{display:none}}
 
 /* Snap is a desktop affordance. On a phone it competes with momentum
-   scrolling and with the address bar resizing mid-gesture, so it is off. */
+   scrolling and with the address bar resizing mid-gesture, so it's off. */
 @media (max-width:768px){
   html.snap{scroll-snap-type:none}
   html.snap .screen{min-height:auto;display:block;
@@ -513,7 +513,7 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 .lock:hover,.brand:hover{text-decoration:none}
 
 /* The mark carries no white disc: the official lockup has none. It reads on
-   a dark ground because its ink is currentColor rather than a fixed hex, so
+   a dark ground because its ink is currentColor instead of a fixed hex, so
    it inverts with the theme instead of needing a badge to sit on. */
 .mark{flex:none;display:block;color:var(--ink);
   background:none;box-shadow:none;border-radius:0}
@@ -540,11 +540,11 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
    The size is set by the tightest constraint, which is the landing page's:
    its bar is capped at --maxw (1180px) and must carry the lockup, the nine
    buttons and the controls WITHOUT clipping, because a clipped last button
-   on a desktop reads as a broken header rather than as something to swipe.
+   on a desktop reads as a broken header and not as something to swipe.
    At .79rem/11px the nine measured 754px against a budget that also has to
    find ~220px of lockup and ~284px of controls. So .76rem/7px it is, on
    both documents — not a compromise on the subpages but the figure that
-   actually fits where the row cannot scroll. */
+   actually fits where the row can't scroll. */
 .nav>a,.links>a{display:inline-flex;align-items:center;min-height:44px;
   padding:0 7px;border-radius:7px;font-size:.76rem;font-weight:650;
   color:var(--ink);white-space:nowrap;text-decoration:none;
@@ -552,14 +552,14 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 .nav>a:hover,.links>a:hover{color:var(--ink);
   background:var(--tint,var(--panel-2));text-decoration:none}
 /* Active state uses --ink and a teal wash rather than --accent: the landing
-   page does not define --accent, and its dark-theme fallback would have
+   page doesn't define --accent, and its dark-theme fallback would have
    been a mid-teal on a dark ground. --ink and --teal exist in both
    documents and in both themes. */
 .nav>a.on,.links>a[aria-current="true"]{color:var(--ink);
   background:color-mix(in srgb,var(--teal) 16%,transparent);
   box-shadow:inset 0 -2px 0 var(--teal)}
 /* The landing page drew its active underline with an ::after block, which
-   cannot sit under the label inside a flex row. The inset shadow above
+   can't sit under the label inside a flex row. The inset shadow above
    replaces it on both documents. */
 .links a[aria-current="true"]::after{content:none}
 
@@ -582,7 +582,7 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
   justify-content:center;min-height:44px;padding:0 15px;font-size:.82rem;
   font-weight:650;border-radius:9px}
 
-/* Responsive tightening lives HERE rather than earlier in the sheet: the
+/* Responsive tightening lives HERE instead of earlier in the sheet: the
    base rule above is later in source order, so a media query declared
    before it would be silently overridden. */
 @media (max-width:900px){.nav>a,.links>a{padding:0 9px}}
@@ -594,8 +594,8 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 </style>
 <style>
 /* ─── Semantic colour, per the brand specification ────────────────────────────
-   "Colour is semantic here, not decorative... if a colour cannot be explained,
-   it should not be used." Teal is the person and the record; violet is
+   "Colour is semantic here, not decorative... if a colour can't be explained,
+   it shouldn't be used." Teal is the person and the record; violet is
    governance; amber is flow; coral is escalation. Teal had become the site's
    general accent — 46 rules — including as label text, where it measures
    2.27:1 on paper and fails WCAG for anything but display sizes.
@@ -622,7 +622,7 @@ section.dark .eyebrow::before{background:currentColor}
 .who .nm a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .who .nm a:hover::after{color:var(--ink)}
 .aim.a1{border-left-color:var(--ink)}
-/* Gradients are out entirely — the spec bars them on the mark, and they are the
+/* Gradients are out entirely — the spec bars them on the mark, and they're the
    single most template-looking thing on a page. */
 .cv .fill{background:var(--ink)}
 .vx-bar i{background:var(--ink)}
@@ -641,7 +641,7 @@ section.dark .eyebrow::before{background:currentColor}
       <span></span><span></span><span></span><em class="sr">Menu</em>
     </button>
     <div class="navpanel" id="navpanel">
-      <nav class="nav" aria-label="Primary"><a href="platform.html">Platform</a><a href="problem.html" class="on" aria-current="true">Problem</a><a href="solution.html">Approach</a><a href="standards.html">Standards</a><a href="research-and-innovation.html">Research</a><a href="system-maturity.html">Maturity</a><a href="regulatory-compliance.html">Compliance</a><a href="editions.html">Editions</a><a href="founders.html">Founders</a><a href="launch.html">Launch</a></nav>
+      <nav class="nav" aria-label="Primary"><a href="platform.html">Platform</a><a href="problem.html" class="on" aria-current="true">Problem</a><a href="solution.html">Approach</a><a href="standards.html">Standards</a><a href="research-and-innovation.html">Research</a><a href="system-maturity.html">Maturity</a><a href="regulatory-compliance.html">Compliance</a><a href="editions.html">Editions</a><a href="founders.html">Founders</a><a href="explainers/index.html">Explainers</a><a href="launch.html">Launch</a></nav>
     </div>
     <div class="navctl">
       <button class="tglt" id="themeBtn" aria-label="Switch to dark theme"
@@ -656,12 +656,12 @@ section.dark .eyebrow::before{background:currentColor}
 <section class="hero screen">
   <div class="wrap">
     <span class="eyebrow">The problem</span>
-    <h1>Health systems do not have a data problem. They have a joining problem.</h1>
+    <h1>Health systems don&rsquo;t have a data problem. They have a joining problem.</h1>
     <p class="lead">Almost every organisation already holds what it needs. What it lacks is one place where the record, the operations, the governance and the population view are the same set of facts.</p>
     
   </div>
 </section>
-<section class="screen"><div class="wrap"><span class="eyebrow">Four failures</span><h2>The same four failures, in every health system we have worked in</h2><div class="g g2"><div class="card"><span class="knum">01</span><h3>Nobody holds the person</h3><p>Each organisation holds a version of someone. Reconciling them is manual, so it is done at the point of harm rather than continuously.</p></div><div class="card"><span class="knum">02</span><h3>Integration decays</h3><p>An interface is a snapshot of two systems agreeing. Neither stands still, and nothing tells you when they stopped agreeing.</p></div><div class="card"><span class="knum">03</span><h3>Lock-in is the business model</h3><p>When the data model is proprietary, the cost of leaving grows with every year of data. The renewal negotiation is decided years before it happens.</p></div><div class="card"><span class="knum">04</span><h3>The org chart is in the code</h3><p>Reorganisation becomes a migration, so a platform bought in one organisational era has to be replaced in the next.</p></div></div></div></section><section class="screen tint"><div class="wrap"><span class="eyebrow">Reorganisation</span><h2>England has abolished and replaced every commissioner twice in a decade</h2><p class="lead">It is the best-documented example, not the only one. A platform that treats reorganisation as a migration will be migrated, repeatedly.</p><div class="tw"><table><thead><tr><th>When</th><th>What</th><th>Instrument</th></tr></thead><tbody><tr><td>2013</td><td>211 clinical commissioning groups created</td><td>Health and Social Care Act 2012</td></tr><tr><td>2021</td><td>106 after eight years of merger</td><td>consolidation, no statutory change</td></tr><tr><td>2022</td><td>42 integrated care boards; CCGs abolished</td><td>Health and Care Act 2022</td></tr><tr><td>2025</td><td>NHS England abolished; transition into 2027</td><td>announced March 2025</td></tr><tr><td>2026</td><td>36 integrated care boards</td><td>a single Order, in force 1 April 2026</td></tr><tr><td>Announced</td><td>Aligned to strategic authorities</td><td>Cabinet statement, 31 July 2026</td></tr></tbody></table></div><p style="margin-top:20px">In commvita the commissioning map is a <strong>sourced, effective-dated record</strong>. When boards merge, the organisations involved in a case change. The case does not. Nor does the person, their login, their key worker, or the measure of local need &mdash; that is tied to geography, and geography does not move when a board does.</p></div></section>
+<section class="screen"><div class="wrap"><span class="eyebrow">Four failures</span><h2>The same four failures, in every health system we have worked in</h2><div class="g g2"><div class="card"><span class="knum">01</span><h3>Nobody holds the person</h3><p>Each organisation holds a version of someone. Reconciling them is manual, so it&rsquo;s done at the point of harm not continuously.</p></div><div class="card"><span class="knum">02</span><h3>Integration decays</h3><p>An interface is a snapshot of two systems agreeing. Neither stands still, and nothing tells you when they stopped agreeing.</p></div><div class="card"><span class="knum">03</span><h3>Lock-in is the business model</h3><p>When the data model is proprietary, the cost of leaving grows with every year of data. The renewal negotiation is decided years before it happens.</p></div><div class="card"><span class="knum">04</span><h3>The org chart is in the code</h3><p>Reorganisation becomes a migration, so a platform bought in one organisational era has to be replaced in the next.</p></div></div></div></section><section class="screen tint"><div class="wrap"><span class="eyebrow">Reorganisation</span><h2>England has abolished and replaced every commissioner twice in a decade</h2><p class="lead">It&rsquo;s the best-documented example, not the only one. A platform that treats reorganisation as a migration will be migrated, repeatedly.</p><div class="tw"><table><thead><tr><th>When</th><th>What</th><th>Instrument</th></tr></thead><tbody><tr><td>2013</td><td>211 clinical commissioning groups created</td><td>Health and Social Care Act 2012</td></tr><tr><td>2021</td><td>106 after eight years of merger</td><td>consolidation, no statutory change</td></tr><tr><td>2022</td><td>42 integrated care boards; CCGs abolished</td><td>Health and Care Act 2022</td></tr><tr><td>2025</td><td>NHS England abolished; transition into 2027</td><td>announced March 2025</td></tr><tr><td>2026</td><td>36 integrated care boards</td><td>a single Order, in force 1 April 2026</td></tr><tr><td>Announced</td><td>Aligned to strategic authorities</td><td>Cabinet statement, 31 July 2026</td></tr></tbody></table></div><p style="margin-top:20px">In commvita the commissioning map is a <strong>sourced, effective-dated record</strong>. When boards merge, the organisations involved in a case change. The case doesn&rsquo;t. Nor does the person, their login, their key worker, or the measure of local need &mdash; that&rsquo;s tied to geography, and geography doesn&rsquo;t move when a board does.</p></div></section>
 </main>
 <footer class="foot">
   <div class="footin">
@@ -732,7 +732,7 @@ section.dark .eyebrow::before{background:currentColor}
       b.setAttribute('aria-expanded', open?'true':'false');
     });
   }
-  // Rail: reflect the section in view. IntersectionObserver rather than a
+  // Rail: reflect the section in view. IntersectionObserver instead of a
   // scroll handler, because a scroll handler on a touch device fires on
   // every frame of a momentum scroll and costs more than the feature.
   var rail=document.querySelector('.rail');

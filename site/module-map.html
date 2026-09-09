@@ -54,7 +54,7 @@
   --navbg:rgba(12,22,38,.92);
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 36px -18px rgba(0,0,0,.7);
   /* Figures, dark. Surfaces darken, accents brighten to hold contrast on
-     them, and the status chips get dark-mode tints rather than being left
+     them, and the status chips get dark-mode tints instead of being left
      as light pills on a dark card. */
   --fig-ink:#EAF1FB; --fig-body:#C2D0E6; --fig-muted:#93A6C4;
   --fig-surface:#16273F; --fig-tint:#1B3050; --fig-hair:rgba(255,255,255,.16);
@@ -64,7 +64,7 @@
   /* Inverted plates keep a DARK background and light type in both themes —
      flipping them is what collapsed contrast to 1.02:1. */
   --fig-invert-bg:#050B16; --fig-invert-fg:#FFFFFF; --fig-invert-muted:#9FB0CC;
-  /* The ladder darkens with the rung rather than lightening. */
+  /* The ladder darkens with the rung instead of lightening. */
   --fig-rung0:#182842; --fig-rung1:#173347; --fig-rung2:#153E4C;
   --fig-rung3:#134851; --fig-rung4:#115356; --fig-rung5:#0F5E5B;
   --fig-live-fg:#8FF0DF; --fig-live-bg:#0E3A34; --fig-live-bd:#1C6B60;
@@ -115,8 +115,8 @@ strong{color:var(--ink);font-weight:700}
 .topin{max-width:var(--maxw);margin:0 auto;
   padding:0 clamp(14px,3vw,28px);min-height:calc(var(--nav-h) - 1px);
   display:flex;align-items:center;gap:16px;flex-wrap:nowrap}
-/* The bar never wraps: when the nine buttons cannot fit, the BUTTON ROW
-   scrolls rather than the header growing a second line. A two-row header
+/* The bar never wraps: when the nine buttons can't fit, the BUTTON ROW
+   scrolls instead of the header growing a second line. A two-row header
    pushes the lockup and the controls out of alignment with every other page,
    which is the inconsistency this change is fixing. */
 .navpanel{min-width:0;overflow-x:auto;scrollbar-width:none;
@@ -324,7 +324,7 @@ section.dark .pull .em{color:#6FE3D4}
    action. Measured before this rule, the hero ran to ~1190px on an 852px
    viewport, so "Explore commvita" was below the fold — the B-440 defect,
    where a landing screen looks fine in a screenshot that stops at the fold. */
-/* On the narrowest phones the strapline costs more than it earns: it is the
+/* On the narrowest phones the strapline costs more than it earns: it's the
    difference between a one-row header and a two-row one. */
 @media (max-width:400px){
   .tag{display:none}
@@ -384,9 +384,9 @@ a,button,summary,[role="button"]{touch-action:manipulation}
 .rail a{min-width:44px;min-height:44px;display:flex;align-items:center;
   justify-content:center}
 
-/* A figure at 900px cannot be shrunk to a 360px phone and stay legible —
+/* A figure at 900px can't be shrunk to a 360px phone and stay legible —
    12.5px type would land at 5px. It scrolls instead, and the fade tells
-   the reader that it does. An affordance nobody sees is not an affordance. */
+   the reader that it does. An affordance nobody sees isn't an affordance. */
 .fig{position:relative}
 .fig::after{content:"";position:absolute;top:1px;right:1px;bottom:1px;width:26px;
   border-radius:0 12px 12px 0;pointer-events:none;
@@ -395,8 +395,8 @@ a,button,summary,[role="button"]{touch-action:manipulation}
 
 /* Controls a finger is meant to hit, on any coarse pointer. `pointer:coarse`
    is the semantic query — a 1194px iPad in landscape is a touch device and a
-   1194px laptop is not, and width alone cannot tell them apart. The width
-   clause is the fallback for engines that do not report the pointer. */
+   1194px laptop isn't, and width alone can't tell them apart. The width
+   clause is the fallback for engines that don't report the pointer. */
 @media (pointer:coarse),(max-width:1024px){
   .lock{min-height:44px}
   .crumb{padding-top:12px}
@@ -434,7 +434,7 @@ a,button,summary,[role="button"]{touch-action:manipulation}
 /* ═══════════════════════════════════════════════════════════════════════
    FITTING A SCREEN
    Every section is meant to be one self-contained view. That only works if
-   the type scales with the viewport rather than sitting at a fixed rem — a
+   the type scales with the viewport instead of sitting at a fixed rem — a
    fixed scale means a short laptop and a tall monitor get the same overflow.
    These clamps are keyed to vh as well as vw, which is what the original
    landing page does and why its screens hold together.
@@ -457,8 +457,8 @@ html.snap .fig{margin-top:clamp(12px,1.6vh,24px)}
 html.snap .eyebrow{margin-bottom:clamp(7px,1vh,14px)}
 html.snap p{margin-bottom:clamp(.6em,1.1vh,1.05em)}
 
-/* A section that genuinely cannot fit — a fifteen-row table, a sixty-six
-   item library — opts out and scrolls rather than being squeezed to an
+/* A section that genuinely can't fit — a fifteen-row table, a sixty-six
+   item library — opts out and scrolls instead of being squeezed to an
    unreadable size. Which ones those are is MEASURED, not guessed. */
 html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 
@@ -466,9 +466,9 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
    SCROLL-SNAP PRESENTATION
    `proximity`, never `mandatory`: mandatory snapping on a touch device
    fights the user when a section is taller than the viewport, and a
-   presentation that will not let you read the bottom of a slide is worse
+   presentation that won't let you read the bottom of a slide is worse
    than no presentation. min-height, never height, for the same reason —
-   a tall section grows rather than clipping.
+   a tall section grows instead of clipping.
    ═══════════════════════════════════════════════════════════════════════ */
 html.snap{scroll-snap-type:y proximity}
 /* Sections size to their CONTENT and snap to their top.
@@ -476,7 +476,7 @@ html.snap{scroll-snap-type:y proximity}
    screenshot showed: a hero 838px tall holding 223px of content — 27% filled,
    with a void beneath it and nothing to say whether more existed below.
    Sizing to content removes the void, and the next section peeking above the
-   fold IS the cue that there is more. */
+   fold IS the cue that there's more. */
 html.snap .screen{
   scroll-snap-align:start;
   scroll-snap-stop:normal;
@@ -497,7 +497,7 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 @media (max-width:900px){.rail{display:none}}
 
 /* Snap is a desktop affordance. On a phone it competes with momentum
-   scrolling and with the address bar resizing mid-gesture, so it is off. */
+   scrolling and with the address bar resizing mid-gesture, so it's off. */
 @media (max-width:768px){
   html.snap{scroll-snap-type:none}
   html.snap .screen{min-height:auto;display:block;
@@ -513,7 +513,7 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 .lock:hover,.brand:hover{text-decoration:none}
 
 /* The mark carries no white disc: the official lockup has none. It reads on
-   a dark ground because its ink is currentColor rather than a fixed hex, so
+   a dark ground because its ink is currentColor instead of a fixed hex, so
    it inverts with the theme instead of needing a badge to sit on. */
 .mark{flex:none;display:block;color:var(--ink);
   background:none;box-shadow:none;border-radius:0}
@@ -540,11 +540,11 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
    The size is set by the tightest constraint, which is the landing page's:
    its bar is capped at --maxw (1180px) and must carry the lockup, the nine
    buttons and the controls WITHOUT clipping, because a clipped last button
-   on a desktop reads as a broken header rather than as something to swipe.
+   on a desktop reads as a broken header and not as something to swipe.
    At .79rem/11px the nine measured 754px against a budget that also has to
    find ~220px of lockup and ~284px of controls. So .76rem/7px it is, on
    both documents — not a compromise on the subpages but the figure that
-   actually fits where the row cannot scroll. */
+   actually fits where the row can't scroll. */
 .nav>a,.links>a{display:inline-flex;align-items:center;min-height:44px;
   padding:0 7px;border-radius:7px;font-size:.76rem;font-weight:650;
   color:var(--ink);white-space:nowrap;text-decoration:none;
@@ -552,14 +552,14 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 .nav>a:hover,.links>a:hover{color:var(--ink);
   background:var(--tint,var(--panel-2));text-decoration:none}
 /* Active state uses --ink and a teal wash rather than --accent: the landing
-   page does not define --accent, and its dark-theme fallback would have
+   page doesn't define --accent, and its dark-theme fallback would have
    been a mid-teal on a dark ground. --ink and --teal exist in both
    documents and in both themes. */
 .nav>a.on,.links>a[aria-current="true"]{color:var(--ink);
   background:color-mix(in srgb,var(--teal) 16%,transparent);
   box-shadow:inset 0 -2px 0 var(--teal)}
 /* The landing page drew its active underline with an ::after block, which
-   cannot sit under the label inside a flex row. The inset shadow above
+   can't sit under the label inside a flex row. The inset shadow above
    replaces it on both documents. */
 .links a[aria-current="true"]::after{content:none}
 
@@ -582,7 +582,7 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
   justify-content:center;min-height:44px;padding:0 15px;font-size:.82rem;
   font-weight:650;border-radius:9px}
 
-/* Responsive tightening lives HERE rather than earlier in the sheet: the
+/* Responsive tightening lives HERE instead of earlier in the sheet: the
    base rule above is later in source order, so a media query declared
    before it would be silently overridden. */
 @media (max-width:900px){.nav>a,.links>a{padding:0 9px}}
@@ -594,8 +594,8 @@ html.snap .screen.tall{scroll-snap-align:none;min-height:auto;display:block}
 </style>
 <style>
 /* ─── Semantic colour, per the brand specification ────────────────────────────
-   "Colour is semantic here, not decorative... if a colour cannot be explained,
-   it should not be used." Teal is the person and the record; violet is
+   "Colour is semantic here, not decorative... if a colour can't be explained,
+   it shouldn't be used." Teal is the person and the record; violet is
    governance; amber is flow; coral is escalation. Teal had become the site's
    general accent — 46 rules — including as label text, where it measures
    2.27:1 on paper and fails WCAG for anything but display sizes.
@@ -622,7 +622,7 @@ section.dark .eyebrow::before{background:currentColor}
 .who .nm a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .who .nm a:hover::after{color:var(--ink)}
 .aim.a1{border-left-color:var(--ink)}
-/* Gradients are out entirely — the spec bars them on the mark, and they are the
+/* Gradients are out entirely — the spec bars them on the mark, and they're the
    single most template-looking thing on a page. */
 .cv .fill{background:var(--ink)}
 .vx-bar i{background:var(--ink)}
@@ -658,7 +658,7 @@ section.dark .eyebrow::before{background:currentColor}
       <span></span><span></span><span></span><em class="sr">Menu</em>
     </button>
     <div class="navpanel" id="navpanel">
-      <nav class="nav" aria-label="Primary"><a href="platform.html" class="on" aria-current="true">Platform</a><a href="problem.html">Problem</a><a href="solution.html">Approach</a><a href="standards.html">Standards</a><a href="research-and-innovation.html">Research</a><a href="system-maturity.html">Maturity</a><a href="regulatory-compliance.html">Compliance</a><a href="editions.html">Editions</a><a href="founders.html">Founders</a><a href="launch.html">Launch</a></nav>
+      <nav class="nav" aria-label="Primary"><a href="platform.html" class="on" aria-current="true">Platform</a><a href="problem.html">Problem</a><a href="solution.html">Approach</a><a href="standards.html">Standards</a><a href="research-and-innovation.html">Research</a><a href="system-maturity.html">Maturity</a><a href="regulatory-compliance.html">Compliance</a><a href="editions.html">Editions</a><a href="founders.html">Founders</a><a href="explainers/index.html">Explainers</a><a href="launch.html">Launch</a></nav>
     </div>
     <div class="navctl">
       <button class="tglt" id="themeBtn" aria-label="Switch to dark theme"
@@ -692,7 +692,7 @@ section.dark .eyebrow::before{background:currentColor}
     <h2>622 modules, 565 live</h2>
     <p class="lead">Thirty-nine more are built but not yet live, twelve are stubbed, and nothing
       is sitting in the backlog. Below are the 415 the module explorer names, grouped into its
-      21 themes and read from its own data rather than written by hand. A theme is a grouping,
+      21 themes and read from its own data not written by hand. A theme is a grouping,
       not a product: every one of them reads and writes the same record.</p>
     <div class="tmg">
       <div class="tm"><span class="tm-r" style="background:#141C2E"></span><h3>Person &amp; Record Spine <span class="tm-n">11</span></h3><ul class="tm-l"><li>Care Journey</li><li>EMPI Hub</li><li>Neighbourhood Health Record</li><li>Patient Detail</li><li>Patient Life Course Timeline</li><li>Patient Transfers</li><li>Patients</li><li>Personalised Care Plan</li><li>SPR Quick View</li><li>Single Patient Record</li><li>Whole Person Record</li></ul></div><div class="tm"><span class="tm-r" style="background:#00B8A6"></span><h3>Clinical Core <span class="tm-n">15</span></h3><ul class="tm-l"><li>CDSS Engine</li><li>Clinical Assessment Templates</li><li>Clinical Knowledge Base</li><li>Clinical Tools</li><li>Closed Loop Med Admin</li><li>Consultation Wizard</li><li>Deterioration Alerting</li><li>LTC</li><li>LTC Reviews</li><li>Medications</li><li>Medicines Optimisation</li><li>Order Sets</li><li>PACS / VNA Viewer</li><li>Prescriptions</li><li>Safe Handover</li></ul></div><div class="tm"><span class="tm-r" style="background:#1FA6A0"></span><h3>Condition Programmes <span class="tm-n">15</span></h3><ul class="tm-l"><li>Antimicrobial Stewardship</li><li>Cardiac Rehabilitation</li><li>Diabetes Management</li><li>Falls Risk Assessment</li><li>Frailty Programme</li><li>Genomics Service</li><li>Heart Failure Hub</li><li>IPC Log</li><li>MSK Hub</li><li>Neurology Hub</li><li>Paediatric Nursing</li><li>Patient Initiated Follow Up</li><li>Respiratory Hub</li><li>Specialist Nursing</li><li>Stroke Care</li></ul></div><div class="tm"><span class="tm-r" style="background:#FF5B47"></span><h3>Referrals &amp; Access <span class="tm-n">15</span></h3><ul class="tm-l"><li>Advice Guidance</li><li>Appointments</li><li>Elective Experience Standards</li><li>Online Consultation</li><li>Pharmacy First</li><li>RTT PTL Dashboard</li><li>Referral Hub</li><li>Referral Optimisation</li><li>Referrals</li><li>Smart Triage</li><li>Total Triage</li><li>Triage Queue</li><li>Unified Waiting List</li><li>Waiting List</li><li>Waiting Well</li></ul></div><div class="tm"><span class="tm-r" style="background:#2FB6A6"></span><h3>Remote &amp; Community <span class="tm-n">23</span></h3><ul class="tm-l"><li>Care Deterioration</li><li>Community Dentistry</li><li>Community Nursing Activity</li><li>Community Nursing Portal</li><li>Community Ophthalmology</li><li>Complex Commodity</li><li>Consent Hub</li><li>Continuous RPM</li><li>DNA Analysis</li><li>Digital Front Door</li><li>Lone Worker Safety</li><li>Luscii Monitoring</li><li>Maternity EPR</li><li>OASIS-E2</li><li>Patient Transport</li><li>Recall Management</li><li>Remote Patient Monitoring</li><li>Repeat Monitoring</li><li>Sexual Health EPR</li><li>Telehealth</li><li>Virtual Ward Hub</li><li>Visit Schedule</li><li>Wearable Device Integration</li></ul></div><div class="tm"><span class="tm-r" style="background:#4F9E86"></span><h3>Mental Health &amp; Social Care <span class="tm-n">29</span></h3><ul class="tm-l"><li>Advance Care Planning</li><li>CAMHS</li><li>Care Home Hospice</li><li>Care Homes Shared Record</li><li>Carer Assessments</li><li>Carer Identification</li><li>Childrens Social Care</li><li>Court Of Protection</li><li>Dual Diagnosis</li><li>Eating Disorders</li><li>Forensic MH</li><li>IAPT / Talking Therapies</li><li>MH Bed Management</li><li>MH Clustering</li><li>MHSDS Submission</li><li>Mental Health</li><li>Mental Health Records</li><li>NHS Talking Therapies</li><li>Needs Assessment</li><li>Palliative Register</li><li>Perinatal MH</li><li>SEND / EHC Plans</li><li>Safeguarding Hub</li><li>Shared Lives</li><li>Social Care</li><li>Social Care Performance</li><li>Social Care Records</li><li>Social Prescribing</li><li>Social Prescribing Directory</li></ul></div><div class="tm"><span class="tm-r" style="background:#5BB98F"></span><h3>Allied Health (AHP) <span class="tm-n">6</span></h3><ul class="tm-l"><li>Audiology</li><li>Interpreter Services</li><li>Occupational Therapy</li><li>Physiotherapy</li><li>Podiatry</li><li>Speech Language Therapy</li></ul></div><div class="tm"><span class="tm-r" style="background:#E0603C"></span><h3>Ambulance &amp; Pre-Hospital <span class="tm-n">10</span></h3><ul class="tm-l"><li>Ambulance Hub</li><li>Burns Management</li><li>Cardiac Arrest</li><li>ECG Transmission</li><li>HEMS</li><li>Handover Clock</li><li>JRCALC</li><li>Major Incident</li><li>Paediatric Drug Calculator</li><li>Paramedic Crew App</li></ul></div><div class="tm"><span class="tm-r" style="background:#141C2E"></span><h3>Flow, Acute &amp; Emergency Ops <span class="tm-n">22</span></h3><ul class="tm-l"><li>A&amp;E Demand Forecast</li><li>Bed Board</li><li>Bed Management</li><li>Cancer Pathways</li><li>Clinic Room Booking</li><li>Clinical Pharmacy</li><li>Demand Capacity Reservoir</li><li>Diagnostics Capacity</li><li>Discharge Hub</li><li>EPR Bed Integration</li><li>Hospital Digital Twin</li><li>LOS Prediction</li><li>OPEL Submission</li><li>On Call Manager</li><li>Operational Instruments</li><li>Pharmacy TTAs</li><li>SDEC Hub</li><li>Theatre List</li><li>Theatre Productivity</li><li>Urgent Care Centre</li><li>Winter Pressures Forecast</li><li>commvita Flow</li></ul></div><div class="tm"><span class="tm-r" style="background:#2F6DB5"></span><h3>Interoperability, EPR &amp; Data Platform <span class="tm-n">49</span></h3><ul class="tm-l"><li>API &amp; Webhook Framework</li><li>API Gateway</li><li>BaRS</li><li>Batch File Adapters</li><li>CDS Hooks</li><li>CQRS / SCR</li><li>Clinical Letters</li><li>Connector Wizard</li><li>Cross Border Interop</li><li>Data Fabric</li><li>Data Products</li><li>Document Capture</li><li>EHDS Compliance</li><li>EPR Hub</li><li>ESR Integration</li><li>FDP Canonical Data Console</li><li>FDP Comparison</li><li>FDP Exit Continuity</li><li>FHIR Bulk Export</li><li>Federated Query</li><li>GP Connect</li><li>GP Validation</li><li>GP2GP</li><li>GPES Ingest</li><li>HL7 ADT Feed</li><li>HL7 Engine</li><li>IHE Profiles</li><li>IM1 Pairing</li><li>Integrations Hub</li><li>Lab Results Ingest</li><li>Medical Device Gateway</li><li>Message Deduplication</li><li>NHS 111</li><li>NHS Integrations</li><li>NRL Connector</li><li>National Audit Feeds</li><li>ODS Health</li><li>OMOP Transformation</li><li>PulseGrid (Integration Assurance)</li><li>SMART on FHIR</li><li>SUS/HES Ingest</li><li>Schema Library</li><li>Snomed Crosswalk</li><li>Synthetic Data Generation</li><li>TEFCA / QHIN</li><li>Terminology Service</li><li>Transformation Studio</li><li>UKHSA Surveillance</li><li>openEHR CKM</li></ul></div><div class="tm"><span class="tm-r" style="background:#2C8FB0"></span><h3>Analytics &amp; Population Health <span class="tm-n">22</span></h3><ul class="tm-l"><li>Analytics</li><li>Benchmarking</li><li>Cohort Discovery</li><li>Deprivation Mapping</li><li>Episode Analytics</li><li>Geospatial Inequalities Map</li><li>Health Inequalities</li><li>Medicines Optimisation Visualiser</li><li>Neighbourhood Intelligence</li><li>Outcome Intelligence</li><li>PROMs / PREMs</li><li>Patient Flow Sankey</li><li>Population Health</li><li>Population Risk Pyramid</li><li>Predictive Analytics</li><li>Prescribing Analytics</li><li>QOF Exceptions</li><li>QPR Reporting</li><li>RTT Waiting Swarm</li><li>Referral Network Graph</li><li>Research Portal</li><li>SDOH Screening</li></ul></div><div class="tm"><span class="tm-r" style="background:#3D7EA6"></span><h3>Planning &amp; Shared Care Records <span class="tm-n">15</span></h3><ul class="tm-l"><li>Annual Plan Hub</li><li>DSPA Manager</li><li>Data Quality</li><li>Health System Builder</li><li>ICS Population Analytics</li><li>INT Hub</li><li>LeftShift Intelligence</li><li>Net Zero Sustainability</li><li>PRSB Compliance</li><li>Provider Portal</li><li>Quality Account</li><li>SPR Contribution Hub</li><li>SPR Readiness</li><li>ShCR Maturity</li><li>Shared Care Opt Out</li></ul></div><div class="tm"><span class="tm-r" style="background:#7B61FF"></span><h3>Governance, Safety &amp; Risk <span class="tm-n">42</span></h3><ul class="tm-l"><li>AI Governance</li><li>Audit Log</li><li>CAPA Workflow</li><li>CQC Notifications</li><li>Clinical Audit</li><li>Clinical Risk Management</li><li>Complaints Management</li><li>Confidential IG Spine</li><li>Corporate Risk Register</li><li>Cyber Assessment</li><li>DCB0160 Workflow</li><li>DTAC</li><li>Data Security Architecture</li><li>Duty Of Candour</li><li>Federated Governance</li><li>Firearms Certification</li><li>Freedom To Speak Up</li><li>Golden Thread</li><li>Governance Intelligence</li><li>Hazard Log</li><li>IG Control Centre</li><li>IG Data Control</li><li>IG Hub</li><li>IG Records Spine</li><li>IG Training Compliance</li><li>Incident Reporting</li><li>LEARN Reporting</li><li>Legitimate Relationship Log</li><li>Login Audit Log</li><li>Mortality Review</li><li>Near Miss Tracking</li><li>Patient Family Escalation</li><li>Policy To Process</li><li>Process Quality</li><li>RIDDOR Reporting</li><li>Regulatory Engine</li><li>Report Registry</li><li>Root Cause Analysis</li><li>Safety Case Report</li><li>Safety Walkrounds</li><li>Security Console</li><li>Supplier IG Assurance</li></ul></div><div class="tm"><span class="tm-r" style="background:#9B4B8A"></span><h3>Board &amp; Assurance <span class="tm-n">14</span></h3><ul class="tm-l"><li>Assurance Dashboard</li><li>Board Assurance Framework</li><li>Board Entity Governance</li><li>Board Management</li><li>Clinical Studies</li><li>Compliance Action Hub</li><li>EPRR Hub</li><li>Governance Visual Boards</li><li>HIMSS Assessment</li><li>Policy Library</li><li>Quality Performance Report</li><li>Register Of Interests</li><li>Regulatory Assessment</li><li>Shift Priority Board</li></ul></div><div class="tm"><span class="tm-r" style="background:#FFB020"></span><h3>Workforce &amp; L&amp;D <span class="tm-n">19</span></h3><ul class="tm-l"><li>Appraisal Revalidation</li><li>Bank Agency Cascade</li><li>Dynamic Scheduling</li><li>HR &amp; Finance</li><li>Hierarchy Builder</li><li>Job Planning</li><li>Mandatory Training</li><li>NHS Pension</li><li>Rostering</li><li>Safe Staffing</li><li>Spryt ASA</li><li>Staff Directory</li><li>Staff Org Management</li><li>Staff Portal</li><li>Staff Wellbeing</li><li>Workforce Intelligence</li><li>Workforce Visual Boards</li><li>commvita Learn</li><li>commvita Learn Mobile</li></ul></div><div class="tm"><span class="tm-r" style="background:#B8860B"></span><h3>US Care Management (ACO) <span class="tm-n">25</span></h3><ul class="tm-l"><li>ACO Attribution</li><li>Annual Wellness Visit</li><li>CMS CoP</li><li>CMS Interoperability</li><li>Chronic Care Management</li><li>Collaborative Care</li><li>Cures Act Compliance</li><li>Da Vinci DTR</li><li>HCC Risk Coding</li><li>ICS Finance</li><li>Network Leakage Alerts</li><li>No Surprises Act</li><li>Payer Dashboard</li><li>Payer Data Feeds</li><li>Principal Care Management</li><li>Prior Auth</li><li>QRDA I/III</li><li>Quality Measure Tracker</li><li>RAF Recapture</li><li>RAF Score Monitor</li><li>RTM Monitoring</li><li>Readmission Prevention</li><li>STAR Ratings</li><li>TCOC Dashboard</li><li>Transitional Care</li></ul></div><div class="tm"><span class="tm-r" style="background:#2E9E7B"></span><h3>Finance &amp; Commissioning <span class="tm-n">16</span></h3><ul class="tm-l"><li>Brokerage Placement</li><li>Care Act Cost Cap</li><li>Care Package Finance</li><li>Crown Dependency Billing</li><li>Crown Dependency Billing Rules Engine</li><li>Direct Payments</li><li>Financial Assessment</li><li>Formulary Management</li><li>GP Contract DES</li><li>ICB Commissioning</li><li>ICS Contract Intelligence</li><li>NHS Payment System</li><li>NHS Supply Chain</li><li>PCN Support</li><li>Private Charges</li><li>QOF</li></ul></div><div class="tm"><span class="tm-r" style="background:#E58A4E"></span><h3>Patient Portal &amp; Engagement <span class="tm-n">10</span></h3><ul class="tm-l"><li>Domiciliary Care Worker Portal</li><li>Immunisation Management</li><li>NHS App</li><li>Patient Feedback</li><li>Patient Feedback Portal</li><li>Patient Portal</li><li>Patient Portal Home</li><li>Patient Portal Login</li><li>Screening Programmes</li><li>Smart Screening</li></ul></div><div class="tm"><span class="tm-r" style="background:#C65B7C"></span><h3>Communications <span class="tm-n">6</span></h3><ul class="tm-l"><li>Comms Design Studio</li><li>Communications CRM</li><li>NHS Mail</li><li>Patient Comms</li><li>SMS / WhatsApp Gateway</li><li>Telephony Hub</li></ul></div><div class="tm"><span class="tm-r" style="background:#2E9E7B"></span><h3>Jurisdiction &amp; Config <span class="tm-n">10</span></h3><ul class="tm-l"><li>Assisted Dying</li><li>Ireland Minister Dashboard</li><li>Jamaica Health Dashboard</li><li>Jurisdiction Agent</li><li>Jurisdiction Profile</li><li>Jurisdiction Wizard</li><li>Oman Integrations</li><li>Pack Registry</li><li>RBAC</li><li>RBAC Matrix</li></ul></div><div class="tm"><span class="tm-r" style="background:#3A4A63"></span><h3>Platform, AI &amp; Admin <span class="tm-n">41</span></h3><ul class="tm-l"><li>AI Assistant Config</li><li>AI Consultation Assist</li><li>AI Documentation</li><li>AI Integration Hub</li><li>AI Transformation Advisor</li><li>Ambient Clinical AI</li><li>Architecture</li><li>Cases</li><li>Clinical Home</li><li>Clinical Template Editor</li><li>Competitive Audit</li><li>Concierge</li><li>Dashboard</li><li>Data Transparency</li><li>Demo Launcher</li><li>Diagnostics</li><li>Document Management</li><li>Executive Home</li><li>Feature Flags</li><li>Feedback Admin</li><li>Help Guide</li><li>Intervene</li><li>Login</li><li>Menu Builder</li><li>Monitor</li><li>NLP Document Coding</li><li>OIDC / SSO</li><li>Offline Settings</li><li>Optimise</li><li>Org Admin</li><li>Practice Admin</li><li>Privacy Enhancing Technology</li><li>Process Kit</li><li>Reset Password</li><li>Resource Management</li><li>Settings</li><li>Tasks</li><li>User Management</li><li>Voice Scribe</li><li>commvita MyDay</li><li>commvita Sign</li></ul></div>
@@ -769,7 +769,7 @@ section.dark .eyebrow::before{background:currentColor}
       b.setAttribute('aria-expanded', open?'true':'false');
     });
   }
-  // Rail: reflect the section in view. IntersectionObserver rather than a
+  // Rail: reflect the section in view. IntersectionObserver instead of a
   // scroll handler, because a scroll handler on a touch device fires on
   // every frame of a momentum scroll and costs more than the feature.
   var rail=document.querySelector('.rail');
