@@ -241,12 +241,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="role" style="border-top-color:var(--teal)">
       <h3>Firearms medical-suitability</h3>
       <div class="who">Shotgun / firearm certificate — GP report</div>
-      <p>A dedicated <strong>mental-health-first</strong> review wizard surfaces recorded information, records the clinician's decision on an <strong>append-only decision log</strong>, and transmits a minimum-necessary proforma to the licensing authority.</p>
+      <p>A dedicated <strong>mental-health-first</strong> review wizard surfaces recorded information, records the clinician&rsquo;s decision on an <strong>append-only decision log</strong>, and transmits a minimum-necessary proforma to the licensing authority.</p>
       <div class="where"><b>Where in commvita</b>
         <span class="chip">/firearms-certification</span> wizard → sign via <span class="chip">/esign</span> → fee <span class="chip">/private-charges</span>.</div>
     </div>
   </div>
-  <div class="callout"><b>Non-SaMD by design.</b> commvita <b>surfaces recorded data and records the clinician's decision</b> — it does not decide clinical suitability (the doctor's judgement) or adjudicate the licence (the authority). The firearms review is <b>blocked (409) until every information domain has been reviewed</b>, and its decision log is append-only.</div>
+  <div class="callout"><b>Non-SaMD by design.</b> commvita <b>surfaces recorded data and records the clinician&rsquo;s decision</b> — it doesn&rsquo;t decide clinical suitability (the doctor&rsquo;s judgement) or adjudicate the licence (the authority). The firearms review is <b>blocked (409) until every information domain has been reviewed</b>, and its decision log is append-only.</div>
 
   <!-- SECTION 1 — REQUEST -->
   <h2 class="grant"><span class="num">1</span> Request raised — the patient is bound by record</h2>
@@ -323,7 +323,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- SECTION 3 — DECISION & REPORT -->
   <h2 class="rescind"><span class="num">3</span> Decision &amp; report</h2>
-  <p class="lead">The clinician records the decision and a mandatory rationale. The firearms decision log is append-only and cannot proceed until every domain is reviewed.</p>
+  <p class="lead">The clinician records the decision and a mandatory rationale. The firearms decision log is append-only and can&rsquo;t proceed until every domain is reviewed.</p>
   <div class="steps">
     <div class="step re"><div class="s">▸</div><div>
       <h4>Decision selector + mandatory rationale</h4>
@@ -391,7 +391,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- SECTION 4 — SIGN -->
   <h2 class="grant"><span class="num">4</span> Sign — OTP ceremony, jurisdiction certificate</h2>
-  <p class="lead">commvita Sign is the platform e-signature service. The signature is bound cryptographically to the document, and the certificate cites the deployment's jurisdiction.</p>
+  <p class="lead">commvita Sign is the platform e-signature service. The signature is bound cryptographically to the document, and the certificate cites the deployment&rsquo;s jurisdiction.</p>
   <div class="steps">
     <div class="step g"><div class="s">▪</div><div>
       <h4>Per-ceremony OTP signing</h4>
@@ -399,7 +399,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/esign · send-otp · sign</span><span class="chip">SignRequest · SignSigner</span></div></div></div>
     <div class="step g"><div class="s">▪</div><div>
       <h4>Jurisdiction-specific certificate</h4>
-      <p>The request carries a <code>jurisdiction</code>; the issued certificate cites that jurisdiction's <strong>statute / assurance level / regulator / retention</strong> — England/Wales/Scotland/NI under <strong>UK eIDAS (AdES)</strong>; Crown Dependencies under their <strong>electronic transactions law</strong>; and so on.</p>
+      <p>The request carries a <code>jurisdiction</code>; the issued certificate cites that jurisdiction&rsquo;s <strong>statute / assurance level / regulator / retention</strong> — England/Wales/Scotland/NI under <strong>UK eIDAS (AdES)</strong>; Crown Dependencies under their <strong>electronic transactions law</strong>; and so on.</p>
       <div class="loc"><span class="chip">per-jurisdiction e-signature law</span><span class="chip">UK eIDAS AdES</span></div></div></div>
   </div>
 
@@ -457,7 +457,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <!-- SECTION 6 — EVIDENCE -->
   <h2 class="rescind"><span class="num">6</span> Evidence — everything on the immutable chain</h2>
   <p class="lead">Request, review, decision, signature and invoice all land on append-only, tamper-evident logs — nothing can be quietly rewritten.</p>
-  <div class="callout re"><b>Immutable by construction.</b> Both the commvita Sign <b>Audit Chain</b> and the Firearms <b>decision log</b> are <b>append-only and SHA-256 hash-chained</b> (<code>prev_hash → row_hash</code>), <b>re-verified server-side on every read</b> — a broken link shows a tamper banner. There is <b>no update or delete endpoint</b>. For firearms, the minimum-necessary proforma transmission records an exact field list and a SHA-256 payload hash to the decision log — evidencing exactly what was shared with the authority, and no more.</div>
+  <div class="callout re"><b>Immutable by construction.</b> Both the commvita Sign <b>Audit Chain</b> and the Firearms <b>decision log</b> are <b>append-only and SHA-256 hash-chained</b> (<code>prev_hash → row_hash</code>), <b>re-verified server-side on every read</b> — a broken link shows a tamper banner. There&rsquo;s <b>no update or delete endpoint</b>. For firearms, the minimum-necessary proforma transmission records an exact field list and a SHA-256 payload hash to the decision log — evidencing exactly what was shared with the authority, and no more.</div>
 
   <!-- WHERE IT LIVES -->
   <h2>Where it lives in commvita</h2>

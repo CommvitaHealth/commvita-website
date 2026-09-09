@@ -198,8 +198,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
 
   <!-- SCENARIO -->
-  <div class="callout"><b>The scenario.</b> <strong>Rita Okafor</strong> is a domiciliary care worker at an <strong>external provider — Harbourside Community Care</strong>. She is delivering a <strong>6-week community rehabilitation package</strong> after a patient's hip fracture, visiting daily. She needs <strong>daily, time-boxed access to ONLY the rehab-relevant part</strong> of the record — the rehab care plan, goals, exercise programme and visit log — <b>not</b> the full clinical record. She is a third party to the controller: access must be least-privilege, lawful for direct care, and end by itself when the 6-week episode does.</p>
-  <p style="margin:0">Below: <strong>how the access is granted (A)</strong>, <strong>what she can and cannot see (B)</strong>, and <strong>how it auto-expires and is extended (C)</strong> — each illustrated with a representative commvita screen.</div>
+  <div class="callout"><b>The scenario.</b> <strong>Rita Okafor</strong> is a domiciliary care worker at an <strong>external provider — Harbourside Community Care</strong>. She is delivering a <strong>6-week community rehabilitation package</strong> after a patient&rsquo;s hip fracture, visiting daily. She needs <strong>daily, time-boxed access to ONLY the rehab-relevant part</strong> of the record — the rehab care plan, goals, exercise programme and visit log — <b>not</b> the full clinical record. She is a third party to the controller: access must be least-privilege, lawful for direct care, and end by itself when the 6-week episode does.</p>
+  <p style="margin:0">Below: <strong>how the access is granted (A)</strong>, <strong>what she can and can&rsquo;t see (B)</strong>, and <strong>how it auto-expires and is extended (C)</strong> — each illustrated with a representative commvita screen.</div>
 
   <!-- SECTION A — GRANT -->
   <h2 class="grant"><span class="num">A</span> How access is granted</h2>
@@ -207,7 +207,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>Controller fixes the purpose &amp; the minimum-necessary scope</h4>
-      <p>The controller decides <em>why</em> — supporting the patient's community rehabilitation (direct care) — and <em>how little</em> is needed: the <strong>rehab care plan, goals, exercise programme and visit log only</strong>, never the full record (Caldicott Principle 4 / Art.5(1)(c) data minimisation).</p>
+      <p>The controller decides <em>why</em> — supporting the patient&rsquo;s community rehabilitation (direct care) — and <em>how little</em> is needed: the <strong>rehab care plan, goals, exercise programme and visit log only</strong>, never the full record (Caldicott Principle 4 / Art.5(1)(c) data minimisation).</p>
       <div class="loc"><span class="chip">/ig-spine · Purpose &amp; Legal Basis</span><span class="chip">UK GDPR Art.9(2)(h)</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>External provider onboarded &amp; assured</h4>
@@ -267,15 +267,15 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="cap">Representative UI — illustrative</div>
 
   <!-- SECTION B — PROTECT -->
-  <h2 class="protect"><span class="num">B</span> What she can — and cannot — see</h2>
+  <h2 class="protect"><span class="num">B</span> What she can — and can&rsquo;t — see</h2>
   <p class="lead">The grant is a boundary, not a doorway. Scope caps the view to the rehab set; everything else is invisible; every view is written to the record.</p>
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Scope caps the view to the rehab set</h4>
-      <p><code>effective_scope()</code> resolves only the org codes and fields the grant permits. Rita sees the <strong>rehab care plan, goals, exercise programme and visit log</strong> — and can add a visit entry — but the wider record simply does not resolve for her.</p></div></div>
+      <p><code>effective_scope()</code> resolves only the org codes and fields the grant permits. Rita sees the <strong>rehab care plan, goals, exercise programme and visit log</strong> — and can add a visit entry — but the wider record simply doesn&rsquo;t resolve for her.</p></div></div>
     <div class="step pr"><div class="s">◇</div><div>
-      <h4>The rest of the record is not resolvable</h4>
-      <p>Out-of-scope sections are not hidden buttons she might press — they are never returned by the API for her token. Data minimisation is enforced by design, not by UI.</p>
+      <h4>The rest of the record isn&rsquo;t resolvable</h4>
+      <p>Out-of-scope sections aren&rsquo;t hidden buttons she might press — they&rsquo;re never returned by the API for her token. Data minimisation is enforced by design, not by UI.</p>
       <div class="loc"><span class="chip">Caldicott P4 · Art.5(1)(c)</span></div></div></div>
     <div class="step pr"><div class="s">◆</div><div>
       <h4>Every view is audited</h4>
@@ -319,7 +319,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         </div>
       </div>
       <div class="strip amber" style="margin:12px 0 0">
-        <span>🔒</span><span>Full clinical record not in scope — problems, medications, correspondence and history are not resolvable under this grant.</span>
+        <span>🔒</span><span>Full clinical record not in scope — problems, medications, correspondence and history aren&rsquo;t resolvable under this grant.</span>
       </div>
       <div class="btnrow">
         <span class="btn primary">Log visit</span>
@@ -330,15 +330,15 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- SECTION C — AUTO-EXPIRY & EXTENSION -->
   <h2 class="rescind"><span class="num">C</span> Auto-expiry &amp; extension</h2>
-  <p class="lead">The important part: access <strong>ends by itself</strong> when the episode does — and if rehab continues, it is extended by a governed re-attestation, never by a note-to-self.</p>
+  <p class="lead">The important part: access <strong>ends by itself</strong> when the episode does — and if rehab continues, it&rsquo;s extended by a governed re-attestation, never by a note-to-self.</p>
   <div class="steps">
     <div class="step re"><div class="s">1</div><div>
       <h4>At 6 weeks the grant self-expires</h4>
-      <p><code>effective_scope()</code> <strong>filters the lapsed grant at authentication time</strong> — the moment the <code>expires_at</code> passes, the rehab scope stops resolving and Rita's access drops automatically with no manual step. The lapse is written once (<code>lapse_recorded</code>) to the immutable hash chain.</p>
+      <p><code>effective_scope()</code> <strong>filters the lapsed grant at authentication time</strong> — the moment the <code>expires_at</code> passes, the rehab scope stops resolving and Rita&rsquo;s access drops automatically with no manual step. The lapse is written once (<code>lapse_recorded</code>) to the immutable hash chain.</p>
       <div class="loc"><span class="chip">expires_at</span><span class="chip">effective_scope()</span><span class="chip">lapse_recorded</span><span class="chip">LoginAuditEvent chain</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>Requesting an extension when care continues</h4>
-      <p>If physio extends the rehab, the care coordinator (or Rita) <strong>requests an extension</strong>. The controller <strong>re-attests</strong> and sets a <strong>new <code>expires_at</code></strong> via <span class="chip">PATCH /rbac/user-groups/{id}</span>. The grant and its new expiry are written to the tamper-evident <strong>LoginAuditEvent hash chain</strong> — access can't quietly persist or silently re-elevate; it is renewed only by an explicit, recorded decision.</p>
+      <p>If physio extends the rehab, the care coordinator (or Rita) <strong>requests an extension</strong>. The controller <strong>re-attests</strong> and sets a <strong>new <code>expires_at</code></strong> via <span class="chip">PATCH /rbac/user-groups/{id}</span>. The grant and its new expiry are written to the tamper-evident <strong>LoginAuditEvent hash chain</strong> — access can&rsquo;t quietly persist or silently re-elevate; it&rsquo;s renewed only by an explicit, recorded decision.</p>
       <div class="loc"><span class="chip">PATCH /rbac/user-groups/{id}</span><span class="chip">re-attest</span><span class="chip">LoginAuditEvent chain</span></div></div></div>
   </div>
 
@@ -399,8 +399,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- IMMUTABLE + INTELLIGENT AUDIT -->
   <h2 class="protect"><span class="num">D</span> Immutable — and intelligent — audit</h2>
-  <p class="lead">Every grant, access, expiry and extension lands in a log that cannot be quietly rewritten and does not just sit there — it watches for the things that matter.</p>
-  <div class="callout"><b>Immutable by construction.</b> Every grant, view, auto-expiry and extension is written to an <b>append-only, SHA-256 hash-chained (WORM) log that the server re-verifies on every read</b> — a broken chain surfaces a tamper banner. There is no update or delete endpoint.
+  <p class="lead">Every grant, access, expiry and extension lands in a log that can&rsquo;t be quietly rewritten and doesn&rsquo;t just sit there — it watches for the things that matter.</p>
+  <div class="callout"><b>Immutable by construction.</b> Every grant, view, auto-expiry and extension is written to an <b>append-only, SHA-256 hash-chained (WORM) log that the server re-verifies on every read</b> — a broken chain surfaces a tamper banner. There&rsquo;s no update or delete endpoint.
   <p style="margin:10px 0 0"><b>Intelligent, not passive.</b> The audit flags <b>out-of-hours</b> access and <b>out-of-area / bulk / cross-ICS anomalies</b> (<span class="chip">/legitimate-access-log</span>); the <b>Security Console</b> adds clinical-workflow-aware anomaly detection. And if the record is opened in <b>another setting</b> — hospital, out-of-hours or NHS 111 direct care — a <b>Clinical Trigger Alert</b> sends a <b>safety-netting notification to the registered GP practice</b> (<span class="chip">/ig-spine</span>), <b>gated on encounter/ADT corroboration</b>, minimum-necessary, deduplicated and rate-limited, with the acknowledgement itself audited.</p></div>
 
   <!-- SHOT (e) : immutable audit trail -->

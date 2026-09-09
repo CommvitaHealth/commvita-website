@@ -202,11 +202,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     </div>
   </div>
   <div class="eyebrow">Jurisdiction &amp; Deployment</div>
-  <h1>Building your commvita health system for your jurisdiction — configure, don't hardcode</h1>
-  <p class="sub">How one platform becomes <strong>your</strong> health system: every jurisdiction-specific behaviour — identifier validation, terminology, workflow gating, residency, legal provisions — is <strong>read from a versioned, source-cited, signed-off Jurisdiction Profile</strong>, not written into the code. A jurisdiction goes live only when its mandatory domains are signed off and unexpired — and a missing value <strong>fails safe</strong>, never silently borrowing another jurisdiction's answer.</p>
+  <h1>Building your commvita health system for your jurisdiction — configure, don&rsquo;t hardcode</h1>
+  <p class="sub">How one platform becomes <strong>your</strong> health system: every jurisdiction-specific behaviour — identifier validation, terminology, workflow gating, residency, legal provisions — is <strong>read from a versioned, source-cited, signed-off Jurisdiction Profile</strong>, not written into the code. A jurisdiction goes live only when its mandatory domains are signed off and unexpired — and a missing value <strong>fails safe</strong>, never silently borrowing another jurisdiction&rsquo;s answer.</p>
   <div class="rule"></div>
 
-  <div class="edge"><span class="edgetag">Ahead of the field</span><div><b>Every jurisdiction value is sourced, dated and signed off by a named person.</b> A missing or expired value disables the capability that depends on it, with the reason on screen. It never falls back to another country&rsquo;s answer. A jurisdiction is not deployable until every mandatory domain is signed off and current.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
+  <div class="edge"><span class="edgetag">Ahead of the field</span><div><b>Every jurisdiction value is sourced, dated and signed off by a named person.</b> A missing or expired value disables the capability that depends on it, with the reason on screen. It never falls back to another country&rsquo;s answer. A jurisdiction isn&rsquo;t deployable until every mandatory domain is signed off and current.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
 
   <div class="key">
     <b>Live vs demonstrated:</b>
@@ -215,7 +215,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
 
   <!-- STANDING PRINCIPLE -->
-  <div class="callout"><b>The standing principle.</b> No jurisdiction-specific behaviour is hardcoded anywhere in commvita. Identifier formats, terminology binding, workflow gating, data residency and legal provisions are all <b>resolved at runtime from the Jurisdiction Profile</b> — a declarative, governed model where every value is a <b>sourced, effective-dated, versioned</b> entry with an owner and an assurance status. Move to a new country and you <b>configure a profile and pack</b>; you don't fork the code.</div>
+  <div class="callout"><b>The standing principle.</b> No jurisdiction-specific behaviour is hardcoded anywhere in commvita. Identifier formats, terminology binding, workflow gating, data residency and legal provisions are all <b>resolved at runtime from the Jurisdiction Profile</b> — a declarative, governed model where every value is a <b>sourced, effective-dated, versioned</b> entry with an owner and an assurance status. Move to a new country and you <b>configure a profile and pack</b>; you don&rsquo;t fork the code.</div>
 
   <!-- WHERE IN COMMVITA — 3 cards -->
   <h2>Three places you build it</h2>
@@ -224,7 +224,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="role" style="border-top-color:var(--teal)">
       <h3>Jurisdiction Profile</h3>
       <div class="who">The single source of jurisdictional truth</div>
-      <p>A versioned, governed model of variance across <strong>14 domains</strong>. <strong>Nearest-wins inheritance</strong> resolves sovereign → sub-jurisdiction → org, and a missing or expired value <strong>fails safe</strong> — never defaulting to another jurisdiction's value.</p>
+      <p>A versioned, governed model of variance across <strong>14 domains</strong>. <strong>Nearest-wins inheritance</strong> resolves sovereign → sub-jurisdiction → org, and a missing or expired value <strong>fails safe</strong> — never defaulting to another jurisdiction&rsquo;s value.</p>
       <div class="where"><b>Where in commvita</b>
         <span class="chip">/jurisdiction-profile</span> — Profile Register · Resolution Tester · Deployability Board · Identifier Validator. API <span class="chip">/jurisdiction-profile/</span>.</div>
     </div>
@@ -258,11 +258,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">Resolution Tester</span><span class="chip">sovereign → sub-jurisdiction → org</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Fail-safe on missing or expired values</h4>
-      <p>If no value resolves — or the nearest one has <strong>expired</strong> — commvita returns an <strong>explicit fail-safe reason</strong> and the dependent capability declines to run. It <strong>never</strong> silently defaults to another jurisdiction's answer. This is the load-bearing safety rule.</p>
+      <p>If no value resolves — or the nearest one has <strong>expired</strong> — commvita returns an <strong>explicit fail-safe reason</strong> and the dependent capability declines to run. It <strong>never</strong> silently defaults to another jurisdiction&rsquo;s answer. This is the load-bearing safety rule.</p>
       <div class="loc"><span class="chip">fail-safe · never borrow</span></div></div></div>
     <div class="step g"><div class="s">4</div><div>
       <h4>Not deployable until signed off</h4>
-      <p>The Deployability Board tracks <strong>domains-present / 14</strong>, a by-status breakdown, and a <strong>per-mandatory-domain sign-off ✓/✗</strong>, resolving to a hard <strong>DEPLOYABLE / NOT DEPLOYABLE</strong> verdict plus overdue-review flags. A jurisdiction is not live until every mandatory domain is <span class="chip">signed_off</span> and unexpired.</p>
+      <p>The Deployability Board tracks <strong>domains-present / 14</strong>, a by-status breakdown, and a <strong>per-mandatory-domain sign-off ✓/✗</strong>, resolving to a hard <strong>DEPLOYABLE / NOT DEPLOYABLE</strong> verdict plus overdue-review flags. A jurisdiction isn&rsquo;t live until every mandatory domain is <span class="chip">signed_off</span> and unexpired.</p>
       <div class="loc"><span class="chip">Deployability Board</span></div></div></div>
   </div>
 
@@ -320,7 +320,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">governance model</span><span class="chip">NHS England · US ACO · HSE · Crown Dependency HCS · Saudi MOH</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Shape the tiers &amp; onboard</h4>
-      <p>The Health System Builder configures the multi-tier hierarchy (<strong>national / regional / ICS / PCN / practice / team</strong>) and drives a <strong>self-serve onboarding checklist</strong> plus a certified-partner ecosystem — while <strong>RBAC</strong> maps <strong>18 roles × 16 domains</strong> onto that structure, and the <strong>JurisdictionFlag</strong> component flies each region's correct national/regional flag.</p>
+      <p>The Health System Builder configures the multi-tier hierarchy (<strong>national / regional / ICS / PCN / practice / team</strong>) and drives a <strong>self-serve onboarding checklist</strong> plus a certified-partner ecosystem — while <strong>RBAC</strong> maps <strong>18 roles × 16 domains</strong> onto that structure, and the <strong>JurisdictionFlag</strong> component flies each region&rsquo;s correct national/regional flag.</p>
       <div class="loc"><span class="chip">/health-system-builder</span><span class="chip">/rbac</span><span class="chip">JurisdictionFlag</span></div></div></div>
   </div>
 
@@ -371,7 +371,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step g"><div class="s">▪</div><div>
       <h4>Identifier validation by profile, not by code</h4>
-      <p>NHS Number is checked with the <strong>Modulus-11</strong> algorithm; a Crown Dependency <strong>JH-######</strong> and Scotland <strong>CHI</strong> by their own formats; the US uses <strong>MBI + MRN</strong>. The validator reads the format from the jurisdiction's identifier domain — an <strong>unknown scheme fails safe</strong> rather than passing a value it can't verify.</p>
+      <p>NHS Number is checked with the <strong>Modulus-11</strong> algorithm; a Crown Dependency <strong>JH-######</strong> and Scotland <strong>CHI</strong> by their own formats; the US uses <strong>MBI + MRN</strong>. The validator reads the format from the jurisdiction&rsquo;s identifier domain — an <strong>unknown scheme fails safe</strong> rather than passing a value it can&rsquo;t verify.</p>
       <div class="loc"><span class="chip">Identifier Validator</span><span class="chip">NHS mod-11 · JH-###### · CHI · MBI</span></div></div></div>
     <div class="step g"><div class="s">▪</div><div>
       <h4>One catalogue, many jurisdictions</h4>
@@ -410,7 +410,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         </div>
       </div>
       <div class="strip amber" style="margin:12px 0 0">
-        <span>🛡</span><span>The validator never <b>borrows</b> another jurisdiction's format. An unrecognised scheme <b>fails safe</b> rather than passing an unverifiable identifier.</span>
+        <span>🛡</span><span>The validator never <b>borrows</b> another jurisdiction&rsquo;s format. An unrecognised scheme <b>fails safe</b> instead of passing an unverifiable identifier.</span>
       </div>
     </div>
   </div>

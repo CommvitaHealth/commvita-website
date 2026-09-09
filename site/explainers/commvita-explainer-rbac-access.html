@@ -224,7 +224,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
 
   <h2>Identity &rarr; structure &rarr; permission</h2>
-  <p class="lead">A role decides <em>what</em> you can do; your organisation scope decides <em>whose</em> records you can see. The two are separate on purpose &mdash; so a receptionist and a consultant at the same practice see the right things, and neither sees another practice's patients.</p>
+  <p class="lead">A role decides <em>what</em> you can do; your organisation scope decides <em>whose</em> records you can see. The two are separate on purpose &mdash; so a receptionist and a consultant at the same practice see the right things, and neither sees another practice&rsquo;s patients.</p>
   <div class="grid3">
     <div class="role" style="border-top-color:var(--teal)">
       <h3>Set up users &amp; orgs</h3>
@@ -274,11 +274,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>Role and scope are separate</h4>
-      <p><code>effective_role(user)</code> comes only from an explicit role assignment; <code>effective_scope(db, user)</code> is the union of the user's own, delegated and group organisations. A <strong>group can never grant a role</strong> &mdash; only scope.</p>
+      <p><code>effective_role(user)</code> comes only from an explicit role assignment; <code>effective_scope(db, user)</code> is the union of the user&rsquo;s own, delegated and group organisations. A <strong>group can never grant a role</strong> &mdash; only scope.</p>
       <div class="loc"><span class="chip">effective_role</span><span class="chip">effective_scope</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>Delegation &amp; groups, with expiry</h4>
-      <p>Team leads inherit a colleague's org scope through a <strong>delegation</strong>; users join <strong>scope-only groups</strong>; both can carry an <strong>expiry</strong> &mdash; expired grants yield no access, and lapses are recorded once to the audit chain.</p>
+      <p>Team leads inherit a colleague&rsquo;s org scope through a <strong>delegation</strong>; users join <strong>scope-only groups</strong>; both can carry an <strong>expiry</strong> &mdash; expired grants yield no access, and lapses are recorded once to the audit chain.</p>
       <div class="loc"><span class="chip">/rbac/delegations</span><span class="chip">/rbac/user-groups &middot; expires_at</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Every change is tamper-evident</h4>

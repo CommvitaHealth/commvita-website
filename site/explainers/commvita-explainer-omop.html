@@ -278,7 +278,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <p><code>person</code>, <code>observation_period</code>, <code>visit_occurrence</code>, <code>condition_occurrence</code>, <code>drug_exposure</code>, <code>procedure_occurrence</code>, <code>measurement</code>, <code>observation</code>, <code>death</code> (+ the results schema for cohorts).</p></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>Load the OHDSI Standardized Vocabularies (Athena)</h4>
-      <p>SNOMED, RxNorm/dm+d, LOINC, ICD-10&rarr;SNOMED maps &mdash; a few GB, with UMLS/licence terms accepted. This is what makes <code>concept_id</code> mapping real rather than illustrative.</p></div></div>
+      <p>SNOMED, RxNorm/dm+d, LOINC, ICD-10&rarr;SNOMED maps &mdash; a few GB, with UMLS/licence terms accepted. This is what makes <code>concept_id</code> mapping real instead of illustrative.</p></div></div>
     <div class="step pr"><div class="s">3</div><div>
       <h4>Source&rarr;standard mapping <em>with domain routing</em></h4>
       <p>Every source code to its standard concept <strong>and the correct CDM table by its OMOP domain</strong> &mdash; a SNOMED code can be a condition, an observation or a measurement. Non-standard&rarr;standard maps included.</p></div></div>
@@ -287,7 +287,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <p>Person from demographics, visits derived from encounters, <code>drug_exposure</code> from prescriptions (dm+d&rarr;RxNorm), <code>measurement</code> from observations (LOINC). FHIR&rarr;OMOP patterns apply.</p></div></div>
     <div class="step re"><div class="s">5</div><div>
       <h4>Derive the OMOP-only structures</h4>
-      <p><code>observation_period</code>, <code>visit_occurrence</code>/<code>visit_detail</code> and <code>drug_era</code>/<code>condition_era</code> have no 1:1 source &mdash; they are computed. This is where most of the real work sits.</p></div></div>
+      <p><code>observation_period</code>, <code>visit_occurrence</code>/<code>visit_detail</code> and <code>drug_era</code>/<code>condition_era</code> have no 1:1 source &mdash; they&rsquo;re computed. This is where most of the real work sits.</p></div></div>
     <div class="step re"><div class="s">6</div><div>
       <h4>De-identify, then quality-gate</h4>
       <p>Date-shift / k-anonymise for disclosure (existing 3-tier anonymisation), then <strong>Achilles + DQD</strong> so the dataset is defensible for a researcher or an ethics committee.</p></div></div>
@@ -335,7 +335,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     </tbody>
   </table></div>
 
-  <div class="callout"><b>Honest state.</b> The transformation console&rsquo;s mapping-completeness and DQD figures are seeded. The <b>MVP export is built</b>: for a defined cohort the platform emits populated CDM v5.4 tables (person, observation period, visits, conditions, drug exposures, measurements) as CSV, and Parquet where the runtime supports it, with a data-quality summary and the unmapped codes reported rather than dropped. Nothing leaves without a data sharing agreement and the disclosure gate. The production CDM &mdash; full table coverage, complete vocabularies, era derivation and incremental refresh &mdash; is not built, and is listed as a gap. Non-SaMD analytics output; disclosure controlled by the secure-data-environment.</div>
+  <div class="callout"><b>Honest state.</b> The transformation console&rsquo;s mapping-completeness and DQD figures are seeded. The <b>MVP export is built</b>: for a defined cohort the platform emits populated CDM v5.4 tables (person, observation period, visits, conditions, drug exposures, measurements) as CSV, and Parquet where the runtime supports it, with a data-quality summary and the unmapped codes reported not dropped. Nothing leaves without a data sharing agreement and the disclosure gate. The production CDM &mdash; full table coverage, complete vocabularies, era derivation and incremental refresh &mdash; isn&rsquo;t built, and is listed as a gap. Non-SaMD analytics output; disclosure controlled by the secure-data-environment.</div>
 
   <div class="foot">
     <span>&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</span>

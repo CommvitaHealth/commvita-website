@@ -138,7 +138,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- FLOW -->
   <h2>The five layers</h2>
-  <p class="lead">A policy is not a PDF that sits in a folder — in P2P it is decomposed into layers that each do one job. Authority says <em>who can do what up to what limit</em>; the Policy Bank holds the <em>generalised process</em>; the Process Engine <em>enforces</em> it; escalation and the WORM audit carry <em>what actually happened</em>; and composition safely <em>ports the set</em> to another jurisdiction.</p>
+  <p class="lead">A policy isn&rsquo;t a PDF that sits in a folder — in P2P it&rsquo;s decomposed into layers that each do one job. Authority says <em>who can do what up to what limit</em>; the Policy Bank holds the <em>generalised process</em>; the Process Engine <em>enforces</em> it; escalation and the WORM audit carry <em>what actually happened</em>; and composition safely <em>ports the set</em> to another jurisdiction.</p>
   <div class="flow">
     <span class="node">Authority Matrix</span><span class="arw">→</span>
     <span class="node">Policy Bank</span><span class="arw">→</span>
@@ -146,7 +146,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <span class="node">Escalation &amp; WORM audit</span><span class="arw">→</span>
     <span class="node">Jurisdiction Composition</span>
   </div>
-  <div class="callout"><b>Non-SaMD — a governance control surface.</b> P2P governs operational / authority workflow and presents recorded evidence for decision-support. <strong>Clinical</strong> steps stay <em>soft / advisory with mandatory break-glass</em>; hard-blocking a clinical action is deliberately out of scope.</div>
+  <div class="callout"><b>Non-SaMD — a governance control surface.</b> P2P governs operational / authority workflow and presents recorded evidence for decision-support. <strong>Clinical</strong> steps stay <em>soft / advisory with mandatory break-glass</em>; hard-blocking a clinical action is out of scope, on purpose.</div>
 
   <!-- 1 AUTHORITY -->
   <h2><span class="num">1</span> Authority Matrix — who can do what, up to what limit</h2>
@@ -193,7 +193,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- 3 PROCESS ENGINE -->
   <h2><span class="num">3</span> Process Engine — the enforcement gradient (hard · soft · advisory)</h2>
-  <p class="lead">A step is not simply "done / not done". Each carries an <strong>enforcement mode</strong>, and steps are promoted <span class="mtag">advisory → soft → hard</span> as they are proven safe to enforce. This is the worked example for <strong>PB-01 · non-pay procurement vs SFI thresholds</strong>, end to end.</p>
+  <p class="lead">A step isn&rsquo;t simply "done / not done". Each carries an <strong>enforcement mode</strong>, and steps are promoted <span class="mtag">advisory → soft → hard</span> as they&rsquo;re proven safe to enforce. This is the worked example for <strong>PB-01 · non-pay procurement vs SFI thresholds</strong>, end to end.</p>
   <div class="steps">
     <div class="step adv"><div class="s">1</div><div><h4>Raise requisition + specification</h4><p>Requester · guided; free to proceed</p></div><span class="badge adv">ADVISORY — guide</span></div>
     <div class="step soft"><div class="s">2</div><div><h4>Confirm budget code + funds available</h4><p>Budget Holder · warn if no funds; override with reason</p></div><span class="badge soft">SOFT — warn + override</span></div>
@@ -203,11 +203,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="step soft"><div class="s">6</div><div><h4>Raise purchase order</h4><p>Finance · PO number recorded to audit</p></div><span class="badge soft">SOFT — warn + override</span></div>
     <div class="step adv"><div class="s">7</div><div><h4>Receipt + three-way match</h4><p>Finance · reconcile PO / GRN / invoice</p></div><span class="badge adv">ADVISORY — guide</span></div>
   </div>
-  <div class="callout warn"><b>The rule that keeps it safe.</b> A <span class="badge hard" style="padding:1px 7px">HARD</span> step that fails does not silently stop — it triggers <strong>structured escalation</strong> (next section). And on any <strong>clinical</strong> pathway, hard-blocking is replaced by <em>soft/advisory + break-glass</em> so a clinician is never locked out of care.</div>
+  <div class="callout warn"><b>The rule that keeps it safe.</b> A <span class="badge hard" style="padding:1px 7px">HARD</span> step that fails doesn&rsquo;t silently stop — it triggers <strong>structured escalation</strong> (next section). And on any <strong>clinical</strong> pathway, hard-blocking is replaced by <em>soft/advisory + break-glass</em> so a clinician is never locked out of care.</div>
 
   <!-- 4 ESCALATION + AUDIT -->
   <h2><span class="num">4</span> Escalation &amp; the immutable audit — what actually happened</h2>
-  <p class="lead">When a hard step fails, authority is not overridden — it is <strong>escalated up the ladder</strong> until a role with the authority to decide assumes it. Every decision, override and escalation is <strong>appended to a SHA-256 hash-chained WORM audit</strong> (<code>prev_hash → row_hash</code>), re-verified server-side on every read — there is <strong>no update or delete endpoint</strong>.</p>
+  <p class="lead">When a hard step fails, authority isn&rsquo;t overridden — it&rsquo;s <strong>escalated up the ladder</strong> until a role with the authority to decide assumes it. Every decision, override and escalation is <strong>appended to a SHA-256 hash-chained WORM audit</strong> (<code>prev_hash → row_hash</code>), re-verified server-side on every read — there&rsquo;s <strong>no update or delete endpoint</strong>.</p>
   <div class="flow" style="margin-bottom:6px">
     <span class="node">Requester</span><span class="arw">→</span>
     <span class="node">Budget Holder</span><span class="arw">→</span>
@@ -216,7 +216,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <span class="node">Chief Executive</span><span class="arw">→</span>
     <span class="node">Board / Committee</span>
   </div>
-  <p class="lead"><strong>Worked example — REQ-4471.</strong> A £38,200 laptop order exceeds the Budget Holder's £25k limit: the system blocks, escalates, and authority is assumed one rung up.</p>
+  <p class="lead"><strong>Worked example — REQ-4471.</strong> A £38,200 laptop order exceeds the Budget Holder&rsquo;s £25k limit: the system blocks, escalates, and authority is assumed one rung up.</p>
   <div class="tablewrap">
     <table>
       <thead><tr><th>#</th><th>Actor</th><th>Action</th><th>Mode</th></tr></thead>
@@ -243,7 +243,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
   <div class="steps">
     <div class="step"><div class="s">1</div><div><h4>Author the gated process</h4><p>Add ordered gates to a policy — each with an authoriser (<strong>role</strong> or <strong>named individual</strong>), an SLA, an escalation target and an <em>optional</em> e-signature. <span class="chip">POST /p2p/gates</span></p></div><span class="badge adv">AUTHOR</span></div>
-    <div class="step"><div class="s">2</div><div><h4>Raise &amp; route</h4><p>Raising a policy creates one approval task per gate; only the <strong>active</strong> gate's SLA clock runs. Decide with approve / reject / request-info. <span class="chip">/p2p/instances</span> · <span class="chip">/p2p/tasks/{id}/decide</span></p></div><span class="badge adv">ROUTE</span></div>
+    <div class="step"><div class="s">2</div><div><h4>Raise &amp; route</h4><p>Raising a policy creates one approval task per gate; only the <strong>active</strong> gate&rsquo;s SLA clock runs. Decide with approve / reject / request-info. <span class="chip">/p2p/instances</span> · <span class="chip">/p2p/tasks/{id}/decide</span></p></div><span class="badge adv">ROUTE</span></div>
     <div class="step"><div class="s">3</div><div><h4>SLA auto-escalation</h4><p>An overdue gate re-routes to its escalation target, notifies the assignee, and writes the timeout to the immutable audit — evaluated <strong>lazily on read</strong> and via a swept <span class="chip">/p2p/tasks/sweep</span>. Idempotent (escalates once).</p></div><span class="badge hard">ESCALATE</span></div>
     <div class="step"><div class="s">4</div><div><h4>Optional signature gate</h4><p>A high-assurance gate requires a completed <strong>commvita Sign</strong> ceremony (<span class="chip">external_ref p2p-task:{id}</span>, <span class="chip">428</span> otherwise) — eIDAS-grade evidence bound to the decision.</p></div><span class="badge soft">SIGN</span></div>
     <div class="step"><div class="s">5</div><div><h4>commvita writes the overview &amp; policy summary</h4><p>One click composes a plain-English <strong>process overview</strong> and <strong>policy summary</strong> — deterministic by default (works with no key / in CI), enhanced by the central AI provider when configured. <span class="chip">POST /p2p/policy/{ref}/summarise</span></p></div><span class="badge adv">AI</span></div>

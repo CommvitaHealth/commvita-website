@@ -133,7 +133,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- ROLES -->
   <h2>The three roles</h2>
-  <p class="lead">UK GDPR / Data Protection Act 2018 define who does what. The subject holds the rights; the controller holds the accountability and the decisions; the processor only ever acts on the controller's instructions.</p>
+  <p class="lead">UK GDPR / Data Protection Act 2018 define who does what. The subject holds the rights; the controller holds the accountability and the decisions; the processor only ever acts on the controller&rsquo;s instructions.</p>
   <div class="grid3">
     <div class="role" style="border-top-color:var(--teal)">
       <h3>Data subject</h3>
@@ -152,7 +152,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="role" style="border-top-color:var(--orange)">
       <h3>Data processor</h3>
       <div class="who">The platform / hosting supplier acting for the controller</div>
-      <p>Processes <strong>only on the controller's documented instructions</strong>, never for its own purposes (Art.4(8)). Bound by an Art.28 contract; sub-processors need authorisation. Decide your own purpose and you become a controller.</p>
+      <p>Processes <strong>only on the controller&rsquo;s documented instructions</strong>, never for its own purposes (Art.4(8)). Bound by an Art.28 contract; sub-processors need authorisation. Decide your own purpose and you become a controller.</p>
       <div class="where"><b>Where in commvita</b>
         <span class="chip">/supplier-ig-assurance</span> (DSPT/DTAC + DPA register) · <span class="chip">/dspa-manager</span> (Art.26 joint-controller agreements).</div>
     </div>
@@ -164,45 +164,45 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Only roles with a lawful Article 9 condition</h4>
-      <p>Access needs an Art.9 condition — for direct care that is <strong>Art.9(2)(h)</strong> (provision of health/social care). The <strong>27-role × 22-domain RBAC matrix</strong> decides which clinical domains a role reaches, and <code>effective_role()</code> takes the role <em>only</em> from an explicit assignment — never inferred.</p>
+      <p>Access needs an Art.9 condition — for direct care that&rsquo;s <strong>Art.9(2)(h)</strong> (provision of health/social care). The <strong>27-role × 22-domain RBAC matrix</strong> decides which clinical domains a role reaches, and <code>effective_role()</code> takes the role <em>only</em> from an explicit assignment — never inferred.</p>
       <div class="loc"><span class="chip">/rbac · RBAC Matrix</span><span class="chip">UK GDPR Art.9(2)(h)</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Field-level control — minimum necessary</h4>
-      <p>Policy-as-code binds <strong>role → field</strong>, so even inside a record a professional sees only the special-category fields their purpose needs (Caldicott Principle 4 / Art.5(1)(c)). The <span class="chip">executive</span> oversight role is deliberately excluded from unrestricted scope — seniority is not blanket access.</p>
+      <p>Policy-as-code binds <strong>role → field</strong>, so even inside a record a professional sees only the special-category fields their purpose needs (Caldicott Principle 4 / Art.5(1)(c)). The <span class="chip">executive</span> oversight role is kept out of unrestricted scope — seniority isn&rsquo;t blanket access.</p>
       <div class="loc"><span class="chip">/ig-spine · Purpose &amp; Legal Basis</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>The most sensitive domains are gated further</h4>
-      <p><strong>Genomics</strong> requires an explicit <span class="chip">genomics_access</span> grant; <strong>sexual-health / GUM</strong> records are handled as Art.9 special category with their own confidentiality; sensitive <strong>mental-health notes</strong> can be <strong>break-glass-only</strong>. And every Art.9 action requires a fresh <strong>step-up re-authentication</strong> — a standing session is not enough.</p>
+      <p><strong>Genomics</strong> requires an explicit <span class="chip">genomics_access</span> grant; <strong>sexual-health / GUM</strong> records are handled as Art.9 special category with their own confidentiality; sensitive <strong>mental-health notes</strong> can be <strong>break-glass-only</strong>. And every Art.9 action requires a fresh <strong>step-up re-authentication</strong> — a standing session isn&rsquo;t enough.</p>
       <div class="loc"><span class="chip">/auth/reauth</span><span class="chip">break-glass policy</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Granted, and rescinded, the same way as any access</h4>
       <p><strong>Granted</strong> by an explicit role + Art.9 purpose + scope (plus the specific grant for genomics/GUM). <strong>Rescinded</strong> by the same policy levers as everything else — self-expiring delegations/groups filtered by <code>effective_scope()</code>, consent withdrawal or opt-out propagated via <strong>FHIR Consent R4</strong>, and token revocation. <strong>Secondary use</strong> of special-category data adds the <strong>Caldicott Guardian</strong> gate, honours the <strong>National Data Opt-Out</strong>, and for research relies on Art.9(2)(j) with Art.89 safeguards.</p>
       <div class="loc"><span class="chip">effective_scope()</span><span class="chip">/consent-hub · /shcr-opt-out</span><span class="chip">/ig-spine · Caldicott Queue</span></div></div></div>
   </div>
-  <div class="callout"><b>Every special-category access is logged.</b> There is no route to read Art.9 data that does not write an entry to the immutable audit described below — and the patient can see who looked and <b>"query this access"</b>.</div>
+  <div class="callout"><b>Every special-category access is logged.</b> There&rsquo;s no route to read Art.9 data that doesn&rsquo;t write an entry to the immutable audit described below — and the patient can see who looked and <b>"query this access"</b>.</div>
 
   <!-- SCOPED SEARCH -->
   <h2><span class="num" style="background:var(--teal)">🔎</span> Scoped patient search — you can only find who you should</h2>
-  <p class="lead">Access control starts at the very first keystroke. You cannot <em>search your way</em> to a record you have no basis to see — the smart patient search is constrained by scope, role and jurisdiction before a single name is returned. <span style="color:var(--teal);font-weight:700">● Live</span></p>
+  <p class="lead">Access control starts at the very first keystroke. You can&rsquo;t <em>search your way</em> to a record you have no basis to see — the smart patient search is constrained by scope, role and jurisdiction before a single name is returned. <span style="color:var(--teal);font-weight:700">● Live</span></p>
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>The search is organisation-scoped</h4>
-      <p>The smart patient search (the <code>PatientPicker</code> used across the platform) filters by your <strong>organisation scope</strong> — the union of your own practice/trust ODS codes plus any team-lead delegations and user-group memberships (<code>effective_scope()</code>), exactly as the patient <em>list</em> does. A <strong>GP-practice receptionist scoped to one practice only matches that practice's patients</strong>; an empty scope returns nothing (never "everyone"); only an explicitly-assigned <strong>UNRESTRICTED</strong> role searches across organisations.</p>
+      <p>The smart patient search (the <code>PatientPicker</code> used across the platform) filters by your <strong>organisation scope</strong> — the union of your own practice/trust ODS codes plus any team-lead delegations and user-group memberships (<code>effective_scope()</code>), exactly as the patient <em>list</em> does. A <strong>GP-practice receptionist scoped to one practice only matches that practice&rsquo;s patients</strong>; an empty scope returns nothing (never "everyone"); only an explicitly-assigned <strong>UNRESTRICTED</strong> role searches across organisations.</p>
       <div class="loc"><span class="chip">GET /patients/search</span><span class="chip">effective_scope()</span><span class="chip">Patient.ods_code ∈ orgs</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>Special-category records need a clinical basis</h4>
-      <p>A receptionist (<span class="chip">read_only</span>) is <strong>blocked from special-category records</strong> — <strong>sexual-health</strong> and <strong>Mental Health Act</strong> data require a clinical role (<code>require_min_role</code>), returning <strong>403</strong> for reception/admin roles. Those sensitive records sit behind a clinical basis, never behind a demographic search: finding the person is not the same as opening their Art.9 data.</p>
+      <p>A receptionist (<span class="chip">read_only</span>) is <strong>blocked from special-category records</strong> — <strong>sexual-health</strong> and <strong>Mental Health Act</strong> data require a clinical role (<code>require_min_role</code>), returning <strong>403</strong> for reception/admin roles. Those sensitive records sit behind a clinical basis, never behind a demographic search: finding the person isn&rsquo;t the same as opening their Art.9 data.</p>
       <div class="loc"><span class="chip">/sexual-health/episodes</span><span class="chip">/mha-records</span><span class="chip">require_min_role · Art.9</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
-      <h4>And it's isolated to your jurisdiction</h4>
-      <p>Search is also bounded by jurisdiction — an England user never matches a Crown Dependency, Ireland or any other jurisdiction's patients — and every match resolves through the same immutable audit as any other access.</p>
+      <h4>And it&rsquo;s isolated to your jurisdiction</h4>
+      <p>Search is also bounded by jurisdiction — an England user never matches a Crown Dependency, Ireland or any other jurisdiction&rsquo;s patients — and every match resolves through the same immutable audit as any other access.</p>
       <div class="loc"><span class="chip">Patient.jurisdiction_id</span><span class="chip">jurisdiction isolation</span></div></div></div>
   </div>
-  <div class="callout"><b>Scope + role + jurisdiction constrain the first keystroke.</b> A GP receptionist sees only their own practice's patients and cannot reach sexual-health or mental-health special-category data at all — enforced server-side (<span class="chip">/patients/search</span> is org-scoped; the Art.9 reads are role-gated), not merely hidden in the UI.</div>
+  <div class="callout"><b>Scope + role + jurisdiction constrain the first keystroke.</b> A GP receptionist sees only their own practice&rsquo;s patients and can&rsquo;t reach sexual-health or mental-health special-category data at all — enforced server-side (<span class="chip">/patients/search</span> is org-scoped; the Art.9 reads are role-gated), not merely hidden in the UI.</div>
 
   <!-- GRANTING -->
-  <h2 class="grant"><span class="num">A</span> How a controller grants access to a subject's record</h2>
-  <p class="lead">Access is never a single switch — it is a chain, and <strong>every link must be satisfied</strong> before a professional sees a record. Each link is a real control in the platform.</p>
+  <h2 class="grant"><span class="num">A</span> How a controller grants access to a subject&rsquo;s record</h2>
+  <p class="lead">Access is never a single switch — it&rsquo;s a chain, and <strong>every link must be satisfied</strong> before a professional sees a record. Each link is a real control in the platform.</p>
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>Establish a lawful purpose</h4>
@@ -232,15 +232,15 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <p class="lead" style="margin-top:14px">Secondary (non-direct-care) use adds a gate: the request routes to the <strong>Caldicott Guardian</strong> queue for approval, and the <strong>National Data Opt-Out</strong> is enforced — before any access is granted.</p>
 
   <!-- PROTECTING -->
-  <h2 class="protect"><span class="num">B</span> How that access is protected while it is live</h2>
-  <p class="lead">Granting is not the end — the access is continuously constrained, watched and evidenced.</p>
+  <h2 class="protect"><span class="num">B</span> How that access is protected while it&rsquo;s live</h2>
+  <p class="lead">Granting isn&rsquo;t the end — the access is continuously constrained, watched and evidenced.</p>
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Least privilege &amp; data minimisation</h4>
-      <p>Role × domain matrix caps <em>what</em>; org scope caps <em>whose</em>. Data minimisation is enforced by design (Caldicott Principle 4 / Art.5(1)(c)) — e.g. the <span class="chip">executive</span> oversight role is deliberately excluded from unrestricted scope.</p></div></div>
+      <p>Role × domain matrix caps <em>what</em>; org scope caps <em>whose</em>. Data minimisation is enforced by design (Caldicott Principle 4 / Art.5(1)(c)) — e.g. the <span class="chip">executive</span> oversight role is kept out of unrestricted scope.</p></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Caldicott gate &amp; opt-out enforcement</h4>
-      <p>Non-direct-care access is held for <strong>Caldicott Guardian</strong> decision (<span class="chip">CaldicottDecision</span>, principles applied recorded); the <strong>National Data Opt-Out</strong> blocks secondary use of an opted-out patient's confidential data.</p>
+      <p>Non-direct-care access is held for <strong>Caldicott Guardian</strong> decision (<span class="chip">CaldicottDecision</span>, principles applied recorded); the <strong>National Data Opt-Out</strong> blocks secondary use of an opted-out patient&rsquo;s confidential data.</p>
       <div class="loc"><span class="chip">/ig-spine · Caldicott Guardian Queue</span></div></div></div>
     <div class="step pr"><div class="s">◆</div><div>
       <h4>Break-glass — allowed, but heavily audited</h4>
@@ -248,7 +248,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/shcr-opt-out · Override Log</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Immutable, tamper-evident audit</h4>
-      <p>Access and account events are written to append-only <strong>SHA-256 hash-chained (WORM) logs</strong> that the server <strong>re-verifies on every read</strong> — a broken chain shows a tamper banner. There is no update or delete endpoint.</p>
+      <p>Access and account events are written to append-only <strong>SHA-256 hash-chained (WORM) logs</strong> that the server <strong>re-verifies on every read</strong> — a broken chain shows a tamper banner. There&rsquo;s no update or delete endpoint.</p>
       <div class="loc"><span class="chip">/login-audit</span><span class="chip">/ig-spine · WORM audit</span><span class="chip">GET /auth/login-audit</span></div></div></div>
     <div class="step pr"><div class="s">●</div><div>
       <h4>Transparency to the subject</h4>
@@ -266,7 +266,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">UserDelegation.expires_at</span><span class="chip">UserGroup.expires_at</span><span class="chip">effective_scope()</span></div></div></div>
     <div class="step re"><div class="s">▸</div><div>
       <h4>Lapse recorded to the tamper-evident chain</h4>
-      <p>A lapse is written once (<code>lapse_recorded</code>) to the hash-chained account log, and renewal requires an explicit <strong>re-attestation</strong> — access can't quietly persist or silently re-elevate. Role and group changes are logged the same way.</p>
+      <p>A lapse is written once (<code>lapse_recorded</code>) to the hash-chained account log, and renewal requires an explicit <strong>re-attestation</strong> — access can&rsquo;t quietly persist or silently re-elevate. Role and group changes are logged the same way.</p>
       <div class="loc"><span class="chip">LoginAuditEvent chain</span><span class="chip">PATCH /rbac/user-groups/{id}</span></div></div></div>
     <div class="step re"><div class="s">▸</div><div>
       <h4>Consent withdrawal &amp; opt-out propagate</h4>
@@ -281,15 +281,15 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <p>A patient or IG reviewer can <strong>challenge</strong> a recorded access or a break-glass override; the workflow can restrict or revoke it, with the decision written to the immutable log.</p>
       <div class="loc"><span class="chip">/shcr-opt-out · challenge/revoke</span><span class="chip">/legitimate-access-log · challenges</span></div></div></div>
   </div>
-  <div class="callout re"><b>The principle:</b> access is protected and rescinded <b>by policy</b> — time-boxed grants filtered at every login, consent/opt-out that propagates at source, and revocation that is immediate and audited. Removing access is a data-driven consequence of an expired or withdrawn authorisation, not a manual clean-up task someone might forget.</div>
+  <div class="callout re"><b>The principle:</b> access is protected and rescinded <b>by policy</b> — time-boxed grants filtered at every login, consent/opt-out that propagates at source, and revocation that&rsquo;s immediate and audited. Removing access is a data-driven consequence of an expired or withdrawn authorisation, not a manual clean-up task someone might forget.</div>
 
   <!-- INTELLIGENT AUDIT -->
-  <h2><span class="num">✓</span> The immutable, intelligent audit — how it's driven</h2>
-  <p class="lead">Every event above — grant, access, special-category read, expiry, extension, revocation — lands in one place: an <strong>immutable, tamper-evident log</strong> that doesn't just record what happened, it <strong>watches for what shouldn't</strong> and drives a response.</p>
+  <h2><span class="num">✓</span> The immutable, intelligent audit — how it&rsquo;s driven</h2>
+  <p class="lead">Every event above — grant, access, special-category read, expiry, extension, revocation — lands in one place: an <strong>immutable, tamper-evident log</strong> that doesn&rsquo;t just record what happened, it <strong>watches for what shouldn&rsquo;t</strong> and drives a response.</p>
   <div class="steps">
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Immutable by construction (WORM)</h4>
-      <p>Audit rows are <strong>append-only and SHA-256 hash-chained</strong> — each row's <code>prev_hash → row_hash</code> links to the one before it. The server <strong>re-verifies the whole chain on every read</strong> and shows a tamper-evidence banner if a link is broken. There is <strong>no update or delete endpoint</strong> — an entry cannot be quietly altered or removed, on any log (Login Audit, IG Spine, commvita Sign, Policy-to-Process).</p>
+      <p>Audit rows are <strong>append-only and SHA-256 hash-chained</strong> — each row&rsquo;s <code>prev_hash → row_hash</code> links to the one before it. The server <strong>re-verifies the whole chain on every read</strong> and shows a tamper-evidence banner if a link is broken. There&rsquo;s <strong>no update or delete endpoint</strong> — an entry can&rsquo;t be quietly altered or removed, on any log (Login Audit, IG Spine, commvita Sign, Policy-to-Process).</p>
       <div class="loc"><span class="chip">/login-audit</span><span class="chip">/ig-spine · WORM audit</span><span class="chip">prev_hash → row_hash</span></div></div></div>
     <div class="step pr"><div class="s">●</div><div>
       <h4>It captures who, what, when — and where from</h4>
@@ -301,7 +301,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/legitimate-access-log · Anomaly Alerts</span><span class="chip">Security Console</span></div></div></div>
     <div class="step pr"><div class="s">◆</div><div>
       <h4>Cross-setting safety-netting — the GP is told</h4>
-      <p>When a patient's record is opened in <strong>another direct-care setting</strong> — a hospital, out-of-hours or NHS 111 clinician — a <strong>safety-netting alert is sent to the registered GP practice</strong>. It is gated on <strong>encounter / ADT corroboration</strong> (a real clinical contact, not a stray click), kept minimum-necessary, deduplicated and rate-limited, and the acknowledgement is itself audited. This is Caldicott Principle 8 in action — the duty to share for care, made visible to the patient's home team.</p>
+      <p>When a patient&rsquo;s record is opened in <strong>another direct-care setting</strong> — a hospital, out-of-hours or NHS 111 clinician — a <strong>safety-netting alert is sent to the registered GP practice</strong>. It&rsquo;s gated on <strong>encounter / ADT corroboration</strong> (a real clinical contact, not a stray click), kept minimum-necessary, deduplicated and rate-limited, and the acknowledgement is itself audited. This is Caldicott Principle 8 in action — the duty to share for care, made visible to the patient&rsquo;s home team.</p>
       <div class="loc"><span class="chip">/ig-spine · Clinical Trigger Alert</span><span class="chip">EPR Hub ADT · NHS 111</span></div></div></div>
     <div class="step pr"><div class="s">●</div><div>
       <h4>Clinical-workflow-aware &amp; transparent to the patient</h4>

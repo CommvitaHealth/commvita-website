@@ -172,7 +172,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- A — LAWFUL BASIS -->
   <h2 class="grant"><span class="num">A</span> Lawful basis &amp; approvals — before a single record is read</h2>
-  <p class="lead">Research is not care. It needs its own basis and its own paperwork, and in commvita <strong>every link must be satisfied</strong> before an extract can be taken.</p>
+  <p class="lead">Research isn&rsquo;t care. It needs its own basis and its own paperwork, and in commvita <strong>every link must be satisfied</strong> before an extract can be taken.</p>
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>Fix the lawful basis for research</h4>
@@ -188,7 +188,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/clinical-studies · Data Governance</span><span class="chip">DPIA · DSA / contract register</span></div></div></div>
     <div class="step g"><div class="s">4</div><div>
       <h4>Enforce the National Data Opt-Out</h4>
-      <p>This is a secondary use, so the <strong>National Data Opt-Out</strong> is applied — an opted-out patient's confidential data is removed from the cohort. The same enforcement point governs Caldicott-reviewed secondary access in the IG Spine.</p>
+      <p>This is a secondary use, so the <strong>National Data Opt-Out</strong> is applied — an opted-out patient&rsquo;s confidential data is removed from the cohort. The same enforcement point governs Caldicott-reviewed secondary access in the IG Spine.</p>
       <div class="loc"><span class="chip">/ig-spine · National Data Opt-Out</span><span class="chip">Caldicott 8</span></div></div></div>
     <div class="step g"><div class="s">5</div><div>
       <h4>Apply ICO anonymisation guidance</h4>
@@ -198,7 +198,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- B — LIFECYCLE -->
   <h2><span class="num">B</span> The study lifecycle</h2>
-  <p class="lead">A commvita study moves through six governed stages — each is a status in the Study Library, and a study cannot skip a gate.</p>
+  <p class="lead">A commvita study moves through six governed stages — each is a status in the Study Library, and a study can&rsquo;t skip a gate.</p>
   <div class="steps">
     <div class="step" style="border-left-color:var(--navy)"><div class="s">1</div><div>
       <h4>Design</h4>
@@ -249,7 +249,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/synthetic-data</span><span class="chip">ε=1.0</span></div></div></div>
     <div class="step pr"><div class="s">◆</div><div>
       <h4>Token-vault separation</h4>
-      <p>The reverse mapping lives in a <strong>separate key-management system</strong> with its own audit trail — <strong>analysts cannot access reverse mappings</strong>. Only the data_custodian / break_glass path can touch the vault, and every use is logged.</p>
+      <p>The reverse mapping lives in a <strong>separate key-management system</strong> with its own audit trail — <strong>analysts can&rsquo;t access reverse mappings</strong>. Only the data_custodian / break_glass path can touch the vault, and every use is logged.</p>
       <div class="loc"><span class="chip">/clinical-studies · Token Vault</span><span class="chip">separate KMS</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Re-identification risk register &amp; minimisation</h4>
@@ -272,7 +272,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
 
   <!-- AUDIT CALLOUT -->
-  <div class="callout re"><b>Immutable, intelligent audit — nothing leaves untraceably.</b> Every extract is written to an <b>append-only Extract Ledger</b> carrying an <b>Extract ID + SHA-256 file hash</b>: a leaked file can be traced straight back to the row that produced it, and the ledger cannot be modified after creation. Every touch of the source record rides the <b>WORM hash-chained audit that the server re-verifies on read</b> — a broken chain shows a tamper banner. Nothing is extracted, shared or re-identified without a hashed, tamper-evident record of who, when and why.</div>
+  <div class="callout re"><b>Immutable, intelligent audit — nothing leaves untraceably.</b> Every extract is written to an <b>append-only Extract Ledger</b> carrying an <b>Extract ID + SHA-256 file hash</b>: a leaked file can be traced straight back to the row that produced it, and the ledger can&rsquo;t be modified after creation. Every touch of the source record rides the <b>WORM hash-chained audit that the server re-verifies on read</b> — a broken chain shows a tamper banner. Nothing is extracted, shared or re-identified without a hashed, tamper-evident record of who, when and why.</div>
 
   <!-- WHERE IT LIVES -->
   <h2>Where it lives in commvita</h2>
@@ -297,7 +297,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     </table>
   </div>
 
-  <div class="callout g"><b>The principle:</b> research runs on a <b>separate lawful basis</b>, on <b>minimised data at the least-identifiable tier</b>, <b>federated so rows never move</b>, and <b>provable end-to-end</b> — every cohort, extract and share carries a hashed, tamper-evident record. The <em>evidence</em> travels; the <em>patient's record</em> stays in safe hands.</div>
+  <div class="callout g"><b>The principle:</b> research runs on a <b>separate lawful basis</b>, on <b>minimised data at the least-identifiable tier</b>, <b>federated so rows never move</b>, and <b>provable end-to-end</b> — every cohort, extract and share carries a hashed, tamper-evident record. The <em>evidence</em> travels; the <em>patient&rsquo;s record</em> stays in safe hands.</div>
 
   <div class="foot">
     <span>UK GDPR Art.6(1)(e) / 9(2)(j) / 89</span><span>Data Protection Act 2018</span><span>HRA / IRAS research IG</span>

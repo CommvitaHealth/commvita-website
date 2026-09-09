@@ -236,7 +236,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- CAPABILITY CARDS -->
   <h2>Three ways commvita manages flow</h2>
-  <p class="lead">One idea underneath all three: a health system is a <strong>production line bound by Little's Law (L = λW)</strong>. You cannot fix flow by pushing on every station — you find the one that is holding the line back, and you act on it.</p>
+  <p class="lead">One idea underneath all three: a health system is a <strong>production line bound by Little&rsquo;s Law (L = λW)</strong>. You can&rsquo;t fix flow by pushing on every station — you find the one that&rsquo;s holding the line back, and you act on it.</p>
   <div class="grid3">
     <div class="role" style="border-top-color:var(--teal)">
       <h3>See it as one line</h3>
@@ -263,19 +263,19 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- SECTION A — SEE -->
   <h2 class="grant"><span class="num">A</span> Seeing the whole system as one production line</h2>
-  <p class="lead">Every setting is a station on one line, and one law binds them all: work-in-progress equals arrival rate times how long each patient spends in the system (<strong>Little's Law, L = λW</strong>). Model the line, and pressure becomes measurable rather than anecdotal.</p>
+  <p class="lead">Every setting is a station on one line, and one law binds them all: work-in-progress equals arrival rate times how long each patient spends in the system (<strong>Little&rsquo;s Law, L = λW</strong>). Model the line, and pressure becomes measurable instead of anecdotal.</p>
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>The line, end to end</h4>
       <p>The canvas draws <strong>Prevention Dam → Front Gate → ED → AMU → Base Ward → Therapy → Discharge to Assess → Quality Gate → Exit</strong>, with a distinct <strong>Returns Loop</strong> carrying failure demand (bounce-backs, readmissions) back to intake — so avoidable rework is visible, not hidden.</p>
       <div class="loc"><span class="chip">/flow · Health Flow Canvas</span><span class="chip">FHIR R4 Encounter</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
-      <h4>Little's Law per station</h4>
-      <p>Each station carries its own WIP, queue, arrival rate <strong>λ</strong>, service rate <strong>μ</strong>, utilisation <strong>ρ</strong>, time-in-system <strong>W</strong> and flow efficiency — drill in on any one. The maths is the same maths that governs any queue; the health system is not special, it is just under-measured.</p>
-      <div class="loc"><span class="chip">Little's Law · L = λW</span><span class="chip">WIP · λ · μ · ρ · W</span></div></div></div>
+      <h4>Little&rsquo;s Law per station</h4>
+      <p>Each station carries its own WIP, queue, arrival rate <strong>λ</strong>, service rate <strong>μ</strong>, utilisation <strong>ρ</strong>, time-in-system <strong>W</strong> and flow efficiency — drill in on any one. The maths is the same maths that governs any queue; the health system isn&rsquo;t special, it&rsquo;s just under-measured.</p>
+      <div class="loc"><span class="chip">Little&rsquo;s Law · L = λW</span><span class="chip">WIP · λ · μ · ρ · W</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
-      <h4>One pressure index, and what's driving it</h4>
-      <p>A <strong>whole-system pressure index</strong> rolls the line up into an OPEL-equivalent level, and a <strong>demand-classification</strong> bar splits inflow into <strong>value / avoidable / failure demand</strong> — so "we're under pressure" becomes "the pressure is failure demand returning through the loop".</p>
+      <h4>One pressure index, and what&rsquo;s driving it</h4>
+      <p>A <strong>whole-system pressure index</strong> rolls the line up into an OPEL-equivalent level, and a <strong>demand-classification</strong> bar splits inflow into <strong>value / avoidable / failure demand</strong> — so "we&rsquo;re under pressure" becomes "the pressure is failure demand returning through the loop".</p>
       <div class="loc"><span class="chip">whole-system pressure index</span><span class="chip">NHS OPEL Framework 2024–2026</span></div></div></div>
     <div class="step g"><div class="s">4</div><div>
       <h4>Seeded by default, LIVE on a toggle</h4>
@@ -327,16 +327,16 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
   <div class="cap">Representative UI — illustrative</div>
 
-  <div class="callout"><b>Why one constraint matters.</b> Under the Theory of Constraints, a production line runs only as fast as its <b>slowest binding station</b> — the "drum". Here that is <b>Discharge to Assess at ρ 118%</b>: it is over-utilised, so it starves <b>AMU downstream</b> (ρ 0.46) and pushes <b>back-pressure</b> up into ED and the Front Gate. Adding capacity anywhere <em>but</em> the constraint moves nothing. Flow is a decision-support view (non-SaMD, DCB0129/0160) — it surfaces where to act; the operational call stays with the team.</div>
+  <div class="callout"><b>Why one constraint matters.</b> Under the Theory of Constraints, a production line runs only as fast as its <b>slowest binding station</b> — the "drum". Here that&rsquo;s <b>Discharge to Assess at ρ 118%</b>: it&rsquo;s over-utilised, so it starves <b>AMU downstream</b> (ρ 0.46) and pushes <b>back-pressure</b> up into ED and the Front Gate. Adding capacity anywhere <em>but</em> the constraint moves nothing. Flow is a decision-support view (non-SaMD, DCB0129/0160) — it surfaces where to act; the operational call stays with the team.</div>
 
   <!-- SECTION B — FIND THE CONSTRAINT -->
   <div style="text-align:center;font-size:12px;color:var(--sub);margin:12px 0 4px;letter-spacing:.02em">&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</div>
   <h2 class="protect"><span class="num">B</span> Finding — and relieving — the binding constraint</h2>
-  <p class="lead">The constraint is not fixed: it moves by service line, and it moves when you pull the right lever. commvita lets you find it, re-scope it, and rehearse relieving it before touching the real system.</p>
+  <p class="lead">The constraint isn&rsquo;t fixed: it moves by service line, and it moves when you pull the right lever. commvita lets you find it, re-scope it, and rehearse relieving it before touching the real system.</p>
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Live binding-constraint detection</h4>
-      <p>Drum-buffer-rope logic continuously identifies the station that caps the whole line and marks it — with animated <strong>red back-pressure</strong> edges showing exactly which upstream stations it is choking and which downstream stations it is starving.</p>
+      <p>Drum-buffer-rope logic continuously identifies the station that caps the whole line and marks it — with animated <strong>red back-pressure</strong> edges showing exactly which upstream stations it&rsquo;s choking and which downstream stations it&rsquo;s starving.</p>
       <div class="loc"><span class="chip">Theory of Constraints · drum-buffer-rope</span></div></div></div>
     <div class="step pr"><div class="s">◆</div><div>
       <h4>Service-line scopes shift the constraint</h4>
@@ -344,7 +344,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">FlowModel re-parameterised</span><span class="chip">6 scopes</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Elective backlog as upstream WIP</h4>
-      <p>The RTT waiting list is rendered as an <strong>upstream reservoir</strong> feeding the line (Little's Law again) — total waiting, 2WW share and &gt;52-week breaches — with <strong>2WW (hot, pre-empting) vs routine</strong> inflow bands on the Elective scope, drilling through to the RTT Waiting Swarm.</p>
+      <p>The RTT waiting list is rendered as an <strong>upstream reservoir</strong> feeding the line (Little&rsquo;s Law again) — total waiting, 2WW share and &gt;52-week breaches — with <strong>2WW (hot, pre-empting) vs routine</strong> inflow bands on the Elective scope, drilling through to the RTT Waiting Swarm.</p>
       <div class="loc"><span class="chip">PTL reservoir</span><span class="chip">/rtt-swarm</span><span class="chip">RTT Rules 2023</span></div></div></div>
     <div class="step pr"><div class="s">◈</div><div>
       <h4>What-if scenario sandbox</h4>
@@ -379,7 +379,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <div class="stn gate"><div class="nm">Outcome</div><div class="mt">home 58%<br>community / transfer</div></div>
       </div>
       <div class="strip amber" style="margin:12px 0 0">
-        <span>◆</span><span><b>Binding constraint — Discharge to Assess.</b> The red back-pressure ribbon shows D2A demand exceeding capacity; base-ward exit stalls and the river backs up to the front door (Little's Law / Theory of Constraints).</span>
+        <span>◆</span><span><b>Binding constraint — Discharge to Assess.</b> The red back-pressure ribbon shows D2A demand exceeding capacity; base-ward exit stalls and the river backs up to the front door (Little&rsquo;s Law / Theory of Constraints).</span>
       </div>
       <div class="btnrow">
         <span class="btn ghost">◀ Wk 1</span>
@@ -392,11 +392,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- SECTION C — ACT -->
   <h2 class="rescind"><span class="num">C</span> Acting on flow — closing the loop</h2>
-  <p class="lead">The difference between a dashboard and a control centre: commvita does not stop at showing the constraint — it <strong>acts on it</strong>, and it acts <strong>across settings</strong>, because a discharge blockage is rarely solved inside the acute walls alone.</p>
+  <p class="lead">The difference between a dashboard and a control centre: commvita doesn&rsquo;t stop at showing the constraint — it <strong>acts on it</strong>, and it acts <strong>across settings</strong>, because a discharge blockage is rarely solved inside the acute walls alone.</p>
   <div class="steps">
     <div class="step re"><div class="s">▸</div><div>
       <h4>Auto-create the work that clears the constraint</h4>
-      <p>From the constraint, the <strong>Closed-Loop Actions</strong> tab generates the tasks that relieve it — <strong>discharge tasks</strong>, referrals and to-take-away (TTA) medicines orders — turning "D2A is the drum" into named, owned actions rather than an observation.</p>
+      <p>From the constraint, the <strong>Closed-Loop Actions</strong> tab generates the tasks that relieve it — <strong>discharge tasks</strong>, referrals and to-take-away (TTA) medicines orders — turning "D2A is the drum" into named, owned actions instead of an observation.</p>
       <div class="loc"><span class="chip">/flow · Closed-Loop Actions</span><span class="chip">/discharge-hub</span></div></div></div>
     <div class="step re"><div class="s">▸</div><div>
       <h4>Notify the next setting — NRL / GP Connect</h4>
@@ -467,13 +467,13 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <thead><tr><th>Flow concept</th><th>Module</th><th>Route</th><th>Model / API</th><th>Standard</th><th>Status</th></tr></thead>
       <tbody>
         <tr><td><b>Whole system as one line</b></td><td>commvita Flow · Health Flow Canvas</td><td><span class="chip">/flow</span></td><td><code>GET /flow/canvas-model</code> · FlowModel</td><td>NHS OPEL 2024–2026</td><td><span class="st-live">● Live</span></td></tr>
-        <tr><td><b>Little's Law &amp; binding constraint</b></td><td>Health Flow Canvas</td><td><span class="chip">/flow</span></td><td>FlowWard · FlowToCDelay · OPEL state</td><td>Little's Law / Theory of Constraints</td><td><span class="st-live">● Live</span></td></tr>
+        <tr><td><b>Little&rsquo;s Law &amp; binding constraint</b></td><td>Health Flow Canvas</td><td><span class="chip">/flow</span></td><td>FlowWard · FlowToCDelay · OPEL state</td><td>Little&rsquo;s Law / Theory of Constraints</td><td><span class="st-live">● Live</span></td></tr>
         <tr><td><b>Operational Feeds → LIVE model</b></td><td>Integrations Hub → Flow</td><td><span class="chip">/integrations-hub</span></td><td><code>GET /flow/canvas-model</code> · FHIR R4 Encounter</td><td>FHIR R4</td><td><span class="st-live">● Live</span></td></tr>
         <tr><td><b>Service-line scopes &amp; elective backlog</b></td><td>Health Flow Canvas</td><td><span class="chip">/flow</span></td><td>FlowModel re-parameterised · PTL reservoir</td><td>RTT Rules 2023 · 2WW bands</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
         <tr><td><b>Whole-system flow river</b></td><td>Patient Flow Sankey</td><td><span class="chip">/patient-flow-sankey</span></td><td>seeded model · period scrubber</td><td>FHIR R4 Encounter · OPEL</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
         <tr><td><b>Live ward bed floor-map</b></td><td>Hospital Digital Twin</td><td><span class="chip">/hospital-twin</span></td><td>~128 beds · NCTR · outliers</td><td>HL7 ADT · NHSE Discharge Framework 2023</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
         <tr><td><b>Elective PTL ageing beeswarm</b></td><td>RTT Waiting Swarm</td><td><span class="chip">/rtt-swarm</span></td><td>weeks-waited · inequality lens</td><td>RTT Rules 2023 · IMD / CORE20PLUS5</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
-        <tr><td><b>Demand vs capacity tanks</b></td><td>Demand vs Capacity Reservoir</td><td><span class="chip">/reservoir-board</span></td><td>fill / drain · spill zone · 6-wk forecast</td><td>OPEL · Little's Law · DM01</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
+        <tr><td><b>Demand vs capacity tanks</b></td><td>Demand vs Capacity Reservoir</td><td><span class="chip">/reservoir-board</span></td><td>fill / drain · spill zone · 6-wk forecast</td><td>OPEL · Little&rsquo;s Law · DM01</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
         <tr><td><b>Predictive free beds</b></td><td>Bed Board · LOS Prediction</td><td><span class="chip">/bed-board</span> · <span class="chip">/los-prediction</span></td><td>ML LOS · discharge probability</td><td>SAFER bundle</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
         <tr><td><b>Discharge coordination</b></td><td>Discharge Hub</td><td><span class="chip">/discharge-hub</span></td><td>D2A pathway · SAFER · DToC codes</td><td>NHSE Best Practice Discharge Framework 2023</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
         <tr><td><b>Daily OPEL return</b></td><td>OPEL Submission</td><td><span class="chip">/opel-submission</span></td><td>auto-populated from Flow</td><td>NHS OPEL Framework 2024–2026</td><td><span class="st-demo">◍ Demonstrated</span></td></tr>
@@ -484,7 +484,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <div class="foot">
     <span>© 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</span>
-    <span>NHS OPEL Framework 2024–2026</span><span>Little's Law / Theory of Constraints</span>
+    <span>NHS OPEL Framework 2024–2026</span><span>Little&rsquo;s Law / Theory of Constraints</span>
     <span>NHSE Best Practice Discharge Framework 2023</span><span>FHIR R4 Encounter</span>
     <span>Non-SaMD — decision-support · DCB0129/0160</span>
   </div>
