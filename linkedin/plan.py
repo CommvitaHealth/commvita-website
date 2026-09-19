@@ -10,6 +10,7 @@ the next batch.
     python3 linkedin/plan.py                 # print the draw
     python3 linkedin/plan.py --schedule      # rewrite linkedin/schedule.md
     python3 linkedin/plan.py --check         # do the posts match the draw?
+    python3 linkedin/plan.py --bundle        # every post as one document
     python3 linkedin/plan.py --draw 12345    # try a different seed
 """
 import argparse, datetime, os, random, sys
@@ -103,14 +104,40 @@ post them anyway and keep the rhythm exact. Pick one and stick to it.
 """ + '\n'.join(rows) + '\n'
 
 
+def bundle():
+    """Every post in order, as one document you can read or hand to someone."""
+    out = ["# commvita on LinkedIn — the full run\n",
+           "Eighteen posts, one every %d days. Paste the body of a post straight\n"
+           "into LinkedIn and attach the card named under it. The source files\n"
+           "are in `posts/`, the images in `cards/`.\n" % GAP]
+    for meta in posts():
+        d = datetime.date.fromisoformat(meta['date'])
+        body = open(meta['path'], encoding='utf-8').read().split('---', 2)[2].strip()
+        card = os.path.basename(meta.get('card', ''))
+        out.append('\n---\n')
+        out.append(f"## {meta['post']} · {d:%A %d %B %Y} · {meta['edition']}\n")
+        out.append(f"**Subject** {meta['module']}  ")
+        if meta.get('routes') not in (None, '—', '-'):
+            out.append(f"**Where to look** {meta['routes']}  ")
+        out.append(f"**Image** `cards/{card}`  ")
+        out.append(f"**Status** {meta.get('status', '')}\n")
+        out.append('### Post\n')
+        out.append(body + '\n')
+    return '\n'.join(out)
+
+
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('--schedule', action='store_true')
     ap.add_argument('--check', action='store_true')
+    ap.add_argument('--bundle', action='store_true')
     ap.add_argument('--draw', type=int, default=SEED)
     a = ap.parse_args()
     if a.check:
         sys.exit(check())
+    if a.bundle:
+        sys.stdout.write(bundle())
+        sys.exit(0)
     if a.schedule:
         out = os.path.join(HERE, 'schedule.md')
         open(out, 'w', encoding='utf-8').write(schedule_md())
