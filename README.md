@@ -9,6 +9,9 @@ A fully static site: 99 HTML pages, one stylesheet, a favicon, `robots.txt` and 
 - `site/` — the deployable site. `site/index.html` is the homepage.
 - `index.html` (repo root) — convenience redirect into `site/` for local browsing; not deployed.
 - `netlify.toml` — Netlify configuration: publishes `site/` and sets security headers.
+- `linkedin/` — the LinkedIn posting run: drafts, branded cards, the schedule and
+  the tooling that builds them. Outside `site/`, so Netlify never publishes it.
+  See `linkedin/README.md`.
 - `SITE-NOTES.md` — the original design/structure notes that shipped with the site.
   Treat it as a historical record, not a description of this repository: it refers to
   32 pages, 66 library documents and a `docs/build_website.py` generator, none of which

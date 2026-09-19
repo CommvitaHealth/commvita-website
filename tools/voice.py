@@ -17,7 +17,7 @@ def prose(f):
     s=re.sub(r'<script.*?</script>','',s,flags=re.S)
     s=re.sub(r'<figcaption.*?</figcaption>','',s,flags=re.S)
     s=re.sub(r'<[^>]+>',' ',s)
-    return re.sub(r'\s+',' ',s.replace('&rsquo;',"'").replace('&mdash;','—').replace('&nbsp;',' '))
+    return re.sub(r'\s+',' ',s.replace('&rsquo;',"'").replace('\u2019',"'").replace('&mdash;','—').replace('&nbsp;',' '))
 def score(f):
     t=prose(f); w=max(len(t.split()),1)
     fo=sum(len(re.findall(p,t)) for p in FORMAL); co=sum(len(re.findall(p,t)) for p in CONTR)
