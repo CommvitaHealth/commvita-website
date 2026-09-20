@@ -62,6 +62,20 @@ A grade above about 8 means go back and read it out loud.
 - Prices beyond the published £1 per Flow Edition instance.
 - Commitments on escrow, service levels, support or funding that haven't been
   made.
+- **How commvita is built.** Standing order from Martin, 20 September 2026:
+  never publish anything that would let a competitor easily copy how the
+  platform has been built. Show the results and be transparent about what
+  exists, what is measured and what is missing; never the how, beyond saying
+  the code is AI-generated with human review. That bars on public pages:
+  the technology stack (languages, frameworks, databases, hosting,
+  deployment tooling), the names of build gates, scripts or checks, how a
+  register or catalogue is generated, mutation-testing method and figures,
+  the internals of the AI bug-fix pipeline beyond "an agent proposes, a
+  person reviews", the shape of migrations, schemas, seams or resolvers,
+  architecture decision record contents, and any recipe a rival could
+  follow. Counts of tests, checks, modules and pages are results and are
+  fine. "It fails the build if X drifts" is a result; naming the check that
+  does it, or how it does it, is the how.
 
 ## 3. Claims have to be true on the day they are published
 

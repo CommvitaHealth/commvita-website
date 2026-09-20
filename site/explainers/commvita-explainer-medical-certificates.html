@@ -258,7 +258,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/portal</span><span class="chip">POST /portal/firearms-request</span></div></div></div>
     <div class="step g"><div class="s">b</div><div>
       <h4>From a GP consultation (firearms)</h4>
-      <p>A <strong>"🔫 Firearms review"</strong> clinical prompt in <span class="chip">PreConsultSummary</span> deep-links the wizard <strong>pre-filled</strong> with the patient — so the clinician moves straight from the consultation into the review.</p>
+      <p>A <strong>"🔫 Firearms review"</strong> clinical prompt in deep-links the wizard <strong>pre-filled</strong> with the patient — so the clinician moves straight from the consultation into the review.</p>
       <div class="loc"><span class="chip">ConsultationWizard · PreConsultSummary</span><span class="chip">/firearms-certification?patientId=…</span></div></div></div>
     <div class="step g"><div class="s">c</div><div>
       <h4>Created directly in commvita Sign</h4>
@@ -317,7 +317,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">DVLA D4 Group 2 standards</span><span class="chip">Motorsport UK medical requirements</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Minimum-necessary — no general record dump</h4>
-      <p>For firearms, transmission to the authority is a <strong>minimum-necessary proforma</strong> (<span class="chip">…/transmit-proforma</span>) — an exact field list with a SHA-256 payload hash recorded to the decision log — <strong>never general record access</strong>.</p>
+      <p>For firearms, transmission to the authority is a <strong>minimum-necessary proforma</strong> (<span class="chip">…/transmit-proforma</span>) — an exact field list with a payload hash recorded to the decision log — <strong>never general record access</strong>.</p>
       <div class="loc"><span class="chip">POST /firearms/…/transmit-proforma</span><span class="chip">Home Office/NPCC/BMA MoU 2019</span></div></div></div>
   </div>
 
@@ -331,8 +331,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/firearms/…/decision</span><span class="chip">409 until all domains reviewed</span></div></div></div>
     <div class="step re"><div class="s">▸</div><div>
       <h4>Append-only, globally hash-chained decision log</h4>
-      <p>The decision log is <strong>append-only and GLOBALLY SHA-256 hash-chained</strong> (<code>prev_hash → row_hash</code>, global monotonic <code>seq</code>), <strong>re-verified server-side on every read</strong> — built to evidence <em>how</em> a decision was made.</p>
-      <div class="loc"><span class="chip">FirearmsDecisionLog</span><span class="chip">prev_hash → row_hash · seq</span></div></div></div>
+      <p>The decision log is <strong>append-only and GLOBALLY hash-chained</strong>, <strong>re-verified server-side on every read</strong> — built to evidence <em>how</em> a decision was made.</p>
+      </div></div>
     <div class="step re"><div class="s">▸</div><div>
       <h4>Jurisdiction routing of the report</h4>
       <p>Where the certificate goes is config-driven: <strong>England/Wales/Scotland → police</strong>; <strong>NI → PSNI</strong>; <strong>Crown Dependencies → their local designated authority</strong> (parish / administrative, not always police); Gibraltar → administrative GP-input.</p>
@@ -379,7 +379,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <div class="inp area">Recorded trigger condition noted and discussed; no current risk indicators. Supporting with concern flagged to the authority for their determination.</div>
       </div>
       <div class="strip green">
-        <span>✓</span><span><b>Decision log — chain verified</b> · SHA-256 <code>prev_hash → row_hash</code> · global <code>seq</code> · append-only, re-verified on read.</span>
+        <span>✓</span><span><b>Decision log — chain verified</b> · hash-chained, append-only, re-verified on read.</span>
         <span class="sp"></span><span class="pill green dot">all domains reviewed</span>
       </div>
       <div class="btnrow">
@@ -395,7 +395,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step g"><div class="s">▪</div><div>
       <h4>Per-ceremony OTP signing</h4>
-      <p>Signing is a <strong>per-ceremony OTP</strong> plus a <strong>signature hash bound to the document hash</strong> (client-side SHA-256). Each signer is one of <strong>patient / staff / external</strong> — here the patient, bound by record id.</p>
+      <p>Signing is a <strong>per-ceremony OTP</strong> plus a <strong>signature hash bound to the document hash</strong> (computed on the device). Each signer is one of <strong>patient / staff / external</strong> — here the patient, bound by record id.</p>
       <div class="loc"><span class="chip">/esign · send-otp · sign</span><span class="chip">SignRequest · SignSigner</span></div></div></div>
     <div class="step g"><div class="s">▪</div><div>
       <h4>Jurisdiction-specific certificate</h4>
@@ -409,11 +409,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Draft Private Patient Charges invoice, auto-raised</h4>
-      <p>The e-signature invoice hook raises a <strong>draft Private Patient Charges invoice</strong> — <strong>BMA <code>PrivateFeeItem</code> fee preferred</strong>, template fallback fee otherwise — with <strong>VAT</strong> applied. The <code>invoice_ref</code> is linked back to the request/certificate.</p>
-      <div class="loc"><span class="chip">/private-charges</span><span class="chip">invoice_ref</span></div></div></div>
+      <p>The e-signature invoice hook raises a <strong>draft Private Patient Charges invoice</strong> — <strong>BMA fee preferred</strong>, template fallback fee otherwise — with <strong>VAT</strong> applied. The is linked back to the request/certificate.</p>
+      <div class="loc"><span class="chip">/private-charges</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Surfaced &amp; audited</h4>
-      <p>The invoice is surfaced in the <strong>ceremony success state</strong> and the Sign <strong>registry</strong>; <code>invoice_raised</code> is written to the <strong>WORM audit</strong>. Debtors and finance reporting then run in Private Patient Charges.</p>
+      <p>The invoice is surfaced in the <strong>ceremony success state</strong> and the Sign <strong>registry</strong>; is written to the <strong>WORM audit</strong>. Debtors and finance reporting then run in Private Patient Charges.</p>
       <div class="loc"><span class="chip">invoice_raised → WORM audit</span><span class="chip">/private · debtors · finance</span></div></div></div>
   </div>
 
@@ -440,7 +440,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
           <div class="lab">Audit</div>
           <div class="val" style="font-size:13px">WORM chain updated</div>
           <div style="margin-top:5px"><span class="pill green dot">invoice_raised logged</span></div>
-          <div style="margin-top:6px;font-size:11.5px;color:var(--muted)"><code>prev_hash → row_hash</code> re-verified on read.</div>
+          <div style="margin-top:6px;font-size:11.5px;color:var(--muted)"> re-verified on read.</div>
         </div>
       </div>
       <div class="invoice">
@@ -449,7 +449,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <div class="ln"><span class="desc">VAT @ 20%</span><span class="amt">£24.00</span></div>
         <div class="ln total"><span class="desc">Total due</span><span class="amt">£144.00</span></div>
       </div>
-      <div style="margin-top:9px;font-size:11.5px;color:var(--muted)"><code>invoice_ref</code> INV-2026-0418 linked to the signature request &amp; certificate.</div>
+      <div style="margin-top:9px;font-size:11.5px;color:var(--muted)"> INV-2026-0418 linked to the signature request &amp; certificate.</div>
     </div>
   </div>
   <div class="cap">Representative UI — illustrative</div>
@@ -457,7 +457,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <!-- SECTION 6 — EVIDENCE -->
   <h2 class="rescind"><span class="num">6</span> Evidence — everything on the immutable chain</h2>
   <p class="lead">Request, review, decision, signature and invoice all land on append-only, tamper-evident logs — nothing can be quietly rewritten.</p>
-  <div class="callout re"><b>Immutable by construction.</b> Both the commvita Sign <b>Audit Chain</b> and the Firearms <b>decision log</b> are <b>append-only and SHA-256 hash-chained</b> (<code>prev_hash → row_hash</code>), <b>re-verified server-side on every read</b> — a broken link shows a tamper banner. There&rsquo;s <b>no update or delete endpoint</b>. For firearms, the minimum-necessary proforma transmission records an exact field list and a SHA-256 payload hash to the decision log — evidencing exactly what was shared with the authority, and no more.</div>
+  <div class="callout re"><b>Immutable by construction.</b> Both the commvita Sign <b>Audit Chain</b> and the Firearms <b>decision log</b> are <b>append-only and hash-chained</b>, <b>re-verified server-side on every read</b> — a broken link shows a tamper banner. There&rsquo;s <b>no update or delete endpoint</b>. For firearms, the minimum-necessary proforma transmission records an exact field list and a payload hash to the decision log — evidencing exactly what was shared with the authority, and no more.</div>
 
   <!-- WHERE IT LIVES -->
   <h2>Where it lives in commvita</h2>
@@ -477,10 +477,10 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <tr><td><b>Request — consultation prompt</b></td><td>ConsultationWizard · PreConsultSummary</td><td><span class="chip">/firearms-certification?patientId=…</span></td><td>deep-link, pre-filled patient</td><td>SNOMED CT UK</td><td>◍ Demonstrated</td></tr>
         <tr><td><b>Request — created in Sign</b></td><td>commvita Sign · New Request</td><td><span class="chip">/esign</span></td><td>SignRequest · SignSigner · PatientPicker</td><td>UK eIDAS (AdES)</td><td>● Live</td></tr>
         <tr><td><b>Firearms review &amp; decision log</b></td><td>Firearms Certificate Management</td><td><span class="chip">/firearms-certification</span></td><td>FirearmsAssessment · FirearmsDecisionLog · <span class="chip">/firearms/…/decision</span></td><td>Home Office/NPCC/BMA MoU 2019</td><td>● Live</td></tr>
-        <tr><td><b>Minimum-necessary proforma</b></td><td>Firearms Certificate Management</td><td><span class="chip">/firearms-certification</span></td><td><span class="chip">POST /firearms/…/transmit-proforma</span> · SHA-256 payload hash</td><td>Firearms Act 1968 · SNOMED CT UK</td><td>● Live</td></tr>
+        <tr><td><b>Minimum-necessary proforma</b></td><td>Firearms Certificate Management</td><td><span class="chip">/firearms-certification</span></td><td><span class="chip">POST /firearms/…/transmit-proforma</span> · payload hash</td><td>Firearms Act 1968 · SNOMED CT UK</td><td>● Live</td></tr>
         <tr><td><b>Sign — OTP ceremony &amp; certificate</b></td><td>commvita Sign</td><td><span class="chip">/esign</span></td><td><span class="chip">/esign/send-otp · sign · certificate</span> · <code>jurisdiction</code></td><td>UK eIDAS (AdES) · Crown Dependency electronic transactions law</td><td>● Live</td></tr>
-        <tr><td><b>Auto-invoice (report → sign → invoice)</b></td><td>Private Patient Charges</td><td><span class="chip">/private-charges</span></td><td><code>the e-signature invoice hook</code> · <span class="chip">/private</span> · <code>invoice_ref</code> · VAT</td><td>BMA fee guidance · DVLA D4 · Motorsport UK</td><td>● Live</td></tr>
-        <tr><td><b>Immutable evidence</b> (Sign chain + decision log)</td><td>commvita Sign · Firearms</td><td><span class="chip">/esign</span> · <span class="chip">/firearms-certification</span></td><td>SignAuditEvent · WORM · <code>prev_hash → row_hash</code></td><td>WORM · UK GDPR Art.5(1)(f)</td><td>● Live</td></tr>
+        <tr><td><b>Auto-invoice (report → sign → invoice)</b></td><td>Private Patient Charges</td><td><span class="chip">/private-charges</span></td><td><code>the e-signature invoice hook</code> · <span class="chip">/private</span> · VAT</td><td>BMA fee guidance · DVLA D4 · Motorsport UK</td><td>● Live</td></tr>
+        <tr><td><b>Immutable evidence</b> (Sign chain + decision log)</td><td>commvita Sign · Firearms</td><td><span class="chip">/esign</span> · <span class="chip">/firearms-certification</span></td><td>SignAuditEvent · WORM</td><td>WORM · UK GDPR Art.5(1)(f)</td><td>● Live</td></tr>
         <tr><td><b>Registry surfacing</b> (invoice / cert chips)</td><td>commvita Sign · Registry</td><td><span class="chip">/esign</span></td><td>registry chips · ceremony success</td><td>UK eIDAS (AdES)</td><td>◍ Demonstrated</td></tr>
       </tbody>
     </table>

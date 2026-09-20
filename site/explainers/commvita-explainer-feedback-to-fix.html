@@ -257,7 +257,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <p>That label is the trigger. Today a member of the platform team applies it after triage, with the feedback reference in the issue. That&rsquo;s the manual step in &ldquo;semi-manual&rdquo;.</p></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>The agent reads the code and writes a fix</h4>
-      <p>It works on a branch named for the issue, is told to make targeted changes only and add nothing beyond what the fix requires, and is confined to the application code.</p></div></div>
+      <p>It is told to make targeted changes only and add nothing beyond what the fix requires.</p></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>A pull request opens, linked to the issue</h4>
       <p>If the agent changed anything, it commits and opens a pull request that closes the issue. If it changed nothing, no pull request is made and the issue stays open for a person.</p></div></div>
@@ -279,7 +279,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <!-- ================= 5 ================= -->
   <h2 class="grant"><span class="num">5</span> What &ldquo;fixed&rdquo; means here</h2>
   <p class="lead">A fix on this platform isn&rsquo;t a line changed. It&rsquo;s a line changed, a test that would have caught it, and a note in the build register saying what was wrong and why it was wrong. That discipline applies to a fix an agent proposes as much as to one a founder writes.</p>
-  <p>The build register is why the loop closes. Every build records what changed and the reasoning, and where a defect turned out to be one of a class the platform has met before, it says so and names the earlier instance. A quarter of the register&rsquo;s entries describe a defect class recurring, which is the kind of fact you only learn if you write everything down. The help guide for the page regenerates on the next build, and the build check fails if a page&rsquo;s source changed and its guide didn&rsquo;t.</p>
+  <p>The build register is why the loop closes. Every build records what changed and the reasoning, and where a defect turned out to be one of a class the platform has met before, it says so and names the earlier instance. A quarter of the register&rsquo;s entries describe a defect class recurring, which is the kind of fact you only learn if you write everything down. The help guide for the page regenerates on the next build, and the build fails if a page changed and its guide didn&rsquo;t.</p>
   <div class="callout"><b>The honest edges.</b> The feedback shown here is seeded: four items on the demonstration estate. The pipeline runs on the code repository, and its output on this platform to date has been exercised on issues raised by the team, not by external users. And there is no automatic path from an approved feedback item to a labelled issue; a person makes that link.</div>
 
   <h2>Where it lives in commvita</h2>

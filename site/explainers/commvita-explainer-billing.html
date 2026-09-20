@@ -184,9 +184,7 @@ figcaption b{color:var(--ink)}
       are stored as <strong>integers in pence</strong>. A price therefore can&rsquo;t drift by a rounding
       error between two organisations reading the same rate, and a total is exact rather than
       nearly right.</p>
-      <div class="where"><b>Where it lives</b>
-        <code>TariffRate.national_price_pence</code> · <code>bpt_price_pence</code> ·
-        <code>day_case_price_pence</code></div>
+      <div class="where"><b>Where it lives</b></div>
     </div>
     <div class="role" style="border-top-color:#7B61FF">
       <h3>A scheme, a rate, and a locally agreed price</h3>
@@ -197,9 +195,7 @@ figcaption b{color:var(--ink)}
       health tariff, which is what makes the model multi-jurisdictional rather than
       England-with-exceptions.</p>
       <div class="where"><b>Where it lives</b>
-        <span class="chip">/nhs-payment-system</span> · <span class="chip">GET /tariff/</span> ·
-        <code>TariffScheme</code> · <code>TariffRate</code> · <code>TariffLocalPrice</code> ·
-        <code>ActivityCostRecord</code></div>
+        <span class="chip">/nhs-payment-system</span> · <span class="chip">GET /tariff/</span></div>
     </div>
   </div>
 
@@ -256,7 +252,7 @@ figcaption b{color:var(--ink)}
       <p>A fee schedule based on the BMA rates, invoice generation with VAT and line items, an
       outstanding-debtor view and finance reporting. Chargeable medical reports — firearms, driver
       medicals, insurance and similar — close the loop below.</p>
-      <div class="loc"><span class="chip">/private-charges</span><span class="chip">/billing-rules</span><span class="chip">GET /private/</span><code>PrivateFeeItem</code><code>PrivateInvoice</code><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></div></div></div>
+      <div class="loc"><span class="chip">/private-charges</span><span class="chip">/billing-rules</span><span class="chip">GET /private/</span><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></div></div></div>
     <div class="step" style="border-left-color:#FF5B47"><div class="s">04</div><div>
       <h4>Value-based and fee-for-service, United States</h4>
       <p>Time-tracked care management billed under its own codes — chronic care management
@@ -282,8 +278,7 @@ figcaption b{color:var(--ink)}
       <div class="who"><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></div>
       <p>Legal entities, cost centres, contracts and payroll runs with an approve, lock and pay
       workflow and variance flags; income and expenditure by service line.</p>
-      <div class="where"><b>Where it lives</b> <span class="chip">/hr-finance</span> ·
-        <code>HRPayrollRun</code> · <code>HRServiceLinePL</code></div>
+      <div class="where"><b>Where it lives</b> <span class="chip">/hr-finance</span></div>
     </div>
     <div class="role" style="border-top-color:#FFB020">
       <h3>Cost of delay, and cost per case</h3>
@@ -328,8 +323,7 @@ figcaption b{color:var(--ink)}
       runs as a gated approval — assignable to a role, a named person, or a whole team — escalating
       on a service-level breach, optionally signature-backed, and written to an append-only
       hash-chained audit that&rsquo;s re-verified whenever it&rsquo;s read.</p>
-      <div class="where"><b>Where it lives</b> <span class="chip">/policy-to-process</span> ·
-        <code>P2PAuthorityRow</code> · <code>P2PApprovalTask</code></div>
+      <div class="where"><b>Where it lives</b> <span class="chip">/policy-to-process</span></div>
     </div>
   </div>
   <div class="callout re"><b>What commvita isn&rsquo;t.</b> It&rsquo;s <b>not a general ledger</b> and not a
@@ -345,25 +339,25 @@ figcaption b{color:var(--ink)}
     <table>
       <thead><tr><th>Capability</th><th>Route</th><th>API / model</th><th>Status</th></tr></thead>
       <tbody>
-<tr><td><b>Payment scheme, rates, local prices, activity cost</b><div style="color:var(--muted);font-size:11.5px">NHS Payment System</div></td><td><span class="chip">/nhs-payment-system</span></td><td>GET /tariff/ · <code>TariffScheme</code> · <code>TariffRate</code> · <code>TariffLocalPrice</code> · <code>ActivityCostRecord</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Payment scheme, rates, local prices, activity cost</b><div style="color:var(--muted);font-size:11.5px">NHS Payment System</div></td><td><span class="chip">/nhs-payment-system</span></td><td>GET /tariff/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Statutory financial values, sourced and dated</b><div style="color:var(--muted);font-size:11.5px">Jurisdiction Profile</div></td><td><span class="chip">/jurisdiction-profile</span></td><td>GET /jurisdiction-profile/ · financial domain</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Care Act means test, tariff income, MIG</b><div style="color:var(--muted);font-size:11.5px">Financial Assessment</div></td><td><span class="chip">/financial-assessment</span></td><td>GET /financial-assessment/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Personal budgets and PA employment</b><div style="color:var(--muted);font-size:11.5px">Direct Payments</div></td><td><span class="chip">/direct-payments</span></td><td>GET /direct-payments/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Care account and lifetime cost cap</b><div style="color:var(--muted);font-size:11.5px">Care Act Cost Cap</div></td><td><span class="chip">/care-act-cost-cap</span></td><td>GET /care-act-cost-cap/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Care package costing and provider rates</b><div style="color:var(--muted);font-size:11.5px">Care Package Finance</div></td><td><span class="chip">/care-package-finance</span></td><td>GET /care-package-finance/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
-<tr><td><b>Fee schedule, invoice, VAT, debtors</b><div style="color:var(--muted);font-size:11.5px">Private Patient Charges</div></td><td><span class="chip">/private-charges</span></td><td>GET /private/ · <code>PrivateFeeItem</code> · <code>PrivateInvoice</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Fee schedule, invoice, VAT, debtors</b><div style="color:var(--muted);font-size:11.5px">Private Patient Charges</div></td><td><span class="chip">/private-charges</span></td><td>GET /private/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Billing rules and tariff mapping</b><div style="color:var(--muted);font-size:11.5px">Billing Rules Engine</div></td><td><span class="chip">/billing-rules</span></td><td>—</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
-<tr><td><b>Chargeable report → signature → invoice</b><div style="color:var(--muted);font-size:11.5px">commvita Sign</div></td><td><span class="chip">/esign</span></td><td>POST /esign/sign · <code>_esign_raise_invoice</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Chargeable report → signature → invoice</b><div style="color:var(--muted);font-size:11.5px">commvita Sign</div></td><td><span class="chip">/esign</span></td><td>POST /esign/sign</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Chronic, collaborative, transitional, principal care</b><div style="color:var(--muted);font-size:11.5px">US care management</div></td><td><span class="chip">/ccm</span> · <span class="chip">/collaborative-care</span> · <span class="chip">/transitional-care</span> · <span class="chip">/pcm</span></td><td>GET /ccm/ · /bhi/ · /tcm/ · /pcm/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Annual wellness visit, RPM, RTM</b><div style="color:var(--muted);font-size:11.5px">US preventive and monitoring</div></td><td><span class="chip">/awv</span> · <span class="chip">/rpm</span> · <span class="chip">/rtm</span></td><td>GET /awv/ · /rpm/ · /rtm/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Risk adjustment and recapture</b><div style="color:var(--muted);font-size:11.5px">HCC coding · RAF Recapture</div></td><td><span class="chip">/hcc-risk-coding</span> · <span class="chip">/raf-recapture</span></td><td>GET /raf-recapture/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Quality-linked revenue</b><div style="color:var(--muted);font-size:11.5px">STAR Ratings · Readmission Prevention</div></td><td><span class="chip">/star-ratings</span> · <span class="chip">/readmission-prevention</span></td><td>GET /star-ratings/ · /readmission/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Payer interfaces</b><div style="color:var(--muted);font-size:11.5px">Prior Auth · Payer Data Feeds · No Surprises Act</div></td><td><span class="chip">/prior-auth</span> · <span class="chip">/payer-data-feeds</span> · <span class="chip">/no-surprises-act</span></td><td>Da Vinci PAS · X12 EDI</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
-<tr><td><b>Payroll, cost centres, service-line P&amp;L</b><div style="color:var(--muted);font-size:11.5px">HR &amp; Finance</div></td><td><span class="chip">/hr-finance</span></td><td>GET /hr/ · <code>HRPayrollRun</code> · <code>HRServiceLinePL</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Payroll, cost centres, service-line P&amp;L</b><div style="color:var(--muted);font-size:11.5px">HR &amp; Finance</div></td><td><span class="chip">/hr-finance</span></td><td>GET /hr/</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Patient-level costing and cost of delay</b><div style="color:var(--muted);font-size:11.5px">commvita Flow</div></td><td><span class="chip">/flow</span></td><td>GET /flow/</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
 <tr><td><b>Total cost of care against benchmark</b><div style="color:var(--muted);font-size:11.5px">TCOC Dashboard</div></td><td><span class="chip">/tcoc-dashboard</span></td><td>—</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
 <tr><td><b>Efficiency programme and procurement</b><div style="color:var(--muted);font-size:11.5px">ICB Commissioning</div></td><td><span class="chip">/icb-commissioning</span></td><td>GET /icb-commissioning/</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
-<tr><td><b>Delegated financial authority and gated spend</b><div style="color:var(--muted);font-size:11.5px">Policy-to-Process</div></td><td><span class="chip">/policy-to-process</span></td><td>GET /p2p/authority · <code>P2PAuthorityRow</code></td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
+<tr><td><b>Delegated financial authority and gated spend</b><div style="color:var(--muted);font-size:11.5px">Policy-to-Process</div></td><td><span class="chip">/policy-to-process</span></td><td>GET /p2p/authority</td><td><span class="st" style="color:#00B8A6"><span class="dot" style="background:#00B8A6"></span>Live</span></td></tr>
 <tr><td><b>Finance system of record</b><div style="color:var(--muted);font-size:11.5px">Integrations Hub</div></td><td><span class="chip">/integrations-hub</span></td><td>SAP S/4HANA · Oracle Fusion · Workday</td><td><span class="st" style="color:#FF5B47"><span class="dot" style="background:#FF5B47"></span>Demonstrated</span></td></tr>
       </tbody>
     </table>

@@ -215,8 +215,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/provider-portal</span><span class="chip">/supplier-ig-assurance</span><span class="chip">/dspa-manager</span><span class="chip">Art.28 · Art.26 · DSPT · DTAC</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Time-boxed grant — scope-only, with an expiry set to the episode</h4>
-      <p>Rita is given a scope-only <span class="chip">UserGroup</span> / <span class="chip">UserDelegation</span> whose <code>expires_at</code> is set to the rehab episode — <strong>6 weeks</strong>. A scope-only group grants org codes, <em>never a role</em>; her read-only role resolves only the scoped rehab fields. Because this is <strong>direct care</strong> under Art.9(2)(h), <strong>no Caldicott gate is required</strong>.</p>
-      <div class="loc"><span class="chip">/rbac · /rbac/user-groups</span><span class="chip">effective_scope()</span><span class="chip">expires_at</span></div></div></div>
+      <p>Rita is given a scope-only / whose is set to the rehab episode — <strong>6 weeks</strong>. A scope-only group grants org codes, <em>never a role</em>; her read-only role resolves only the scoped rehab fields. Because this is <strong>direct care</strong> under Art.9(2)(h), <strong>no Caldicott gate is required</strong>.</p>
+      <div class="loc"><span class="chip">/rbac · /rbac/user-groups</span></div></div></div>
     <div class="step g"><div class="s">4</div><div>
       <h4>Legitimate relationship — justified per visit</h4>
       <p>Role + scope let Rita <em>reach</em> the patient; opening the record on each daily visit needs a <strong>care reason</strong>. Every access is justified and logged, so the record shows exactly who looked, when and why.</p>
@@ -272,7 +272,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Scope caps the view to the rehab set</h4>
-      <p><code>effective_scope()</code> resolves only the org codes and fields the grant permits. Rita sees the <strong>rehab care plan, goals, exercise programme and visit log</strong> — and can add a visit entry — but the wider record simply doesn&rsquo;t resolve for her.</p></div></div>
+      <p> resolves only the org codes and fields the grant permits. Rita sees the <strong>rehab care plan, goals, exercise programme and visit log</strong> — and can add a visit entry — but the wider record simply doesn&rsquo;t resolve for her.</p></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>The rest of the record isn&rsquo;t resolvable</h4>
       <p>Out-of-scope sections aren&rsquo;t hidden buttons she might press — they&rsquo;re never returned by the API for her token. Data minimisation is enforced by design, not by UI.</p>
@@ -334,12 +334,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step re"><div class="s">1</div><div>
       <h4>At 6 weeks the grant self-expires</h4>
-      <p><code>effective_scope()</code> <strong>filters the lapsed grant at authentication time</strong> — the moment the <code>expires_at</code> passes, the rehab scope stops resolving and Rita&rsquo;s access drops automatically with no manual step. The lapse is written once (<code>lapse_recorded</code>) to the immutable hash chain.</p>
-      <div class="loc"><span class="chip">expires_at</span><span class="chip">effective_scope()</span><span class="chip">lapse_recorded</span><span class="chip">LoginAuditEvent chain</span></div></div></div>
+      <p> <strong>filters the lapsed grant at authentication time</strong> — the moment the passes, the rehab scope stops resolving and Rita&rsquo;s access drops automatically with no manual step. The lapse is written once to the immutable hash chain.</p>
+      <div class="loc"><span class="chip">login audit chain</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>Requesting an extension when care continues</h4>
-      <p>If physio extends the rehab, the care coordinator (or Rita) <strong>requests an extension</strong>. The controller <strong>re-attests</strong> and sets a <strong>new <code>expires_at</code></strong> via <span class="chip">PATCH /rbac/user-groups/{id}</span>. The grant and its new expiry are written to the tamper-evident <strong>LoginAuditEvent hash chain</strong> — access can&rsquo;t quietly persist or silently re-elevate; it&rsquo;s renewed only by an explicit, recorded decision.</p>
-      <div class="loc"><span class="chip">PATCH /rbac/user-groups/{id}</span><span class="chip">re-attest</span><span class="chip">LoginAuditEvent chain</span></div></div></div>
+      <p>If physio extends the rehab, the care coordinator (or Rita) <strong>requests an extension</strong>. The controller <strong>re-attests</strong> and sets a <strong>new</strong> via <span class="chip">PATCH /rbac/user-groups/{id}</span>. The grant and its new expiry are written to the tamper-evident <strong>login audit hash chain</strong> — access can&rsquo;t quietly persist or silently re-elevate; it&rsquo;s renewed only by an explicit, recorded decision.</p>
+      <div class="loc"><span class="chip">PATCH /rbac/user-groups/{id}</span><span class="chip">re-attest</span><span class="chip">login audit chain</span></div></div></div>
   </div>
 
   <!-- SHOT (c) : access expiring -->
@@ -390,7 +390,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <span class="btn ghost">Cancel</span>
       </div>
       <div class="strip green" style="margin:14px 0 0">
-        <span>✓</span><span><b>Approved by K. Mensah (Care Coordinator)</b> · re-attested · new expiry <b>9 Sep 2026</b> · written to LoginAuditEvent chain.</span>
+        <span>✓</span><span><b>Approved by K. Mensah (Care Coordinator)</b> · re-attested · new expiry <b>9 Sep 2026</b> · written to the login audit chain.</span>
         <span class="sp"></span><span class="pill green dot">expires_at updated</span>
       </div>
     </div>
@@ -400,7 +400,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <!-- IMMUTABLE + INTELLIGENT AUDIT -->
   <h2 class="protect"><span class="num">D</span> Immutable — and intelligent — audit</h2>
   <p class="lead">Every grant, access, expiry and extension lands in a log that can&rsquo;t be quietly rewritten and doesn&rsquo;t just sit there — it watches for the things that matter.</p>
-  <div class="callout"><b>Immutable by construction.</b> Every grant, view, auto-expiry and extension is written to an <b>append-only, SHA-256 hash-chained (WORM) log that the server re-verifies on every read</b> — a broken chain surfaces a tamper banner. There&rsquo;s no update or delete endpoint.
+  <div class="callout"><b>Immutable by construction.</b> Every grant, view, auto-expiry and extension is written to an <b>append-only, hash-chained (WORM) log that the server re-verifies on every read</b> — a broken chain surfaces a tamper banner. There&rsquo;s no update or delete endpoint.
   <p style="margin:10px 0 0"><b>Intelligent, not passive.</b> The audit flags <b>out-of-hours</b> access and <b>out-of-area / bulk / cross-ICS anomalies</b> (<span class="chip">/legitimate-access-log</span>); the <b>Security Console</b> adds clinical-workflow-aware anomaly detection. And if the record is opened in <b>another setting</b> — hospital, out-of-hours or NHS 111 direct care — a <b>Clinical Trigger Alert</b> sends a <b>safety-netting notification to the registered GP practice</b> (<span class="chip">/ig-spine</span>), <b>gated on encounter/ADT corroboration</b>, minimum-necessary, deduplicated and rate-limited, with the acknowledgement itself audited.</p></div>
 
   <!-- SHOT (e) : immutable audit trail -->
@@ -412,7 +412,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     </div>
     <div class="body">
       <div class="strip green">
-        <span>✓</span><span><b>Chain verified</b> — SHA-256 <code>prev_hash → row_hash</code> re-checked on read · no breaks · append-only.</span>
+        <span>✓</span><span><b>Chain verified</b> — hash chain re-checked on read · no breaks · append-only.</span>
       </div>
       <div class="tablewrap" style="margin-top:0;box-shadow:none">
         <table>
@@ -423,7 +423,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
             <tr class="hashrow ooh"><td>Record accessed · rehab set</td><td class="mono">08 Jul 2027 · 08:58</td><td>R. Okafor</td><td><span class="pill amber dot">out-of-hours</span></td></tr>
             <tr class="hashrow warn"><td>⚠ Opened in acute setting · <b>GP practice notified</b> (cross-setting)</td><td class="mono">09 Jul 2027 · 21:37</td><td>ED clinician</td><td><span class="pill red dot">trigger alert</span></td></tr>
             <tr class="hashrow"><td>Extension requested · +4 weeks</td><td class="mono">09 Aug 2027 · 14:20</td><td>R. Okafor</td><td><span class="pill navy dot">pending</span></td></tr>
-            <tr class="hashrow"><td><b>Extension approved</b> · new <code>expires_at</code> 09 Sep 2027</td><td class="mono">09 Aug 2027 · 16:05</td><td>K. Mensah</td><td><span class="pill green dot">re-attested</span></td></tr>
+            <tr class="hashrow"><td><b>Extension approved</b> · new 09 Sep 2027</td><td class="mono">09 Aug 2027 · 16:05</td><td>K. Mensah</td><td><span class="pill green dot">re-attested</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -448,12 +448,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <tr><td><b>Onboard the external provider</b></td><td>Provider Portal</td><td><span class="chip">/provider-portal</span></td><td>capacity &amp; profile self-service</td><td>CQC · provider assurance</td></tr>
         <tr><td><b>Processor assurance &amp; DPA</b></td><td>Supplier IG Assurance</td><td><span class="chip">/supplier-ig-assurance</span></td><td>DSPT / DTAC · DPA register</td><td>Art.28 · DSPT · DTAC</td></tr>
         <tr><td><b>Joint-controller sharing</b></td><td>DSPA Manager</td><td><span class="chip">/dspa-manager</span></td><td>DSPA lifecycle · signatories</td><td>Art.26 · NHS DSPA template</td></tr>
-        <tr><td><b>Time-boxed scope</b> (episode-length)</td><td>RBAC · Groups &amp; Delegations</td><td><span class="chip">/rbac</span> · <span class="chip">/rbac/user-groups</span></td><td><code>effective_scope()</code> · UserGroup · UserDelegation · <code>expires_at</code></td><td>ODS · Caldicott P4 / Art.5(1)(c)</td></tr>
-        <tr><td><b>Extension &amp; re-attestation</b></td><td>RBAC · Groups &amp; Delegations</td><td><span class="chip">PATCH /rbac/user-groups/{id}</span></td><td>re-attest · <code>lapse_recorded</code></td><td>least-privilege renewal</td></tr>
+        <tr><td><b>Time-boxed scope</b> (episode-length)</td><td>RBAC · Groups &amp; Delegations</td><td><span class="chip">/rbac</span> · <span class="chip">/rbac/user-groups</span></td><td>UserGroup · UserDelegation</td><td>ODS · Caldicott P4 / Art.5(1)(c)</td></tr>
+        <tr><td><b>Extension &amp; re-attestation</b></td><td>RBAC · Groups &amp; Delegations</td><td><span class="chip">PATCH /rbac/user-groups/{id}</span></td><td>re-attest</td><td>least-privilege renewal</td></tr>
         <tr><td><b>Per-visit legitimate relationship</b></td><td>Legitimate Relationship Log</td><td><span class="chip">/legitimate-access-log</span></td><td>access log · anomaly alerts · Art.15 SAR</td><td>DSPT · GDPR Art.30/15</td></tr>
         <tr><td><b>Delegated access &amp; consent</b></td><td>Concierge · Consent Hub</td><td><span class="chip">/concierge</span> · <span class="chip">/consent-hub</span></td><td>delegated access records · FHIR Consent R4</td><td>GDPR Art.7 · Art.15</td></tr>
         <tr><td><b>Community rehab context</b></td><td>Community Nursing Portal</td><td><span class="chip">/community-nursing</span></td><td>visit queue · interventions · caseload</td><td>NMC 2018 · NICE SC1</td></tr>
-        <tr><td><b>Immutable audit</b> (grant/access/expiry/extend)</td><td>Login Audit · IG Spine WORM</td><td><span class="chip">/login-audit</span></td><td>SHA-256 hash chain · <span class="chip">GET /auth/login-audit</span></td><td>GDPR Art.5(1)(f) · DSPT</td></tr>
+        <tr><td><b>Immutable audit</b> (grant/access/expiry/extend)</td><td>Login Audit · IG Spine WORM</td><td><span class="chip">/login-audit</span></td><td>hash chain · <span class="chip">GET /auth/login-audit</span></td><td>GDPR Art.5(1)(f) · DSPT</td></tr>
         <tr><td><b>Intelligent audit</b> (triggers &amp; anomalies)</td><td>IG Spine · Security Console</td><td><span class="chip">/ig-spine</span></td><td>Clinical Trigger Alert (ADT-gated) · anomaly detection</td><td>Caldicott 8 · FHIR R4 AuditEvent</td></tr>
       </tbody>
     </table>

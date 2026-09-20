@@ -243,7 +243,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="role" style="border-top-color:var(--orange)">
       <h3>Govern permissions</h3>
       <div class="who">RBAC matrix &middot; groups &middot; audit</div>
-      <p>An editable <strong>27-role &times; 22-domain matrix</strong> with policy scenarios and a DSPT export; <strong>User Groups grant scope only, never a role</strong>; delegations and group memberships <strong>expire</strong>; every role/scope change is written to a <strong>SHA-256 hash-chained login audit</strong>.</p>
+      <p>An editable <strong>27-role &times; 22-domain matrix</strong> with policy scenarios and a DSPT export; <strong>User Groups grant scope only, never a role</strong>; delegations and group memberships <strong>expire</strong>; every role/scope change is written to a <strong>hash-chained login audit</strong>.</p>
       <div class="where"><b>Where in commvita</b>
         <span class="chip">/rbac</span> &middot; API <span class="chip">/rbac/matrix</span> &middot; <span class="chip">/login-audit</span>.</div>
     </div>
@@ -274,15 +274,15 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>Role and scope are separate</h4>
-      <p><code>effective_role(user)</code> comes only from an explicit role assignment; <code>effective_scope(db, user)</code> is the union of the user&rsquo;s own, delegated and group organisations. A <strong>group can never grant a role</strong> &mdash; only scope.</p>
-      <div class="loc"><span class="chip">effective_role</span><span class="chip">effective_scope</span></div></div></div>
+      <p> comes only from an explicit role assignment; is the union of the user&rsquo;s own, delegated and group organisations. A <strong>group can never grant a role</strong> &mdash; only scope.</p>
+      </div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>Delegation &amp; groups, with expiry</h4>
       <p>Team leads inherit a colleague&rsquo;s org scope through a <strong>delegation</strong>; users join <strong>scope-only groups</strong>; both can carry an <strong>expiry</strong> &mdash; expired grants yield no access, and lapses are recorded once to the audit chain.</p>
       <div class="loc"><span class="chip">/rbac/delegations</span><span class="chip">/rbac/user-groups &middot; expires_at</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Every change is tamper-evident</h4>
-      <p>Role assignments, group membership changes and every login land on a <strong>SHA-256 hash-chained audit</strong> (<code>prev_hash &rarr; row_hash</code>), re-verified on read &mdash; no silent privilege elevation, and a DSPT-ready access-monitoring trail.</p>
+      <p>Role assignments, group membership changes and every login land on a <strong>hash-chained audit</strong>, re-verified on read &mdash; no silent privilege elevation, and a DSPT-ready access-monitoring trail.</p>
       <div class="loc"><span class="chip">/login-audit</span><span class="chip">WORM &middot; DSPT access monitoring</span></div></div></div>
   </div>
 
@@ -309,9 +309,9 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <tr><td><b>Staff Hierarchy Builder</b> (dual-layer)</td><td><span class="chip">/hierarchy-builder</span></td><td>API <span class="chip">/hierarchy/</span> (care-groups, tree)</td><td>&#9679; Live</td></tr>
       <tr><td><b>RBAC permission matrix</b> (18&times;16)</td><td><span class="chip">/rbac</span></td><td>API <span class="chip">/rbac/matrix</span> &middot; scenarios &middot; export</td><td>&#9679; Live</td></tr>
       <tr><td><b>Team-lead delegations</b> (scope inherit)</td><td><span class="chip">/rbac</span></td><td>API <span class="chip">/rbac/delegations</span> &middot; UserDelegation</td><td>&#9679; Live</td></tr>
-      <tr><td><b>User Groups</b> (scope-only, expiry)</td><td><span class="chip">/rbac</span></td><td>API <span class="chip">/rbac/user-groups</span> &middot; UserGroup &middot; <code>expires_at</code></td><td>&#9679; Live</td></tr>
+      <tr><td><b>User Groups</b> (scope-only, expiry)</td><td><span class="chip">/rbac</span></td><td>API <span class="chip">/rbac/user-groups</span> &middot; UserGroup</td><td>&#9679; Live</td></tr>
       <tr><td><b>Effective-access viewer</b></td><td><span class="chip">/rbac</span></td><td>API <span class="chip">/rbac/users/{id}/effective-access</span></td><td>&#9679; Live</td></tr>
-      <tr><td><b>Login / access audit</b> (hash-chained)</td><td><span class="chip">/login-audit</span></td><td>API <span class="chip">/auth/login-audit</span> &middot; LoginAuditEvent</td><td>&#9679; Live</td></tr>
+      <tr><td><b>Login / access audit</b> (hash-chained)</td><td><span class="chip">/login-audit</span></td><td>API <span class="chip">/auth/login-audit</span> </td><td>&#9679; Live</td></tr>
       <tr><td><b>OIDC / SSO provisioning</b></td><td><span class="chip">/oidc-settings</span></td><td>OIDC &middot; SCIM</td><td>&#9737; Demonstrated</td></tr>
     </tbody>
   </table></div>

@@ -164,7 +164,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Only roles with a lawful Article 9 condition</h4>
-      <p>Access needs an Art.9 condition — for direct care that&rsquo;s <strong>Art.9(2)(h)</strong> (provision of health/social care). The <strong>27-role × 22-domain RBAC matrix</strong> decides which clinical domains a role reaches, and <code>effective_role()</code> takes the role <em>only</em> from an explicit assignment — never inferred.</p>
+      <p>Access needs an Art.9 condition — for direct care that&rsquo;s <strong>Art.9(2)(h)</strong> (provision of health/social care). The <strong>27-role × 22-domain RBAC matrix</strong> decides which clinical domains a role reaches, and takes the role <em>only</em> from an explicit assignment — never inferred.</p>
       <div class="loc"><span class="chip">/rbac · RBAC Matrix</span><span class="chip">UK GDPR Art.9(2)(h)</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Field-level control — minimum necessary</h4>
@@ -172,12 +172,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/ig-spine · Purpose &amp; Legal Basis</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>The most sensitive domains are gated further</h4>
-      <p><strong>Genomics</strong> requires an explicit <span class="chip">genomics_access</span> grant; <strong>sexual-health / GUM</strong> records are handled as Art.9 special category with their own confidentiality; sensitive <strong>mental-health notes</strong> can be <strong>break-glass-only</strong>. And every Art.9 action requires a fresh <strong>step-up re-authentication</strong> — a standing session isn&rsquo;t enough.</p>
+      <p><strong>Genomics</strong> requires an explicit grant; <strong>sexual-health / GUM</strong> records are handled as Art.9 special category with their own confidentiality; sensitive <strong>mental-health notes</strong> can be <strong>break-glass-only</strong>. And every Art.9 action requires a fresh <strong>step-up re-authentication</strong> — a standing session isn&rsquo;t enough.</p>
       <div class="loc"><span class="chip">/auth/reauth</span><span class="chip">break-glass policy</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Granted, and rescinded, the same way as any access</h4>
-      <p><strong>Granted</strong> by an explicit role + Art.9 purpose + scope (plus the specific grant for genomics/GUM). <strong>Rescinded</strong> by the same policy levers as everything else — self-expiring delegations/groups filtered by <code>effective_scope()</code>, consent withdrawal or opt-out propagated via <strong>FHIR Consent R4</strong>, and token revocation. <strong>Secondary use</strong> of special-category data adds the <strong>Caldicott Guardian</strong> gate, honours the <strong>National Data Opt-Out</strong>, and for research relies on Art.9(2)(j) with Art.89 safeguards.</p>
-      <div class="loc"><span class="chip">effective_scope()</span><span class="chip">/consent-hub · /shcr-opt-out</span><span class="chip">/ig-spine · Caldicott Queue</span></div></div></div>
+      <p><strong>Granted</strong> by an explicit role + Art.9 purpose + scope (plus the specific grant for genomics/GUM). <strong>Rescinded</strong> by the same policy levers as everything else — self-expiring delegations/groups filtered by consent withdrawal or opt-out propagated via <strong>FHIR Consent R4</strong>, and token revocation. <strong>Secondary use</strong> of special-category data adds the <strong>Caldicott Guardian</strong> gate, honours the <strong>National Data Opt-Out</strong>, and for research relies on Art.9(2)(j) with Art.89 safeguards.</p>
+      <div class="loc"><span class="chip">/consent-hub · /shcr-opt-out</span><span class="chip">/ig-spine · Caldicott Queue</span></div></div></div>
   </div>
   <div class="callout"><b>Every special-category access is logged.</b> There&rsquo;s no route to read Art.9 data that doesn&rsquo;t write an entry to the immutable audit described below — and the patient can see who looked and <b>"query this access"</b>.</div>
 
@@ -187,12 +187,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>The search is organisation-scoped</h4>
-      <p>The smart patient search (the <code>PatientPicker</code> used across the platform) filters by your <strong>organisation scope</strong> — the union of your own practice/trust ODS codes plus any team-lead delegations and user-group memberships (<code>effective_scope()</code>), exactly as the patient <em>list</em> does. A <strong>GP-practice receptionist scoped to one practice only matches that practice&rsquo;s patients</strong>; an empty scope returns nothing (never "everyone"); only an explicitly-assigned <strong>UNRESTRICTED</strong> role searches across organisations.</p>
-      <div class="loc"><span class="chip">GET /patients/search</span><span class="chip">effective_scope()</span><span class="chip">Patient.ods_code ∈ orgs</span></div></div></div>
+      <p>The smart patient search (the used across the platform) filters by your <strong>organisation scope</strong> — the union of your own practice/trust ODS codes plus any team-lead delegations and user-group memberships, exactly as the patient <em>list</em> does. A <strong>GP-practice receptionist scoped to one practice only matches that practice&rsquo;s patients</strong>; an empty scope returns nothing (never "everyone"); only an explicitly-assigned <strong>UNRESTRICTED</strong> role searches across organisations.</p>
+      <div class="loc"><span class="chip">GET /patients/search</span><span class="chip">Patient.ods_code ∈ orgs</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>Special-category records need a clinical basis</h4>
-      <p>A receptionist (<span class="chip">read_only</span>) is <strong>blocked from special-category records</strong> — <strong>sexual-health</strong> and <strong>Mental Health Act</strong> data require a clinical role (<code>require_min_role</code>), returning <strong>403</strong> for reception/admin roles. Those sensitive records sit behind a clinical basis, never behind a demographic search: finding the person isn&rsquo;t the same as opening their Art.9 data.</p>
-      <div class="loc"><span class="chip">/sexual-health/episodes</span><span class="chip">/mha-records</span><span class="chip">require_min_role · Art.9</span></div></div></div>
+      <p>A receptionist (<span class="chip">read_only</span>) is <strong>blocked from special-category records</strong> — <strong>sexual-health</strong> and <strong>Mental Health Act</strong> data require a clinical role, returning <strong>403</strong> for reception/admin roles. Those sensitive records sit behind a clinical basis, never behind a demographic search: finding the person isn&rsquo;t the same as opening their Art.9 data.</p>
+      <div class="loc"><span class="chip">/sexual-health/episodes</span><span class="chip">/mha-records</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>And it&rsquo;s isolated to your jurisdiction</h4>
       <p>Search is also bounded by jurisdiction — an England user never matches a Crown Dependency, Ireland or any other jurisdiction&rsquo;s patients — and every match resolves through the same immutable audit as any other access.</p>
@@ -214,11 +214,11 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/supplier-ig-assurance</span><span class="chip">/dspa-manager</span><span class="chip">Art.28 · DSPT · DTAC</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Assign a role — least privilege</h4>
-      <p>A role decides which of <strong>22 data domains</strong> the person can reach (27-role hierarchy <span class="chip">read_only→…→superadmin</span>). Role comes <em>only</em> from an explicit assignment — <code>effective_role()</code> never infers it.</p>
-      <div class="loc"><span class="chip">/rbac · RBAC Matrix</span><span class="chip">effective_role()</span></div></div></div>
+      <p>A role decides which of <strong>22 data domains</strong> the person can reach (27-role hierarchy <span class="chip">read_only→…→superadmin</span>). Role comes <em>only</em> from an explicit assignment never infers it.</p>
+      <div class="loc"><span class="chip">/rbac · RBAC Matrix</span></div></div></div>
     <div class="step g"><div class="s">4</div><div>
       <h4>Bind organisational scope</h4>
-      <p><code>effective_scope()</code> computes the ODS org codes a user may see — the union of their <strong>own</strong> org, any <strong>team-lead delegations</strong> (<span class="chip">UserDelegation</span>) and <strong>user-group</strong> memberships (<span class="chip">UserGroup</span>, scope-only, never a role). Stamped into the token at login as <code>_org_codes</code>. You see <em>your</em> population, not the database.</p>
+      <p> computes the ODS org codes a user may see — the union of their <strong>own</strong> org, any <strong>team-lead delegations</strong> and <strong>user-group</strong> memberships. Stamped into the token at login as. You see <em>your</em> population, not the database.</p>
       <div class="loc"><span class="chip">/rbac/user-groups</span><span class="chip">/rbac/delegations</span><span class="chip">/rbac/users/{id}/effective-access</span></div></div></div>
     <div class="step g"><div class="s">5</div><div>
       <h4>Require a legitimate relationship</h4>
@@ -240,7 +240,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <p>Role × domain matrix caps <em>what</em>; org scope caps <em>whose</em>. Data minimisation is enforced by design (Caldicott Principle 4 / Art.5(1)(c)) — e.g. the <span class="chip">executive</span> oversight role is kept out of unrestricted scope.</p></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>Caldicott gate &amp; opt-out enforcement</h4>
-      <p>Non-direct-care access is held for <strong>Caldicott Guardian</strong> decision (<span class="chip">CaldicottDecision</span>, principles applied recorded); the <strong>National Data Opt-Out</strong> blocks secondary use of an opted-out patient&rsquo;s confidential data.</p>
+      <p>Non-direct-care access is held for <strong>Caldicott Guardian</strong> decision; the <strong>National Data Opt-Out</strong> blocks secondary use of an opted-out patient&rsquo;s confidential data.</p>
       <div class="loc"><span class="chip">/ig-spine · Caldicott Guardian Queue</span></div></div></div>
     <div class="step pr"><div class="s">◆</div><div>
       <h4>Break-glass — allowed, but heavily audited</h4>
@@ -248,7 +248,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/shcr-opt-out · Override Log</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Immutable, tamper-evident audit</h4>
-      <p>Access and account events are written to append-only <strong>SHA-256 hash-chained (WORM) logs</strong> that the server <strong>re-verifies on every read</strong> — a broken chain shows a tamper banner. There&rsquo;s no update or delete endpoint.</p>
+      <p>Access and account events are written to append-only <strong>hash-chained (WORM) logs</strong> that the server <strong>re-verifies on every read</strong> — a broken chain shows a tamper banner. There&rsquo;s no update or delete endpoint.</p>
       <div class="loc"><span class="chip">/login-audit</span><span class="chip">/ig-spine · WORM audit</span><span class="chip">GET /auth/login-audit</span></div></div></div>
     <div class="step pr"><div class="s">●</div><div>
       <h4>Transparency to the subject</h4>
@@ -262,12 +262,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step re"><div class="s">▸</div><div>
       <h4>Time-boxed grants that self-expire</h4>
-      <p>Delegations and group memberships carry an <code>expires_at</code>. <code>effective_scope()</code> <strong>filters expired grants at authentication time</strong> — the moment a grant lapses the associated org scope simply stops resolving, so the record falls out of view with no manual step.</p>
-      <div class="loc"><span class="chip">UserDelegation.expires_at</span><span class="chip">UserGroup.expires_at</span><span class="chip">effective_scope()</span></div></div></div>
+      <p>Delegations and group memberships carry an. <strong>filters expired grants at authentication time</strong> — the moment a grant lapses the associated org scope simply stops resolving, so the record falls out of view with no manual step.</p>
+      </div></div>
     <div class="step re"><div class="s">▸</div><div>
       <h4>Lapse recorded to the tamper-evident chain</h4>
-      <p>A lapse is written once (<code>lapse_recorded</code>) to the hash-chained account log, and renewal requires an explicit <strong>re-attestation</strong> — access can&rsquo;t quietly persist or silently re-elevate. Role and group changes are logged the same way.</p>
-      <div class="loc"><span class="chip">LoginAuditEvent chain</span><span class="chip">PATCH /rbac/user-groups/{id}</span></div></div></div>
+      <p>A lapse is written once to the hash-chained account log, and renewal requires an explicit <strong>re-attestation</strong> — access can&rsquo;t quietly persist or silently re-elevate. Role and group changes are logged the same way.</p>
+      <div class="loc"><span class="chip">login audit chain</span><span class="chip">PATCH /rbac/user-groups/{id}</span></div></div></div>
     <div class="step re"><div class="s">▸</div><div>
       <h4>Consent withdrawal &amp; opt-out propagate</h4>
       <p>The subject withdrawing consent (Art.7) in the <span class="chip">/consent-hub</span>, or opting out in <span class="chip">/shcr-opt-out</span>, updates a <strong>FHIR Consent R4</strong> record that propagates — removing sharing at source, including partial category-level opt-outs.</p>
@@ -289,12 +289,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Immutable by construction (WORM)</h4>
-      <p>Audit rows are <strong>append-only and SHA-256 hash-chained</strong> — each row&rsquo;s <code>prev_hash → row_hash</code> links to the one before it. The server <strong>re-verifies the whole chain on every read</strong> and shows a tamper-evidence banner if a link is broken. There&rsquo;s <strong>no update or delete endpoint</strong> — an entry can&rsquo;t be quietly altered or removed, on any log (Login Audit, IG Spine, commvita Sign, Policy-to-Process).</p>
-      <div class="loc"><span class="chip">/login-audit</span><span class="chip">/ig-spine · WORM audit</span><span class="chip">prev_hash → row_hash</span></div></div></div>
+      <p>Audit rows are <strong>append-only and hash-chained</strong> — each row&rsquo;s links to the one before it. The server <strong>re-verifies the whole chain on every read</strong> and shows a tamper-evidence banner if a link is broken. There&rsquo;s <strong>no update or delete endpoint</strong> — an entry can&rsquo;t be quietly altered or removed, on any log (Login Audit, IG Spine, commvita Sign, Policy-to-Process).</p>
+      <div class="loc"><span class="chip">/login-audit</span><span class="chip">/ig-spine · WORM audit</span></div></div></div>
     <div class="step pr"><div class="s">●</div><div>
       <h4>It captures who, what, when — and where from</h4>
       <p>Each event records the username, action and result, plus the <strong>source IP + X-Forwarded-For chain</strong>, the <strong>country logged in from</strong>, the device / user-agent and the jurisdiction — enough to reconstruct exactly how an access happened, and to spot when it looks wrong.</p>
-      <div class="loc"><span class="chip">LoginAuditEvent</span><span class="chip">GDPR Art.5(1)(f)/30</span></div></div></div>
+      <div class="loc"><span class="chip">GDPR Art.5(1)(f)/30</span></div></div></div>
     <div class="step pr"><div class="s">◆</div><div>
       <h4>Out-of-hours &amp; anomaly detection</h4>
       <p>The audit is <strong>rule-driven</strong>: access <strong>outside expected hours</strong> or from an unusual location is flagged, and the Legitimate Relationship Log surfaces <strong>out-of-area, bulk and cross-ICS</strong> patterns with investigate / dismiss / <strong>DPO-flag</strong> workflows — so "why was this record opened at 03:00 from another region?" is a question the system asks, not one you have to go looking for.</p>
@@ -324,15 +324,15 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <tr><td><b>Controller accountability</b></td><td>IG Hub · Patient Data Control</td><td><span class="chip">/ig-hub</span></td><td>DPIA · Art.30 flows · 72h breach</td><td>DSPT · Caldicott 8</td></tr>
         <tr><td><b>Processor contract &amp; assurance</b></td><td>Supplier IG Assurance</td><td><span class="chip">/supplier-ig-assurance</span></td><td>DPA / contract register</td><td>Art.28 · DSPT · DTAC</td></tr>
         <tr><td><b>Joint-controller sharing</b></td><td>DSPA Manager</td><td><span class="chip">/dspa-manager</span></td><td>DSPA lifecycle · signatories</td><td>Art.26 · NHS DSPA template</td></tr>
-        <tr><td><b>Role — what you can reach</b></td><td>RBAC · RBAC Matrix</td><td><span class="chip">/rbac</span></td><td><code>effective_role()</code> · <span class="chip">/rbac/matrix</span></td><td>18 roles × 16 domains</td></tr>
-        <tr><td><b>Scope — whose records</b></td><td>RBAC · Groups &amp; Delegations</td><td><span class="chip">/rbac/user-groups</span></td><td><code>effective_scope()</code> · UserGroup · UserDelegation (<code>expires_at</code>)</td><td>ODS · Caldicott P4 / Art.5(1)(c)</td></tr>
+        <tr><td><b>Role — what you can reach</b></td><td>RBAC · RBAC Matrix</td><td><span class="chip">/rbac</span></td><td><span class="chip">/rbac/matrix</span></td><td>18 roles × 16 domains</td></tr>
+        <tr><td><b>Scope — whose records</b></td><td>RBAC · Groups &amp; Delegations</td><td><span class="chip">/rbac/user-groups</span></td><td>groups and delegations</td><td>ODS · Caldicott P4 / Art.5(1)(c)</td></tr>
         <tr><td><b>Legitimate relationship</b></td><td>Legitimate Relationship Log</td><td><span class="chip">/legitimate-access-log</span></td><td>access log · anomaly alerts · Art.15 SAR</td><td>DSPT · GDPR Art.30/15</td></tr>
-        <tr><td><b>Caldicott gate</b> (secondary use)</td><td>Confidential-IG Spine</td><td><span class="chip">/ig-spine</span></td><td><code>CaldicottDecision</code></td><td>Caldicott 8 · National Data Opt-Out</td></tr>
+        <tr><td><b>Caldicott gate</b> (secondary use)</td><td>Confidential-IG Spine</td><td><span class="chip">/ig-spine</span></td><td>&mdash;</td><td>Caldicott 8 · National Data Opt-Out</td></tr>
         <tr><td><b>Consent &amp; withdrawal</b></td><td>Consent Hub · Shared Care Opt-Out</td><td><span class="chip">/consent-hub</span> · <span class="chip">/shcr-opt-out</span></td><td>FHIR Consent R4 · override log</td><td>GDPR Art.7 · FHIR R4 Consent</td></tr>
         <tr><td><b>Session &amp; token control</b></td><td>Data Security Architecture · Security Console</td><td><span class="chip">/security-architecture</span></td><td>JTI denylist · <span class="chip">/auth/logout</span> · <span class="chip">/auth/reauth</span></td><td>GDPR Art.32 · NCSC</td></tr>
-        <tr><td><b>Special-category (Art.9) control</b></td><td>Confidential-IG Spine · RBAC</td><td><span class="chip">/ig-spine</span> · <span class="chip">/rbac</span></td><td>role→field policy-as-code · <code>genomics_access</code> · <span class="chip">/auth/reauth</span></td><td>UK GDPR Art.9(2)(h)/(j)</td></tr>
-        <tr><td><b>Scoped patient search</b> (org · role · jurisdiction)</td><td>Patient search · PatientPicker</td><td><span class="chip">GET /patients/search</span></td><td><code>effective_scope()</code> org filter · Art.9 reads role-gated (<span class="chip">/mha-records</span>, <span class="chip">/sexual-health</span>)</td><td>UK GDPR Art.5(1)(c)/9 · Caldicott P4</td></tr>
-        <tr><td><b>Immutable audit</b> (grant/protect/rescind)</td><td>Login Audit · IG Spine WORM</td><td><span class="chip">/login-audit</span></td><td>SHA-256 hash chain · <span class="chip">GET /auth/login-audit</span></td><td>GDPR Art.5(1)(f) · DSPT</td></tr>
+        <tr><td><b>Special-category (Art.9) control</b></td><td>Confidential-IG Spine · RBAC</td><td><span class="chip">/ig-spine</span> · <span class="chip">/rbac</span></td><td>role→field policy-as-code · <span class="chip">/auth/reauth</span></td><td>UK GDPR Art.9(2)(h)/(j)</td></tr>
+        <tr><td><b>Scoped patient search</b> (org · role · jurisdiction)</td><td>Patient search · PatientPicker</td><td><span class="chip">GET /patients/search</span></td><td> org filter · Art.9 reads role-gated (<span class="chip">/mha-records</span>, <span class="chip">/sexual-health</span>)</td><td>UK GDPR Art.5(1)(c)/9 · Caldicott P4</td></tr>
+        <tr><td><b>Immutable audit</b> (grant/protect/rescind)</td><td>Login Audit · IG Spine WORM</td><td><span class="chip">/login-audit</span></td><td>hash chain · <span class="chip">GET /auth/login-audit</span></td><td>GDPR Art.5(1)(f) · DSPT</td></tr>
         <tr><td><b>Intelligent audit</b> (OOH · anomaly · GP alert)</td><td>Legitimate Relationship Log · IG Spine · Security Console</td><td><span class="chip">/legitimate-access-log</span> · <span class="chip">/ig-spine</span></td><td>anomaly alerts · Clinical Trigger Alert (ADT/111) · Art.9 monitoring</td><td>Caldicott 8 · GDPR Art.33</td></tr>
       </tbody>
     </table>

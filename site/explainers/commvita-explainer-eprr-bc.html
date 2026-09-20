@@ -242,14 +242,14 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="step re"><div class="s">1</div><div>
       <h4>Gold / Silver / Bronze command dashboard</h4>
       <p>Strategic (Gold), tactical (Silver) and operational (Bronze) command are shown side by side with the current holder, the <strong>who&rsquo;s-on-call</strong> rota and the live <strong>system-pressure OPEL</strong> tile — so the room knows who owns the decision the moment it&rsquo;s needed.</p>
-      <div class="loc"><span class="chip">/eprr · Coordination</span><span class="chip">Gold/Silver/Bronze</span><span class="chip">EPRROnCallRota</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr · Coordination</span><span class="chip">Gold/Silver/Bronze</span></div></div></div>
     <div class="step re"><div class="s">2</div><div>
       <h4>One-tap escalation ladder</h4>
       <p>A single control walks the incident up the ladder — <strong>Duty officer → Manager on-call → Director/Exec on-call → Bronze → Silver → Gold</strong>. Each escalation captures <strong>who escalated, when, and why</strong> against the incident.</p>
-      <div class="loc"><span class="chip">/eprr/escalation-ladder</span><span class="chip">/eprr/escalations</span><span class="chip">EPRREscalationEvent</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr/escalation-ladder</span><span class="chip">/eprr/escalations</span></div></div></div>
     <div class="step re"><div class="s">3</div><div>
       <h4>Recorded to an append-only decision log</h4>
-      <p>Every escalation event is written to an <strong>append-only</strong> record — <span class="chip">EPRREscalationEvent</span> — so the rationale for going up a tier can never be quietly rewritten after the fact. Declaring a <strong>Major Incident</strong> hands off to <span class="chip">/major-incident</span>.</p>
+      <p>Every escalation event is written to an <strong>append-only</strong> record — so the rationale for going up a tier can never be quietly rewritten after the fact. Declaring a <strong>Major Incident</strong> hands off to <span class="chip">/major-incident</span>.</p>
       <div class="loc"><span class="chip">EPRREscalationEvent (append-only)</span><span class="chip">/major-incident</span></div></div></div>
     <div class="step re"><div class="s">4</div><div>
       <h4>On-call &amp; command — click-to-contact</h4>
@@ -304,7 +304,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   </div>
   <div class="cap">Representative UI — illustrative</div>
 
-  <div class="callout"><b>Escalation is a recorded decision, not a phone call.</b> The one-tap ladder writes <b>who escalated, when and why</b> to an <b>append-only</b> <span class="chip">EPRREscalationEvent</span> log — so a post-incident review, board or regulator can reconstruct exactly how command moved through the tiers. There&rsquo;s no route to edit or delete an escalation after it&rsquo;s logged.</div>
+  <div class="callout"><b>Escalation is a recorded decision, not a phone call.</b> The one-tap ladder writes <b>who escalated, when and why</b> to an <b>append-only</b> log — so a post-incident review, board or regulator can reconstruct exactly how command moved through the tiers. There&rsquo;s no route to edit or delete an escalation after it&rsquo;s logged.</div>
 
   <!-- SECTION 2 — JESIP & METHANE -->
   <h2 class="protect"><span class="num">2</span> Communicate — JESIP, METHANE &amp; the loggist</h2>
@@ -313,19 +313,19 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="step pr"><div class="s">▪</div><div>
       <h4>JESIP five-principles joint-decision log</h4>
       <p>Each joint decision is recorded against the five JESIP principles — <strong>co-locate · communicate · co-ordinate · jointly understand risk · shared situational awareness</strong> — giving a defensible record of multi-agency working.</p>
-      <div class="loc"><span class="chip">/eprr/jesip</span><span class="chip">/eprr/jesip-principles</span><span class="chip">EPRRJesipDecision</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr/jesip</span><span class="chip">/eprr/jesip-principles</span></div></div></div>
     <div class="step pr"><div class="s">▪</div><div>
       <h4>METHANE message builder</h4>
       <p>A structured builder composes and records the <strong>METHANE</strong> message — <em>Major incident declared? · Exact location · Type · Hazards · Access · Number of casualties · Emergency services</em> — then hands it to Comms for dispatch, so nothing is improvised under pressure.</p>
-      <div class="loc"><span class="chip">/eprr/methane</span><span class="chip">EPRRMethaneMessage</span><span class="chip">METHANE · CSCATTT</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr/methane</span><span class="chip">METHANE · CSCATTT</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Multi-channel dispatch — every message logged</h4>
       <p>Dispatch via <strong>text (SMS) / WhatsApp / Microsoft Teams</strong>; every dispatch is written to the incident. In the demo, comms transport is <strong>queued and logged</strong>; production routes SMS/WhatsApp via <span class="chip">/sms/send</span> and Teams via webhook.</p>
-      <div class="loc"><span class="chip">/eprr/comms-dispatch</span><span class="chip">EPRRCommsDispatch</span><span class="chip">SMS Gateway · Comms CRM</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr/comms-dispatch</span><span class="chip">SMS Gateway · Comms CRM</span></div></div></div>
     <div class="step pr"><div class="s">●</div><div>
       <h4>Running loggist — decision / action / info</h4>
       <p>A chronological <strong>loggist</strong> records decision, action and information entries with owner and status — the single source of truth for what happened and when.</p>
-      <div class="loc"><span class="chip">/eprr · Comms &amp; Loggist</span><span class="chip">/eprr/log</span><span class="chip">EPRRLogEntry</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr · Comms &amp; Loggist</span><span class="chip">/eprr/log</span></div></div></div>
   </div>
 
   <!-- SHOT (b) : METHANE builder -->
@@ -389,15 +389,15 @@ td b{color:var(--ink)} td .chip{font-size:11px}
     <div class="step g"><div class="s">1</div><div>
       <h4>Critical-function RTO/RPO register</h4>
       <p>Each critical function carries its <strong>Recovery Time Objective</strong> and <strong>Recovery Point Objective</strong> — so "how long can this be down, and how much data can we lose" is answered in advance, not argued mid-incident.</p>
-      <div class="loc"><span class="chip">/eprr · Business Continuity</span><span class="chip">EPRRBCPEntry</span><span class="chip">RTO / RPO</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr · Business Continuity</span><span class="chip">RTO / RPO</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>Activate a BCP against a live incident</h4>
       <p>One control <strong>activates the plan</strong> for a function against the current incident — <span class="chip">/eprr/bcp/{id}/activate</span> — and the activation is written straight to the incident <strong>loggist</strong> so the response and the continuity decision are on one timeline.</p>
-      <div class="loc"><span class="chip">/eprr/bcp/{id}/activate</span><span class="chip">EPRRLogEntry</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr/bcp/{id}/activate</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Assurance — jurisdiction-aware self-assessment</h4>
       <p>A core-standards self-assessment, plans library and exercise programme — with the framing resolved per jurisdiction (see below), so the assurance evidence always speaks the right language for the deployment.</p>
-      <div class="loc"><span class="chip">/eprr · Assurance</span><span class="chip">/eprr/framework</span><span class="chip">EPRRPlan</span></div></div></div>
+      <div class="loc"><span class="chip">/eprr · Assurance</span><span class="chip">/eprr/framework</span></div></div></div>
   </div>
 
   <!-- SHOT (c) : BCP register + activate + one decision-log row -->
@@ -454,12 +454,12 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step pr"><div class="s">▪</div><div>
       <h4>NHS-nation framing — the right nation only</h4>
-      <p>England, Scotland and Wales each get their <strong>own NHS-nation resilience framing</strong> — the resolver <span class="chip">_eprr_framework</span> never applies "NHS England" to the wrong nation.</p>
+      <p>England, Scotland and Wales each get their <strong>own NHS-nation resilience framing</strong> — the resolver never applies "NHS England" to the wrong nation.</p>
       <div class="loc"><span class="chip">/eprr/framework</span><span class="chip">NHS England EPRR Core Standards concepts</span></div></div></div>
     <div class="step pr"><div class="s">◇</div><div>
       <h4>Neutral best-practice framing — no NHS branding</h4>
       <p>Crown Dependencies (<strong>Guernsey · Isle of Man</strong>), <strong>Gibraltar</strong>, the Caribbean (<strong>Jamaica · Antigua · Montserrat</strong>), <strong>Kenya</strong> and <strong>Oman</strong> get <strong>neutral best-practice framing with no NHS branding</strong>.</p>
-      <div class="loc"><span class="chip">jurisdiction-aware resolver</span></div></div></div>
+      <div class="loc"><span class="chip">jurisdiction-aware</span></div></div></div>
     <div class="step pr"><div class="s">◆</div><div>
       <h4>Fail-safe — generic, never NHS England</h4>
       <p>An unknown or unmapped jurisdiction <strong>fails safe to generic</strong> framing — never to another jurisdiction&rsquo;s NHS branding. The module stays enabled; only the language adapts.</p>
@@ -480,16 +480,16 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <thead><tr><th>Capability</th><th>Tab / Route</th><th>Model / API</th><th>Standard</th><th>Status</th></tr></thead>
       <tbody>
         <tr><td><b>Command &amp; system pressure</b></td><td>Coordination · <span class="chip">/eprr</span></td><td>OPEL tile · open actions · rota</td><td>Gold/Silver/Bronze command</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>One-tap escalation ladder</b></td><td>Incidents &amp; Escalation · <span class="chip">/eprr/escalations</span></td><td><code>EPRREscalationEvent</code> (append-only) · <span class="chip">/eprr/escalation-ladder</span></td><td>who / when / why decision log</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>Declare Major Incident</b></td><td><span class="chip">/major-incident</span></td><td><code>EPRRIncident</code> · handoff</td><td>METHANE · CSCATTT</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>On-call &amp; command rota</b></td><td>On-Call &amp; Command · <span class="chip">/eprr/rota</span></td><td><code>EPRROnCallRota</code> · <span class="chip">/oncall-manager</span></td><td>tier · preferred channel</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>JESIP joint-decision log</b></td><td>JESIP &amp; METHANE · <span class="chip">/eprr/jesip</span></td><td><code>EPRRJesipDecision</code> · <span class="chip">/eprr/jesip-principles</span></td><td>JESIP five principles</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>METHANE message builder</b></td><td>JESIP &amp; METHANE · <span class="chip">/eprr/methane</span></td><td><code>EPRRMethaneMessage</code></td><td>METHANE structured message</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>Running loggist</b></td><td>Comms &amp; Loggist · <span class="chip">/eprr/log</span></td><td><code>EPRRLogEntry</code></td><td>decision / action / info</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>Multi-channel comms dispatch</b></td><td>Comms &amp; Loggist · <span class="chip">/eprr/comms-dispatch</span></td><td><code>EPRRCommsDispatch</code> · <span class="chip">/sms/send</span> · Teams webhook</td><td>SMS · WhatsApp · Teams</td><td><span class="pill amber dot">◍ Demonstrated</span></td></tr>
-        <tr><td><b>Business-continuity register</b></td><td>Business Continuity · <span class="chip">/eprr/bcp</span></td><td><code>EPRRBCPEntry</code> · RTO / RPO</td><td>ISO 22301 concepts</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>One-tap escalation ladder</b></td><td>Incidents &amp; Escalation · <span class="chip">/eprr/escalations</span></td><td> (append-only) · <span class="chip">/eprr/escalation-ladder</span></td><td>who / when / why decision log</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>Declare Major Incident</b></td><td><span class="chip">/major-incident</span></td><td>handoff</td><td>METHANE · CSCATTT</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>On-call &amp; command rota</b></td><td>On-Call &amp; Command · <span class="chip">/eprr/rota</span></td><td><span class="chip">/oncall-manager</span></td><td>tier · preferred channel</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>JESIP joint-decision log</b></td><td>JESIP &amp; METHANE · <span class="chip">/eprr/jesip</span></td><td><span class="chip">/eprr/jesip-principles</span></td><td>JESIP five principles</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>METHANE message builder</b></td><td>JESIP &amp; METHANE · <span class="chip">/eprr/methane</span></td><td>&mdash;</td><td>METHANE structured message</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>Running loggist</b></td><td>Comms &amp; Loggist · <span class="chip">/eprr/log</span></td><td>&mdash;</td><td>decision / action / info</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>Multi-channel comms dispatch</b></td><td>Comms &amp; Loggist · <span class="chip">/eprr/comms-dispatch</span></td><td><span class="chip">/sms/send</span> · Teams webhook</td><td>SMS · WhatsApp · Teams</td><td><span class="pill amber dot">◍ Demonstrated</span></td></tr>
+        <tr><td><b>Business-continuity register</b></td><td>Business Continuity · <span class="chip">/eprr/bcp</span></td><td>RTO / RPO</td><td>ISO 22301 concepts</td><td><span class="pill green dot">● Live</span></td></tr>
         <tr><td><b>Activate BCP against incident</b></td><td><span class="chip">/eprr/bcp/{id}/activate</span></td><td>writes to loggist</td><td>continuity activation</td><td><span class="pill green dot">● Live</span></td></tr>
-        <tr><td><b>Assurance &amp; framework resolver</b></td><td>Assurance · <span class="chip">/eprr/framework</span></td><td><code>EPRRPlan</code> · <code>_eprr_framework</code></td><td>jurisdiction-aware · fail-safe</td><td><span class="pill green dot">● Live</span></td></tr>
+        <tr><td><b>Assurance &amp; framework</b></td><td>Assurance · <span class="chip">/eprr/framework</span></td><td>&mdash;</td><td>jurisdiction-aware · fail-safe</td><td><span class="pill green dot">● Live</span></td></tr>
       </tbody>
     </table>
   </div>

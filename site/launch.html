@@ -374,12 +374,11 @@
   but on a clinical system it&rsquo;s the bit you&rsquo;d want to audit, so
   it&rsquo;s here.</p>
 
-  <p>Under the hood it&rsquo;s deliberately boring: containers on Kubernetes,
-  running today on Azure and Docker, with high availability on by default
-  &mdash; replicated services, disruption budgets, spread across nodes. The
-  pipeline runs the whole test suite plus nineteen build gates, images are
-  built, security-scanned and published, and the cluster pulls its own updates
-  via GitOps.</p>
+  <p>Under the hood it&rsquo;s deliberately boring: standard containers on your own
+  kit or your own cloud, with high availability on by default. Every release
+  runs the whole test suite and every build gate, is security-scanned before
+  it publishes, and your environment pulls the update when you choose to
+  merge it.</p>
 
   <p>It&rsquo;s <strong>designed for cloud portability</strong> &mdash;
   standard containers, nothing tied to one cloud. I say &ldquo;designed
@@ -678,7 +677,6 @@ const cyc  = (t, f, ph=0) => ((t / LOOP) * f + ph) % 1;
 const wave = (t, f, ph=0) => Math.sin(TAU * cyc(t, f, ph));
 // round to 3 decimals before writing to the DOM: sub-millipixel differences
 // are invisible, and rounding makes the state at t and t+30s BIT-identical —
-// the loop-seam test compares serialised attributes, not eyeballs
 const R = x => Math.round(x * 1000) / 1000;
 
 
@@ -1037,8 +1035,7 @@ const sceneB = buildScene(document.getElementById("sceneB"), {
    cycles per 30 s, so the loop point is invisible */
 function frame(){
   // reduce modulo the loop in MILLISECONDS first: t and t+30s then produce
-  // the same float, so every derived value is bit-identical across the seam
-  const t = (performance.now() % (LOOP * 1000)) / 1000;
+    const t = (performance.now() % (LOOP * 1000)) / 1000;
   animate(sceneA, t);
   animate(sceneB, t);
   requestAnimationFrame(frame);

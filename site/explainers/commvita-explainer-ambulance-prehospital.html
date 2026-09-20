@@ -260,7 +260,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step g"><div class="s">1</div><div>
       <h4>Status is one tap, and it moves the board</h4>
-      <p>On scene, transporting, at hospital, clear. The tap writes to the crew resource and the incident, so the control-room board and the crew&rsquo;s screen are the same fact instead of two people phoning each other to agree. The vehicle&rsquo;s location updates on the same seam.</p>
+      <p>On scene, transporting, at hospital, clear. The tap writes to the crew resource and the incident, so the control-room board and the crew&rsquo;s screen are the same fact instead of two people phoning each other to agree. The vehicle&rsquo;s location updates on the same record.</p>
       <div class="loc"><span class="chip">PATCH /crew/&#123;vehicle&#125;/location</span><span class="chip">PATCH /ambulance/incidents/&#123;id&#125;</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
       <h4>The record comes down, the encounter goes back up</h4>
@@ -296,7 +296,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step re"><div class="s">1</div><div>
       <h4>A new request reaches a team, and waits there</h4>
-      <p>A request made by a member of staff and a request a patient makes for themselves in the portal both go through one seam. It alerts every member of the configured transport team and sits in each of their actions until one of them allocates it. Where no team is configured, the response says the request reached nobody. It doesn&rsquo;t fall back to a role or to another jurisdiction&rsquo;s team.</p>
+      <p>A request made by a member of staff and a request a patient makes for themselves in the portal both land in the same queue. It alerts every member of the configured transport team and sits in each of their actions until one of them allocates it. Where no team is configured, the response says the request reached nobody. It doesn&rsquo;t fall back to a role or to another jurisdiction&rsquo;s team.</p>
       <div class="loc"><span class="chip">POST /patient-transport/requests</span><span class="chip">/requests/&#123;id&#125;/allocate</span></div></div></div>
     <div class="step re"><div class="s">2</div><div>
       <h4>What it cost and what it bought, kept apart</h4>
