@@ -85,5 +85,8 @@ A grade above about 8 means go back and read it out loud.
 - Every page must render clean at 1280 and 390: no horizontal overflow, no
   broken images, no script errors.
 - Curly apostrophes (`&rsquo;`) in prose, to match the rest of the site.
-- New explainer: add it to `site/explainers/index.html`, update the document
-  count, and add a `site/sitemap.xml` entry.
+- New explainer: add it to `site/explainers/index.html`, add a
+  `site/sitemap.xml` entry, then run `python3 tools/doccount.py`. It rewrites
+  every document count on the index from the real number and reports any page
+  that is on disk, in the library or in the sitemap but not in all three.
+  `python3 tools/doccount.py --check` fails if a count is stale.
