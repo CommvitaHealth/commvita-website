@@ -1074,7 +1074,7 @@ section.dark .eyebrow::before{background:currentColor}
   <div class="inner">
     <span class="eyebrow"><span class="dot"></span>The idea underneath</span>
     <h2 class="big">Meaning, movement and adaptation. Three ontologies, one platform.</h2>
-    <p class="lead">commvita isn&rsquo;t an openEHR system with screens on top. openEHR is one of the standards it&rsquo;s built from. The idea underneath is bigger: the platform holds three kinds of knowledge about a health system and keeps them in one place, so each one acts on the others.</p>
+    <p class="lead">commvita isn&rsquo;t an openEHR system with screens on top. It holds three kinds of knowledge about a health system and keeps them in one place, so each one acts on the others. That way of describing a platform is used well beyond health, and we don&rsquo;t claim to have invented it. What&rsquo;s different here is where it sits: on the live record, on your estate, with the rules inside the system people use.</p>
     <div class="ontfig" aria-hidden="true">
       <svg viewBox="0 0 900 236" role="img" aria-labelledby="tont3">
         <title id="tont3">Three stacked layers: semantic, kinetic and dynamic</title>
@@ -1087,11 +1087,11 @@ section.dark .eyebrow::before{background:currentColor}
       </svg>
     </div>
     <div class="grid g3">
-      <div class="card"><span class="knum">01 &middot; SEMANTIC</span><h3>Meaning</h3><p>What a thing is. A person, a diagnosis, a medicine, an organisation, a legal deadline, defined once in the published standards: openEHR, FHIR, SNOMED CT, dm+d, OMOP. Every module reads the same definition, so a diagnosis means the same thing in a consultation, on a board pack and in a research extract.</p></div>
-      <div class="card"><span class="knum">02 &middot; KINETIC</span><h3>Flow and movement</h3><p>How things move. A person from home to ward and back, work through a team, data between organisations. Flow is modelled the way a production line is: where the constraint is, what&rsquo;s waiting, what&rsquo;s failure demand. It sits on the same platform as the clinical record, which almost nobody else has.</p></div>
+      <div class="card"><span class="knum">01 &middot; SEMANTIC</span><h3>Meaning</h3><p>What a thing is. A person, a diagnosis, a medicine, an organisation, a legal deadline, defined once in published models: the NHS canonical data model, FHIR, SNOMED CT and dm+d, with OMOP for research and openEHR as the clinical record shape we&rsquo;re building towards. Every module reads the same definition, so a diagnosis means the same thing in a consultation, on a board pack and in a research extract.</p></div>
+      <div class="card"><span class="knum">02 &middot; KINETIC</span><h3>Flow and movement</h3><p>How things move. A person from home to ward and back, work through a team, data between organisations. An append-only event spine records what happened, to whom and when. Flow is modelled the way a production line is: where the constraint is, what&rsquo;s waiting, what&rsquo;s failure demand. It sits on the same platform as the clinical record, which almost nobody else has.</p></div>
       <div class="card"><span class="knum">03 &middot; DYNAMIC</span><h3>Adaptation and optimisation</h3><p>What the system does about it. Rules live in the platform, so a change made once applies everywhere that concept appears. Escalation follows the signal and stands down when it abates. Access is managed on need and deprivation. Where a rule is missing, the platform stops and says so instead of guessing.</p></div>
     </div>
-    <p class="lead" style="margin-top:var(--gap)">The layers in more detail, with what each one costs us to keep, are on the <a href="solution.html#ontology">Approach page</a>.</p>
+    <p class="lead" style="margin-top:var(--gap)">The layers in more detail are on the <a href="solution.html#ontology">Approach page</a>, and a measured account of what is built, partly built and absent is in the <a href="explainers/commvita-explainer-architecture-layers.html">architecture explainer</a>.</p>
   </div>
 </section>
 
@@ -1105,8 +1105,8 @@ section.dark .eyebrow::before{background:currentColor}
     <div class="grid g3">
       <div class="card"><span class="knum">01 &middot; THE RECORD IS THE PRODUCT</span>
         <h3>Open from the first entry</h3>
-        <p>A real-time whole-person record built to openEHR&rsquo;s record shapes, with FHIR and SNOMED at the edges. A model can
-        read that record. It&rsquo;s no substitute for having one.</p></div>
+        <p>A real-time whole-person record shaped to the NHS canonical model, with FHIR and SNOMED at the edges and openEHR
+        as the clinical shape we&rsquo;re building towards. A model can read that record. It&rsquo;s no substitute for having one.</p></div>
       <div class="card"><span class="knum">02 &middot; AI IS A COMPONENT</span>
         <h3>Yours to choose, or to switch off</h3>
         <p>Configure Claude, Microsoft Copilot or OpenAI &mdash; or none at all. Keys stay server-side, the
@@ -1238,9 +1238,9 @@ section.dark .eyebrow::before{background:currentColor}
     <p class="lead">Not features, which anyone can ship next quarter, but choices made years ago that everything
     since has been built on. Each one would cost a rival a rewrite instead of a release.</p>
     <div class="diff">
-      <div class="d"><div class="k">openEHR at the heart, not as a wrapper</div>
-        <div class="w">Clinical data is written to an open, vendor-neutral repository from the first entry. Portability is a property of the
-        design, not an export button bolted on for procurement questions.</div></div>
+      <div class="d"><div class="k">Open models at the heart, not as a wrapper</div>
+        <div class="w">The record is shaped to published, vendor-neutral models from the first entry, with openEHR the clinical repository
+        we&rsquo;ve committed to. Portability is a property of the design, not an export button bolted on for procurement questions.</div></div>
       <div class="d"><div class="k">Flow data and the clinical record in one place</div>
         <div class="w">Operational flow modelled as a production line &mdash; constraint, WIP, failure demand &mdash;
         <b>alongside</b> the person&rsquo;s record. Analytics platforms have one; EPRs have the other. Almost nobody has both.</div></div>
@@ -1265,7 +1265,7 @@ section.dark .eyebrow::before{background:currentColor}
     <p class="lead">Most platforms sell you a better silo. commvita removes the silos &mdash; five commitments the incumbents structurally can&rsquo;t make.</p>
     <div class="grid g5">
       <div class="card"><span class="knum">01 &middot; REAL TIME</span><h3>Not overnight</h3><p>The record updates as care is delivered. The number on the board is the number on the ward, right now.</p></div>
-      <div class="card"><span class="knum">02 &middot; openEHR</span><h3>Your data, not ours</h3><p>An open, vendor-neutral record. Portable by design &mdash; you own it and can leave with it.</p></div>
+      <div class="card"><span class="knum">02 &middot; OPEN MODELS</span><h3>Your data, not ours</h3><p>A record held in published, vendor-neutral models. Portable by design &mdash; you own it and can leave with it.</p></div>
       <div class="card"><span class="knum">03 &middot; ONE PLATFORM</span><h3>Not many</h3><p>The whole care journey on one record and one chain from ward to board, instead of a dozen contracts to integrate.</p></div>
       <div class="card"><span class="knum">04 &middot; JURISDICTION</span><h3>By configuration</h3><p>ID numbers, clinical terms, funding rules and regulators are settings, never written into the code. If one is missing, the system stops and not guesses.</p></div>
       <div class="card"><span class="knum">05 &middot; NO LOCK-IN</span><h3>Stay by choice</h3><p>Renewal earned on value, not on the cost of leaving. Partners integrate without paying a toll.</p></div>
@@ -1770,7 +1770,7 @@ section.dark .eyebrow::before{background:currentColor}
     <h2 class="big">Your data. Your standards. Your freedom to leave.</h2>
     <p class="lead">Lock-in is the incumbent&rsquo;s business model. It isn&rsquo;t ours. commvita follows openEHR, an open standard no single supplier controls. Your record stays portable from the first day. We earn renewal on what the platform is worth to you, not on how expensive we have made it to leave.</p>
     <div class="grid g2">
-      <div class="card"><span class="knum">01 &middot; openEHR CDR</span><h3>A vendor-neutral record</h3><p>Clinical data is written to an open, vendor-neutral repository &mdash; not a proprietary schema only we can read. Structured, portable, exportable.</p></div>
+      <div class="card"><span class="knum">01 &middot; OPEN MODELS</span><h3>A vendor-neutral record</h3><p>The record is shaped to published models, with openEHR as the clinical repository we&rsquo;ve committed to and haven&rsquo;t yet shipped &mdash; not a proprietary schema only we can read. Structured, portable, exportable.</p></div>
       <div class="card"><span class="knum">02 &middot; FHIR &middot; SNOMED &middot; OMOP</span><h3>Standards, not walls</h3><p>FHIR R4 interfaces, SNOMED CT clinical terms and research extracts in the OMOP standard &mdash; the platform speaks the language every other system does.</p></div>
       <div class="card"><span class="knum">03 &middot; NO ACCESS TOLL</span><h3>Partners plug in free</h3><p>Third parties integrate through open interfaces without paying us a toll to connect &mdash; an ecosystem that grows because it&rsquo;s open, not taxed.</p></div>
       <div class="card"><span class="knum">04 &middot; AI-ENABLED ESCROW</span><h3>If something happens to us</h3><p>The source code sits in escrow with its tests, its build history and its generated documentation. An AI coding agent can read all of that and explain it, so a team you appoint could understand, support and keep developing the platform without us. <a href="explainers/commvita-explainer-ai-enabled-escrow.html" style="text-decoration:underline;text-underline-offset:3px">How that works</a>.</p></div>
