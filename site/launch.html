@@ -256,7 +256,7 @@
       <span class="chip bad">Lost in the joins <b>88%</b></span>
     </div>
     <svg id="sceneA" class="scene" viewBox="0 0 1000 330" role="img"
-      aria-label="A cyclist pedalling furiously on a bike whose drivetrain is cluttered with gears labelled with different health software suppliers; sparks fly at every mesh and the bike barely moves."></svg>
+      aria-label="A cyclist pedalling furiously on a bike whose drivetrain is cluttered with gears labelled with the kinds of health system a provider runs; sparks fly at every mesh and the bike barely moves."></svg>
   </section>
 
   <section class="panel">
@@ -983,12 +983,12 @@ function animate(S, t){
 const GREYS = ["#5D6B85", "#7B61FF", "#8A5A00", "#42506B", "#A0552F"];
 const clutter = [
   // three staggered rows in the pocket between the rear wheel and the rider
-  [215,  98, 13, "Epic"],         [270,  94, 15, "Oracle Health"],
-  [327,  98, 13, "EMIS"],         [382,  92, 14, "SystmOne"],
-  [242, 140, 14, "Rio"],          [300, 138, 15, "Access"],
-  [358, 140, 13, "OneAdvanced"],
-  [220, 178, 12, "Graphnet", -44],[276, 180, 13, "RLDatix", -46],
-  [332, 178, 12, "Allocate"],     [386, 174, 12, "Accurx"],
+  [215,  98, 13, "EPR"],          [270,  94, 15, "EPR 2"],
+  [327,  98, 13, "GP"],           [382,  92, 14, "GP 2"],
+  [242, 140, 14, "MH"],           [300, 138, 15, "Social"],
+  [358, 140, 13, "Community"],
+  [220, 178, 12, "Shared", -44],  [276, 180, 13, "Risk", -46],
+  [332, 178, 12, "Rota"],         [386, 174, 12, "Messages"],
 ].map(([x, y, r, label, ly], i) => ({
   x, y, r, label, ly: ly || 0, c: GREYS[i % GREYS.length],
   spd: (i % 2 ? -1 : 1) * (10 + (i % 4) * 5),      // integer cycles per loop

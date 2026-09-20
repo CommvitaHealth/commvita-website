@@ -600,7 +600,7 @@ h2.big{font-size:var(--fs-h2); font-weight:800; max-width:23ch}
 }
 
 
-/* ===================== PROVENANCE CHIP (mirrors ProvenanceChip.tsx / B5) */
+/* ===================== PROVENANCE CHIP */
 .prov{display:inline-flex; align-items:center; gap:6px; font-family:var(--mono);
   font-size:clamp(.54rem,.5rem+.24vh,.64rem); font-weight:800; letter-spacing:.09em;
   text-transform:uppercase; padding:3px 9px; border-radius:999px; border:1px solid transparent;
@@ -1088,7 +1088,7 @@ section.dark .eyebrow::before{background:currentColor}
     </div>
     <div class="grid g3">
       <div class="card"><span class="knum">01 &middot; SEMANTIC</span><h3>Meaning</h3><p>What a thing is. A person, a diagnosis, a medicine, an organisation, a legal deadline, defined once in published models: the NHS canonical data model, FHIR, SNOMED CT and dm+d, with OMOP for research and openEHR as the clinical record shape we&rsquo;re building towards. Every module reads the same definition, so a diagnosis means the same thing in a consultation, on a board pack and in a research extract.</p></div>
-      <div class="card"><span class="knum">02 &middot; KINETIC</span><h3>Flow and movement</h3><p>How things move. A person from home to ward and back, work through a team, data between organisations. An append-only event spine records what happened, to whom and when. Flow is modelled the way a production line is: where the constraint is, what&rsquo;s waiting, what&rsquo;s failure demand. It sits on the same platform as the clinical record, which almost nobody else has.</p></div>
+      <div class="card"><span class="knum">02 &middot; KINETIC</span><h3>Flow and movement</h3><p>How things move. A person from home to ward and back, work through a team, data between organisations. An append-only event spine records what happened, to whom and when. Flow is modelled the way a production line is: where the constraint is, what&rsquo;s waiting, what&rsquo;s failure demand. It sits on the same platform as the clinical record, which few others do, by our own assessment.</p></div>
       <div class="card"><span class="knum">03 &middot; DYNAMIC</span><h3>Adaptation and optimisation</h3><p>What the system does about it. Rules live in the platform, so a change made once applies everywhere that concept appears. Escalation follows the signal and stands down when it abates. Access is managed on need and deprivation. Where a rule is missing, the platform stops and says so instead of guessing.</p></div>
     </div>
     <p class="lead" style="margin-top:var(--gap)">The layers in more detail are on the <a href="solution.html#ontology">Approach page</a>, and a measured account of what is built, partly built and absent is in the <a href="explainers/commvita-explainer-architecture-layers.html">architecture explainer</a>.</p>
@@ -1243,7 +1243,7 @@ section.dark .eyebrow::before{background:currentColor}
         we&rsquo;ve committed to. Portability is a property of the design, not an export button bolted on for procurement questions.</div></div>
       <div class="d"><div class="k">Flow data and the clinical record in one place</div>
         <div class="w">Operational flow modelled as a production line &mdash; constraint, WIP, failure demand &mdash;
-        <b>alongside</b> the person&rsquo;s record. Analytics platforms have one; EPRs have the other. Almost nobody has both.</div></div>
+        <b>alongside</b> the person&rsquo;s record. Analytics platforms have one; EPRs have the other. Almost nobody has both, by our own assessment.</div></div>
       <div class="d"><div class="k">One thread from a frontline incident to a board objective</div>
         <div class="w">Not four products and a manual board pack. Evidence is carried, counts reconcile, and assurance
         de-escalates on abating signal instead of on a calendar date.</div></div>
