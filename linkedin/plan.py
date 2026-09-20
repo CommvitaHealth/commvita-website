@@ -23,8 +23,9 @@ GAP    = 3                            # days between posts
 ORIENT = 4                            # orientation posts before the rotation
 SEED   = 20260921
 MIX    = ['F'] * 5 + ['G'] * 5 + ['P'] * 4   # the 14 rotation slots
-NAME   = {'F': 'Flow', 'G': 'Governance & Assurance',
-          'P': 'Population', '-': 'Orientation'}
+TAIL   = ['X'] * 3                           # the differentiation arc, after the rotation
+NAME   = {'F': 'Flow', 'G': 'Governance & Assurance', 'P': 'Population',
+          '-': 'Orientation', 'X': 'Platform'}
 
 
 def draw(seed=SEED):
@@ -40,7 +41,7 @@ def draw(seed=SEED):
 
 
 def slots(seed=SEED):
-    order = ['-'] * ORIENT + draw(seed)
+    order = ['-'] * ORIENT + draw(seed) + TAIL
     for i, ed in enumerate(order):
         yield i + 1, START + datetime.timedelta(days=GAP * i), NAME[ed]
 
@@ -63,7 +64,10 @@ def posts():
 
 def check():
     bad = []
-    for (n, date, edition), meta in zip(slots(), posts()):
+    plan, written = list(slots()), posts()
+    if len(plan) != len(written):
+        bad.append(f'the draw has {len(plan)} slots and posts/ has {len(written)} files')
+    for (n, date, edition), meta in zip(plan, written):
         if meta.get('date') != date.isoformat():
             bad.append(f"post {n}: date is {meta.get('date')}, draw says {date}")
         if meta.get('edition') != edition:
@@ -90,10 +94,11 @@ def schedule_md():
 One post every {GAP} days, {first:%d %B %Y} to {last:%d %B %Y}. Generated from the
 post files by `plan.py --schedule`, so this table can't drift from what's written.
 
-Posts 1–{ORIENT} orient a reader who has never heard of commvita. From post {ORIENT + 1} the
-editions are drawn at random (seed {SEED}), balanced {MIX.count('F')}/{MIX.count('G')}/{MIX.count('P')} across Flow,
+Posts 1–{ORIENT} orient a reader who has never heard of commvita. Posts {ORIENT + 1}–{ORIENT + len(MIX)}
+take the editions at random (seed {SEED}), balanced {MIX.count('F')}/{MIX.count('G')}/{MIX.count('P')} across Flow,
 Governance & Assurance and Population, with no more than two of an edition
-in a row.
+in a row. The last {len(TAIL)} are an arc on what makes the platform different, which
+belongs to no single edition.
 
 Dates that land on a Saturday or Sunday are marked. Engagement is thinner at
 the weekend, so either move those to the Monday and let the cadence drift, or

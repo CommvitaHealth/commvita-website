@@ -1,12 +1,13 @@
 # Posting schedule
 
-One post every 3 days, 21 September 2026 to 11 November 2026. Generated from the
+One post every 3 days, 21 September 2026 to 20 November 2026. Generated from the
 post files by `plan.py --schedule`, so this table can't drift from what's written.
 
-Posts 1–4 orient a reader who has never heard of commvita. From post 5 the
-editions are drawn at random (seed 20260921), balanced 5/5/4 across Flow,
+Posts 1–4 orient a reader who has never heard of commvita. Posts 5–18
+take the editions at random (seed 20260921), balanced 5/5/4 across Flow,
 Governance & Assurance and Population, with no more than two of an edition
-in a row.
+in a row. The last 3 are an arc on what makes the platform different, which
+belongs to no single edition.
 
 Dates that land on a Saturday or Sunday are marked. Engagement is thinner at
 the weekend, so either move those to the Monday and let the cadence drift, or
@@ -32,3 +33,6 @@ post them anyway and keep the rhythm exact. Pick one and stick to it.
 | 16 | Thu 05 Nov 2026 | Population | LeftShift Intelligence© | [16-leftshift-intelligence](posts/16-leftshift-intelligence.md) |
 | 17 | Sun 08 Nov 2026 *(weekend)* | Flow | Federated secondary-use reporting | [17-federated-analytics](posts/17-federated-analytics.md) |
 | 18 | Wed 11 Nov 2026 | Governance & Assurance | Board Assurance Framework & board management | [18-board-assurance](posts/18-board-assurance.md) |
+| 19 | Sat 14 Nov 2026 *(weekend)* | Platform | The semantic, kinetic and dynamic layers | [19-three-layers](posts/19-three-layers.md) |
+| 20 | Tue 17 Nov 2026 | Platform | Portability, and why escrow answers the wrong question | [20-leaving-beats-escrow](posts/20-leaving-beats-escrow.md) |
+| 21 | Fri 20 Nov 2026 | Platform | Why the data model decides what AI is worth | [21-model-before-model](posts/21-model-before-model.md) |

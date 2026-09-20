@@ -1,7 +1,7 @@
 # LinkedIn posts
 
 A run of ready-to-post updates for the commvita page, one every three days,
-with a branded image for each. Nothing here is published by Netlify —
+with a branded image for each. Twenty-one posts, 21 September to 20 November. Nothing here is published by Netlify —
 `netlify.toml` publishes `site/`, and this folder sits outside it on purpose.
 
 - `posts/` — one file per post. Front matter, then the body you paste.
@@ -26,9 +26,16 @@ Takes about two minutes.
 
 Posts 1–4 orient somebody who has never heard of commvita: what it is, the
 problem it answers, the three editions, and the platform base that sits under
-all of them. From post 5 the subject is drawn at random across Flow,
-Governance & Assurance and Population, balanced 5/5/4, with no more than two
-of an edition in a row. The draw is seeded, so `plan.py` reproduces it.
+all of them. Posts 5–18 take the subject at random across Flow, Governance &
+Assurance and Population, balanced 5/5/4, with no more than two of an edition
+in a row. The draw is seeded, so `plan.py` reproduces it.
+
+Posts 19–21 are an arc on what makes the platform different: the semantic,
+kinetic and dynamic layers; why open export answers the question escrow is
+usually asked to answer; and why the data model decides what AI on it is
+worth. They belong to no single edition. Post 20 is the one to read before
+you change anything — it disclaims escrow, support and service levels in the
+same words the launch page uses, and it has to keep doing that.
 
 Randomising matters for a reason beyond variety: three consecutive governance
 posts teach the audience that this is a governance product, and they stop
@@ -70,8 +77,9 @@ run learns to look for it.
 `build_cards.py` reads each post's front matter, lays out the card in HTML
 using the site's own brand faces and palette, and screenshots it with the
 Chromium in this container. The accent colour comes from the edition: teal for
-Flow, violet for Governance & Assurance, amber for Population, coral for the
-orientation posts.
+Flow, violet for Governance & Assurance, amber for Population. Coral marks a
+post that belongs to no single edition — the orientation four and the
+differentiation arc.
 
     python3 linkedin/build_cards.py          # all of them
     python3 linkedin/build_cards.py 07 12    # just those two

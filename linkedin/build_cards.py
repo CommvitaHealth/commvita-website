@@ -19,7 +19,7 @@ CHROME = os.environ.get(
     'CHROME_BIN',
     '/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell')
 
-ACCENT = {'Orientation': '#FF5B47', 'Flow': '#00B8A6',
+ACCENT = {'Orientation': '#FF5B47', 'Platform': '#FF5B47', 'Flow': '#00B8A6',
           'Governance & Assurance': '#7B61FF', 'Population': '#FFB020'}
 
 MARK = ('<svg viewBox="0 0 100 100" width="52" height="52" aria-hidden="true">'
