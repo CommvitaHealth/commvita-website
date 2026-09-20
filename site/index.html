@@ -847,6 +847,16 @@ section.dark .eyebrow::before{background:currentColor}
   color:var(--muted);max-width:74ch;line-height:1.6}
 @media(max-width:860px){.legend{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.legend{grid-template-columns:1fr}}
+
+/* Three ontologies figure on the home page */
+.ontfig{margin-top:var(--gap)}
+.ontfig svg{width:100%;height:auto;display:block}
+.ontfig .ob{fill:var(--panel);stroke:var(--hair)}
+.ontfig .oa1{fill:var(--teal)}.ontfig .oa2{fill:#7B61FF}.ontfig .oa3{fill:#FFB020}
+.ontfig .on{font:700 13px system-ui,sans-serif;fill:var(--muted)}
+.ontfig .ot{font:700 16px system-ui,sans-serif;fill:var(--ink)}
+.ontfig .od{font:12.5px system-ui,sans-serif;fill:var(--body)}
+@media(max-width:640px){.ontfig{display:none}}
 </style>
 
 
@@ -964,7 +974,7 @@ section.dark .eyebrow::before{background:currentColor}
           <!-- S5 &middot; close -->
           <section class="vx-scene" data-i="4">
             <div><div class="vx-k vx-rise">The path</div>
-              <h2 class="vx-h vx-rise r2">Start where you&rsquo;re. Grow when you&rsquo;re ready.</h2></div>
+              <h2 class="vx-h vx-rise r2">Start where you are. Grow when you&rsquo;re ready.</h2></div>
             <div class="vx-v vx-close vx-rise r3">
               <div class="big2">Health, connected.</div>
               <div class="tag2">One record &middot; one chain from ward to board &middot; one platform</div>
@@ -1016,6 +1026,22 @@ section.dark .eyebrow::before{background:currentColor}
 </section>
 
 <!-- ================================================== PROPOSAL -->
+<section class="screen" id="whynow">
+  <div class="inner">
+    <span class="eyebrow"><span class="dot"></span>Why now</span>
+    <h2 class="big">2026 is the year the pieces line up.</h2>
+    <p class="lead">The problem above isn&rsquo;t new. What&rsquo;s new is that five things have arrived at the same time, and together they change what a health system can sensibly buy.</p>
+    <div class="grid g5">
+      <div class="card"><span class="knum">01 &middot; AGENTIC AI</span><h3>Software that does the task</h3><p>AI has moved from drafting text to carrying out multi-step work against live systems. That&rsquo;s only safe on one governed record with the rules inside the platform. Pointed at a dozen silos, it automates the mess.</p></div>
+      <div class="card"><span class="knum">02 &middot; OPEN STANDARDS</span><h3>Mature enough to build on</h3><p>FHIR and SNOMED CT are mandated, openEHR is in live NHS use, and OMOP is the shape secure data environments ask for. A record built on them today won&rsquo;t need rebuilding when the next national programme lands.</p></div>
+      <div class="card"><span class="knum">03 &middot; THE FDP</span><h3>A national layer needs a local record</h3><p>The Federated Data Platform sets out what national data should do. It doesn&rsquo;t give a provider a whole-person record to run care on. A platform that feeds the national picture from a live local record fills that gap.</p></div>
+      <div class="card"><span class="knum">04 &middot; COST PRESSURE</span><h3>Less money, more asked of it</h3><p>Providers and ICBs have been told to cut running costs and raise productivity in the same year. The software estate is one of the few large costs that can move quickly, and a stack of point systems is where it moves from.</p></div>
+      <div class="card"><span class="knum">05 &middot; SOVEREIGN DATA</span><h3>Your data, on your estate</h3><p>Who holds NHS data, where it sits and who could take it away has become a board question. Hosting the record yourself, in an open standard, with the freedom to leave, answers it.</p></div>
+    </div>
+    <p class="pull" style="margin-top:var(--gap)">Each of these is a reason to look again. Together they&rsquo;re the reason to <span class="em">look now</span>.</p>
+  </div>
+</section>
+
 <section class="screen" id="proposal">
   <div class="inner">
     <span class="eyebrow"><span class="dot"></span>The proposal</span>
@@ -1044,6 +1070,31 @@ section.dark .eyebrow::before{background:currentColor}
 </section>
 
 <!-- ============================================= NOT AN AI COMPANY -->
+<section class="screen" id="ontology">
+  <div class="inner">
+    <span class="eyebrow"><span class="dot"></span>The idea underneath</span>
+    <h2 class="big">Meaning, movement and adaptation. Three ontologies, one platform.</h2>
+    <p class="lead">commvita isn&rsquo;t an openEHR system with screens on top. openEHR is one of the standards it&rsquo;s built from. The idea underneath is bigger: the platform holds three kinds of knowledge about a health system and keeps them in one place, so each one acts on the others.</p>
+    <div class="ontfig" aria-hidden="true">
+      <svg viewBox="0 0 900 236" role="img" aria-labelledby="tont3">
+        <title id="tont3">Three stacked layers: semantic, kinetic and dynamic</title>
+        <rect x="16" y="12" width="868" height="64" rx="10" class="ob"/><rect x="16" y="12" width="6" height="64" rx="3" class="oa1"/>
+        <text x="40" y="39" class="on">1</text><text x="62" y="39" class="ot">Semantic &mdash; meaning</text><text x="62" y="60" class="od">What a person, a condition, a medicine and a rule are, in the words the standards use.</text>
+        <rect x="16" y="86" width="868" height="64" rx="10" class="ob"/><rect x="16" y="86" width="6" height="64" rx="3" class="oa2"/>
+        <text x="40" y="113" class="on">2</text><text x="62" y="113" class="ot">Kinetic &mdash; flow and movement</text><text x="62" y="134" class="od">How people, work and data move: through a pathway, a team, a ward, an organisation.</text>
+        <rect x="16" y="160" width="868" height="64" rx="10" class="ob"/><rect x="16" y="160" width="6" height="64" rx="3" class="oa3"/>
+        <text x="40" y="187" class="on">3</text><text x="62" y="187" class="ot">Dynamic &mdash; adaptation and optimisation</text><text x="62" y="208" class="od">What the system does about it: rules that act everywhere, escalation that follows the signal.</text>
+      </svg>
+    </div>
+    <div class="grid g3">
+      <div class="card"><span class="knum">01 &middot; SEMANTIC</span><h3>Meaning</h3><p>What a thing is. A person, a diagnosis, a medicine, an organisation, a legal deadline, defined once in the published standards: openEHR, FHIR, SNOMED CT, dm+d, OMOP. Every module reads the same definition, so a diagnosis means the same thing in a consultation, on a board pack and in a research extract.</p></div>
+      <div class="card"><span class="knum">02 &middot; KINETIC</span><h3>Flow and movement</h3><p>How things move. A person from home to ward and back, work through a team, data between organisations. Flow is modelled the way a production line is: where the constraint is, what&rsquo;s waiting, what&rsquo;s failure demand. It sits on the same platform as the clinical record, which almost nobody else has.</p></div>
+      <div class="card"><span class="knum">03 &middot; DYNAMIC</span><h3>Adaptation and optimisation</h3><p>What the system does about it. Rules live in the platform, so a change made once applies everywhere that concept appears. Escalation follows the signal and stands down when it abates. Access is managed on need and deprivation. Where a rule is missing, the platform stops and says so instead of guessing.</p></div>
+    </div>
+    <p class="lead" style="margin-top:var(--gap)">The layers in more detail, with what each one costs us to keep, are on the <a href="solution.html#ontology">Approach page</a>.</p>
+  </div>
+</section>
+
 <section class="screen band" id="notai">
   <div class="inner">
     <span class="eyebrow"><span class="dot"></span>Before you ask</span>
@@ -1225,8 +1276,8 @@ section.dark .eyebrow::before{background:currentColor}
 <!-- ============================================== BUILT FOR SYSTEMS -->
 <section class="screen band" id="system">
   <div class="inner">
-    <span class="eyebrow"><span class="dot"></span>Built for health systems &middot; judged on the four things you&rsquo;re</span>
-    <h2 class="big">Everything we build, judged on the four things you&rsquo;re.</h2>
+    <span class="eyebrow"><span class="dot"></span>Built for health systems &middot; judged on the four things you are</span>
+    <h2 class="big">Everything we build, judged on the four things you are.</h2>
     <p class="lead">Point solutions each optimise their own box, then leave your people to carry the data between them. A system-level platform optimises the whole journey &mdash; so a gain anywhere flows to everywhere downstream. We measure the difference the way you&rsquo;re measured &mdash; the Quadruple Aim: patient and population health outcomes, access and equality, value for money, and workforce experience and productivity.</p>
     <div class="metrics">
       <div class="metric"><div class="m">Outcomes</div><div class="l">Patient &amp; population health &mdash; proof the intervention changed the trajectory</div></div>
@@ -1323,7 +1374,7 @@ section.dark .eyebrow::before{background:currentColor}
 <section class="screen" id="editions">
   <div class="inner">
     <span class="eyebrow"><span class="dot"></span>Three editions, one platform</span>
-    <h2 class="big">Start where you&rsquo;re. Grow when you&rsquo;re ready.</h2>
+    <h2 class="big">Start where you are. Grow when you&rsquo;re ready.</h2>
     <p class="lead">Every edition is the same connected platform on the same open record &mdash; you switch capability on, you don&rsquo;t replace systems. Own your platform, then govern your organisation, then run your health economy. No migration, no re-integration between the steps.</p>
     <div class="grid g3">
       <div class="card ed">
