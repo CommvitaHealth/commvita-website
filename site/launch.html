@@ -846,7 +846,7 @@ function buildScene(svg, cfg){
   S.body = el("g", {}, S.rig);
   S.HIP = {x:402, y:150};
   // torso + neck (one path, updated per frame so it bobs with the pedalling)
-  S.torso = el("path", {d:"", fill:"none", stroke:cfg.jersey, "stroke-width":15,
+  S.torso = el("path", {d:"", fill:"none", stroke:cfg.kit, "stroke-width":15,
                         "stroke-linecap":"round", "stroke-linejoin":"round"}, S.body);
   // arm (shoulder → elbow → bars)
   S.arm = el("path", {d:"", fill:"none", stroke:cfg.skin, "stroke-width":8,
@@ -998,7 +998,7 @@ const clutter = [
 
 const sceneA = buildScene(document.getElementById("sceneA"), {
   frame:"#8B97AC",
-  jersey:"#FF5B47", helmet:"#7B61FF",
+  kit:"#FF5B47", helmet:"#7B61FF",
   skin:"#7C4A24", skinShade:"#5E3517", hair:"#171717", hairBack:true,
   strain:true, jitter:true,
   cadence:48,                      // pedalling furiously (96 rpm)…
@@ -1019,7 +1019,7 @@ const sceneA = buildScene(document.getElementById("sceneA"), {
 
 const sceneB = buildScene(document.getElementById("sceneB"), {
   frame:"#00B8A6",
-  jersey:"#7B61FF", helmet:"#141C2E",
+  kit:"#7B61FF", helmet:"#141C2E",
   skin:"#A9714B", skinShade:"#87552F", hair:"#241A12", beard:true,
   strain:false, jitter:false,
   cadence:25,                       // an easy 50 rpm…
