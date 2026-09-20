@@ -381,8 +381,8 @@
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://commvita.com/explainers/commvita-federated-architecture-blueprint.html</loc>
-    <lastmod>2026-08-17</lastmod>
+    <loc>https://commvita.com/explainers/commvita-explainer-scaling-national-digital-health.html</loc>
+    <lastmod>2026-09-20</lastmod>
     <priority>0.4</priority>
   </url>
   <url>
@@ -397,6 +397,31 @@
   </url>
   <url>
     <loc>https://commvita.com/explainers/commvita-explainer-architecture-layers.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://commvita.com/explainers/commvita-explainer-data-architecture-quality.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://commvita.com/explainers/commvita-explainer-feedback-to-fix.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://commvita.com/explainers/commvita-explainer-extreme-transparency.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://commvita.com/explainers/commvita-explainer-competitive-intelligence.html</loc>
+    <lastmod>2026-09-20</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://commvita.com/explainers/commvita-explainer-how-tested.html</loc>
     <lastmod>2026-09-20</lastmod>
     <priority>0.4</priority>
   </url>
