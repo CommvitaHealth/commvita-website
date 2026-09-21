@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>commvita — the three editions (Commvita Flow Edition · Governance & Assurance · Population Platform)</title></head><body>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>commvita — The business case</title></head><body>
 <style>.cvnav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;
   gap:14px;height:54px;padding:0 16px;box-sizing:border-box;background:rgba(255,255,255,.975);
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid #D9DFE8;
@@ -32,7 +32,7 @@
 <div class="cvnav" role="navigation" aria-label="Explainer">
   <a class="cvnav-back" href="index.html"><svg width="13" height="13" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M10 2.5 4.5 8l5.5 5.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>All explainers</a>
   <svg class="cvnav-mark" width="22" height="22" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><line x1="52" y1="49" x2="20" y2="30" stroke="#141C2E" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="78" y2="18" stroke="#141C2E" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="26" y2="80" stroke="#141C2E" stroke-width="5.0" stroke-linecap="round"/><line x1="52" y1="49" x2="84" y2="62" stroke="#141C2E" stroke-width="5.0" stroke-linecap="round"/><circle cx="20" cy="30" r="8.5" fill="#00B8A6"/><circle cx="78" cy="18" r="7.0" fill="#7B61FF"/><circle cx="26" cy="80" r="6.0" fill="#FFB020"/><circle cx="84" cy="62" r="9.5" fill="#FF5B47"/><circle cx="52" cy="49" r="15.0" fill="#141C2E"/><circle cx="52" cy="49" r="6.0" fill="#FFFFFF"/></svg>
-  <span class="cvnav-title">the three editions (Commvita Flow Edition · Governance & Assurance · Population Platform)</span>
+  <span class="cvnav-title">Business case explainer</span>
 </div>
 <div class="cvnav-spacer" aria-hidden="true"></div>
 <!-- /commvita explainer nav -->
@@ -57,7 +57,7 @@
 :root[data-theme="light"]{--navy:#141C2E;--canvas:#F2F4F7;--card:#FFFFFF;--ink:#141C2E;--sub:#42506B;--muted:#5D6B85;--border:#D9DFE8;--chip:#F2F4F7;--grant:#1F9D74;--protect:#C97A1E;--rescind:#D93025;--shadow:0 1px 2px rgba(20,28,46,.08),0 10px 28px -14px rgba(20,28,46,.22)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
-.doc{max-width:64rem;margin:0 auto;padding:44px 30px 70px}
+.doc{max-width:66rem;margin:0 auto;padding:44px 30px 70px}
 .brand{display:flex;align-items:center;gap:12px;margin-bottom:16px}
 .brand .wm{display:flex;flex-direction:column;line-height:1.12}
 .brand .wm .row{display:flex;align-items:baseline}
@@ -67,33 +67,149 @@ body{margin:0;background:var(--canvas);color:var(--ink);font-family:var(--sans);
 .brand .wm .tag{font-size:10.5px;font-weight:500;color:var(--muted);letter-spacing:.06em;margin-top:2px}
 .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600}
 h1{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:-.02em;margin:8px 0 6px;text-wrap:balance}
-.sub{color:var(--sub);font-size:16px;max-width:66ch;margin:0}
+.sub{color:var(--sub);font-size:16px;max-width:64ch;margin:0}
 .rule{height:3px;width:64px;background:var(--teal);border-radius:2px;margin:20px 0 0}
-.copy{text-align:center;font-size:12px;color:var(--sub);margin:14px 0 4px;letter-spacing:.02em}
+.key{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:16px 0 2px;padding:11px 14px;border:1px solid var(--border);border-radius:11px;background:var(--card);font-size:12.5px;color:var(--sub)}
+.key b{color:var(--ink)} .key .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+h2{font-size:21px;font-weight:800;letter-spacing:-.01em;margin:44px 0 4px;display:flex;align-items:center;gap:11px}
+h2 .num{font-family:var(--mono);font-size:13px;font-weight:700;color:#fff;background:var(--navy);width:26px;height:26px;
+  border-radius:7px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+h2.grant .num{background:var(--grant)} h2.protect .num{background:var(--protect)} h2.rescind .num{background:var(--rescind)}
+.lead{color:var(--sub);font-size:14.5px;margin:2px 0 14px;max-width:70ch}
 p{margin:0 0 12px} strong{color:var(--ink)}
-.chip{font-family:var(--mono);font-size:11.5px;background:var(--chip);color:var(--navy);padding:2px 8px;border-radius:6px;white-space:nowrap;border:1px solid var(--border);display:inline-block}
-.stack{display:flex;flex-direction:column;gap:14px;margin-top:26px}
-.ed{background:var(--card);border:1px solid var(--border);border-radius:15px;box-shadow:var(--shadow);padding:20px 22px;position:relative}
-.ed.base{border-top-width:5px;border-top-color:var(--navy)}
-.ed.pack{border-left-width:5px;border-left-color:var(--teal);margin-left:22px}
-.ed .plus{position:absolute;left:-16px;top:22px;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#06312b;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
-.ed .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.ed h2{font-size:20px;font-weight:800;letter-spacing:-.01em;margin:0}
-.badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px}
-.badge.base{background:color-mix(in srgb,var(--navy) 12%,var(--card));color:var(--navy)}
-.badge.add{background:color-mix(in srgb,var(--teal) 16%,var(--card));color:var(--grant)}
-.badge.price{background:color-mix(in srgb,var(--protect) 14%,var(--card));color:var(--protect)}
-.ed .tagline{color:var(--teal);font-weight:700;font-size:13.5px;margin:6px 0 4px}
-.ed .pos{color:var(--sub);font-size:13.5px;margin:0 0 14px;max-width:78ch}
-.mods{display:flex;flex-wrap:wrap;gap:7px}
-.mod{font-size:12px;font-weight:600;color:var(--ink);background:color-mix(in srgb,var(--canvas) 60%,var(--card));border:1px solid var(--border);border-radius:8px;padding:4px 10px}
-.mods .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);width:100%;margin-bottom:2px}
-.note{background:color-mix(in srgb,var(--navy) 7%,var(--card));border:1px solid color-mix(in srgb,var(--navy) 24%,var(--border));border-radius:12px;padding:14px 16px;margin-top:26px;font-size:13.5px;color:var(--ink)}
-.note b{font-weight:800}
-.foot{margin-top:36px;border-top:1px solid var(--border);padding-top:16px;color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 18px}
-@media print{body{background:#fff}.ed{box-shadow:none}.doc{max-width:none}}
-@media(max-width:560px){.ed.pack{margin-left:12px}.ed .plus{left:-14px}}
-.mod.roadmap{border-style:dashed;color:var(--muted);background:transparent;font-style:italic}
+code,.chip{font-family:var(--mono);font-size:12px}
+.chip{background:var(--chip);color:var(--navy);padding:1.5px 7px;border-radius:6px;white-space:nowrap;border:1px solid var(--border)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+@media(max-width:820px){.grid3{grid-template-columns:1fr}}
+.role{background:var(--card);border:1px solid var(--border);border-top-width:4px;border-radius:13px;padding:16px 17px;box-shadow:var(--shadow)}
+.role h3{margin:0 0 2px;font-size:16px}
+.role .who{font-size:12.5px;color:var(--muted);font-weight:600;margin-bottom:9px}
+.role p{font-size:13.5px;color:var(--sub);margin:0 0 10px}
+.role .where{font-size:12px;color:var(--sub);border-top:1px dashed var(--border);padding-top:9px}
+.role .where b{color:var(--ink);font-weight:700;display:block;margin-bottom:3px;font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+.steps{display:flex;flex-direction:column;gap:11px;margin-top:14px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px 16px;box-shadow:var(--shadow);
+  border-left-width:4px;display:grid;grid-template-columns:30px 1fr;gap:13px;align-items:start}
+.step .s{font-family:var(--mono);font-weight:700;font-size:13px;color:var(--muted);margin-top:1px}
+.step h4{margin:0 0 3px;font-size:14.5px}
+.step p{margin:0;font-size:13.5px;color:var(--sub)}
+.step .loc{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px}
+.g{border-left-color:var(--grant)} .pr{border-left-color:var(--protect)} .re{border-left-color:var(--rescind)}
+.callout{background:color-mix(in srgb,var(--protect) 9%,var(--card));border:1px solid color-mix(in srgb,var(--protect) 35%,var(--border));
+  border-radius:12px;padding:14px 16px;margin-top:16px;font-size:13.5px;color:var(--ink)}
+.callout.re{background:color-mix(in srgb,var(--rescind) 9%,var(--card));border-color:color-mix(in srgb,var(--rescind) 35%,var(--border))}
+.callout b{font-weight:800}
+.tablewrap{overflow-x:auto;margin-top:16px;border:1px solid var(--border);border-radius:13px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:12.8px;min-width:640px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+th{background:var(--chip);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+td b{color:var(--ink)} td .chip{font-size:11px}
+/* 'Where it lives' table — fit all 6 columns to page width, no horizontal scroll */
+.livewrap table{table-layout:fixed;min-width:0;font-size:11.6px}
+.livewrap th,.livewrap td{padding:8px 9px;overflow-wrap:anywhere;word-break:break-word}
+.livewrap td .chip,.livewrap td code{white-space:normal;overflow-wrap:anywhere;word-break:break-word}
+.livewrap td .pill{white-space:normal;overflow-wrap:anywhere;display:inline-block;max-width:100%}
+.foot{margin-top:40px;border-top:1px solid var(--border);padding-top:16px;color:var(--muted);font-size:12px;display:flex;flex-wrap:wrap;gap:8px 18px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0 0;font-size:13px;font-weight:700}
+.flow .node{padding:8px 13px;border-radius:9px;color:#fff}
+.flow .arw{color:var(--muted);font-weight:400}
+@media print{body{background:#fff}.role,.step,.tablewrap{box-shadow:none}.doc{max-width:none}}
+
+/* ── Appended: mock-UI "screenshot" component ─────────────────────────── */
+.shot{margin:14px 0 4px;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);background:var(--card)}
+.shot .bar{display:flex;align-items:center;gap:9px;background:var(--navy);padding:10px 14px;color:#fff}
+.shot .bar .lg{flex:none}
+.shot .bar .ttl{font-size:13px;font-weight:700;letter-spacing:-.01em;color:#fff}
+.shot .bar .ttl .crumb{font-weight:500;opacity:.7}
+.shot .bar .sp{flex:1}
+.shot .bar .u{font-size:11px;font-weight:600;background:rgba(255,255,255,.14);padding:3px 9px;border-radius:20px;color:#fff}
+.shot .body{padding:15px 16px;background:color-mix(in srgb,var(--canvas) 55%,var(--card))}
+.cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:2px 0 12px;display:flex;align-items:center;gap:7px}
+.cap::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal);flex:none}
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:13px 14px;margin-bottom:11px}
+.pcard:last-child{margin-bottom:0}
+.pcard .lab{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:4px}
+.pcard .val{font-size:14px;font-weight:700;color:var(--ink)}
+.pcard .val small{font-weight:500;color:var(--sub);font-size:12.5px}
+.frow{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+@media(max-width:620px){.frow{grid-template-columns:1fr}}
+/* identity banner */
+.idban{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;background:color-mix(in srgb,var(--navy) 8%,var(--card));border:1px solid color-mix(in srgb,var(--navy) 22%,var(--border));border-left-width:4px;border-left-color:var(--navy);border-radius:11px;padding:11px 14px;margin-bottom:12px}
+.idban .nm{font-size:15px;font-weight:800;color:var(--ink)}
+.idban .dm{font-size:12px;color:var(--sub)}
+.idban .dm b{color:var(--ink);font-family:var(--mono)}
+/* pills / RAG badges */
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;border:1px solid transparent;white-space:nowrap}
+.pill.green{background:color-mix(in srgb,var(--grant) 15%,var(--card));color:var(--grant);border-color:color-mix(in srgb,var(--grant) 35%,var(--border))}
+.pill.amber{background:color-mix(in srgb,var(--protect) 15%,var(--card));color:var(--protect);border-color:color-mix(in srgb,var(--protect) 35%,var(--border))}
+.pill.red{background:color-mix(in srgb,var(--rescind) 15%,var(--card));color:var(--rescind);border-color:color-mix(in srgb,var(--rescind) 35%,var(--border))}
+.pill.navy{background:color-mix(in srgb,var(--navy) 13%,var(--card));color:var(--navy);border-color:color-mix(in srgb,var(--navy) 30%,var(--border))}
+.pill.red.sig{background:color-mix(in srgb,var(--rescind) 15%,var(--card));color:var(--rescind)}
+.pill.dot::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:12.5px;font-weight:700;padding:8px 15px;border-radius:9px;border:1px solid transparent;cursor:default}
+.btn.primary{background:var(--teal);color:#08312c}
+.btn.navy{background:var(--navy);color:#fff}
+.btn.ghost{background:transparent;color:var(--sub);border-color:var(--border)}
+.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+/* mini scope chips inside shots */
+.scopechips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.scopechips .sc{font-family:var(--mono);font-size:11px;background:color-mix(in srgb,var(--teal) 12%,var(--card));color:var(--navy);border:1px solid color-mix(in srgb,var(--teal) 30%,var(--border));padding:2px 8px;border-radius:6px}
+/* banner strip inside shot */
+.strip{display:flex;flex-wrap:wrap;align-items:center;gap:10px;border-radius:11px;padding:11px 14px;font-size:13px;font-weight:600;margin-bottom:12px}
+.strip.amber{background:color-mix(in srgb,var(--protect) 12%,var(--card));border:1px solid color-mix(in srgb,var(--protect) 34%,var(--border));color:var(--ink)}
+.strip.green{background:color-mix(in srgb,var(--grant) 12%,var(--card));border:1px solid color-mix(in srgb,var(--grant) 34%,var(--border));color:var(--ink)}
+.strip .sp{flex:1}
+/* field mock */
+.field{margin-bottom:11px}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.field .inp{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:9px 11px;font-size:13px;color:var(--ink)}
+.field .inp.area{min-height:44px;color:var(--sub);font-style:italic}
+.field .inp.sel{display:flex;align-items:center;justify-content:space-between}
+.field .inp.sel::after{content:"▾";color:var(--muted);font-size:11px}
+/* template picker */
+.tpick{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+@media(max-width:620px){.tpick{grid-template-columns:1fr}}
+.tpick .t{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 12px;font-size:12.5px;font-weight:700;color:var(--sub)}
+.tpick .t.sel{border-color:var(--teal);border-width:2px;color:var(--ink);background:color-mix(in srgb,var(--teal) 8%,var(--card))}
+.tpick .t small{display:block;font-weight:500;color:var(--muted);font-size:11px;margin-top:3px}
+/* decision selector */
+.decsel{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:11px}
+.decsel .d{font-size:12px;font-weight:700;padding:7px 12px;border-radius:9px;border:1px solid var(--border);color:var(--sub);background:var(--card)}
+.decsel .d.sel{border-color:var(--grant);border-width:2px;color:var(--grant);background:color-mix(in srgb,var(--grant) 9%,var(--card))}
+.decsel .d.warn.sel{border-color:var(--rescind);color:var(--rescind);background:color-mix(in srgb,var(--rescind) 9%,var(--card))}
+/* domain ack list */
+.acklist{display:flex;flex-direction:column;gap:7px;margin-bottom:11px}
+.acklist .a{display:flex;align-items:center;gap:9px;font-size:12.5px;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:8px 11px}
+.acklist .a .tick{width:18px;height:18px;border-radius:5px;background:var(--grant);color:#fff;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.acklist .a .nm{font-weight:700;color:var(--ink)}
+.acklist .a .sp{flex:1}
+/* audit table inside shot */
+.shot table{min-width:0;font-size:12px}
+.shot th,.shot td{padding:8px 11px}
+.shot .mono{font-family:var(--mono);font-size:11px;color:var(--sub)}
+.hashrow td:first-child{border-left:3px solid var(--grant)}
+.hashrow.warn td:first-child{border-left-color:var(--orange)}
+.hashrow.ooh td:first-child{border-left-color:var(--protect)}
+/* invoice line block */
+.invoice{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:0;overflow:hidden}
+.invoice .ih{background:color-mix(in srgb,var(--navy) 8%,var(--card));padding:10px 14px;font-size:12px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:9px}
+.invoice .ln{display:flex;align-items:center;gap:10px;padding:9px 14px;border-top:1px solid var(--border);font-size:12.5px}
+.invoice .ln .desc{flex:1;color:var(--sub)}
+.invoice .ln .desc b{color:var(--ink)}
+.invoice .ln .amt{font-family:var(--mono);font-weight:700;color:var(--ink)}
+.invoice .ln.total{background:color-mix(in srgb,var(--canvas) 60%,var(--card));font-weight:800}
+
+.edge{display:flex;gap:12px;align-items:flex-start;background:linear-gradient(90deg,rgba(0,184,166,.10),rgba(0,184,166,.02));
+  border:1px solid rgba(0,184,166,.38);border-left:4px solid #00B8A6;border-radius:12px;padding:12px 15px;margin:16px 0;font-size:13.5px;line-height:1.55}
+.edgetag{flex:none;display:inline-block;background:#00B8A6;color:#06231F;font-size:10.5px;font-weight:800;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 9px;border-radius:999px;margin-top:1px;white-space:nowrap}
+.edge .src{display:block;margin-top:5px;font-size:11.5px;color:var(--sub,#5D6B85)}
+@media(max-width:560px){.edge{flex-direction:column;gap:8px}}
+.realshot{background:var(--card,#fff);border:1px solid var(--border,#D9DFE8);border-radius:14px;box-shadow:0 1px 2px rgba(20,28,46,.08),0 10px 28px -14px rgba(20,28,46,.22);padding:10px;margin:14px 0 6px}
+.realshot img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--border,#D9DFE8)}
+.realshot figcaption{font-size:12px;color:var(--sub,#5D6B85);padding:8px 4px 2px;display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between}
 </style>
 
 <div class="doc">
@@ -105,248 +221,188 @@ p{margin:0 0 12px} strong{color:var(--ink)}
     </div>
   </div>
 
-  <div class="eyebrow">Editions &middot; sequenced by adoption risk</div>
-  <h1>The three commvita editions</h1>
-  <p class="sub"><strong>Own your platform</strong> &rarr; <strong>govern your organisation</strong> &rarr; <strong>run your health economy</strong>. The editions are sequenced by <strong>adoption risk</strong>, not by features &mdash; so the first commercial offering is the one a board can buy quickly, and the destination architecture follows.</p>
+  <div class="eyebrow">Start here</div>
+  <h1>What it costs, and what it could save</h1>
+  <p class="sub">Our price with nothing hidden behind it, the shape of the stack you&rsquo;d be replacing counted from our own register, and a calculator that runs on your numbers instead of ours. Plus everything the arithmetic leaves out.</p>
   <div class="rule"></div>
-  <style>.key{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted,#5D6B85);margin:14px 0 0}.key .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}.key b{color:var(--ink,#141C2E)}</style><div class="key"><b>Live vs demonstrated:</b> <span><span class="dot" style="background:var(--teal)"></span><b>Live</b> &mdash; real, API-backed platform logic (wired end-to-end today)</span> <span><span class="dot" style="background:var(--orange)"></span><b>Demonstrated</b> &mdash; representative control surface with seeded data</span></div>
-  <div class="copy">&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</div>
 
-  <div class="note" style="margin-top:22px"><b>Why this order.</b> Governance, assurance, information governance and AI governance sell to <strong>boards</strong> rather than clinicians &mdash; no clinical-accreditation dependency before go-live, lower implementation risk, and an addressable market that extends beyond healthcare providers. The clinical layer follows once the governance record is in place.</div>
-
-  <div class="stack">
-
-    <div class="ed base">
-      <div class="hd"><h2>1 &middot; Commvita Flow Edition</h2><span class="badge base">Base</span><span class="badge price">&pound;1 per instance &middot; optional support</span></div>
-      <div class="tagline">Own your platform.</div>
-      <p class="pos"><b>Purpose:</b> create awareness, goodwill and an open-standard ecosystem &mdash; and be the obvious alternative to federated-data-platform lock-in. Nobody can argue with the entry cost.</p>
-                                                                                          <p class="pos">Everything the NHS Federated Data Platform does, at £1 per Commvita Flow Edition instance — self-hosted, on open standards (openEHR / FHIR / OMOP), with no proprietary platform contract. The open platform foundation, core utilities and developer toolkit, plus the full FDP-parity operational product set: every module here has a real FDP counterpart, so a buyer can never answer a paid edition with &quot;the FDP already does that&quot;. What the FDP CANNOT do — the longitudinal clinical record and clinical workflow — is NOT here, and that&rsquo;s the whole difference; that&rsquo;s the differentiator and it sits in the Population Platform.</p>
-      <div class="mods"><span class="lbl">Open platform foundation</span>
-        <span class="mod">Open record model — openEHR / FHIR</span><span class="mod">Data Fabric — FHIR R4 APIs</span><span class="mod">Integration engine — HL7 / FHIR</span><span class="mod">Identity &amp; access management (RBAC)</span><span class="mod">RBAC permission matrix — 18 roles x 16 data domains, inline edit, DSPT export</span><span class="mod">Organisation spine — effective-dated structure &amp; reorganisation</span><span class="mod">Audit framework — hash-chained account access log, tamper-evident on read</span><span class="mod">Audit log — the platform-wide action trail</span><span class="mod">API gateway</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Core utilities</span>
-        <span class="mod">Dashboarding &amp; analytics</span><span class="mod">Case management</span><span class="mod">Federated query</span><span class="mod">Data products &amp; catalogue</span><span class="mod">GPES ingest — General Practice Extraction Service pipeline</span><span class="mod">SUS / HES ingest — spell and episode reconciliation, CDS submission</span><span class="mod">Document management</span><span class="mod">Data quality (DQMI) — completeness, validity, timeliness</span><span class="mod">Report Registry — every statutory return, its owner and its COMPUTED deadline</span><span class="mod">Privacy-enhancing technology — k-anonymity, differential privacy</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Developer toolkit &amp; ecosystem</span>
-        <span class="mod">API &amp; webhook framework</span><span class="mod">SMART on FHIR app launch</span><span class="mod">Connector wizard &amp; partner integration</span><span class="mod">Jurisdiction pack registry</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">FDP transition &amp; data model</span>
-        <span class="mod">FDP Exit &amp; Continuity</span><span class="mod">Flow Edition ↔ NHS FDP comparison</span><span class="mod">FDP CDM — Trust Data Console</span><span class="mod">PulseGrid — integration assurance</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">FDP-parity operational products</span>
-        <span class="mod">RTT PTL Dashboard — Shared PTL · RTT Validation</span><span class="mod">Cancer Pathways — Cancer360</span><span class="mod">Virtual Ward Hub — Crisis Response · virtual wards</span><span class="mod">Patient Initiated Follow-Up — Patient Led Validation</span><span class="mod">DNA Analysis — Outpatients CCS</span><span class="mod">Clinic Management &amp; Room Booking — CMRB</span><span class="mod">commvita Flow — System Co-ordination Centre · patient flow / OPEL</span><span class="mod">Discharge Hub — Discharge planning (OPTICA)</span><span class="mod">Population Health — Population Health Management</span><span class="mod">Health Inequalities</span><span class="mod">Outcome Intelligence</span><span class="mod">Workforce Intelligence</span><span class="mod">Theatre Productivity — Inpatients CCS · theatre scheduling &amp; utilisation</span><span class="mod">Diagnostics Capacity — diagnostics &amp; imaging waits</span><span class="mod">A&amp;E Demand Forecasting — UEC demand &amp; capacity</span><span class="mod">Bed Board — ward occupancy, outliers, predicted discharge</span><span class="mod">Winter Pressures Forecast — winter / UEC pressures</span><span class="mod">NHS Supply Chain — inventory / supply chain</span><span class="mod">OMOP Transformation — secondary use / SDE analytics</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Access</span>
-        <span class="mod">Unified Waiting List</span><span class="mod">Waiting Well Hub</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Analytics</span>
-        <span class="mod">Geospatial Inequalities Map</span><span class="mod">LOS Prediction</span><span class="mod">Monitor</span><span class="mod">Optimise</span><span class="mod">Referral Network Graph</span><span class="mod">Synthetic Data Generation</span><span class="mod">UKHSA Surveillance</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Data</span>
-        <span class="mod">Research Data Portal</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Finance</span>
-        <span class="mod">GP Contract DES</span><span class="mod">GP2GP Record Transfer</span><span class="mod">ICS Contract Intelligence</span><span class="mod">NHS Mail Integration</span><span class="mod">NHS Payment System</span><span class="mod">PCN Support</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Identity</span>
-        <span class="mod">EMPI Hub</span><span class="mod">OIDC / Entra ID SSO</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Integrations</span>
-        <span class="mod">EPR Hub</span><span class="mod">Integrations Hub</span><span class="mod">Oman Integrations</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Interop</span>
-        <span class="mod">Batch File Adapters</span><span class="mod">CDS Hooks</span><span class="mod">Cross-Border Interoperability</span><span class="mod">EPR Bed Integration</span><span class="mod">FHIR Bulk Export</span><span class="mod">GP Connect</span><span class="mod">HL7 ADT Feed</span><span class="mod">IHE Integration Profiles</span><span class="mod">IM1 Pairing</span><span class="mod">Medical Device Gateway</span><span class="mod">Message Deduplication</span><span class="mod">NHS 111 Integration</span><span class="mod">NHS Integrations</span><span class="mod">NRL Connector</span><span class="mod">ODS Health</span><span class="mod">Schema Library</span><span class="mod">TEFCA / QHIN Exchange</span><span class="mod">Terminology Service</span><span class="mod">Transformation Studio (HL7↔FHIR)</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Operations</span>
-        <span class="mod">Demand vs Capacity Reservoir Board</span><span class="mod">Hospital Digital Twin</span><span class="mod">Patient Flow Sankey</span><span class="mod">Patient Transfers</span><span class="mod">Practice Admin Hub</span><span class="mod">RTT Waiting Swarm</span><span class="mod">SDEC Hub</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Operations &amp; Flow</span>
-        <span class="mod">Community Bed Management</span><span class="mod">Theatre List</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Patient-Facing</span>
-        <span class="mod">Patient Comms Design Studio</span><span class="mod">Patient Communications Log</span><span class="mod">Patient Feedback Portal (public)</span><span class="mod">SMS Gateway</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Planning</span>
-        <span class="mod">ICB Commissioning &amp; Procurement</span><span class="mod">Ireland Ministerial Dashboard</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Platform</span>
-        <span class="mod">AI Assistant Provider Config</span><span class="mod">Aggregate Indicator Reporting &amp; DHIS2 Connector</span><span class="mod">Communications CRM</span><span class="mod">Feature Flags</span><span class="mod">Feedback Admin</span><span class="mod">Health System Builder</span><span class="mod">Integrated Telephony Hub</span><span class="mod">Jurisdiction Setup Agent</span><span class="mod">Menu Builder</span><span class="mod">Multi-Jurisdiction Platform — Gibraltar</span><span class="mod">Offline Settings</span><span class="mod">Org Admin</span><span class="mod">Process Kit</span><span class="mod">Resource Management</span><span class="mod">Tasks</span><span class="mod">User Management</span><span class="mod">commvita™ Concierge</span><span class="mod">commvita™ MyDay</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Referrals</span>
-        <span class="mod">BaRS Compliance</span><span class="mod">Waiting List</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Shared Care</span>
-        <span class="mod">Care Homes Shared Record</span><span class="mod">ICS Population Analytics</span><span class="mod">SPR Contribution Hub</span><span class="mod">SPR Readiness Toolkit</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">US-ACO</span>
-        <span class="mod">ACO Attribution</span><span class="mod">Da Vinci DTR</span><span class="mod">Episode Analytics</span><span class="mod">HCC Risk Coding</span><span class="mod">Network Leakage Alerts</span><span class="mod">Payer Dashboard</span><span class="mod">Payer Data Feeds</span><span class="mod">Prior Auth</span><span class="mod">Quality Measure Tracker</span><span class="mod">RAF Recapture Engine</span><span class="mod">RAF Score Monitor</span><span class="mod">STAR Ratings Optimisation</span><span class="mod">TCOC Dashboard</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Workforce</span>
-        <span class="mod">Spryt ASA — Advanced Scheduling</span>
-      </div>
-</div>
-
-    <div class="ed pack">
-      <div class="plus" aria-hidden="true">+</div>
-      <div class="hd"><h2>2 &middot; Governance &amp; Assurance Edition</h2><span class="badge add">Govern</span></div>
-      <div class="tagline">Govern your organisation.</div>
-      <p class="pos"><b>Purpose:</b> govern the organisation. Sold to boards, not clinicians. No clinical-accreditation dependency before go-live, lower implementation risk, and an addressable market that extends beyond healthcare providers.</p>
-                                                                                          <p class="pos">Becomes the organisation&#x27;s governance system of record and its organisational memory: every board decision, risk, control, incident, information-governance request, AI system, workforce competence record and piece of inspection evidence in one traceable place. Contains NO clinical workflow — flow, capacity, clinical and population capability sit in the Population Platform.</p>
-      <div class="mods"><span class="lbl">Board assurance</span>
-        <span class="mod">Board Management — portal, papers, committees, actions</span><span class="mod">Board Assurance Framework (BAF)</span><span class="mod">Board Entity Governance</span><span class="mod">Register of Interests</span><span class="mod">commvita Sign — e-signature &amp; decision logging</span><span class="mod">Governance &amp; Delivery Visual Boards — risk bubble map, maturity radar, delivery Gantt</span><span class="mod">commvita Financial Recovery &amp; SIP — recovery plans, savings schemes, approval gates and delivery assurance</span><span class="mod">Quality Impact Assessment — impact of service change on quality of care, evidence, mitigation and panel review</span><span class="mod">Quality Improvement &amp; Evidence Programme — problem, baseline, PDSA, Lean and Agile tests, evidence, benefits and organisational learning</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Risk &amp; compliance</span>
-        <span class="mod">Corporate Risk Register</span><span class="mod">Golden Thread — incident → theme → risk → objective</span><span class="mod">Policy-to-Process — policy as a gated process, authority matrix, N-of-M approvals, WORM audit</span><span class="mod">Policy management — authoring, versioning, version-aware attestation</span><span class="mod">Compliance Action Hub</span><span class="mod">Regulatory &amp; Commissioner Engine</span><span class="mod">Clinical Risk Management — DCB0129/0160 register &amp; CSO sign-off</span><span class="mod">Hazard Log — DCB0129 hazard identification &amp; control</span><span class="mod">DCB0160 Workflow — change assessment for system modifications</span><span class="mod">Safety Case Report — DCB0129/0160 safety case compilation</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Incident management</span>
-        <span class="mod">Incident Reporting (PSIRF · LFPSE)</span><span class="mod">Root Cause Analysis</span><span class="mod">CAPA workflow</span><span class="mod">Near-Miss Tracking</span><span class="mod">Complaints Management</span><span class="mod">Duty of Candour</span><span class="mod">Freedom to Speak Up</span><span class="mod">Mortality Review — MBRRACE · LeDeR · SHMI</span><span class="mod">LEARN Reporting — national patient-safety event submission</span><span class="mod">CQC Notifications — statutory notification register</span><span class="mod">RIDDOR Reporting — HSE statutory reporting</span><span class="mod">Safety Walkrounds — board-to-ward assurance visits</span><span class="mod">Patient Feedback (FFT) — responses, themes, CQC evidence pack</span><span class="mod">Patient &amp; Family Escalation (Rapid Review) — 24/7 worsening-condition escalation</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Information governance &amp; privacy</span>
-        <span class="mod">IG Hub — DSPT, DPIA, breach, DSAR</span><span class="mod">Confidential-Information Governance Spine</span><span class="mod">Legitimate Relationship Log</span><span class="mod">Data Sharing Partnership Agreements</span><span class="mod">IG Training Compliance</span><span class="mod">Supplier IG Assurance</span><span class="mod">FOI workflow — request, statutory clock, exemptions, review</span><span class="mod">Records management — retention &amp; disposal schedules</span><span class="mod">Information Asset Register + Art.30 ROPA</span><span class="mod">Patient Data Control — Art.30 data flows, ABAC policy, National Data Opt-Out</span><span class="mod">Shared Care Opt-Out Registry — FHIR Consent, emergency override governance</span><span class="mod">Federated Governance — cross-org data sharing agreements &amp; steward registry</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Data &amp; AI governance</span>
-        <span class="mod">AI Governance — ATRS register, AIA, bias, Art.22 overrides</span><span class="mod">AI Integration Hub — governed provider config &amp; audit</span><span class="mod">Data Transparency Register</span><span class="mod">Data lineage — source &amp; transformation tracking</span><span class="mod">Microsoft Purview integration (optional, removable)</span><span class="mod">Clinical Studies — research IG, DSA register, re-identification risk, extract ledger</span><span class="mod">Federated Cohort Discovery — GDPR Art.89, k≥5 suppression</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Training, CPD &amp; workforce assurance</span>
-        <span class="mod">commvita Learn — learning management &amp; course catalogue</span><span class="mod">Mandatory Training compliance — statutory &amp; role-based</span><span class="mod">CPD record &amp; Training Passport — hours, evidence, export</span><span class="mod">Accreditations register — NMC · GMC · HCPC, expiry &amp; manager verification</span><span class="mod">Competency frameworks &amp; supervisor sign-off</span><span class="mod">Appraisal &amp; professional revalidation — signature-backed sign-off, Well-Led evidence</span><span class="mod">eAssessment — scored knowledge checks with attempt history</span><span class="mod">commvita Learn Mobile — offline learning delivery</span><span class="mod">Staff Portal — personal governance (training, interests, approvals, signatures)</span><span class="mod">Staff Hierarchy Builder — accountability &amp; clinical supervision</span><span class="mod">IG training compliance — DSPT Criterion 7</span><span class="mod">Staff Wellbeing — PERMA+, staff survey, psychological safety (figures are seeded)</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Governance intelligence</span>
-        <span class="mod">Ask the corpus — cited answers from your own policies and SOPs</span><span class="mod">Policy → interactive flowchart — version-bound, approved by a named person</span><span class="mod">Safety thematic analysis — patterns across the free-text safety record</span><span class="mod">PFD (Regulation 28) register — coroner concerns, statutory 56-day clock</span><span class="mod">Policy estate audit — duplication, overdue review, missing ownership</span><span class="mod">Merger harmonisation — conflicts and gaps between two estates</span><span class="mod">Process Quality Baseline — cycle time, handoffs, rework and coded-vs-free-text, measured over time</span><span class="mod">Clinical Productivity — five domains reported separately, and no composite score</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Audit &amp; evidence</span>
-        <span class="mod">Clinical Audit</span><span class="mod">Regulatory Assessment (CQC SAF / multi-jurisdiction)</span><span class="mod">Assurance Dashboard — deployment rings</span><span class="mod">HIMSS Maturity Cockpit</span><span class="mod">Cyber Assessment (Cyber Essentials · ISO 27001)</span><span class="mod">Data Security Architecture</span><span class="mod">Real-Time Security Console — SOC, Art.9 monitoring, GDPR Art.33 ICO countdown</span><span class="mod">DTAC Compliance — the NHS supplier gate</span><span class="mod">ShCR Maturity Scorecard</span><span class="mod">PRSB Compliance Dashboard — Core Information Standard completeness</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Statutory reporting &amp; annual returns</span>
-        <span class="mod">Quality &amp; Performance Report (DCEOE) — the monthly board report; ND carries its reason</span><span class="mod">Automated QPR Reporting — IAPT QPR (NHS Digital DS v2.0), CQC/NICE KPI pack, PCN/ARRS utilisation</span><span class="mod">OPEL submission — the daily NHS England operational pressures return</span><span class="mod">Quality Account — the statutory annual quality publication</span><span class="mod">Annual Plan Hub — SMART outcomes, quarterly milestones, live RAG</span><span class="mod">Net Zero &amp; Sustainability — Scope 1/2/3 and the CNZAP annual return</span><span class="mod">AI Transformation Advisor — executive decision support, human-in-the-loop</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Statutory readiness &amp; operational command</span>
-        <span class="mod">EPRR Hub — Civil Contingencies Act 2004, business continuity, on-call, WORM loggist</span><span class="mod">Major Incident — METHANE, JESIP joint decision, CSCATTT, Gold/Silver/Bronze, casualty tracking</span><span class="mod">On-Call Manager — OPEL assessment, escalation, duty log, handover</span><span class="mod">Safe Staffing / CHPPD — NQB safe staffing, professional judgement, board return</span><span class="mod">Bank &amp; Agency Cascade — bank-first cascade, agency control, WTD compliance</span><span class="mod">Shift Priority Board — shift-aware priority actions &amp; handover</span><span class="mod">Handover Clock — 15-minute handover standard, breach &amp; delay reasons</span><span class="mod">Jurisdiction Profile — versioned, sourced, signed-off jurisdictional variance</span><span class="mod">Firearms Certificate Management — evidence-grade decision log (per-jurisdiction regime)</span><span class="mod">21st Century Cures Act — ONC information blocking (US)</span><span class="mod">EHDS Compliance — EU Reg. 2024/2987</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Ambulance</span>
-        <span class="mod">HEMS Coordination</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Analytics</span>
-        <span class="mod">Benchmarking</span><span class="mod">ICS Finance</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Clinical</span>
-        <span class="mod">Community Nursing Activity (KF25/KF26)</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Operations</span>
-        <span class="mod">Elective Experience Standards</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">US-ACO</span>
-        <span class="mod">CMS Conditions of Participation</span><span class="mod">CMS Interoperability</span><span class="mod">No Surprises Act</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Workforce</span>
-        <span class="mod">Dynamic Scheduling</span><span class="mod">ESR Integration</span><span class="mod">HR &amp; Finance</span><span class="mod">Job Planning &amp; PA Management</span><span class="mod">NHS Pension &amp; Job Planning</span><span class="mod">Rostering</span><span class="mod">Staff Directory</span><span class="mod">Staff Org Management</span><span class="mod">Workforce Heatmaps &amp; Skill-Mix</span>
-      </div>
-</div>
-
-    <div class="ed pack">
-      <div class="plus" aria-hidden="true">+</div>
-      <div class="hd"><h2>3 &middot; Population Platform</h2><span class="badge add">Destination architecture</span></div>
-      <div class="tagline">Run your health economy.</div>
-      <p class="pos"><b>Purpose:</b> the whole-system operating platform. Highest value and highest adoption risk &mdash; so it follows the governance beachhead instead of leading the commercial conversation.</p>
-                                                                                          <p class="pos">Everything in the Flow Edition and the Governance &amp; Assurance Edition, plus the longitudinal clinical record across primary care, adult social care, mental health, pharmacy, dentistry and the other community services, with clinical operations, population health, and the operational and clinical intelligence layer.</p>
-      <div class="mods"><span class="lbl">Clinical record</span>
-        <span class="mod">Whole Person Record</span><span class="mod">Single Patient Record</span><span class="mod">Neighbourhood Health Record</span><span class="mod">Care journey &amp; personalised care plans</span><span class="mod">Consultations &amp; clinical documentation</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Care settings on the one record</span>
-        <span class="mod">Primary care — QOF registers, recall &amp; exception reporting</span><span class="mod">Primary care — prescribing &amp; repeat medication</span><span class="mod">Long-term conditions &amp; structured reviews</span><span class="mod">Adult social care — Care Act assessment, support plan, direct payments</span><span class="mod">Community pharmacy — Pharmacy First</span><span class="mod">Community dentistry — FDI odontogram, BPE, UDA contract</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Clinical operations</span>
-        <span class="mod">Community Nursing Portal</span><span class="mod">Mental Health</span><span class="mod">Referral Hub &amp; optimisation</span><span class="mod">Integrated Neighbourhood Teams</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Clinical &amp; national returns</span>
-        <span class="mod">MHSDS submission — Mental Health Services Data Set</span><span class="mod">National audit feeds — NICOR · SSNAP · NACEL · NNAP · NBOCAP</span><span class="mod">CQRS / SCR — national quality reporting and summary record push</span><span class="mod">QRDA I/III — CMS eCQM submission (US)</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Population health</span>
-        <span class="mod">Population Risk Pyramid</span><span class="mod">Deprivation Mapping</span><span class="mod">Neighbourhood Intelligence &amp; Action</span><span class="mod">Social Prescribing</span><span class="mod">Population Genomics, Pharmacogenomics &amp; Epigenomics</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Analytics &amp; AI</span>
-        <span class="mod">LeftShift Intelligence</span><span class="mod">Predictive Analytics</span><span class="mod">Operational Instruments</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Governance &amp; assurance</span>
-        <span class="mod">Included in full — every module from the Governance &amp; Assurance Edition</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">AI / Clinical</span>
-        <span class="mod">AI Clinical Documentation Assistant</span><span class="mod">NLP Document Coding</span><span class="mod">Order Sets</span><span class="mod">VoiceScribe</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Access</span>
-        <span class="mod">Smart Triage</span><span class="mod">Triage Queue</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Ambulance</span>
-        <span class="mod">Ambulance Hub</span><span class="mod">Burns Management</span><span class="mod">Cardiac Arrest Management</span><span class="mod">ECG Transmission + STEMI Alert</span><span class="mod">JRCALC Guidelines</span><span class="mod">Paediatric Drug Calculator</span><span class="mod">Paramedic Crew App</span><span class="mod">Patient Transport &amp; Off-Island Travel</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Analytics</span>
-        <span class="mod">Intervene</span><span class="mod">Prescribing Analytics</span><span class="mod">Smart Screening</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Clinical</span>
-        <span class="mod">Ambient Clinical AI</span><span class="mod">Antimicrobial Stewardship</span><span class="mod">CDSS Engine</span><span class="mod">Cardiac Rehabilitation</span><span class="mod">Clinical Pharmacy</span><span class="mod">Clinical Template Editor</span><span class="mod">Clinical Tools Library</span><span class="mod">Community Audiology</span><span class="mod">Consent Hub</span><span class="mod">Deterioration Alerting</span><span class="mod">Diabetes Management</span><span class="mod">GP Validation Workflow</span><span class="mod">Genomics Service</span><span class="mod">Heart Failure Hub</span><span class="mod">Immunisation Management</span><span class="mod">LTC Reviews</span><span class="mod">Life-Course Timeline</span><span class="mod">MSK Hub</span><span class="mod">Medications</span><span class="mod">Medicines Optimisation</span><span class="mod">Neurology Hub</span><span class="mod">Occupational Therapy</span><span class="mod">PACS / VNA Viewer</span><span class="mod">Palliative Register (GSF)</span><span class="mod">Physiotherapy</span><span class="mod">Podiatry</span><span class="mod">Recall Management</span><span class="mod">Respiratory Hub</span><span class="mod">SNOMED Crosswalk</span><span class="mod">SPR Quick View</span><span class="mod">Safe Handover</span><span class="mod">Screening Programmes</span><span class="mod">Sexual Health EPR</span><span class="mod">Speech &amp; Language Therapy</span><span class="mod">Stroke Care</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Community</span>
-        <span class="mod">Care Home &amp; Hospice</span><span class="mod">Carer Identification</span><span class="mod">Frailty Programme</span><span class="mod">Interpreter Services</span><span class="mod">OASIS-E2 Assessment</span><span class="mod">Provider Portal</span><span class="mod">Social Prescribing Directory</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Community &amp; Remote</span>
-        <span class="mod">Clinical Assessment Templates</span><span class="mod">Community Ophthalmology</span><span class="mod">Continuous Waveform RPM</span><span class="mod">Falls Management</span><span class="mod">IPC Log</span><span class="mod">Lone Worker Safety</span><span class="mod">Luscii Remote Monitoring</span><span class="mod">Paediatric Nursing</span><span class="mod">Specialist Nursing</span><span class="mod">Telehealth</span><span class="mod">Visit Schedule</span><span class="mod">Wearable Device Integration</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Finance</span>
-        <span class="mod">Clinical Letters</span><span class="mod">Document Capture + OCR</span><span class="mod">Billing</span><span class="mod">Billing rules engine</span><span class="mod">Lab Results Ingest</span><span class="mod">Online Consultation</span><span class="mod">Private Patient Charges</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Governance</span>
-        <span class="mod">Assisted Dying Pathway</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Maternity</span>
-        <span class="mod">Maternity EPR</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Medicines</span>
-        <span class="mod">Complex Commodity Management</span><span class="mod">Formulary Management</span><span class="mod">Pharmacy TTAs</span><span class="mod">eMAR / BCMA</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Mental Health</span>
-        <span class="mod">Advance Care Planning</span><span class="mod">CAMHS</span><span class="mod">Care Package Finance</span><span class="mod">Carer Assessments</span><span class="mod">Dual Diagnosis</span><span class="mod">Eating Disorders</span><span class="mod">Forensic MH</span><span class="mod">IAPT / NHS Talking Therapies</span><span class="mod">MH Bed Management</span><span class="mod">MH Clustering</span><span class="mod">Mental Health Records</span><span class="mod">NHS Talking Therapies</span><span class="mod">Perinatal MH</span><span class="mod">Social Care Records</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Operations</span>
-        <span class="mod">Urgent Care Centre</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Patient-Facing</span>
-        <span class="mod">Digital Front Door</span><span class="mod">NHS App Integration</span><span class="mod">PROMs / PREMs</span><span class="mod">Patient Portal Admin</span><span class="mod">Patient Portal Home</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Platform</span>
-        <span class="mod">AI Consultation Assistant</span><span class="mod">Clinical Knowledge Base</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Prescribing</span>
-        <span class="mod">Medicines Optimisation &amp; Polypharmacy Visualiser</span><span class="mod">Repeat Monitoring</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Quality</span>
-        <span class="mod">QOF Exception Reporting</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Referrals</span>
-        <span class="mod">Advice &amp; Guidance (eRS)</span><span class="mod">Appointments</span><span class="mod">Referral Optimisation</span><span class="mod">Referrals</span><span class="mod">Total Triage</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Remote</span>
-        <span class="mod">commvita Care — Mood &amp; Deterioration</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Safety</span>
-        <span class="mod">Safeguarding Hub</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">Social Care</span>
-        <span class="mod">Brokerage &amp; Placement</span><span class="mod">Care Act Cost Cap Modelling</span><span class="mod">Children&#x27;s Social Care</span><span class="mod">Court of Protection &amp; Mental Capacity Act</span><span class="mod">Direct Payments</span><span class="mod">Financial Assessment</span><span class="mod">Needs Assessment</span><span class="mod">SEND / EHC Plans</span><span class="mod">Shared Lives</span><span class="mod">Social Care Performance</span>
-      </div>
-      <div class="mods" style="margin-top:12px"><span class="lbl">US-ACO</span>
-        <span class="mod">Annual Wellness Visit</span><span class="mod">Chronic Care Management</span><span class="mod">Collaborative Care (BHI/CoCM)</span><span class="mod">Principal Care Management</span><span class="mod">Readmission Prevention</span><span class="mod">Remote Patient Monitoring</span><span class="mod">Remote Therapeutic Monitoring</span><span class="mod">SDOH Screening</span><span class="mod">Transitional Care Management</span>
-      </div>
-</div>
-
+  <div class="key">
+    <b>Live vs demonstrated:</b>
+    <span><span class="dot" style="background:var(--teal)"></span><b>Live</b> — real, API-backed platform logic (wired end-to-end today)</span>
+    <span><span class="dot" style="background:var(--orange)"></span><b>Demonstrated</b> — representative control surface with seeded data / illustrative UI mock-up</span>
   </div>
 
-  <div class="note"><b>Additive by design, honest by default.</b> The Flow Edition stands alone as the open, FDP-parity base; each edition layers on top without a rebuild, and the Population Platform includes governance &amp; assurance in full. Items marked <span class="mod roadmap" style="padding:1px 7px">roadmap</span> are named gaps we intend to build &mdash; they&rsquo;re <b>not</b> shipped today and are never presented as live. Everything else resolves to a real, routed module. The same edition definition drives the in-app &ldquo;Editions &amp; Catalogue&rdquo; tab. Non-SaMD positioning surface.</div>
+
+  <div style="text-align:center;font-size:12px;color:var(--sub);margin:12px 0 4px;letter-spacing:.02em">&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</div>
+
+  
+  <style>
+.bc{margin:18px 0 6px}
+.bc svg{width:100%;height:auto;display:block}
+.calc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin:18px 0 6px;box-shadow:var(--shadow)}
+.calc h3{margin:0 0 4px;font-size:16px}
+.calc .note{font-size:12.5px;color:var(--muted);margin:0 0 14px}
+.calcgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+.fld{display:flex;flex-direction:column;gap:4px}
+.fld label{font-size:12.5px;color:var(--muted)}
+.fld input{font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--border);border-radius:9px;background:var(--bg,#fff);color:var(--ink);width:100%;box-sizing:border-box}
+.calcout{margin-top:16px;border-top:1px solid var(--border);padding-top:14px}
+.orow{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:14px;border-bottom:1px dashed var(--border)}
+.orow span:last-child{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.orow.sum{border-bottom:none;border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font-size:15px}
+.orow small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.gap{margin-top:12px;background:var(--tint,#F2F4F7);border-radius:11px;padding:12px 14px}
+.gap .big{font-size:26px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+@media(max-width:640px){.calcgrid{grid-template-columns:1fr}}
+</style>
+
+  <!-- ================= 1 ================= -->
+  <h2 class="grant"><span class="num">1</span> What we know, and what only you know</h2>
+  <p class="lead">A business case needs two numbers: what the new thing costs, and what the old thing costs. We can give you the first exactly. We can&rsquo;t give you the second, because it&rsquo;s yours, and any supplier who hands you a figure for your own spending has made it up.</p>
+  <p>So this page does three things. It states our price with nothing hidden behind it. It shows, from our own register, the shape of the stack you&rsquo;d be replacing. And it gives you a calculator that works on your numbers, with every step of the arithmetic visible, so you can put a size on the question before you ever talk to us.</p>
+  <div class="callout"><b>Nothing here is a saving we&rsquo;re claiming.</b> The calculator works out the gap between what you spend today and what one platform would cost you. A gap isn&rsquo;t a saving. Closing it takes a migration, a service change and a year or two of work, and section 6 lists what the arithmetic leaves out.</div>
+
+  <!-- ================= 2 ================= -->
+  <h2 class="grant"><span class="num">2</span> What commvita costs</h2>
+  <p class="lead">Three lines. Two of them have a number, and the third doesn&rsquo;t, so we say so instead of writing one in.</p>
+  <div class="tablewrap livewrap">
+    <table>
+      <colgroup><col style="width:26%"><col style="width:30%"><col style="width:44%"></colgroup>
+      <thead><tr><th>What</th><th>Price</th><th>Why it&rsquo;s that</th></tr></thead>
+      <tbody>
+        <tr><td><b>The software</b></td><td><b>&pound;1 per Commvita Flow Edition instance</b></td><td>Published, and it&rsquo;s the whole licence. The Flow Edition carries the platform base: identity, access, audit, the data layer, flow and governance. The Population Platform adds the clinical record when you want it.</td></tr>
+        <tr><td><b>The hosting</b></td><td>Your own</td><td>It runs on your kit or your cloud tenancy, so this is a cost you already carry and already know. We never see the bill and never mark it up.</td></tr>
+        <tr><td><b>The support</b></td><td>Not published</td><td>Response times and a support model are contract matters and we haven&rsquo;t settled them. We&rsquo;d rather leave a blank here than print a number we can&rsquo;t stand behind.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>That third row is the honest limit of this page. Until support is priced, no one can give you a complete total for the commvita side, including us. What the calculator below can do is show you the scale of what sits on the other side of the ledger, which is the part that decides whether the conversation is worth having.</p>
+
+  <!-- ================= 3 ================= -->
+  <h2 class="grant"><span class="num">3</span> The stack you&rsquo;d be replacing</h2>
+  <p class="lead">The platform benchmarks itself against the products that do the same job, capability by capability, and the register ships inside the software. That register is also a map of what a health system buys today, so here&rsquo;s what it shows.</p>
+  <div class="grid3">
+    <div class="role" style="border-top-color:var(--teal)"><h3>454 suppliers</h3>
+      <div class="who">named in the register</div>
+      <p>To cover the 440 capabilities commvita audits itself against, the register names 454 separate suppliers and 1,023 separate products. That isn&rsquo;t a list of everyone&rsquo;s competitors. It&rsquo;s a list of who you&rsquo;d be buying from.</p></div>
+    <div class="role" style="border-top-color:#7B61FF"><h3>75 of 440</h3>
+      <div class="who">the broadest single supplier</div>
+      <p>The supplier with the widest coverage in the register reaches 75 of the 440 capabilities, about one in six. Only eighteen suppliers reach ten or more. There&rsquo;s no one you can buy all of this from.</p></div>
+    <div class="role" style="border-top-color:var(--orange)"><h3>323 of 454</h3>
+      <div class="who">there for one thing</div>
+      <p>Three hundred and twenty-three of those suppliers appear against exactly one capability. Each is a contract, a renewal, an assurance pack, an integration and somebody&rsquo;s afternoon.</p></div>
+  </div>
+  <div class="bc"><svg viewBox="0 0 900 132" role="img" aria-labelledby="tcov dcov">
+    <title id="tcov">Coverage of 440 capabilities by the broadest single supplier</title>
+    <desc id="dcov">A bar of 440 capabilities. The broadest single supplier in commvita's competitive register covers 75 of them, about one in six. The remaining 365 would come from other suppliers.</desc>
+    <text x="8" y="18" style="font:700 13px system-ui,sans-serif;fill:var(--fig-ink,#141C2E)">440 capabilities in the register</text>
+    <rect x="8" y="30" width="884" height="30" rx="6" style="fill:var(--fig-tint,#F2F4F7);stroke:var(--fig-hair,#D9DFE8)"/>
+    <rect x="8" y="30" width="150" height="30" rx="6" style="fill:var(--fig-teal,#00B8A6)"/>
+    <text x="20" y="50" style="font:700 12.5px system-ui,sans-serif;fill:#fff">75</text>
+    <text x="172" y="50" style="font:12.5px system-ui,sans-serif;fill:var(--fig-body,#42506B)">the other 365 come from other suppliers</text>
+    <text x="8" y="82" style="font:12.5px system-ui,sans-serif;fill:var(--fig-muted,#5D6B85)">The teal block is the widest-reaching single supplier named anywhere in the register.</text>
+    <text x="8" y="102" style="font:12.5px system-ui,sans-serif;fill:var(--fig-muted,#5D6B85)">Eighteen suppliers reach ten capabilities or more. 323 of the 454 are named against exactly one.</text>
+    <text x="8" y="122" style="font:11.5px system-ui,sans-serif;fill:var(--fig-muted,#5D6B85)">Counted from commvita&rsquo;s own competitive register at build B-733. Our assessment of who competes where, not an independent survey.</text>
+  </svg></div>
+  <p>The licences are the part everyone counts. The part that doesn&rsquo;t appear on any purchase order is what it takes to hold them together: the interfaces, the assurance packs, the renewal calendar, and the people whose week goes on moving data from one system into another. That last one is usually the largest number in the whole model, and it&rsquo;s the one nobody has a line for.</p>
+
+  <!-- ================= 4 ================= -->
+  <h2 class="protect"><span class="num">4</span> Work it out on your numbers</h2>
+  <p class="lead">Put your own figures in. The arithmetic is shown as it happens, so you can check every step and argue with any of it.</p>
+
+  <div class="calc">
+    <h3>What you spend today</h3>
+    <p class="note">The boxes start with round example numbers so the page isn&rsquo;t blank. They&rsquo;re not a claim about your organisation. Replace them.</p>
+    <div class="calcgrid">
+      <div class="fld"><label for="bcSys">Separate systems you&rsquo;d consolidate</label><input id="bcSys" type="number" min="0" step="1" value="12"></div>
+      <div class="fld"><label for="bcSysC">Average cost per system, per year (&pound;)</label><input id="bcSysC" type="number" min="0" step="1000" value="120000"></div>
+      <div class="fld"><label for="bcInt">Interfaces you pay to keep running</label><input id="bcInt" type="number" min="0" step="1" value="20"></div>
+      <div class="fld"><label for="bcIntC">Average cost per interface, per year (&pound;)</label><input id="bcIntC" type="number" min="0" step="1000" value="15000"></div>
+      <div class="fld"><label for="bcWte">People moving data between systems (full-time equivalent)</label><input id="bcWte" type="number" min="0" step="0.5" value="6"></div>
+      <div class="fld"><label for="bcWteC">Average employment cost each, per year (&pound;)</label><input id="bcWteC" type="number" min="0" step="1000" value="45000"></div>
+    </div>
+
+    <div class="calcout" id="bcOut">
+      <div class="orow"><span>Licences and subscriptions<small id="bcSysW"></small></span><span id="bcSysT">&mdash;</span></div>
+      <div class="orow"><span>Interfaces<small id="bcIntW"></small></span><span id="bcIntT">&mdash;</span></div>
+      <div class="orow"><span>People holding it together<small id="bcWteW"></small></span><span id="bcWteT">&mdash;</span></div>
+      <div class="orow sum"><span>What the stack costs you a year</span><span id="bcTot">&mdash;</span></div>
+      <div class="gap">
+        <div>On the commvita side of this: <b>&pound;1</b> for the software, your existing hosting, and a support figure nobody can fill in yet.</div>
+        <div style="margin-top:8px">The gap you&rsquo;d be testing a business case against:</div>
+        <div class="big" id="bcGap">&mdash;</div>
+        <div style="font-size:12.5px;color:var(--muted);margin-top:6px">If the 80% planning target held on your estate, the figure to beat would be <b id="bcTgt">&mdash;</b> a year. It&rsquo;s a target, and your own numbers are how you test whether it&rsquo;s plausible here.</div>
+      </div>
+    </div>
+  </div>
+  <p><b>A word about the third box.</b> We don&rsquo;t count those people as a saving, and neither should your case. They&rsquo;re the integration layer, and when the systems stop needing one, they go back to the job they were hired for. The value shows up as work done, not as posts removed, and a case built the other way tends to fall over at the first staff-side meeting.</p>
+
+  <!-- ================= 5 ================= -->
+  <h2 class="protect"><span class="num">5</span> Where the 80% comes from</h2>
+  <p class="lead">The site carries a planning target of up to 80% off software and total cost of ownership. It&rsquo;s worth saying plainly what kind of number that is.</p>
+  <p>It&rsquo;s a model, not a measurement. It assumes a stack of point systems with their integrations, their infrastructure and their assurance overhead collapses into one platform priced at &pound;1, hosted on kit you already pay for. Under those assumptions the licence line nearly disappears, the interface line mostly does, and the people line changes shape instead of vanishing. That&rsquo;s where the number comes from, and it&rsquo;s labelled as a planning target wherever it appears.</p>
+  <p>What it isn&rsquo;t is a result anybody has banked. No deployment has run long enough to produce an audited before-and-after, and when one has, we&rsquo;ll publish the measured figure next to this one and let you see the difference. Until then the calculator is more use to you than the target is, because it runs on facts you can check and we can&rsquo;t.</p>
+
+  <!-- ================= 6 ================= -->
+  <h2 class="rescind"><span class="num">6</span> What the arithmetic leaves out</h2>
+  <p class="lead">Every number above is a run-rate. A business case has to carry the cost of getting there, and these are the lines the calculator doesn&rsquo;t have.</p>
+  <div class="steps">
+    <div class="step g"><div class="s">1</div><div>
+      <h4>Double-running</h4>
+      <p>You&rsquo;ll pay for the old system and the new one at once, for as long as the migration takes. On a clinical system that&rsquo;s usually measured in quarters. It&rsquo;s the single biggest line the run-rate model misses.</p></div></div>
+    <div class="step g"><div class="s">2</div><div>
+      <h4>Getting the data across</h4>
+      <p>Extracting, mapping and checking a record set is work, and some of it is yours because only you know what your local codes mean. The platform reports its own mapping rate and says review when the record isn&rsquo;t clean enough.</p></div></div>
+    <div class="step g"><div class="s">3</div><div>
+      <h4>Contracts that don&rsquo;t end when you want them to</h4>
+      <p>A five-year deal signed last year is a cost until it isn&rsquo;t. Sequencing a consolidation around renewal dates is usually what sets the timetable, not the technology.</p></div></div>
+    <div class="step g"><div class="s">4</div><div>
+      <h4>Training and the productivity dip</h4>
+      <p>People are slower on a new system before they&rsquo;re faster on it. Budget for the dip, and for the training that shortens it.</p></div></div>
+    <div class="step g"><div class="s">5</div><div>
+      <h4>Benefits that need a service change</h4>
+      <p>Some of the gains on this site come from working differently, not from software. Shorter waits and fewer crisis admissions need a pathway change that the platform supports and doesn&rsquo;t deliver on its own. Count those separately, or your case will claim credit it can&rsquo;t evidence.</p></div></div>
+  </div>
+  <div class="callout"><b>The honest edges.</b> Support isn&rsquo;t priced, so no complete commvita total exists. The supplier counts come from our own register and are our assessment of who competes where, not an independent survey. The 80% is a planning target with no audited deployment behind it. And the calculator is arithmetic, not a forecast: it multiplies the numbers you give it and shows the working.</div>
+
+  <h2>How to check any of this</h2>
+  <div class="tablewrap livewrap">
+    <table>
+      <colgroup><col style="width:34%"><col style="width:66%"></colgroup>
+      <thead><tr><th>Claim on this page</th><th>Where to test it</th></tr></thead>
+      <tbody>
+        <tr><td>&pound;1 per Flow Edition instance</td><td>Stated the same way on the <a href="commvita-editions.html">editions page</a> and the <a href="commvita-launch-letter.html">launch letter</a>, with the same caveat about support.</td></tr>
+        <tr><td>454 suppliers, 1,023 products, 75 as the widest single reach</td><td>The competitive register ships inside the platform and names every one. The <a href="commvita-explainer-competitive-intelligence.html">competitive intelligence explainer</a> sets out how it&rsquo;s built and where commvita is behind.</td></tr>
+        <tr><td>What&rsquo;s actually running today</td><td>The <a href="commvita-explainer-extreme-transparency.html">transparency explainer</a> covers live, built and stub, and which pages read the platform and which show seeded data.</td></tr>
+        <tr><td>What leaving would involve</td><td><a href="commvita-explainer-migrating-on-and-off.html">Migrating on, and leaving</a>, and the <a href="commvita-explainer-ai-enabled-escrow.html">escrow page</a> for what happens if we&rsquo;re not here.</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="foot">
     <span>&copy; 2026 Commvita Digital Health Solutions Ltd. All rights reserved.</span>
-    <span>Flow Edition &mdash; &pound;1 per instance (optional support)</span>
-    <span>Open standards: openEHR &middot; FHIR R4 &middot; OMOP</span>
-    <span>Self-hosted &middot; no proprietary platform contract</span>
-    <span>Non-SaMD</span>
+    <span>Flow Edition &pound;1 per instance</span><span>Support priced per contract</span><span>80% is a planning target</span><span>Non-SaMD</span>
   </div>
+
+<script>
+(function(){
+  var ids=['bcSys','bcSysC','bcInt','bcIntC','bcWte','bcWteC'];
+  function n(id){var e=document.getElementById(id);var v=e?parseFloat(e.value):0;return isFinite(v)&&v>0?v:0;}
+  function money(v){return '£'+Math.round(v).toLocaleString('en-GB');}
+  function set(id,t){var e=document.getElementById(id);if(e)e.textContent=t;}
+  function calc(){
+    var sys=n('bcSys'),sysc=n('bcSysC'),itf=n('bcInt'),itfc=n('bcIntC'),wte=n('bcWte'),wtec=n('bcWteC');
+    var a=sys*sysc,b=itf*itfc,c=wte*wtec,t=a+b+c;
+    set('bcSysW',sys+' × '+money(sysc));
+    set('bcIntW',itf+' × '+money(itfc));
+    set('bcWteW',wte+' × '+money(wtec));
+    set('bcSysT',money(a));set('bcIntT',money(b));set('bcWteT',money(c));
+    set('bcTot',money(t));set('bcGap',money(t)+' a year');set('bcTgt',money(t*0.8));
+  }
+  ids.forEach(function(id){var e=document.getElementById(id);if(e){e.addEventListener('input',calc);e.addEventListener('change',calc);}});
+  calc();
+})();
+</script>
+
 </div>
 </body></html>
