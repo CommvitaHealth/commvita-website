@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<title>Yellow Button — commvita proposal</title>
+<!--
+  A download control in the spirit of the xShare Yellow Button, drawn in
+  commvita's own palette. This is a proposal, not an implementation, and it
+  is NOT xShare's official asset — adopting that means following their
+  adoption kit and whatever their specification says the button must look
+  like. Do not caption this as a platform screen.
+-->
+<link rel="stylesheet" href="../../site/fonts.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#fff;font-family:"Archivo","Familjen Grotesk",system-ui,sans-serif}
+  .yb-stage{display:inline-flex;flex-direction:column;gap:18px;align-items:flex-start}
+  .yb{display:inline-flex;align-items:center;gap:16px;
+      background:#FFB020;color:#141C2E;border:0;border-radius:14px;
+      padding:18px 26px;cursor:pointer;
+      box-shadow:0 1px 2px rgba(20,28,46,.10), 0 14px 30px -18px rgba(20,28,46,.55)}
+  .yb:hover{background:#FFC24A}
+  .yb svg{flex:none}
+  .yb-txt{display:flex;flex-direction:column;gap:3px;text-align:left}
+  .yb-lead{font-family:"Familjen Grotesk","Archivo",sans-serif;
+           font-weight:800;font-size:20px;letter-spacing:-.012em;line-height:1.1}
+  .yb-sub{font-size:13px;font-weight:650;opacity:.72;letter-spacing:.01em}
+  .yb-note{font-size:13.5px;font-weight:600;color:#5D6B85;max-width:430px;line-height:1.5}
+</style>
+<div class="yb-stage">
+  <button class="yb">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 3v11m0 0 4.2-4.2M12 14l-4.2-4.2" stroke="#141C2E"
+            stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M4 16v2.4A2.6 2.6 0 0 0 6.6 21h10.8A2.6 2.6 0 0 0 20 18.4V16"
+            stroke="#141C2E" stroke-width="2.1" stroke-linecap="round"/>
+    </svg>
+    <span class="yb-txt">
+      <span class="yb-lead">Download my health data</span>
+      <span class="yb-sub">FHIR R4 &middot; EEHRxF &middot; every download logged</span>
+    </span>
+  </button>
+  <p class="yb-note">A proposal in commvita&rsquo;s palette, not xShare&rsquo;s official asset.
+     The export behind it runs today.</p>
+</div>
+</html>

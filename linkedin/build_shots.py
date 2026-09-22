@@ -26,6 +26,7 @@ SHOTS = {
     'ehds-blocks':      ('site/explainers/commvita-explainer-who-ehds.html',
                          'table', 0, 1180),
     'openehr-ceiling':  ('site/standards.html', '.ceiling', 0, 1000),
+    'yellow-button':    ('linkedin/assets/yellow-button.html', '.yb-stage', 0, 620),
 }
 
 WRAP = """<script>
