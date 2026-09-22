@@ -5,7 +5,7 @@ edition: Platform
 module: EHDS · EEHRxF · MyHealth@EU
 routes: /ehds
 status: Design alignment, NOT certification or conformity. IPS generator is live; MyHealth@EU/NCPeH is Partial (connector surface + EMPI proxy identifiers) and real exchange needs national contact point onboarding.
-needs: The four {{...}} numbers are placeholders. Martin has to supply the real figures before this posts — nothing in the website repo holds them.
+needs: (1) The four {{...}} numbers — nothing in this repo holds platform test, environment or gate counts. (2) The exact name of what published on the 18th. health.ec.europa.eu is blocked by this environment's egress policy, so the post says “the EHDS specification published on the 18th” without naming a document.
 card: ../cards/2026-09-22-ehds-in-a-day.png
 shot: ../shots/ehds-obligations.png  # the EHDS obligation table, captured from the published page at /explainers
 card_kicker: Standards · EHDS
@@ -17,9 +17,9 @@ The EHDS specification published on the 18th. It was in our development build th
 
 Let me be precise about what that does and doesn’t mean, because “we support EHDS” is about to become the least trustworthy sentence in European health tech.
 
-It isn’t conformity. The technical detail arrives through implementing acts, obligations phase in from 2027, and priority-category exchange lands somewhere around 2029 to 2031. Nobody is certified against a specification that isn’t finished, and commvita’s position is a design-alignment statement. We say so on the page.
+It isn’t conformity. The regulation came into force in March 2025. The technical detail arrives through implementing acts the Commission has until March 2027 to adopt, and the first priority categories — patient summaries and ePrescriptions — are due to be exchanged across member states in 2029. Nobody is certified against a specification that isn’t finished, and commvita’s position is a design-alignment statement. We say so on the page.
 
-What it does mean is that taking the spec in was a mapping exercise instead of a rebuild. That’s the whole argument for getting the model right before you need it. The record is already structured in the vocabularies EHDS binds to — openEHR record shapes underneath, FHIR R4 on the wire, SNOMED for the clinical terms. Whatever final shape EEHRxF takes, it’s a FHIR-profiled rendering of data we already hold structured. The International Patient Summary generator runs today. MyHealth@EU is a connector surface with proxy identifier generation in the person index, and real exchange still waits on onboarding with each member state’s national contact point — somebody else’s timetable, not ours.
+What it does mean is that taking the spec in was a mapping exercise instead of a rebuild. That’s the whole argument for getting the model right before you need it. The record is already structured in the vocabularies EHDS binds to — openEHR record shapes underneath, FHIR R4 on the wire, SNOMED for the clinical terms. Whatever final shape EEHRxF takes, it’s a FHIR-profiled rendering of data we already hold structured. The International Patient Summary generator runs today. MyHealth@EU is a connector surface with proxy identifier generation in the person index. Real exchange still waits on onboarding with each member state’s national contact point, and that infrastructure is already running in more than a dozen of them — which is somebody else’s timetable to work to, not ours to announce.
 
 Now the part that usually gets left out when people boast about turnaround.
 
