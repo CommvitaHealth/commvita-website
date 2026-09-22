@@ -24,6 +24,7 @@ ORIENT = 4                            # orientation posts before the rotation
 SEED   = 20260921
 MIX    = ['F'] * 5 + ['G'] * 5 + ['P'] * 4   # the 14 rotation slots
 TAIL   = ['X'] * 3                           # the differentiation arc, after the rotation
+ADDED  = ['P']                               # posts added after the run was planned
 NAME   = {'F': 'Flow', 'G': 'Governance & Assurance', 'P': 'Population',
           '-': 'Orientation', 'X': 'Platform'}
 
@@ -41,7 +42,7 @@ def draw(seed=SEED):
 
 
 def slots(seed=SEED):
-    order = ['-'] * ORIENT + draw(seed) + TAIL
+    order = ['-'] * ORIENT + draw(seed) + TAIL + ADDED
     for i, ed in enumerate(order):
         yield i + 1, START + datetime.timedelta(days=GAP * i), NAME[ed]
 
@@ -98,7 +99,8 @@ Posts 1–{ORIENT} orient a reader who has never heard of commvita. Posts {ORIEN
 take the editions at random (seed {SEED}), balanced {MIX.count('F')}/{MIX.count('G')}/{MIX.count('P')} across Flow,
 Governance & Assurance and Population, with no more than two of an edition
 in a row. The last {len(TAIL)} are an arc on what makes the platform different, which
-belongs to no single edition.
+belongs to no single edition. Anything after that was added once the run
+was already going, and takes the next slot in the cadence.
 
 Dates that land on a Saturday or Sunday are marked. Engagement is thinner at
 the weekend, so either move those to the Monday and let the cadence drift, or

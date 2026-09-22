@@ -1,13 +1,14 @@
 # Posting schedule
 
-One post every 3 days, 21 September 2026 to 20 November 2026. Generated from the
+One post every 3 days, 21 September 2026 to 23 November 2026. Generated from the
 post files by `plan.py --schedule`, so this table can't drift from what's written.
 
 Posts 1–4 orient a reader who has never heard of commvita. Posts 5–18
 take the editions at random (seed 20260921), balanced 5/5/4 across Flow,
 Governance & Assurance and Population, with no more than two of an edition
 in a row. The last 3 are an arc on what makes the platform different, which
-belongs to no single edition.
+belongs to no single edition. Anything after that was added once the run
+was already going, and takes the next slot in the cadence.
 
 Dates that land on a Saturday or Sunday are marked. Engagement is thinner at
 the weekend, so either move those to the Monday and let the cadence drift, or
@@ -36,3 +37,4 @@ post them anyway and keep the rhythm exact. Pick one and stick to it.
 | 19 | Sat 14 Nov 2026 *(weekend)* | Platform | The semantic, kinetic and dynamic layers | [19-three-layers](posts/19-three-layers.md) |
 | 20 | Tue 17 Nov 2026 | Platform | Portability, and why escrow answers the wrong question | [20-leaving-beats-escrow](posts/20-leaving-beats-escrow.md) |
 | 21 | Fri 20 Nov 2026 | Platform | Why the data model decides what AI is worth | [21-model-before-model](posts/21-model-before-model.md) |
+| 22 | Mon 23 Nov 2026 | Population | Community Nursing Portal | [22-community-nursing-round](posts/22-community-nursing-round.md) |
