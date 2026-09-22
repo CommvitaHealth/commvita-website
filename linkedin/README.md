@@ -4,7 +4,10 @@ A run of ready-to-post updates for the commvita page, one every three days,
 with a branded image for each. Twenty-one posts, 21 September to 20 November. Nothing here is published by Netlify —
 `netlify.toml` publishes `site/`, and this folder sits outside it on purpose.
 
-- `posts/` — one file per post. Front matter, then the body you paste.
+- `posts/` — one file per post in the three-day run. Front matter, then the
+  body you paste.
+- `topical/` — off-cadence posts tied to a date or an event, named by the day
+  they go out. `plan.py` ignores these; `build_cards.py` renders them.
 - `cards/` — the image for each post, 2400 × 1254 (a 1200 × 627 card at 2×).
 - `schedule.md` — dates, editions and subjects, generated from the posts.
 - `plan.py` — draws the rotation, writes the schedule, checks the posts match.
@@ -58,9 +61,15 @@ environment variables and build steps are not.
 
 **One published price.** £1 per Commvita Flow Edition instance. Nothing else.
 
+**No number that isn't in this repository or handed over by Martin.** A post
+carrying a figure about the platform — test counts, environments, coverage,
+uptime — needs that figure to come from somewhere checkable. A post with a
+`needs:` line in its front matter is holding `{{...}}` placeholders and
+must not go out until they're filled.
+
 ## Checks before anything goes out
 
-    python3 tools/voice.py linkedin/posts/*.md     # house voice score
+    python3 tools/voice.py linkedin/posts/*.md linkedin/topical/*.md
     python3 linkedin/plan.py --check               # dates match the draw
     python3 linkedin/build_cards.py                # rebuild every card
 

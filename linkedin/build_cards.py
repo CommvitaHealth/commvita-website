@@ -14,6 +14,7 @@ import os, re, subprocess, sys, tempfile, html
 HERE  = os.path.dirname(os.path.abspath(__file__))
 ROOT  = os.path.dirname(HERE)
 POSTS = os.path.join(HERE, 'posts')
+TOPICAL = os.path.join(HERE, 'topical')   # off-cadence posts, tied to a date or an event
 CARDS = os.path.join(HERE, 'cards')
 CHROME = os.environ.get(
     'CHROME_BIN',
@@ -138,9 +139,13 @@ def build(post_path):
 if __name__ == '__main__':
     want = set(sys.argv[1:])
     os.makedirs(CARDS, exist_ok=True)
-    for f in sorted(os.listdir(POSTS)):
-        if not f.endswith('.md'):
+    for folder in (POSTS, TOPICAL):
+        if not os.path.isdir(folder):
             continue
-        if want and f[:2] not in want:
-            continue
-        print('wrote', os.path.relpath(build(os.path.join(POSTS, f)), ROOT))
+        for f in sorted(os.listdir(folder)):
+            if not f.endswith('.md'):
+                continue
+            stem = os.path.splitext(f)[0]
+            if want and f[:2] not in want and stem not in want:
+                continue
+            print('wrote', os.path.relpath(build(os.path.join(folder, f)), ROOT))
