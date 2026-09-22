@@ -7,6 +7,7 @@ routes: /ehds
 status: Design alignment, NOT certification or conformity. IPS generator is live; MyHealth@EU/NCPeH is Partial (connector surface + EMPI proxy identifiers) and real exchange needs national contact point onboarding.
 needs: The four {{...}} numbers are placeholders. Martin has to supply the real figures before this posts — nothing in the website repo holds them.
 card: ../cards/2026-09-22-ehds-in-a-day.png
+shot: ../shots/ehds-obligations.png  # the EHDS obligation table, captured from the published page at /explainers
 card_kicker: Standards · EHDS
 card_headline: The spec landed on the 18th. It was in the build on the 19th.
 card_sub: Because it was a mapping exercise, not a rebuild

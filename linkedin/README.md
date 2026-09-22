@@ -8,10 +8,17 @@ with a branded image for each. Twenty-one posts, 21 September to 20 November. No
   body you paste.
 - `topical/` — off-cadence posts tied to a date or an event, named by the day
   they go out. `plan.py` ignores these; `build_cards.py` renders them.
-- `cards/` — the image for each post, 2400 × 1254 (a 1200 × 627 card at 2×).
+- `cards/` — the typographic image for each post, 2400 × 1254 (a 1200 × 627
+  card at 2×).
+- `shots/` — real regions of real site pages, captured by `build_shots.py`.
+  These are pictures of commvita.com, and a caption has to say so. They are
+  not platform screens: the house rules want those captured from the running
+  system through its own code paths with a build stamp, and nothing in this
+  repository can produce one. Never dress a mock-up as a screen.
 - `schedule.md` — dates, editions and subjects, generated from the posts.
 - `plan.py` — draws the rotation, writes the schedule, checks the posts match.
 - `build_cards.py` — renders the cards.
+- `build_shots.py` — captures a page region by CSS selector.
 - `AUTOMATION.md` — what it would take to have this post itself.
 
 ## Posting one
