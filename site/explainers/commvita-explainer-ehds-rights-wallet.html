@@ -223,7 +223,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <div class="eyebrow">Standards</div>
   <h1>EHDS and WHO: how close commvita is, right by right</h1>
-  <p class="sub">Prompted by a talk on the European Digital Identity wallet, we checked commvita against what the European Health Data Space asks for from the person&rsquo;s side: their rights over the record, purpose before data, the wallet, and the minimum data a service should use. Most of the rights are live today. The wallet isn&rsquo;t built.</p>
+  <p class="sub">Prompted by a talk on the European Digital Identity wallet, we checked commvita against what the European Health Data Space asks for from the person&rsquo;s side: their rights over the record, purpose before data, the wallet, and the minimum data a service should use. Five of the ten rights are in place today and two more are partly there. The wallet isn&rsquo;t built.</p>
   <div class="rule"></div>
 
   <div class="key">
@@ -245,22 +245,22 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- ================= 2 ================= -->
   <h2 class="grant"><span class="num">2</span> The person&rsquo;s rights, one at a time</h2>
-  <p class="lead">Most of the first slide is already in the patient portal. Two rights are only partly there, and cross-border access isn&rsquo;t connected.</p>
+  <p class="lead">Five of the ten rights on his slide are in the patient portal today, and two more are partly there. Three aren&rsquo;t: setting restrictions, sending a copy on, and access across borders.</p>
   <div class="tablewrap livewrap">
     <table>
-      <colgroup><col style="width:24%"><col style="width:58%"><col style="width:18%"></colgroup>
-      <thead><tr><th>The right, as the slide put it</th><th>What commvita does</th><th>Status</th></tr></thead>
+      <colgroup><col style="width:30%"><col style="width:70%"></colgroup>
+      <thead><tr><th>Right</th><th>commvita today</th></tr></thead>
       <tbody>
-        <tr><td><b>Access health data</b></td><td>The person signs in to the patient portal and reads their own record: medicines, results, letters, vaccinations, appointments and care plan.</td><td>Live</td></tr>
-        <tr><td><b>Download a copy</b></td><td>One button produces the person&rsquo;s record as a FHIR bundle they can take anywhere. Where a category holds nothing, the download says so.</td><td>Live</td></tr>
-        <tr><td><b>See who accessed their data</b></td><td>A list of who opened the record: the account, its role and organisation, what it opened, when, and on what basis. It says it can&rsquo;t show anything from before recording started. If the list is empty, it says that doesn&rsquo;t mean nobody looked.</td><td>Live</td></tr>
-        <tr><td><b>Set access restrictions</b></td><td>The person can give a named person or organisation access and take it away again. That list isn&rsquo;t kept in the database yet, so it&rsquo;s lost when the platform restarts. Stopping a particular professional from seeing part of the record isn&rsquo;t built.</td><td>Partly</td></tr>
-        <tr><td><b>Opt out of data sharing</b></td><td>One switch objects to the record being used for anything beyond the person&rsquo;s own care. The portal names the scheme that applies in their country, and the choice is as easy to undo as it was to make. Taking part in a research study can be ended from the portal too.</td><td>Live</td></tr>
-        <tr><td><b>Add information to the record</b></td><td>A &ldquo;This is me&rdquo; profile in the person&rsquo;s own words, plus family history and communication needs. Changing an entry keeps the earlier version beside the new one.</td><td>Live</td></tr>
-        <tr><td><b>Appoint someone to act for them</b></td><td>The person can let somebody they trust read and add to their &ldquo;This is me&rdquo; profile, and end that access at any time. The trusted person can&rsquo;t change what the person wrote. Two cases aren&rsquo;t built: a parent acting for a young child, which needs the practice to confirm the relationship, and a carer with no record here, who has no portal sign-in to give access to.</td><td>Live, with limits</td></tr>
-        <tr><td><b>Ask for a correction</b></td><td>The same front door as asking for a copy. The person says what they want: a copy, a correction, erasure, a restriction, an objection, or their data in a portable form. The request is recorded even if no team has been set up to receive it yet.</td><td>Live</td></tr>
-        <tr><td><b>Give a copy to another app</b></td><td>The FHIR download can be handed to any app that reads FHIR, and the person can ask the organisation to send their data to another service. commvita doesn&rsquo;t send it to another portal by itself.</td><td>Partly</td></tr>
-        <tr><td><b>Access by professionals, including in an emergency</b></td><td>Staff reach a record through their role, and only through a recorded care relationship if the person is registered elsewhere. Every access is logged with a reason, and the information governance team can challenge any of it. Emergency access asks for a written reason. Access across borders through MyHealth@EU isn&rsquo;t connected.</td><td>Log live; emergency demonstrated; cross-border not built</td></tr>
+        <tr><td><b>Access their health data</b></td><td><b>Yes.</b> Through the patient portal.</td></tr>
+        <tr><td><b>Download a copy</b></td><td><b>Yes.</b> Their own record as FHIR. Where a category holds nothing, the download says so.</td></tr>
+        <tr><td><b>View who accessed their data</b></td><td><b>Yes.</b> A portal page shows their own access entries.</td></tr>
+        <tr><td><b>Appoint an authorised person</b></td><td><b>Yes.</b> They can grant and revoke access. A carer can add to the profile but can&rsquo;t change the person&rsquo;s own words.</td></tr>
+        <tr><td><b>Insert information into their record</b></td><td><b>Partly.</b> Their profile, communication needs and family history go into the same records staff read. Nothing goes into the clinical record.</td></tr>
+        <tr><td><b>Request rectification</b></td><td><b>Yes, as a request.</b> The subject access route accepts a correction request and sends it to the team the organisation has set up for these requests. If no team is set up, the request is still recorded.</td></tr>
+        <tr><td><b>Set access restrictions</b></td><td><b>No.</b> A person can&rsquo;t stop a particular clinician seeing something. One related portal list is held only in server memory, so it&rsquo;s lost on restart.</td></tr>
+        <tr><td><b>Opt out of data sharing</b></td><td><b>Partly.</b> They can object to secondary use from the portal, and research extracts check that objection before anyone is included. They can also leave a research study. A shared care opt-out can be recorded by staff, but nothing acts on it yet.</td></tr>
+        <tr><td><b>Send a copy to another portal or app</b></td><td><b>No.</b> They can download a copy, and they can ask the organisation to send it on. Nothing sends it to another app for them.</td></tr>
+        <tr><td><b>Clinician access via MyHealth@EU, including emergency access</b></td><td><b>No.</b> There is no MyHealth@EU connection. Emergency access is covered in section 5.</td></tr>
       </tbody>
     </table>
   </div>
@@ -325,13 +325,16 @@ td b{color:var(--ink)} td .chip{font-size:11px}
 
   <!-- ================= 7 ================= -->
   <h2 class="rescind"><span class="num">7</span> What isn&rsquo;t there yet</h2>
-  <p class="lead">Put together, commvita is close to EHDS on the person&rsquo;s rights and on minimum-necessary disclosure, and some distance away on the wallet and on cross-border connection. The gaps, in one place:</p>
+  <p class="lead">Put together, commvita is close to EHDS on minimum-necessary disclosure and on half of the person&rsquo;s rights. It&rsquo;s further away on restrictions, on sending data on, on the wallet and on cross-border connection. The gaps, in one place:</p>
   <ul>
     <li>No wallet sign-in, no checking of facts a wallet presents, and no relying-party role.</li>
     <li>Records aren&rsquo;t stored as openEHR, for the licensing reason in section 3.</li>
     <li>No claim of conformance to the European exchange format or the EHR requirements until both are published, and no conformity assessment against either.</li>
     <li>No connection to MyHealth@EU for care across borders, or to HealthData@EU for research.</li>
-    <li>A person can&rsquo;t yet restrict which professionals see which part of their record, and the list of people they&rsquo;ve let in isn&rsquo;t kept in the database.</li>
+    <li>A person can&rsquo;t restrict which clinicians see which part of their record, and one related portal list is held only in server memory.</li>
+    <li>What a person adds goes into their profile, which staff read, and not into the clinical record.</li>
+    <li>Nothing sends a copy of the record to another app for them.</li>
+    <li>A shared care opt-out can be recorded, but nothing acts on it yet.</li>
     <li>A parent acting for a young child isn&rsquo;t built, and nor is access for a carer who has no record here.</li>
   </ul>
 
