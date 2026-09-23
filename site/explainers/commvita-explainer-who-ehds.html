@@ -143,8 +143,6 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <p class="sub">How commvita™ already meets the two frameworks now shaping national digital-health architecture — the <strong>WHO reference architecture for Digital Public Infrastructure for Health</strong> and the <strong>European Health Data Space</strong> — and exactly what the <strong>bridge</strong> looks like when their final technical specifications are published. A design-alignment statement, <strong>not</strong> a certification or conformity claim.</p>
   <div class="rule"></div>
 
-  <div class="edge"><span class="edgetag">Ahead of the field</span><div><b>Semantic interoperability, not document exchange.</b> An openEHR clinical data repository sits behind the record, so meaning survives the hop between systems rather than arriving as an attached document somebody has to read. The exchange products we assessed share documents.<span class="src">From commvita&rsquo;s own assessment of this module against the systems it competes with. Our assessment, not an independent one.</span></div></div>
-
   <div class="key">
     <b>Live vs demonstrated:</b>
     <span><span class="dot" style="background:var(--teal)"></span><b>Live</b> — real, API-backed platform logic (wired end-to-end today)</span>
@@ -181,8 +179,8 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <p>Every module keys to a single canonical Patient; the EMPI cross-references national identifiers across jurisdictions — including an <strong>EHDS NCPeH proxy identifier</strong> generator for cross-border identity. The WHO client registry and the EHDS identity layer are the same thing here, already shipped.</p>
       <div class="loc"><span class="chip">/empi</span><span class="chip">/patients/:id/whole-person</span></div></div></div>
     <div class="step g"><div class="s">2</div><div>
-      <h4>Open standards natively — FHIR R4, openEHR, OMOP, SNOMED CT</h4>
-      <p>Records, exports and analytics are already structured in the vocabularies both frameworks bind to. Whatever final format EEHRxF takes, it will be a <strong>FHIR-profiled rendering of data commvita™ already holds structured</strong> — a mapping exercise, not a data-model rebuild.</p>
+      <h4>Built on open standards — FHIR R4, OMOP and SNOMED CT</h4>
+      <p>Records, exports and analytics are already structured in the vocabularies both frameworks bind to. Whatever final format EEHRxF takes, it will be a <strong>FHIR-profiled rendering of data commvita™ already holds structured</strong> — a mapping exercise, not a data-model rebuild. commvita refers to openEHR archetypes by name, but it doesn&rsquo;t store records as openEHR.</p>
       <div class="loc"><span class="chip">/terminology-service</span><span class="chip">/fhir-bulk</span><span class="chip">/omop-cdm</span></div></div></div>
     <div class="step g"><div class="s">3</div><div>
       <h4>Nothing jurisdictional is hardcoded</h4>
@@ -216,7 +214,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
         <tr><td><b>PHR / citizen services</b></td><td>Patient Portal — records, appointments, messages, goals, FHIR export, communication needs, proxy access; kiosk self check-in demonstrated</td><td><span class="chip">/portal</span> <span class="chip">/digital-front-door</span></td><td><span class="st mix">● + ◍</span></td><td><span class="al ok">Aligned</span></td></tr>
         <tr><td><b>Financing &amp; claims (payments DPI)</b></td><td>Tariff engine (API-backed), activity costing, claims EDI adapter, private invoicing — claims/tariff capability; a national payment <em>rail</em> is the jurisdiction&rsquo;s foundational DPI, not rebuilt here</td><td><span class="chip">/nhs-payment-system</span> <span class="chip">/private-charges</span></td><td><span class="st mix">● + ◍</span></td><td><span class="al pt">Partial</span></td></tr>
         <tr><td><b>HMIS / analytics</b></td><td>Population health cohorts + phenotypes, inequalities lenses, OMOP CDM ETL with data-quality dashboard (live), ICS-wide analytics demonstrated</td><td><span class="chip">/population-health</span> <span class="chip">/omop-cdm</span></td><td><span class="st mix">● + ◍</span></td><td><span class="al ok">Aligned</span></td></tr>
-        <tr><td><b>DPI principles — federated · sovereign · modular · open</b></td><td>Self-hosted cloud-agnostic deployment; federated queries with k≥5 aggregation (consoles demonstrated); versioned Jurisdiction Profile (API-backed) so no jurisdiction is hardcoded; openEHR/FHIR/OMOP throughout</td><td><span class="chip">/federated-query</span> <span class="chip">/jurisdiction-profile</span></td><td><span class="st mix">● + ◍</span></td><td><span class="al ok">Aligned</span></td></tr>
+        <tr><td><b>DPI principles — federated · sovereign · modular · open</b></td><td>Self-hosted cloud-agnostic deployment; federated queries with k≥5 aggregation (consoles demonstrated); versioned Jurisdiction Profile (API-backed) so no jurisdiction is hardcoded; FHIR and OMOP throughout, with openEHR archetypes referenced by name</td><td><span class="chip">/federated-query</span> <span class="chip">/jurisdiction-profile</span></td><td><span class="st mix">● + ◍</span></td><td><span class="al ok">Aligned</span></td></tr>
       </tbody>
     </table>
   </div>
@@ -248,7 +246,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
   <div class="steps">
     <div class="step bl"><div class="s">B1</div><div>
       <h4>EEHRxF — bind the European exchange format the day it publishes</h4>
-      <p><strong>Today:</strong> the IPS generator is live and every priority category is held as structured FHIR. <strong>The bridge:</strong> pin the published EEHRxF profiles into a schema file and validate every emitted record against them — the exact pattern already shipped for the NHS FDP Canonical Data Model, where the published OpenAPI (16 objects / 507 fields) is pinned and every extract is conformance-scored per object. Same emitter, different pinned spec.</p>
+      <p><strong>Today:</strong> the IPS generator is live and every priority category is held as structured FHIR. <strong>The bridge:</strong> check every record commvita emits against the published profiles, the same way it already scores its extracts against the NHS FDP&rsquo;s published data model.</p>
       <div class="loc"><span class="chip">/ehds</span><span class="chip">precedent: /fdp-cdm · CDM Extract</span></div></div></div>
     <div class="step bl"><div class="s">B2</div><div>
       <h4>Interoperability component — a conformity declaration over an existing API</h4>
@@ -256,7 +254,7 @@ td b{color:var(--ink)} td .chip{font-size:11px}
       <div class="loc"><span class="chip">/assurance</span><span class="chip">/dtac</span></div></div></div>
     <div class="step bl"><div class="s">B3</div><div>
       <h4>MyHealth@EU — one credential-driven adapter per national contact point</h4>
-      <p><strong>Today:</strong> NCPeH proxy identity and the connector surface. <strong>The bridge:</strong> onboard each member state&rsquo;s NCPeH as a credential-driven adapter — the same env-only-secret pattern as the seven NHS national adapters (e-RS, LFPSE, screening systems…), where adding an endpoint is a config entry with honest demo-mode queueing until credentials are provisioned, then a guarded live transmit. No browser-side secrets, ever.</p>
+      <p><strong>Today:</strong> NCPeH proxy identity and the connector surface. <strong>The bridge:</strong> connect each member state&rsquo;s national contact point once it has onboarded commvita, as it already connects to seven NHS national services. Until a connection is live, the platform says a message is queued and doesn&rsquo;t report it as sent.</p>
       <div class="loc"><span class="chip">/ehds · MyHealth@EU</span><span class="chip">precedent: /nhs-integrations · adapters</span></div></div></div>
     <div class="step bl"><div class="s">B4</div><div>
       <h4>Data quality &amp; utility label — a rendering of metrics that already run</h4>
