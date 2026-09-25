@@ -24,6 +24,10 @@ It’s also the thing whose absence wrecks more programmes than any technology d
 
 So commvita is adopting the VBHC Key Terms Glossary as its working vocabulary. It’s the work of Sir Muir Gray and Jane Johnston, prepared for NHS England and Frimley ICB by the Outcomes, Value and Stewardship Network with Data Observatory CIC, with an appendix on the causal determinants of health by Anant Jani. It’s published by the Data Observatory, and it’s worth reading in full — what follows only touches the terms that caught us.
 
+Before any of that, an interest to declare. Marc Farr — our co-founder and chief data and analytics officer, and the person leading this adoption for us — is President of the Data Observatory. Our commercial co-founder, Hassan Chaudhury, chairs its National Council. So the company adopting this glossary is led in part by the people behind the organisation that helped produce it.
+
+You should know that before you read the warm half, instead of after it. Treat the alignment section as interested. The gap list is the part I’d trust — nobody names their own absences to flatter a document they had a hand in.
+
 This isn’t conformance. There’s no certificate and nothing to audit against. What you do with a glossary is use it — in the product, in the dashboards, in the sales conversation — until they all mean the same thing by the same word. What follows is an honest account of where we already do that, and where reading it caught us out.
 
 ## Where we already fit
@@ -83,11 +87,5 @@ We measure the first. We have no measure at all for the second. By this glossary
 ## What happens next
 
 The six gaps go onto the roadmap in the glossary’s words instead of ours. That’s the practical benefit of taking on somebody else’s vocabulary: you inherit their questions along with their nouns, and their questions are better than the ones you were asking yourself.
-
-Marc Farr, our co-founder and chief data and analytics officer, is leading this for us.
-
-Which brings me to the interest I should declare, and it’s a bigger one than I first wrote down. Marc is President of the Data Observatory. Our commercial co-founder, Hassan Chaudhury, chairs its National Council. So the company adopting this glossary is led in part by the people behind the organisation that helped produce it.
-
-That’s worth saying out loud, because it changes how you should read the warm half of this article. Treat the alignment section as interested. The six gaps are the part I’d trust — nobody lists their own absences to flatter a document they had a hand in.
 
 If you work on any of those six and think we’ve called it wrong, I’d like to hear it.
