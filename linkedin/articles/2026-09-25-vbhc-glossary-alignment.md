@@ -22,7 +22,7 @@ A glossary sounds like the least interesting document an organisation can publis
 
 It’s also the thing whose absence wrecks more programmes than any technology decision I can name. Two directors say “value” across a table and mean different things — one means allocative value, the other means cost per unit. Somebody says “there’s a lot of variation in this pathway” and nobody asks whether it’s warranted. A year later the board is arguing about a number that three teams calculated three ways, all correctly.
 
-So commvita is adopting the VBHC Key Terms Glossary as its working vocabulary. It’s the work of Sir Muir Gray and Jane Johnston, prepared for NHS England and Frimley ICB by the Outcomes, Value and Stewardship Network with Data Observatory CIC, with an appendix on the causal determinants of health by Anant Jani.
+So commvita is adopting the VBHC Key Terms Glossary as its working vocabulary. It’s the work of Sir Muir Gray and Jane Johnston, prepared for NHS England and Frimley ICB by the Outcomes, Value and Stewardship Network with Data Observatory CIC, with an appendix on the causal determinants of health by Anant Jani. It’s published by the Data Observatory, and it’s worth reading in full — what follows only touches the terms that caught us.
 
 This isn’t conformance. There’s no certificate and nothing to audit against. What you do with a glossary is use it — in the product, in the dashboards, in the sales conversation — until they all mean the same thing by the same word. What follows is an honest account of where we already do that, and where reading it caught us out.
 
@@ -52,7 +52,7 @@ Population health management, segmentation and deprivation analytics are all the
 
 ## The false friend
 
-We use the word “stewardship” in commvita exactly once, and we use it wrongly by this glossary’s lights. Ours means antimicrobial stewardship. The glossary means stewardship of finite resources on behalf of a population — a different idea, with a section of its own.
+We use the word “stewardship” in commvita exactly once, and by this glossary’s lights we use it wrongly. Ours means antimicrobial stewardship. The glossary means stewardship of finite resources on behalf of a population — a different idea, with a section of its own.
 
 That’s what makes a shared vocabulary useful instead of decorative. It finds the words you thought you had covered.
 
@@ -78,7 +78,7 @@ Read the glossary’s own sentence on left shift and you find this: the aim is t
 
 So left shift, properly understood, is two movements. Move demand upstream, and stop doing the things that were never worth doing.
 
-We measure the first. We have no measure at all for the second. By this glossary’s definition we are doing half of the thing we named a product after, and I would rather say that here than have somebody work it out in a procurement.
+We measure the first. We have no measure at all for the second. By this glossary’s definition we’re doing half of the thing we named a product after, and I’d sooner say that here than have somebody work it out in a procurement.
 
 ## What happens next
 
@@ -90,4 +90,4 @@ Which brings me to the interest I should declare, and it’s a bigger one than I
 
 That’s worth saying out loud, because it changes how you should read the warm half of this article. Treat the alignment section as interested. The six gaps are the part I’d trust — nobody lists their own absences to flatter a document they had a hand in.
 
-If you work on any of those six and think we have called it wrong, I would like to hear it.
+If you work on any of those six and think we’ve called it wrong, I’d like to hear it.

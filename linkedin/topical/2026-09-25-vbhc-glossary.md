@@ -12,7 +12,7 @@ card_headline: Six gaps, named in somebody else's words
 card_sub: Adopting the VBHC Key Terms Glossary
 ---
 
-Commvita is adopting the VBHC Key Terms Glossary as its working vocabulary.
+commvita is adopting the VBHC Key Terms Glossary as its working vocabulary.
 
 Not “conformance” — there’s nothing to certify against. It’s a glossary, and what you do with a glossary is use it, over and over, until the dashboard and the board paper mean the same thing by the same word.
 
