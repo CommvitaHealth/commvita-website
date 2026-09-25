@@ -15,6 +15,7 @@ HERE  = os.path.dirname(os.path.abspath(__file__))
 ROOT  = os.path.dirname(HERE)
 POSTS = os.path.join(HERE, 'posts')
 TOPICAL = os.path.join(HERE, 'topical')   # off-cadence posts, tied to a date or an event
+ARTICLES = os.path.join(HERE, 'articles') # long-form, with a cover image instead of a card
 CARDS = os.path.join(HERE, 'cards')
 CHROME = os.environ.get(
     'CHROME_BIN',
@@ -139,7 +140,7 @@ def build(post_path):
 if __name__ == '__main__':
     want = set(sys.argv[1:])
     os.makedirs(CARDS, exist_ok=True)
-    for folder in (POSTS, TOPICAL):
+    for folder in (POSTS, TOPICAL, ARTICLES):
         if not os.path.isdir(folder):
             continue
         for f in sorted(os.listdir(folder)):

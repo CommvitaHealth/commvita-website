@@ -5,7 +5,7 @@ edition: Platform
 module: VBHC Key Terms Glossary adoption
 routes: /leftshift · /population-health
 status: Statement of intent, NOT conformance — a glossary has nothing to certify against. Verified present: LeftShift Intelligence, Core20PLUS5 equity splits with k>=5, population health management, allocative value, quadruple aim. Verified ABSENT: PBMA, warranted/unwarranted variation, overuse, waste, cost-utility, shared decision-making, stewardship in the resource sense.
-needs: (1) Confirm you want to commit publicly to a term-by-term explainer. (2) Confirm Hassan's Data Observatory role is current before the disclosure line goes out. (3) The copy you sent is marked "V6.3 Internal" on every page — check the public URL serves a cleared version before quoting it.
+needs: (1) Post this with the article link attached. (2) Confirm Hassan's Data Observatory role is current before the disclosure line goes out. (3) The copy you sent is marked "V6.3 Internal" on every page — check the public URL serves a cleared version before quoting it.
 card: ../cards/2026-09-25-vbhc-glossary.png
 card_kicker: Value-based healthcare
 card_headline: Six gaps, named in somebody else's words

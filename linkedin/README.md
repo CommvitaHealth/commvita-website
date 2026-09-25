@@ -8,6 +8,10 @@ with a branded image for each. Twenty-one posts, 21 September to 20 November. No
   body you paste.
 - `topical/` — off-cadence posts tied to a date or an event, named by the day
   they go out. `plan.py` ignores these; `build_cards.py` renders them.
+- `articles/` — long-form pieces for LinkedIn’s article editor. An article
+  needs a post pointing at it, since articles get little reach on their own;
+  the `teaser:` field names the post that does that job. Its editor has no
+  tables, so structure long comparisons as headings and bold lead-ins.
 - `cards/` — the typographic image for each post, 2400 × 1254 (a 1200 × 627
   card at 2×).
 - `shots/` — real regions of real site pages, captured by `build_shots.py`.
