@@ -23,6 +23,11 @@ with a branded image for each. Twenty-one posts, 21 September to 20 November. No
 - `plan.py` — draws the rotation, writes the schedule, checks the posts match.
 - `build_cards.py` — renders the cards.
 - `build_shots.py` — captures a page region by CSS selector.
+- `build_html.py` — turns an article into one self-contained HTML file in
+  `html/`, with the card redrawn at the top and the brand faces inlined, so it
+  opens with no network and nothing beside it. That folder is still outside
+  `site/`: putting a piece on the website means the full job — an entry in the
+  explainer index, the document count and a sitemap line.
 - `assets/` — design proposals rendered as post imagery, such as the yellow
   download button. A proposal is never captioned as a shipped screen, and
   where it echoes somebody else's published asset the caption has to say it
