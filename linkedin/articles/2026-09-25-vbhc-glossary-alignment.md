@@ -6,7 +6,7 @@ module: VBHC Key Terms Glossary alignment
 routes: /leftshift · /population-health
 source: VBHC Key Terms Glossary, Nov 2025 v6.3 — Sir Muir Gray & Jane Johnston, for NHSE/Frimley ICB, Outcomes Value and Stewardship Network with Data Observatory CIC. Appendix by Anant Jani.
 status: LeftShift runs on seeded demonstration data and says so on every tab — stated in the article. Core20PLUS5 splits and k>=5 suppression are platform logic. PBMA, variation, overuse, waste, cost-utility and shared decision-making are absent from commvita.
-needs: (1) Confirm the public dataobservatory.org.uk URL serves a cleared version before hyperlinking — the copy supplied is marked "V6.3 Internal" on all 54 pages. (2) Confirm Hassan's Data Observatory role is current. (3) Allocative value is claimed as partial: we hold the segments without the spend per segment. Confirm.
+needs: (1) Confirm the public dataobservatory.org.uk URL serves a cleared version before hyperlinking — the copy supplied is marked "V6.3 Internal" on all 54 pages. (2) The founders page names Hassan's National Council chair but not Marc's presidency of the Data Observatory — worth adding there if the article declares it. (3) Allocative value is claimed as partial: we hold the segments without the spend per segment. Confirm.
 teaser: ../topical/2026-09-25-vbhc-glossary.md
 card: ../cards/2026-09-25-vbhc-glossary-alignment.png
 card_kicker: Article · Value-based healthcare
@@ -86,6 +86,8 @@ The six gaps go onto the roadmap in the glossary’s words instead of ours. That
 
 Marc Farr, our co-founder and chief data and analytics officer, is leading this for us.
 
-An interest to declare, since this reads better coming from me than from someone else: our commercial co-founder Hassan Chaudhury chairs the National Council at the Data Observatory. We aren’t an arm’s-length adopter of this document, and you should weigh the enthusiasm accordingly. The gap list is the part I would trust.
+Which brings me to the interest I should declare, and it’s a bigger one than I first wrote down. Marc is President of the Data Observatory. Our commercial co-founder, Hassan Chaudhury, chairs its National Council. So the company adopting this glossary is led in part by the people behind the organisation that helped produce it.
+
+That’s worth saying out loud, because it changes how you should read the warm half of this article. Treat the alignment section as interested. The six gaps are the part I’d trust — nobody lists their own absences to flatter a document they had a hand in.
 
 If you work on any of those six and think we have called it wrong, I would like to hear it.
