@@ -71,9 +71,28 @@ main>p:first-of-type{font-size:1.16em;line-height:1.58;color:var(--ink)}
 footer{max-width:44rem;margin:0 auto;padding:22px clamp(20px,5vw,32px) 56px;
   border-top:1px solid var(--hair);font-size:.83rem;color:var(--muted);line-height:1.6}
 footer p{margin:0 0 .5em}
+@page{size:A4;margin:0}
 @media print{
-  body{background:#fff} .card{background:#141C2E !important;-webkit-print-color-adjust:exact;
-  print-color-adjust:exact}
+  /* force the light palette: a print job should never inherit dark mode */
+  :root{--page:#FFFFFF;--ink:#141C2E;--body:#42506B;--muted:#5D6B85;--hair:#D9DFE8}
+  body{background:#fff;font-size:10.6pt;line-height:1.58}
+  /* the card becomes a full A4 cover page */
+  .card{background:#141C2E !important;-webkit-print-color-adjust:exact;
+    print-color-adjust:exact;min-height:297mm;padding:26mm 20mm 20mm;
+    display:flex;flex-direction:column;break-after:page}
+  .card-in{display:flex;flex-direction:column;flex:1 1 auto;max-width:none}
+  .card .lock{margin-bottom:0}
+  .card .kick{margin-top:auto}
+  .card h1{font-size:32pt;line-height:1.05}
+  .card .sub{font-size:13pt;max-width:46ch}
+  .card .rule{margin-top:auto;padding-top:5mm;font-size:9pt}
+  .card .glow{display:none}
+  main{max-width:none;margin:0;padding:18mm 20mm 0}
+  main>p:first-of-type{font-size:1.08em}
+  footer{max-width:none;margin:0;padding:7mm 20mm 14mm}
+  h2{margin-top:1.5em}
+  h2,h3{break-after:avoid;break-inside:avoid}
+  p{orphans:3;widows:3}
 }
 </style>
 <header class="card">

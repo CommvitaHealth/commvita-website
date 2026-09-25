@@ -13,13 +13,15 @@ Output lands in linkedin/html/. Nothing here is published by Netlify. To
 put a piece on the site instead, it has to go through site/ properly:
 an entry in the explainer index, the document count and the sitemap.
 """
-import html as _h, os, re, sys
+import html as _h, os, re, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 ARTICLES = os.path.join(HERE, 'articles')
 OUT = os.path.join(HERE, 'html')
 FONTS = os.path.join(ROOT, 'site', 'fonts.css')
+SHELL = os.environ.get('CHROME_BIN',
+        '/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell')
 
 ACCENT = {'Orientation': '#FF5B47', 'Platform': '#FF5B47', 'Flow': '#00B8A6',
           'Governance & Assurance': '#7B61FF', 'Population': '#FFB020'}
@@ -134,9 +136,28 @@ main>p:first-of-type{{font-size:1.16em;line-height:1.58;color:var(--ink)}}
 footer{{max-width:44rem;margin:0 auto;padding:22px clamp(20px,5vw,32px) 56px;
   border-top:1px solid var(--hair);font-size:.83rem;color:var(--muted);line-height:1.6}}
 footer p{{margin:0 0 .5em}}
+@page{{size:A4;margin:0}}
 @media print{{
-  body{{background:#fff}} .card{{background:#141C2E !important;-webkit-print-color-adjust:exact;
-  print-color-adjust:exact}}
+  /* force the light palette: a print job should never inherit dark mode */
+  :root{{--page:#FFFFFF;--ink:#141C2E;--body:#42506B;--muted:#5D6B85;--hair:#D9DFE8}}
+  body{{background:#fff;font-size:10.6pt;line-height:1.58}}
+  /* the card becomes a full A4 cover page */
+  .card{{background:#141C2E !important;-webkit-print-color-adjust:exact;
+    print-color-adjust:exact;min-height:297mm;padding:26mm 20mm 20mm;
+    display:flex;flex-direction:column;break-after:page}}
+  .card-in{{display:flex;flex-direction:column;flex:1 1 auto;max-width:none}}
+  .card .lock{{margin-bottom:0}}
+  .card .kick{{margin-top:auto}}
+  .card h1{{font-size:32pt;line-height:1.05}}
+  .card .sub{{font-size:13pt;max-width:46ch}}
+  .card .rule{{margin-top:auto;padding-top:5mm;font-size:9pt}}
+  .card .glow{{display:none}}
+  main{{max-width:none;margin:0;padding:18mm 20mm 0}}
+  main>p:first-of-type{{font-size:1.08em}}
+  footer{{max-width:none;margin:0;padding:7mm 20mm 14mm}}
+  h2{{margin-top:1.5em}}
+  h2,h3{{break-after:avoid;break-inside:avoid}}
+  p{{orphans:3;widows:3}}
 }}
 </style>
 <header class="card">
@@ -184,13 +205,17 @@ def build(name):
     os.makedirs(OUT, exist_ok=True)
     dest = os.path.join(OUT, name + '.html')
     open(dest, 'w', encoding='utf-8').write(page)
-    return dest
+    pdf = dest[:-5] + '.pdf'
+    subprocess.run([SHELL, '--headless', '--no-sandbox', '--disable-gpu',
+                    '--no-pdf-header-footer', '--virtual-time-budget=6000',
+                    f'--print-to-pdf={pdf}', dest],
+                   check=True, capture_output=True)
+    return dest, pdf
 
 
 if __name__ == '__main__':
     want = sys.argv[1:] or [f[:-3] for f in sorted(os.listdir(ARTICLES))
                             if f.endswith('.md')]
     for name in want:
-        dest = build(name)
-        kb = os.path.getsize(dest) // 1024
-        print(f'wrote {os.path.relpath(dest, ROOT)}  {kb} KB')
+        for f in build(name):
+            print(f'wrote {os.path.relpath(f, ROOT)}  {os.path.getsize(f) // 1024} KB')
