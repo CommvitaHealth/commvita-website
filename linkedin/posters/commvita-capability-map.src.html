@@ -1,0 +1,425 @@
+<!doctype html><html lang="en-GB"><meta charset="utf-8">
+<title>commvita — capability map</title>
+<!--
+  One-page capability map. Source file: build_poster.py inlines the brand
+  faces and renders the PNG and PDF into linkedin/posters/.
+
+  Every number here comes off the site's own edition pages, which generate
+  them from the platform's edition definition. Cumulative totals are left
+  out on purpose: three pages of the site quote three different ones
+  (255, 256 and 278 for Flow + Governance), so only the per-edition counts,
+  which they agree on, are shown.
+
+  No third-party logos. The standards are trademarks of other bodies and
+  commvita has no licence to display their marks; text chips say the same
+  thing and carry no claim of endorsement.
+-->
+<style>
+/*__FONTS__*/
+:root{
+  --ink:#141C2E; --body:#42506B; --muted:#5D6B85; --hair:#D9DFE8; --hair2:#C3CBD9;
+  --paper:#F2F4F7; --white:#fff;
+  --teal:#00B8A6; --violet:#7B61FF; --amber:#FFB020; --coral:#FF5B47; --accent:#0A7A6E;
+  --sans:"Archivo","Familjen Grotesk",system-ui,-apple-system,sans-serif;
+  --display:"Familjen Grotesk","Archivo",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#E8ECF2;font-family:var(--sans);color:var(--body)}
+.poster{width:1600px;margin:0 auto;background:var(--white);display:flex;
+  flex-direction:column}
+
+/* ── header ─────────────────────────────────────────────── */
+.hd{display:flex;align-items:flex-start;gap:26px;padding:26px 34px 20px;
+  border-bottom:3px solid var(--ink)}
+.lock{display:flex;align-items:center;gap:11px;flex:none;padding-right:26px;
+  border-right:1px solid var(--hair)}
+.wm{font-family:var(--display);font-weight:800;font-size:27px;color:var(--ink);
+  letter-spacing:-.02em;line-height:1}
+.wm sup{font-size:.46em;vertical-align:super}
+.wm small{display:block;font-family:var(--sans);font-size:9.5px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.hd-t{flex:1;min-width:0}
+.hd-t h1{font-family:var(--display);font-weight:800;color:var(--ink);margin:0;
+  font-size:35px;line-height:1.05;letter-spacing:-.021em}
+.hd-t p{margin:7px 0 0;font-size:14.5px;color:var(--body);max-width:78ch}
+.hd-t .meta{margin-top:7px;font-size:11px;font-weight:650;color:var(--muted);
+  letter-spacing:.02em}
+.legend{flex:none;display:flex;flex-direction:column;gap:7px;align-items:flex-end}
+.lg{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;
+  font-size:11px;font-weight:700;white-space:nowrap}
+.lg .d{width:9px;height:9px;border-radius:50%;flex:none}
+.lg.live{background:#E6F7F4;color:#0A6B60;border:1px solid #A8E2D9}
+.lg.demo{background:#FFF5E0;color:#8A5B00;border:1px solid #F3D79A}
+
+/* ── body grid ──────────────────────────────────────────── */
+.grid{display:grid;grid-template-columns:292px 1fr;gap:18px;padding:18px 34px 0}
+.side{display:flex;flex-direction:column;gap:14px}
+.side .panel.c{margin-top:auto}
+.panel{border:1px solid var(--hair);border-radius:13px;padding:14px 15px;background:var(--white)}
+.panel h3{font-family:var(--display);font-size:15px;font-weight:800;margin:0 0 7px;
+  display:flex;align-items:center;gap:9px;line-height:1.2}
+.panel p{margin:0 0 7px;font-size:11.6px;line-height:1.52}
+.panel p:last-child{margin-bottom:0}
+.ico{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center}
+.panel.t h3{color:var(--accent)} .panel.t .ico{background:#E6F7F4}
+.panel.v h3{color:#5B43D6} .panel.v .ico{background:#F0EDFF}
+.panel.a h3{color:#8A5B00} .panel.a .ico{background:#FFF5E0}
+.panel.c h3{color:#9A2016} .panel.c .ico{background:#FDECEA}
+.panel.c{background:#FFFBFA;border-color:#F5BFB8}
+.panel ul{margin:0;padding-left:15px;font-size:11.4px;line-height:1.5}
+.panel li{margin-bottom:3px}
+
+.main{display:flex;flex-direction:column;gap:16px;min-width:0}
+.band{border:1px solid var(--hair);border-radius:14px;background:var(--paper);
+  padding:14px 16px 16px}
+.band>h2{font-family:var(--display);font-size:17px;font-weight:800;color:var(--ink);
+  margin:0 0 12px;letter-spacing:-.012em}
+.band>h2 span{font-weight:650;color:var(--muted);font-size:13px;font-family:var(--sans)}
+
+/* pathway */
+.path{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;align-items:stretch}
+.step{background:var(--white);border:1px solid var(--hair2);border-radius:11px;
+  padding:11px 11px 12px;position:relative;display:flex;flex-direction:column}
+.step::after{content:"";position:absolute;right:-8px;top:50%;width:0;height:0;
+  border-left:7px solid var(--hair2);border-top:5px solid transparent;
+  border-bottom:5px solid transparent;z-index:2}
+.step:last-child::after{display:none}
+.step .n{width:21px;height:21px;border-radius:50%;color:#fff;font-size:11.5px;
+  font-weight:800;display:grid;place-items:center;margin-bottom:7px}
+.step h4{font-family:var(--display);font-size:13px;font-weight:800;color:var(--ink);
+  margin:0 0 6px;line-height:1.22}
+.step p{margin:0;font-size:10.6px;line-height:1.45;color:var(--body)}
+.step .rt{margin-top:auto;padding-top:8px;font-size:9.6px;font-weight:700;
+  color:var(--muted);letter-spacing:.01em;word-break:break-word}
+
+/* editions */
+.eds{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ed{background:var(--white);border:1px solid var(--hair2);border-radius:12px;
+  padding:13px 13px 14px;display:flex;flex-direction:column}
+.ed .top{display:flex;align-items:baseline;gap:9px;margin-bottom:3px}
+.ed .num{font-family:var(--display);font-size:30px;font-weight:800;line-height:1}
+.ed .lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted)}
+.ed h4{font-family:var(--display);font-size:15.5px;font-weight:800;color:var(--ink);
+  margin:5px 0 4px}
+.ed .who{font-size:11px;line-height:1.45;margin:0 0 9px;color:var(--body)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{display:inline-flex;align-items:baseline;gap:4px;border-radius:5px;
+  padding:2.5px 6px;font-size:9.4px;font-weight:650;line-height:1.3;
+  border:1px solid var(--hair);background:var(--paper);color:var(--body)}
+.chip b{font-weight:800;font-size:9.4px}
+.ed.f .num,.ed.f .chip b{color:var(--accent)} .ed.f{border-top:4px solid var(--teal)}
+.ed.g .num,.ed.g .chip b{color:#5B43D6} .ed.g{border-top:4px solid var(--violet)}
+.ed.p .num,.ed.p .chip b{color:#8A5B00} .ed.p{border-top:4px solid var(--amber)}
+
+/* standards */
+.std{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.stdcol h5{font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 6px;padding-bottom:5px;border-bottom:1px solid var(--hair2)}
+.stdcol .chips{gap:4px}
+.stdcol .chip{background:var(--white);font-size:9.6px}
+
+/* base strip */
+.base{display:flex;gap:9px;align-items:stretch}
+.basecard{flex:1;background:var(--white);border:1px solid var(--hair2);border-radius:10px;
+  padding:9px 10px}
+.basecard h5{font-family:var(--display);font-size:11.6px;font-weight:800;color:var(--ink);margin:0 0 3px}
+.basecard p{margin:0;font-size:10px;line-height:1.42;color:var(--muted)}
+
+/* ── footer ─────────────────────────────────────────────── */
+.ft{margin-top:18px;background:var(--ink);color:#fff;display:flex;align-items:center;
+  gap:24px;padding:17px 34px 19px}
+.ft .wm{color:#fff;font-size:20px}
+.ft .wm small{color:#8CA1C2}
+.ft .tag{font-family:var(--display);font-size:16px;font-weight:700;flex:1;letter-spacing:-.01em}
+.ft .rt{font-size:12px;font-weight:700;color:#EAF1FB}
+.ft .src{font-size:9.6px;color:#8CA1C2;max-width:46ch;line-height:1.5;flex:none}
+@page{size:A3 landscape;margin:0}
+@media print{.poster{width:420mm}body{background:#fff}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+<div class="poster">
+
+  <header class="hd">
+    <div class="lock">
+      <svg viewBox="0 0 100 100" width="46" height="46" aria-hidden="true">
+        <line x1="52" y1="49" x2="20" y2="30" stroke="#141C2E" stroke-width="5" stroke-linecap="round"/>
+        <line x1="52" y1="49" x2="78" y2="18" stroke="#141C2E" stroke-width="5" stroke-linecap="round"/>
+        <line x1="52" y1="49" x2="26" y2="80" stroke="#141C2E" stroke-width="5" stroke-linecap="round"/>
+        <line x1="52" y1="49" x2="84" y2="62" stroke="#141C2E" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="20" cy="30" r="8.5" fill="#00B8A6"/><circle cx="78" cy="18" r="7" fill="#7B61FF"/>
+        <circle cx="26" cy="80" r="6" fill="#FFB020"/><circle cx="84" cy="62" r="9.5" fill="#FF5B47"/>
+        <circle cx="52" cy="49" r="15" fill="#141C2E"/><circle cx="52" cy="49" r="6" fill="#fff"/>
+      </svg>
+      <span class="wm">commvita<sup>&trade;</sup><small>Connected care platform</small></span>
+    </div>
+    <div class="hd-t">
+      <h1>One platform, three domains, three editions</h1>
+      <p>The clinical record, operational flow and board assurance on one open core — so an incident
+         recorded on a ward becomes a risk on the board&rsquo;s register without anyone re-keying it.</p>
+      <p class="meta">Capability map &middot; counts generated from the platform&rsquo;s own edition definition &middot; commvita.com</p>
+    </div>
+    <div class="legend">
+      <span class="lg live"><span class="d" style="background:#0A6B60"></span>Live &mdash; API-backed, wired end to end</span>
+      <span class="lg demo"><span class="d" style="background:#8A5B00"></span>Demonstrated &mdash; seeded data</span>
+      <span class="lg" style="background:#F2F4F7;color:#42506B;border:1px solid #C3CBD9">
+        Status is stated per module, never per platform</span>
+    </div>
+  </header>
+
+  <div class="grid">
+    <!-- ── left column ─────────────────────────────── -->
+    <aside class="side">
+      <section class="panel t">
+        <h3><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#0A7A6E" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="#0A7A6E"/></svg></span>Why this matters</h3>
+        <p>Primary care, community, mental health, social care and the acute trust each run separate
+           systems. The person is scattered across all of them and whole in none.</p>
+        <p>When systems don&rsquo;t connect, people carry the data between them &mdash; the most costly and
+           error-prone integration layer there is.</p>
+      </section>
+
+      <section class="panel v">
+        <h3><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 17V9m5 8V5m5 12v-6m5 6V8" stroke="#5B43D6" stroke-width="2.2" stroke-linecap="round"/></svg></span>Three domains, one record</h3>
+        <ul>
+          <li><b>Clinical</b> &mdash; the record and the care, across every setting a person passes through</li>
+          <li><b>Operational</b> &mdash; flow, capacity, discharge and the workforce that runs them</li>
+          <li><b>Governance</b> &mdash; incident to board, risk, information governance, AI, audit</li>
+        </ul>
+        <p style="margin-top:7px">Same person, same data, three lenses &mdash; so a decision in one is
+           visible in the others.</p>
+      </section>
+
+      <section class="panel a">
+        <h3><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#8A5B00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Key message</h3>
+        <p>Open standards underneath, so the data stays yours. Self-hosted or hosted, configured per
+           jurisdiction, and an export you can check instead of trust.</p>
+        <p>Editions are additive: start with the part of the problem that hurts, add the rest without
+           re-implementing anything.</p>
+      </section>
+
+      <section class="panel c">
+        <h3><span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 7v6" stroke="#9A2016" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="16.5" r="1.3" fill="#9A2016"/><circle cx="12" cy="12" r="9" stroke="#9A2016" stroke-width="1.8"/></svg></span>What isn&rsquo;t there</h3>
+        <p>A page of badges would be easier to print than this list, and worth less.</p>
+        <ul>
+          <li>No ISO&nbsp;27001, no Cyber Essentials</li>
+          <li>No Data Security and Protection Toolkit return submitted</li>
+          <li>No certification for the record-sharing standards</li>
+          <li>No independent penetration test or disaster-recovery evidence published</li>
+          <li>openEHR-<i>aligned</i>, not native: it writes to an openEHR repository, ships
+              <b>0 archetype definitions</b> and has no AQL</li>
+        </ul>
+        <p style="margin-top:7px">None of it is hard to get. It just isn&rsquo;t done, and a first
+           customer would be right to make it a condition of going live.</p>
+      </section>
+    </aside>
+
+    <!-- ── main column ─────────────────────────────── -->
+    <div class="main">
+
+      <section class="band">
+        <h2>End to end, in six moves <span>&mdash; data arrives, becomes a record, runs the operation, proves itself, and teaches the system</span></h2>
+        <div class="path">
+          <div class="step">
+            <span class="n" style="background:var(--teal)">1</span>
+            <h4>Source systems</h4>
+            <p>Hospital and GP systems, community, mental health, social care, pharmacy, ambulance,
+               registries and devices &mdash; each staying where it is.</p>
+            <span class="rt">EPR &middot; GP &middot; LIMS &middot; registries</span>
+          </div>
+          <div class="step">
+            <span class="n" style="background:var(--teal)">2</span>
+            <h4>Exchange &amp; assurance</h4>
+            <p>Monitored connectors translate feeds to one canonical shape, and report what is
+               delivering, how fresh it is and what was rejected.</p>
+            <span class="rt">/connector-dashboard</span>
+          </div>
+          <div class="step">
+            <span class="n" style="background:var(--accent)">3</span>
+            <h4>Meaning &amp; identity</h4>
+            <p>Coded to published vocabularies, resolved to a person with a score on the match, and
+               written to an openEHR repository.</p>
+            <span class="rt">/patients &middot; /empi</span>
+          </div>
+          <div class="step">
+            <span class="n" style="background:var(--violet)">4</span>
+            <h4>Run the operation</h4>
+            <p>The health economy as one production line: the binding constraint found from the model,
+               then acted on across acute, community and social care.</p>
+            <span class="rt">/flow &middot; /discharge-hub</span>
+          </div>
+          <div class="step">
+            <span class="n" style="background:var(--violet)">5</span>
+            <h4>Govern &amp; evidence</h4>
+            <p>Event to theme to systemic issue to risk to board objective, each promotion carrying its
+               evidence, on a hash-chained audit.</p>
+            <span class="rt">/golden-thread &middot; /audit</span>
+          </div>
+          <div class="step">
+            <span class="n" style="background:var(--amber)">6</span>
+            <h4>Learn &amp; improve</h4>
+            <p>Population segmentation, inequality gaps, and federated cohort discovery that returns
+               counts while the data stays at source.</p>
+            <span class="rt">/population-health &middot; /omop-cdm</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <h2>Three editions, additive <span>&mdash; every capability group, with the number of capabilities in it</span></h2>
+        <div class="eds">
+
+          <div class="ed f">
+            <div class="top"><span class="num">139</span><span class="lbl">capabilities &middot; 21 groups</span></div>
+            <h4>commvita Flow</h4>
+            <p class="who">The operational base. Data, integration and the operational hub, with
+               parity against the national data platform. No clinical record.</p>
+            <div class="chips">
+              <span class="chip">FDP-parity operational products <b>19</b></span>
+              <span class="chip">Interop <b>19</b></span>
+              <span class="chip">Platform <b>18</b></span>
+              <span class="chip">US-ACO <b>13</b></span>
+              <span class="chip">Core utilities <b>10</b></span>
+              <span class="chip">Open core platform <b>9</b></span>
+              <span class="chip">Analytics <b>7</b></span>
+              <span class="chip">Operations <b>7</b></span>
+              <span class="chip">Finance <b>6</b></span>
+              <span class="chip">Developer toolkit &amp; ecosystem <b>4</b></span>
+              <span class="chip">FDP transition &amp; data model <b>4</b></span>
+              <span class="chip">Patient-facing <b>4</b></span>
+              <span class="chip">Shared care <b>4</b></span>
+              <span class="chip">Integrations <b>3</b></span>
+              <span class="chip">Access <b>2</b></span>
+              <span class="chip">Identity <b>2</b></span>
+              <span class="chip">Operations &amp; flow <b>2</b></span>
+              <span class="chip">Planning <b>2</b></span>
+              <span class="chip">Referrals <b>2</b></span>
+              <span class="chip">Data <b>1</b></span>
+              <span class="chip">Workforce <b>1</b></span>
+            </div>
+          </div>
+
+          <div class="ed g">
+            <div class="top"><span class="num">116</span><span class="lbl">added &middot; 16 groups</span></div>
+            <h4>Governance &amp; Assurance</h4>
+            <p class="who">The edition boards buy. The organisation&rsquo;s governance system of record
+               and its organisational memory. Carries no clinical workflow at all.</p>
+            <div class="chips">
+              <span class="chip">Incident management <b>14</b></span>
+              <span class="chip">Information governance &amp; privacy <b>12</b></span>
+              <span class="chip">Training, CPD &amp; workforce assurance <b>12</b></span>
+              <span class="chip">Statutory readiness &amp; operational command <b>11</b></span>
+              <span class="chip">Risk &amp; compliance <b>10</b></span>
+              <span class="chip">Audit &amp; evidence <b>10</b></span>
+              <span class="chip">Board assurance <b>9</b></span>
+              <span class="chip">Workforce <b>9</b></span>
+              <span class="chip">Data &amp; AI governance <b>7</b></span>
+              <span class="chip">Governance intelligence <b>7</b></span>
+              <span class="chip">Statutory reporting &amp; annual returns <b>7</b></span>
+              <span class="chip">US-ACO <b>3</b></span>
+              <span class="chip">Analytics <b>2</b></span>
+              <span class="chip">Ambulance <b>1</b></span>
+              <span class="chip">Clinical <b>1</b></span>
+              <span class="chip">Operations <b>1</b></span>
+            </div>
+          </div>
+
+          <div class="ed p">
+            <div class="top"><span class="num">162</span><span class="lbl">added &middot; 28 groups</span></div>
+            <h4>Population Platform</h4>
+            <p class="who">Where you end up. The clinical record across every setting, plus the
+               population layer that reads it. Includes both editions above in full.</p>
+            <div class="chips">
+              <span class="chip">Clinical <b>35</b></span>
+              <span class="chip">Mental health <b>14</b></span>
+              <span class="chip">Community &amp; remote <b>12</b></span>
+              <span class="chip">Social care <b>10</b></span>
+              <span class="chip">US-ACO <b>9</b></span>
+              <span class="chip">Ambulance <b>8</b></span>
+              <span class="chip">Community <b>7</b></span>
+              <span class="chip">Finance <b>7</b></span>
+              <span class="chip">Care settings on the one record <b>6</b></span>
+              <span class="chip">Clinical record <b>5</b></span>
+              <span class="chip">Population health <b>5</b></span>
+              <span class="chip">Patient-facing <b>5</b></span>
+              <span class="chip">Referrals <b>5</b></span>
+              <span class="chip">Clinical operations <b>4</b></span>
+              <span class="chip">Clinical &amp; national returns <b>4</b></span>
+              <span class="chip">AI / clinical <b>4</b></span>
+              <span class="chip">Medicines <b>4</b></span>
+              <span class="chip">Analytics &amp; AI <b>3</b></span>
+              <span class="chip">Analytics <b>3</b></span>
+              <span class="chip">Access <b>2</b></span>
+              <span class="chip">Platform <b>2</b></span>
+              <span class="chip">Prescribing <b>2</b></span>
+              <span class="chip">Governance <b>1</b></span>
+              <span class="chip">Maternity <b>1</b></span>
+              <span class="chip">Operations <b>1</b></span>
+              <span class="chip">Quality <b>1</b></span>
+              <span class="chip">Remote <b>1</b></span>
+              <span class="chip">Safety <b>1</b></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="band">
+        <h2>The standards it is built to <span>&mdash; named in text, because these are other bodies&rsquo; marks and we have no licence to print them</span></h2>
+        <div class="std">
+          <div class="stdcol"><h5>Record &amp; terminology</h5><div class="chips">
+            <span class="chip">openEHR record shapes</span><span class="chip">SNOMED CT</span>
+            <span class="chip">dm+d</span><span class="chip">PRSB Core Information Standard</span></div></div>
+          <div class="stdcol"><h5>Exchange</h5><div class="chips">
+            <span class="chip">FHIR R4</span><span class="chip">HL7 v2</span>
+            <span class="chip">GP Connect</span><span class="chip">NRL</span>
+            <span class="chip">IPS</span><span class="chip">EEHRxF &mdash; design alignment</span></div></div>
+          <div class="stdcol"><h5>Secondary use</h5><div class="chips">
+            <span class="chip">OMOP CDM v5.4</span><span class="chip">OHDSI network node</span>
+            <span class="chip">FHIR Bulk Data Access</span><span class="chip">k-anonymity</span>
+            <span class="chip">ICO anonymisation guidance</span></div></div>
+          <div class="stdcol"><h5>Safety &amp; clinical risk</h5><div class="chips">
+            <span class="chip">DCB0129</span><span class="chip">DCB0160</span>
+            <span class="chip">Non-SaMD throughout</span><span class="chip">NEWS2 (RCP 2017)</span></div></div>
+          <div class="stdcol"><h5>Privacy &amp; access</h5><div class="chips">
+            <span class="chip">UK GDPR Art. 6, 9, 15, 20, 30</span><span class="chip">National data opt-out</span>
+            <span class="chip">FHIR Consent</span><span class="chip">OIDC / SSO</span>
+            <span class="chip">ODS organisation codes</span></div></div>
+          <div class="stdcol"><h5>Inclusion</h5><div class="chips">
+            <span class="chip">Accessible Information Standard DCB1605</span>
+            <span class="chip">NHS Reasonable Adjustment Flag</span>
+            <span class="chip">Core20PLUS5 splits by default</span></div></div>
+        </div>
+      </section>
+
+      <section class="band" style="background:#fff">
+        <h2>The base underneath all three <span>&mdash; you don&rsquo;t buy it separately and you can&rsquo;t end up without it</span></h2>
+        <div class="base">
+          <div class="basecard"><h5>Identity &amp; RBAC</h5><p>A role decides what you can do; org scope decides whose records you see. Enforced on the server.</p></div>
+          <div class="basecard"><h5>Tamper-evident audit</h5><p>Append-only, hash-chained, re-verified on read &mdash; so the log gets checked instead of trusted.</p></div>
+          <div class="basecard"><h5>Jurisdiction profile</h5><p>Regulator, identifier scheme, professional register and legal deadlines, dated and source-cited.</p></div>
+          <div class="basecard"><h5>Data fabric &amp; open APIs</h5><p>One canonical shape, a machine-readable contract, and bulk export that leaves in a published standard.</p></div>
+          <div class="basecard"><h5>Person spine</h5><p>Identity resolution that carries a score, so &ldquo;probably the same person&rdquo; stays visibly probable.</p></div>
+          <div class="basecard"><h5>Hosting</h5><p>commvita-hosted, self-hosted or sovereign. Flow Edition is &pound;1 per instance, every environment included.</p></div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="ft">
+    <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true">
+      <line x1="52" y1="49" x2="20" y2="30" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="78" y2="18" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="26" y2="80" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="84" y2="62" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="20" cy="30" r="8.5" fill="#00B8A6"/><circle cx="78" cy="18" r="7" fill="#7B61FF"/>
+      <circle cx="26" cy="80" r="6" fill="#FFB020"/><circle cx="84" cy="62" r="9.5" fill="#FF5B47"/>
+      <circle cx="52" cy="49" r="15" fill="#fff"/><circle cx="52" cy="49" r="6" fill="#141C2E"/>
+    </svg>
+    <span class="wm">commvita<sup>&trade;</sup><small>Connected care platform</small></span>
+    <span class="tag">A platform you set up to suit you, and can leave whenever you want.</span>
+    <span class="src">Counts are generated from the platform&rsquo;s own edition definition.
+      Live-or-demonstrated status is stated on each module.</span>
+    <span class="rt">commvita.com</span>
+  </footer>
+</div>
+</html>
