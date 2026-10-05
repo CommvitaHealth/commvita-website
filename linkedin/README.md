@@ -8,6 +8,9 @@ with a branded image for each. Twenty-one posts, 21 September to 20 November. No
   body you paste.
 - `topical/` — off-cadence posts tied to a date or an event, named by the day
   they go out. `plan.py` ignores these; `build_cards.py` renders them.
+- `notes/` — short pieces written to one named person, rendered by
+  `build_html.py` the same way an article is. A note is a letter, so it says
+  what we haven’t built as readily as what we have.
 - `replies/` — drafted answers to comments. A reply makes checkable claims
   under your name just as a post does, so the claims get verified first and the
   `status:` line records what was checked.

@@ -18,6 +18,7 @@ import html as _h, os, re, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 ARTICLES = os.path.join(HERE, 'articles')
+NOTES = os.path.join(HERE, 'notes')   # short pieces written to one person
 OUT = os.path.join(HERE, 'html')
 FONTS = os.path.join(ROOT, 'site', 'fonts.css')
 SHELL = os.environ.get('CHROME_BIN',
@@ -64,10 +65,22 @@ def markdown(src):
             tag = {1: 'h1', 2: 'h2', 3: 'h3'}[level]
             out.append(f'<{tag}>{text}</{tag}>')
             continue
-        text = _h.escape(block).replace('\n', ' ')
-        text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
-        out.append(f'<p>{text}</p>')
+        lines = [l.strip() for l in block.split('\n')]
+        if all(re.match(r'^\d+\.\s', l) for l in lines):
+            items = [inline(re.sub(r'^\d+\.\s*', '', l)) for l in lines]
+            out.append('<ol>' + ''.join(f'<li>{i}</li>' for i in items) + '</ol>')
+            continue
+        if all(l.startswith('- ') for l in lines):
+            items = [inline(l[2:]) for l in lines]
+            out.append('<ul>' + ''.join(f'<li>{i}</li>' for i in items) + '</ul>')
+            continue
+        out.append(f'<p>{inline(" ".join(lines))}</p>')
     return '\n'.join(out)
+
+
+def inline(text):
+    text = _h.escape(text)
+    return re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
 
 
 PAGE = """<!doctype html><html lang="en-GB"><meta charset="utf-8">
@@ -131,6 +144,13 @@ h3{{font-size:clamp(1.06rem,1rem+.35vw,1.22rem);margin:1.9em 0 .4em;font-weight:
   color:var(--accent)}}
 h2+h3{{margin-top:1.1em}}
 p{{margin:0 0 1.15em}}
+ol,ul{{margin:0 0 1.2em;padding-left:1.45em}}
+li{{margin:0 0 .5em;padding-left:.15em}}
+ol{{counter-reset:li;list-style:none;padding-left:0}}
+ol li{{position:relative;padding-left:2.1em;counter-increment:li}}
+ol li::before{{content:counter(li);position:absolute;left:0;top:.08em;
+  width:1.5em;height:1.5em;border-radius:50%;background:var(--accent);color:#fff;
+  font-size:.78em;font-weight:800;display:grid;place-items:center}}
 strong{{color:var(--ink);font-weight:700}}
 main>p:first-of-type{{font-size:1.16em;line-height:1.58;color:var(--ink)}}
 footer{{max-width:44rem;margin:0 auto;padding:22px clamp(20px,5vw,32px) 56px;
@@ -182,8 +202,16 @@ footer p{{margin:0 0 .5em}}
 </html>"""
 
 
+def source_of(name):
+    for folder in (ARTICLES, NOTES):
+        path = os.path.join(folder, name + '.md')
+        if os.path.exists(path):
+            return path
+    raise SystemExit(f'no source found for {name}')
+
+
 def build(name):
-    path = os.path.join(ARTICLES, name + '.md')
+    path = source_of(name)
     meta, body = front_matter(path)
     accent = ACCENT.get(meta.get('edition', ''), '#00B8A6')
     headline = meta.get('card_headline', '')
@@ -214,8 +242,9 @@ def build(name):
 
 
 if __name__ == '__main__':
-    want = sys.argv[1:] or [f[:-3] for f in sorted(os.listdir(ARTICLES))
-                            if f.endswith('.md')]
+    want = sys.argv[1:] or sorted(
+        f[:-3] for folder in (ARTICLES, NOTES) if os.path.isdir(folder)
+        for f in os.listdir(folder) if f.endswith('.md'))
     for name in want:
         for f in build(name):
             print(f'wrote {os.path.relpath(f, ROOT)}  {os.path.getsize(f) // 1024} KB')
