@@ -1,0 +1,165 @@
+<!doctype html><html lang="en-GB"><meta charset="utf-8">
+<title>Letter to tested capability</title>
+<!--
+  A 15-second looping animation for video 5. Screen-record it at 1600x900.
+  It shows elapsed time, which is a result. It shows no tooling, no build
+  gates and no pipeline stages, per the standing order of 20 September.
+-->
+<style>
+/*__FONTS__*/
+:root{
+  --ink:#141C2E; --body:#C2D0E6; --muted:#8CA1C2; --white:#fff;
+  --teal:#00B8A6; --amber:#FFB020; --coral:#FF5B47; --violet:#7B61FF;
+  --sans:"Archivo","Familjen Grotesk",system-ui,sans-serif;
+  --display:"Familjen Grotesk","Archivo",system-ui,sans-serif;
+  --T:15s;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:#070E1A;height:100%;overflow:hidden}
+.stage{position:relative;width:1600px;height:900px;background:#141C2E;color:var(--white);
+  font-family:var(--sans);overflow:hidden;transform-origin:top left}
+.glow{position:absolute;right:-240px;top:-300px;width:860px;height:860px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,184,166,.16) 0%,transparent 66%)}
+.lock{position:absolute;left:68px;top:52px;display:flex;align-items:center;gap:13px}
+.wm{font-family:var(--display);font-weight:800;font-size:25px;letter-spacing:-.02em}
+.wm sup{font-size:.46em;vertical-align:super}
+h1{position:absolute;left:68px;top:126px;margin:0;font-family:var(--display);font-weight:800;
+  font-size:50px;line-height:1.05;letter-spacing:-.022em;max-width:24ch;
+  opacity:0;animation:in .7s ease-out .2s forwards}
+.sub{position:absolute;left:68px;top:258px;font-size:20px;color:var(--body);max-width:58ch;
+  opacity:0;animation:in .7s ease-out .55s forwards}
+
+.track{position:absolute;left:68px;right:68px}
+.lab{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.rail{position:relative;height:54px;border-radius:9px;background:rgba(255,255,255,.07)}
+.fill{position:absolute;inset:0 auto 0 0;border-radius:9px;width:0}
+.steps{position:absolute;inset:0;display:flex}
+.step{flex:1;position:relative;display:flex;align-items:center;justify-content:center;
+  font-size:13.5px;font-weight:700;color:#0B1422;opacity:0;text-align:center;padding:0 4px;line-height:1.2}
+.step+.step{border-left:1px solid rgba(11,20,34,.25)}
+
+/* traditional */
+.t1{top:402px}
+.t1 .lab{color:var(--amber)}
+.t1 .fill{background:linear-gradient(90deg,#FFB020,#FF8A3D);
+  animation:grow 5.4s cubic-bezier(.45,.02,.3,1) 1.1s forwards}
+.t1 .step{animation:fade .35s ease-out forwards}
+.t1 .step:nth-child(1){animation-delay:1.5s}  .t1 .step:nth-child(2){animation-delay:2.2s}
+.t1 .step:nth-child(3){animation-delay:2.9s}  .t1 .step:nth-child(4){animation-delay:3.6s}
+.t1 .step:nth-child(5){animation-delay:4.3s}  .t1 .step:nth-child(6){animation-delay:5.0s}
+.t1 .step:nth-child(7){animation-delay:5.7s}
+.t1 .tot{position:absolute;right:0;top:-46px;font-family:var(--display);font-weight:800;
+  font-size:34px;color:var(--amber);opacity:0;animation:in .5s ease-out 6.6s forwards}
+
+/* commvita, same scale */
+.t2{top:556px}
+.t2 .lab{color:var(--teal)}
+.t2 .rail{background:rgba(255,255,255,.07)}
+.t2 .fill{background:linear-gradient(90deg,#00B8A6,#2FD9C6);
+  animation:grow2 .6s cubic-bezier(.45,.02,.3,1) 7.5s forwards}
+.t2 .tot{position:absolute;left:7.4%;top:12px;font-size:14.5px;font-weight:700;color:var(--teal);
+  white-space:nowrap;padding-left:16px;opacity:0;animation:in .5s ease-out 8.1s forwards}
+
+/* the expansion */
+.fan{position:absolute;left:68px;top:622px;width:1464px;height:44px;opacity:0;
+  animation:in .5s ease-out 8.7s forwards}
+.fan svg{width:100%;height:100%;display:block}
+.detail{position:absolute;left:68px;right:68px;top:666px;opacity:0;
+  animation:in .6s ease-out 9.1s forwards}
+.detail .rail{height:58px;background:rgba(0,184,166,.12);border:1px solid rgba(0,184,166,.4)}
+.detail .step{color:#CFF4EF;opacity:0;font-weight:700;animation:fade .3s ease-out forwards}
+.detail .step+.step{border-left:1px solid rgba(0,184,166,.3)}
+.detail .step:nth-child(1){animation-delay:9.5s} .detail .step:nth-child(2){animation-delay:9.9s}
+.detail .step:nth-child(3){animation-delay:10.3s} .detail .step:nth-child(4){animation-delay:10.7s}
+.detail .tot{position:absolute;right:0;top:-32px;font-family:var(--display);font-weight:800;
+  font-size:26px;color:var(--teal);opacity:0;animation:in .5s ease-out 11.2s forwards}
+
+.foot{position:absolute;left:68px;right:68px;bottom:42px;display:flex;align-items:flex-end;gap:30px;
+  opacity:0;animation:in .7s ease-out 11.8s forwards}
+.foot .big{font-family:var(--display);font-weight:800;font-size:25px;line-height:1.2;max-width:36ch}
+.foot .note{font-size:15px;color:var(--muted);line-height:1.5;max-width:40ch;margin-left:auto}
+.site{position:absolute;right:68px;top:58px;font-size:15px;font-weight:700;color:#EAF1FB}
+
+@keyframes grow{to{width:100%}}
+@keyframes grow2{to{width:7.4%}}
+@keyframes in{to{opacity:1;transform:none}}
+@keyframes fade{to{opacity:1}}
+h1,.sub,.foot{transform:translateY(14px)}
+.stage{animation:loop var(--T) steps(1,end) infinite}
+@keyframes loop{0%,99.9%{opacity:1}100%{opacity:1}}
+</style>
+<div class="stage" id="stage">
+  <div class="glow"></div>
+  <div class="lock">
+    <svg viewBox="0 0 100 100" width="42" height="42" aria-hidden="true">
+      <line x1="52" y1="49" x2="20" y2="30" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="78" y2="18" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="26" y2="80" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="84" y2="62" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="20" cy="30" r="8.5" fill="#00B8A6"/><circle cx="78" cy="18" r="7" fill="#7B61FF"/>
+      <circle cx="26" cy="80" r="6" fill="#FFB020"/><circle cx="84" cy="62" r="9.5" fill="#FF5B47"/>
+      <circle cx="52" cy="49" r="15" fill="#fff"/><circle cx="52" cy="49" r="6" fill="#141C2E"/>
+    </svg>
+    <span class="wm">commvita<sup>&trade;</sup></span>
+  </div>
+  <span class="site">commvita.com</span>
+
+  <h1>From a letter to a tested capability in two weeks.</h1>
+  <p class="sub">Waiting Well &mdash; people on a list aren&rsquo;t a queue, they&rsquo;re a cohort,
+    and some of them are getting worse.</p>
+
+  <div class="track t1">
+    <div class="lab">The usual route</div>
+    <div class="rail">
+      <div class="fill"></div>
+      <div class="steps">
+        <span class="step">Requirement</span><span class="step">Business case</span>
+        <span class="step">Board</span><span class="step">Procurement</span>
+        <span class="step">Specification</span><span class="step">Release train</span>
+        <span class="step">Test &amp; ship</span>
+      </div>
+    </div>
+    <span class="tot">&asymp; 9 months</span>
+  </div>
+
+  <div class="track t2">
+    <div class="lab">Same scale</div>
+    <div class="rail"><div class="fill"></div></div>
+    <span class="tot">&larr; 14 days, drawn to the same scale</span>
+  </div>
+
+  <div class="fan">
+    <svg viewBox="0 0 1464 44" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M4 2 L4 42" stroke="#00B8A6" stroke-width="2" fill="none" opacity=".8"/>
+      <path d="M108 2 L1460 42" stroke="#00B8A6" stroke-width="2" fill="none" opacity=".5"/>
+    </svg>
+  </div>
+
+  <div class="detail">
+    <div class="lab" style="color:var(--teal)">Those 14 days, expanded</div>
+    <div class="rail">
+      <div class="steps">
+        <span class="step">Letter issued</span><span class="step">Built on the record that already existed</span>
+        <span class="step">Tested</span><span class="step">In the build</span>
+      </div>
+    </div>
+    <span class="tot">14 days</span>
+  </div>
+
+  <div class="foot">
+    <span class="big">The speed isn&rsquo;t the claim.<br>Getting the model right years earlier is.</span>
+    <span class="note">Waiting Well needed no new data model. The record already knew who was
+      waiting, what for, and what else was wrong with them.</span>
+  </div>
+</div>
+<script>
+// fit the 1600x900 stage to whatever window records it, and restart the loop cleanly
+var s=document.getElementById('stage');
+function fit(){var k=Math.min(innerWidth/1600,innerHeight/900);
+  s.style.transform='scale('+k+')';
+  s.style.left=((innerWidth-1600*k)/2)+'px';s.style.top=((innerHeight-900*k)/2)+'px';
+  s.style.position='absolute';}
+addEventListener('resize',fit);fit();
+setInterval(function(){var c=s.cloneNode(true);s.parentNode.replaceChild(c,s);s=c;fit();},15000);
+</script>
+</html>
