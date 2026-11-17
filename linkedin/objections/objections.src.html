@@ -1,0 +1,212 @@
+<!doctype html><html lang="en-GB"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The objections</title>
+<meta name="description" content="Every reason not to buy commvita, by the person who would raise it — with the honest answer, including the ones we concede.">
+<style>
+/*__FONTS__*/
+:root{
+  --ink:#141C2E; --body:#42506B; --muted:#5D6B85; --hair:#D9DFE8; --hair2:#C3CBD9;
+  --page:#fff; --card:#fff; --paper:#F2F4F7;
+  --teal:#0A7A6E; --teal-bg:#E6F7F4; --teal-bd:#A8E2D9;
+  --amber:#8A5B00; --amber-bg:#FFF5E0; --amber-bd:#F3D79A;
+  --coral:#9A2016; --coral-bg:#FDECEA; --coral-bd:#F5BFB8;
+  --accent:#0A7A6E;
+  --sans:"Archivo","Familjen Grotesk",system-ui,-apple-system,sans-serif;
+  --display:"Familjen Grotesk","Archivo",system-ui,sans-serif;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#0C1626; --card:#111F35; --paper:#16273F; --ink:#EAF1FB; --body:#C2D0E6;
+  --muted:#8CA1C2; --hair:rgba(255,255,255,.12); --hair2:rgba(255,255,255,.2);
+  --teal:#8FF0DF; --teal-bg:#0E3A34; --teal-bd:#1C6B60;
+  --amber:#FFD98A; --amber-bg:#3A2E12; --amber-bd:#6B5524;
+  --coral:#FFB3A8; --coral-bg:#3E1A16; --coral-bd:#7A322A; --accent:#5FE6D6;}}
+:root[data-theme="dark"]{--page:#0C1626;--card:#111F35;--paper:#16273F;--ink:#EAF1FB;
+  --body:#C2D0E6;--muted:#8CA1C2;--hair:rgba(255,255,255,.12);--hair2:rgba(255,255,255,.2);
+  --teal:#8FF0DF;--teal-bg:#0E3A34;--teal-bd:#1C6B60;--amber:#FFD98A;--amber-bg:#3A2E12;
+  --amber-bd:#6B5524;--coral:#FFB3A8;--coral-bg:#3E1A16;--coral-bd:#7A322A;--accent:#5FE6D6}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--body);font-family:var(--sans);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:60rem;margin:0 auto;padding:0 16px 72px}
+header{padding:44px 0 22px}
+.lock{display:flex;align-items:center;gap:11px;margin-bottom:26px}
+.wm{font-family:var(--display);font-weight:800;font-size:1.22rem;color:var(--ink);letter-spacing:-.02em}
+.wm sup{font-size:.46em;vertical-align:super}
+h1{font-family:var(--display);font-weight:800;color:var(--ink);margin:0 0 .3em;
+  font-size:clamp(1.9rem,1.2rem+2.6vw,3rem);line-height:1.06;letter-spacing:-.022em}
+.dek{font-size:clamp(1rem,.95rem+.3vw,1.18rem);max-width:60ch;margin:0 0 1.3em}
+.tally{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.t{display:inline-flex;align-items:baseline;gap:7px;border-radius:9px;padding:7px 13px;
+  font-size:.85rem;font-weight:700;border:1px solid}
+.t b{font-family:var(--display);font-size:1.15rem;font-weight:800}
+.t.a{background:var(--teal-bg);border-color:var(--teal-bd);color:var(--teal)}
+.t.p{background:var(--amber-bg);border-color:var(--amber-bd);color:var(--amber)}
+.t.c{background:var(--coral-bg);border-color:var(--coral-bd);color:var(--coral)}
+.filters{display:flex;flex-wrap:wrap;gap:7px;padding:18px 0 6px;position:sticky;top:0;
+  background:var(--page);z-index:5;border-bottom:1px solid var(--hair);margin-bottom:4px}
+.f{border:1px solid var(--hair2);background:var(--card);color:var(--ink);border-radius:999px;
+  padding:8px 15px;font-family:var(--sans);font-size:.85rem;font-weight:700;cursor:pointer;
+  min-height:40px}
+.f:hover{border-color:var(--accent)}
+.f[aria-pressed="true"]{background:var(--ink);color:var(--page);border-color:var(--ink)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .f[aria-pressed="true"]{
+  background:var(--accent);color:#06202a;border-color:var(--accent)}}
+.row{border:1px solid var(--hair);border-radius:13px;background:var(--card);margin:11px 0;
+  overflow:hidden}
+.row>button{width:100%;text-align:left;background:none;border:0;padding:15px 17px;
+  display:flex;gap:13px;align-items:flex-start;cursor:pointer;font-family:var(--sans);
+  color:inherit;font-size:1rem;line-height:1.45}
+.row>button:hover{background:var(--paper)}
+.q{flex:1;min-width:0;font-weight:650;color:var(--ink)}
+.who{display:block;font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:5px}
+.v{flex:none;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  border-radius:7px;padding:4px 9px;border:1px solid;white-space:nowrap;margin-top:2px}
+.v.a{background:var(--teal-bg);border-color:var(--teal-bd);color:var(--teal)}
+.v.p{background:var(--amber-bg);border-color:var(--amber-bd);color:var(--amber)}
+.v.c{background:var(--coral-bg);border-color:var(--coral-bd);color:var(--coral)}
+.chev{flex:none;color:var(--muted);transition:transform .18s;margin-top:4px}
+.row.open .chev{transform:rotate(90deg)}
+.ans{display:none;padding:0 17px 17px;border-top:1px solid var(--hair);margin-top:-1px}
+.row.open .ans{display:block}
+.ans p{margin:13px 0 0}
+.ans p:first-child{margin-top:14px}
+.ans b{color:var(--ink)}
+.empty{padding:28px 4px;color:var(--muted)}
+footer{margin-top:34px;padding-top:20px;border-top:1px solid var(--hair);font-size:.84rem;
+  color:var(--muted)}
+footer p{margin:0 0 .6em}
+</style>
+<div class="wrap">
+<header>
+  <div class="lock">
+    <svg viewBox="0 0 100 100" width="40" height="40" aria-hidden="true">
+      <line x1="52" y1="49" x2="20" y2="30" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="78" y2="18" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="26" y2="80" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      <line x1="52" y1="49" x2="84" y2="62" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="20" cy="30" r="8.5" fill="#00B8A6"/><circle cx="78" cy="18" r="7" fill="#7B61FF"/>
+      <circle cx="26" cy="80" r="6" fill="#FFB020"/><circle cx="84" cy="62" r="9.5" fill="#FF5B47"/>
+      <circle cx="52" cy="49" r="15" fill="currentColor"/><circle cx="52" cy="49" r="6" fill="var(--page)"/>
+    </svg>
+    <span class="wm" style="color:var(--ink)">commvita<sup>&trade;</sup></span>
+  </div>
+  <h1>Every reason not to buy it</h1>
+  <p class="dek">We asked people to be as unkind as they could about commvita, then wrote down
+    what we&rsquo;d say back. Where there&rsquo;s no good answer, the row says <b>conceded</b> and
+    the argument stops there. Pick the chair you sit in.</p>
+  <div class="tally">
+    <span class="t a"><b id="na">0</b> answered</span>
+    <span class="t p"><b id="np">0</b> partly</span>
+    <span class="t c"><b id="nc">0</b> conceded</span>
+  </div>
+</header>
+<nav class="filters" id="filters" aria-label="Filter by role"></nav>
+<main id="list"></main>
+<footer>
+  <p>Status language is the platform&rsquo;s own: <b>live</b> means API-backed logic wired end to
+    end, <b>demonstrated</b> means a real surface over seeded data. Module counts come from
+    commvita&rsquo;s own register.</p>
+  <p>&copy; 2026 Commvita Digital Health Solutions Ltd. commvita isn&rsquo;t a medical device. It
+    shows recorded information and supports decisions; clinical decisions stay with the clinician.</p>
+</footer>
+</div>
+<script>
+const D=[
+["CEO","We&rsquo;d be your first customer. If this goes wrong, it&rsquo;s my name on it.","c",
+"Conceded. No customer has been live on this for a year, and nothing changes that. What we can show you is the platform working and exactly which parts run on real data.<p>The only honest mitigation is sequencing. The Governance &amp; Assurance edition carries no clinical workflow at all, so a first deployment needn&rsquo;t touch patient care. If it fails, it fails in the board papers, not on a ward.</p>"],
+["CEO","Why has nobody else bought it?","p",
+"Partly. It launched recently, so the honest answer is that the question hasn&rsquo;t had time to be asked by many people yet.<p>What we&rsquo;d push back on is the implied test. &ldquo;Who else has it&rdquo; is a proxy for &ldquo;is it any good&rdquo;, and you have better instruments than a proxy: the register, the live-versus-demonstrated marking on every module, and an afternoon with the thing running.</p>"],
+["CEO","A small supplier is an existential risk to us.","p",
+"Partly, and the usual fix is the wrong one. Source code escrow hands you code you then have to host, understand and run.<p>What you need is your data in a shape somebody else can read on a morning we aren&rsquo;t around. The record writes to an open repository, FHIR R4 in and out, bulk export and an analytic extract that arrives with a data-quality report. You host it in your own cloud account or your own data centre, so the lights don&rsquo;t go out with us.</p><p>Escrow itself isn&rsquo;t settled and we won&rsquo;t pretend otherwise.</p>"],
+["CEO","The code is AI-generated. That&rsquo;s the whole pitch and the whole problem.","p",
+"Partly. An agent proposes and a person reviews — that&rsquo;s the arrangement, and we say so publicly rather than hiding it in the way some do.<p>The register lists 622 modules with 565 marked live, as at that build. What we don&rsquo;t have is an independent audit of any of it, and you&rsquo;d be right to want one.</p>"],
+["CFO","£1 an instance is a gimmick. Where&rsquo;s the real money?","a",
+"It&rsquo;s the published price for the Flow Edition and it means one deployment for your organisation with every environment included — production, test, training and disaster recovery. Not per seat. It isn&rsquo;t free; it&rsquo;s priced so adopting the platform is never the expensive decision.<p>The real money is where it always is: implementation, migration, training and your own people&rsquo;s time. The Population Platform is priced per head of population, with governance and assurance included for that population, so you aren&rsquo;t charged twice for governance you&rsquo;ve already bought.</p>"],
+["CFO","The 80% saving is marketing.","p",
+"Partly, and the site says so in those terms: it&rsquo;s an aim, and nobody has banked it. We think one platform can take roughly 80% out of what a record, an operations tool and a governance stack cost together once you count the integrations, the duplicated infrastructure and the separate annual assurance on each.<p>We haven&rsquo;t run that measurement. The price, on the other hand, isn&rsquo;t an aim.</p>"],
+["CFO","No published support model and no service levels. That&rsquo;s an unbounded liability.","c",
+"Conceded. There&rsquo;s no published support model with response times, and service levels aren&rsquo;t settled. Paid support is optional and undefined.<p>If you&rsquo;re seriously considering being first, those belong in a contract and they&rsquo;re exactly what you should negotiate hard on.</p>"],
+["CFO","What does it cost us to leave?","a",
+"Less than usual, and we&rsquo;ve written down the limits. The clinical record and the analytic dataset leave in published standards with an audit trail. Operational and governance surfaces export what their screens show.<p>What doesn&rsquo;t exist: a one-click export of an entire deployment as a single archive. If a receiving system needs more than the record and the dataset, that&rsquo;s an integration project and should be priced as one.</p>"],
+["COO","You want me to run winter on a demonstration.","p",
+"Partly, and the distinction matters more than the headline. On the flow canvas, work in progress, queue, arrival rate and the binding constraint run on a live model built from real ward, delay and operational pressure state. The closed-loop action surface — raising the discharge task, notifying the GP, booking transport — is demonstrated on seeded data today.<p>So: see the constraint live, act on it manually, and wait for the action surface. We&rsquo;d rather you knew that now than found it in January.</p>"],
+["COO","Another system my staff have to learn, on top of the five they hate.","a",
+"The argument for one platform is that it&rsquo;s the opposite of another system. Today your people are the integration layer — reading one screen, writing on a second, phoning a third to assemble a picture that should already exist.<p>Where it genuinely is new work is the first few months of running two things at once. Nothing makes that pleasant.</p>"],
+["COO","Who do I call at three in the morning?","c",
+"Conceded. There&rsquo;s no published support model, no response times and no on-call commitment. That&rsquo;s a contract conversation and it hasn&rsquo;t happened yet."],
+["COO","Our data is a mess. Your clever model will choke on it.","a",
+"Probably, and the platform is built to say so out loud. Connectors report what&rsquo;s delivering, how fresh it is and what got rejected, so a feed that stopped three weeks ago shows as a feed that stopped three weeks ago. Identity matches carry a score, so &ldquo;probably the same person&rdquo; stays visibly probable. Unmapped codes are reported, not dropped.<p>None of that cleans your data. It stops the platform pretending your data is clean.</p>"],
+["CMO","Who is the clinical safety officer, and where is the hazard log?","p",
+"Partly. Clinical risk management is built around DCB0129 and DCB0160 with a named safety officer signing off, and change assessment for system modifications has its own workflow.<p>What we can&rsquo;t show you is a completed safety case for your deployment, because there isn&rsquo;t one. That&rsquo;s work your clinical safety officer and ours would do together before go-live, and you&rsquo;d be right to make it a condition.</p>"],
+["CMO","AI near clinical decisions. Absolutely not.","a",
+"Then we agree. Every AI surface is non-SaMD: it offers context and suggestions and a human makes the call. Provider keys sit server-side only and no patient data reaches a model without a key and an audit entry.<p>Underneath there&rsquo;s an algorithm register, bias assessment, an override log built for the right to human review, and acceptance-rate analytics on automated coding — so you can see whether clinicians agree with it or are clicking through. That last number is the one we&rsquo;d ask for first.</p><p>These surfaces are demonstrated on seeded data today.</p>"],
+["CMO","It isn&rsquo;t a certified medical device.","a",
+"Correct, and it isn&rsquo;t one. It shows recorded information and supports decisions. Clinical decisions stay with the clinician. We state that on every page rather than leaving you to infer it."],
+["CMO","Zero archetypes. You can&rsquo;t hold a clinical record properly.","p",
+"Partly, and it&rsquo;s the fairest technical hit on the list. commvita is built to openEHR&rsquo;s record shapes and a finished consultation writes to a real openEHR repository, with a container shipping for each country. It isn&rsquo;t a native implementation: zero archetype definitions ship and there&rsquo;s no query language support.<p>We publish that on our own site, because anyone technical finds it in ten minutes and a claim that fails that test poisons every claim next to it.</p>"],
+["CIO","&ldquo;openEHR-aligned&rdquo; is a marketing word for not openEHR.","p",
+"Partly, and we&rsquo;d accept the framing. It writes to a real openEHR repository through a real integration. It ships no archetypes and no AQL, and the default repository target in a stock configuration is a mock.<p>That&rsquo;s precisely why we don&rsquo;t use the word native.</p>"],
+["CIO","No ISO 27001. No Cyber Essentials. No toolkit return.","c",
+"Conceded, all three. No independent penetration test either, and no published disaster-recovery evidence.<p>None of it is hard to get. It just isn&rsquo;t done, and a first customer would be right to make every one of them a condition of going live.</p>"],
+["CIO","One supplier, one platform, total dependency.","p",
+"Partly. Concentration is real and we won&rsquo;t argue it away. What reduces it is that the exits are built rather than promised: open standards on the inside and the outside, your own tenancy, bulk export, and an analytic extract with a quality report attached.<p>A platform you can leave is one you can stay with on purpose.</p>"],
+["CIO","Integration always costs ten times what the vendor says.","a",
+"Usually, because the vendor shows you a connected system and not a monitored one. Integration assurance here is a first-class screen: every connector, whether it&rsquo;s delivering, how fresh the data is, what&rsquo;s been rejected.<p>Freshness is the metric worth arguing about. &ldquo;Connected&rdquo; is a binary and it&rsquo;s almost always true. &ldquo;Last message 19 days ago&rdquo; is what tells you the shared record you&rsquo;re relying on has quietly become a history book.</p>"],
+["Procurement","A £1 price can&rsquo;t be evaluated, and it looks like an inducement.","p",
+"Partly. It&rsquo;s a published list price rather than a bid, which is unusual and does make a price-weighted evaluation strange.<p>What it isn&rsquo;t is hidden. One deployment, every environment included, not per seat, support optional and separately priced. The Population Platform is per head of population. Nothing is quoted differently to different buyers, which is more than most evaluations can say.</p>"],
+["Procurement","You&rsquo;d fail our mandatory gates on day one.","c",
+"Conceded, and you should assume so. Cyber Essentials, an information security certification and a completed national toolkit return are common mandatory gates, and we hold none of them.<p>If those are pass-or-fail in your process, we fail. That&rsquo;s the accurate answer and we&rsquo;d rather you had it before you spent effort.</p>"],
+["Procurement","Low entry price, then the scope creeps and we&rsquo;re locked in.","a",
+"The structure is designed against that. The editions are additive and each is complete on its own: the operational base stands alone, governance is bought by boards and carries no clinical workflow, and the clinical record is a separate decision taken later or never.<p>Adding the next one re-implements nothing, and not adding it breaks nothing.</p>"],
+["Procurement","What&rsquo;s your financial standing? Are you a going concern?","c",
+"Conceded as an unknown from our side of the table. Nothing about funding or runway has been committed to publicly, and we won&rsquo;t imply otherwise.<p>Run your normal checks. If the answer doesn&rsquo;t satisfy you, that&rsquo;s a legitimate reason not to proceed.</p>"],
+["HR","Workforce data is the most sensitive we hold. Appraisals, grievances, speaking up.","a",
+"Which is why access is two separate things: a role decides what you can do, an organisation scope decides whose records you can reach, and enforcement sits on the server so a refusal comes back with a reason instead of a hidden menu.<p>Every read is written to an append-only, hash-chained log that&rsquo;s re-verified when it&rsquo;s read. An inappropriate look at a record is findable afterwards and provable once found — which is the point of holding freedom-to-speak-up and register-of-interests data at all.</p>"],
+["HR","Rostering and electronic staff record integration — does it genuinely work?","p",
+"Partly, and you&rsquo;d need to test it module by module. Safe staffing with care hours per patient day, the bank-first cascade with agency as escalation, working-time compliance, job planning, appraisal and training records are all in the governance edition, alongside staff record integration.<p>Which of those are live and which are demonstrated is stated on each module. Ask for that list and hold us to it.</p>"],
+["HR","Staff side will want consultation before any of this.","a",
+"They should, and the platform gives them something to consult on. Safe staffing runs as a daily operational job with a board return falling out of it, and the professional judgement entry exists because a ward that&rsquo;s numerically fine and clinically stretched is a real thing.<p>A staffing return with nowhere to record that is lying politely. Being able to show the pattern — which wards, which shifts, what it cost to cover — is usually what staff side has been asking for.</p>"],
+["IG","You haven&rsquo;t submitted a toolkit return. I can&rsquo;t sign this off.","c",
+"Conceded, and you shouldn&rsquo;t sign it off on that basis. No return has been submitted and no certification for the record-sharing standards is held.<p>This is a condition to set, not an objection to argue with.</p>"],
+["IG","Show me the national data opt-out actually being honoured.","a",
+"It&rsquo;s handled as policy the system enforces rather than a note on a file. The information governance spine carries records, freedom of information, subject access, the opt-out, legitimate access logging and the Article 30 record of data flows in one place, with the statutory clock running where the work is done.<p>Shared care opt-outs sit in a registry built on FHIR Consent with a governed emergency override — so the override leaves a trace of its own.</p>"],
+["IG","Who is the controller, where does the data sit, and who are the sub-processors?","a",
+"You are the controller and it runs in your own tenancy — your cloud account or your own data centre. The jurisdiction profile holds the regulator, identifier scheme, professional registers and statutory deadlines as dated, source-cited entries with a named signatory, so you can see what the platform believes about your legal context and when somebody signed it.<p>Where a jurisdiction has no value configured, the dependent capability switches off and says why instead of borrowing a neighbour&rsquo;s.</p>"],
+["IG","Secondary use and research — I&rsquo;ve seen where this goes.","a",
+"Then you&rsquo;ll like the design. Federated cohort discovery returns counts rather than records, aggregate only with small-number suppression, and an extract ledger records every request and what came back. The question travels; the data stays where it is.<p>Nothing leaves without a data sharing agreement and the disclosure gate.</p>"],
+["IG","AI and automated decision-making under Article 22.","a",
+"No AI surface makes a decision — non-SaMD throughout, with a human making the call. There&rsquo;s an override log built to satisfy the right to human review, an algorithm register, and bias assessment.<p>Demonstrated on seeded data today, and the claim is about how the platform is assembled rather than about a deployment.</p>"]
+];
+const ROLES=["All","CEO","CFO","COO","CMO","CIO","Procurement","HR","IG"];
+const VN={a:"Answered",p:"Partly",c:"Conceded"};
+let active="All";
+const list=document.getElementById('list'), filters=document.getElementById('filters');
+document.getElementById('na').textContent=D.filter(r=>r[2]==='a').length;
+document.getElementById('np').textContent=D.filter(r=>r[2]==='p').length;
+document.getElementById('nc').textContent=D.filter(r=>r[2]==='c').length;
+ROLES.forEach(r=>{const b=document.createElement('button');b.className='f';b.textContent=r;
+  b.setAttribute('aria-pressed',r===active);b.onclick=()=>{active=r;
+    [...filters.children].forEach(c=>c.setAttribute('aria-pressed',c.textContent===r));render();};
+  filters.appendChild(b);});
+function render(){
+  const rows=D.filter(r=>active==='All'||r[0]===active);
+  list.innerHTML = rows.length ? rows.map((r,i)=>`
+    <article class="row" data-i="${i}">
+      <button aria-expanded="false">
+        <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="q"><span class="who">${r[0]}</span>${r[1]}</span>
+        <span class="v ${r[2]}">${VN[r[2]]}</span>
+      </button>
+      <div class="ans"><p>${r[3]}</p></div>
+    </article>`).join('') : '<p class="empty">Nothing here yet.</p>';
+  list.querySelectorAll('.row').forEach(row=>{
+    const b=row.querySelector('button');
+    b.onclick=()=>{const o=row.classList.toggle('open');b.setAttribute('aria-expanded',o);};
+  });
+}
+render();
+</script>
+</html>
